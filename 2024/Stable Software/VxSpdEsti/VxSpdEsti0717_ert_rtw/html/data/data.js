@@ -1,1 +1,0 @@
-var dataJson = {"message":"没有 \"VxSpdEsti0717\" 的代码。"};
