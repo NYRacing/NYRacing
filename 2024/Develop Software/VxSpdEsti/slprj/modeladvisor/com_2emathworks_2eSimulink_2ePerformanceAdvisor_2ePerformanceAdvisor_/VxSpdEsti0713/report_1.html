@@ -1,0 +1,3210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>'VxSpdEsti0713' 的 Simulink 性能顾问报告</title>  
+<style type="text/css">
+<!--
+@media screen {    
+    /* Table Formatting */
+    .AdvTable th { 
+        background:#80a0c1 url(data:image/gif;base64,R0lGODlhAQAaAKIAAHSRr3mXtn+fv2V/mX2cvG2JpVxzi4CgwSH5BAAAAAAALAAAAAABABoAAAMJeLrcLCSAMkwCADs=) repeat-x bottom left; 
+    }
+}
+
+@media all {
+    *{ font-family: sans-serif; }
+
+	H3 {
+		font-size: 14pt;
+		font-weight: 200;
+	}
+	H4 {
+		font-size: 9pt;
+		font-weight: normal;
+	}
+	H5 {
+		font-size: 12pt;
+		font-style: italic;
+		font-weight: bold;
+		color: #333333;
+		margin-bottom: 2px;
+	}
+	a[href] {
+		color: #005FCE;
+	}
+	.subsection {
+		padding-left: 30px;
+	}
+    
+    .CheckHeading {
+		font-size:1.05em;
+		font-weight:bold;
+	}
+
+    /* Table Formatting */
+    table.AdvTable { 
+        border-collapse:collapse; border:1px solid #ececec; border-right:none; border-bottom:none; 
+    }
+
+    .AdvTable th { 
+        padding-left:5px; 
+        padding-right:5px; 
+        color:#fff; 
+        line-height:120%; 
+        background:#80a0c1 url(data:image/gif;base64,R0lGODlhAQAaAKIAAHSRr3mXtn+fv2V/mX2cvG2JpVxzi4CgwSH5BAAAAAAALAAAAAABABoAAAMJeLrcLCSAMkwCADs=) repeat-x bottom left; 
+        border-right: 1px solid #ececec; 
+        border-bottom: 1px solid #ececec; 
+    }
+
+    .AdvTable td { 
+        padding-left:5px; 
+        padding-right:5px; 
+        border-right:1px solid #ececec; 
+        border-bottom: 1px solid #ececec; 
+    }
+    
+    .AdvTable th p { 
+        margin-bottom:0px; 
+    }
+
+    .AdvTable p { 
+        margin-bottom:10px; 
+    }
+    
+    .AdvTableNoBorder p { 
+        margin-bottom:10px; 
+    }
+
+    table+span.SDCollapseControl { 
+        font-size:0.8em; 
+        font-weight:bold; 
+    }
+
+    ul+span.SDCollapseControl { 
+        margin-left:25px; 
+        font-size:0.8em;
+        font-weight:bold; 
+    }
+
+    ol+span.SDCollapseControl { 
+        margin-left:25px; 
+        font-size:0.8em; 
+        font-weight:bold; 
+    }
+
+    .SystemdefinedCollapse { 
+        margin-top:0px;
+        margin-bottom:5px; 
+    }
+
+    div.AllCollapse p, div.AllCollapse table, div.AllCollapse ol, div.AllCollapse ul { 
+        margin-top:0pt;
+        margin-bottom:0pt; 
+        margin-left:18px;
+    }
+
+    div.AllCollapse + div { 
+        margin-top:0pt;
+        margin-bottom:0pt; 
+        margin-left:18px; 
+    }
+
+    img.CollapseAllControlImage { 
+        float:left; 
+    }
+
+    .SubResultsSummary {
+        padding-left:30px;
+    }
+
+    .EmptyFolderMessage {
+        color:gray;
+        margin:10px 0 0 30px;
+        font-size:0.8em;
+    }
+	
+    .CsEml-Symbol-Status-Pass
+    { 
+        color: green;
+        font-family: monospace;
+    }
+
+    .CsEml-Symbol-Status-Warn
+        { 
+        color: orange;
+        font-family: monospace;
+    }
+
+    .CsEml-Symbol-Status-Fail
+    { 
+        color: red;
+        font-family: monospace;
+    }
+    
+    .CsEml-Line-Number
+    {
+        color: #A0A0A0;
+        font-style: italic;
+        font-family: monospace;
+    }
+
+    .CsEml-Code
+    {
+        color: blue;
+        font-family: monospace;
+    }
+
+    .CsEml-Code-Fragment
+    {
+        color: blue;
+        font-weight: bold;
+        font-family: monospace;
+        margin-right: 0;
+        padding-right: 0;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .CsEml-Function-Type
+    {
+        color:       #A0A0A0;
+        font-style:  italic;
+        font-family: monospace;
+    }
+
+}
+-->
+</style>
+
+<style type="text/css">
+<!--
+@media screen {
+    #Container {
+        overflow-x:hidden;
+    }
+
+	#ControlPanel {
+		position: fixed;
+		top: 5px;
+		left: 10px;
+		bottom: 5px;
+		width: 210px;
+		padding: 2px 0 2px 2px;
+		border: 1px solid #EEEEEE;
+		font-family: sans-serif;
+		font-size: 0.85em;
+	}
+
+	#HidePanelControl {
+		position:absolute;
+		top:0;
+		left:204px;
+		width:8px;
+		height:100%;
+		font-size: 8px;
+	}
+	
+	#HidePanelControl:hover {
+		background-color: #EFEFFB;
+	}
+	
+	#HidePanelControlInner {
+		position:absolute; top:50%;
+	}
+
+	#ControlsCheckFiltering {
+		position:absolute;
+		top:2px;
+		border: 1px solid #ececec;
+		padding-bottom: 8px;
+		margin-top: 0;
+		margin-bottom:0;
+		height:180px;
+		width:200px;
+	}
+		
+	#ControlsTOC {
+		position: absolute;
+		top:199px;
+		bottom:130px;
+		margin-top: 0;
+		margin-bottom: 0;
+		width:200px;
+		border: 1px solid #ececec;
+	}
+	
+	#ControlsView {
+		position:absolute;
+		bottom:2px;
+		width:200px;
+		margin-top: 0;
+		margin-bottom: 0;
+		height:110px;
+		border: 1px solid #ececec;
+	}
+	
+	#TOCScrollableArea {
+		position:absolute;
+		top:30px;
+		bottom:0;
+		width:100%;
+		padding-bottom:5px;
+		overflow:auto;
+	}
+	
+	#ControlsCheckFiltering input[type=checkbox] { margin-right: 15px; }
+	
+	#ControlPanel h2 {
+		margin: 0 0 10px 0;
+		background-color: #ECECEC;
+		font-size: 1em;
+		font-weight: normal;
+		color: #333333;
+		padding: 2px 5px 1px 5px;
+		height:20px;
+	}
+
+	.ControlPanelTextControl a[href] {
+		text-decoration: none;
+		font-weight: normal;
+		color: #F6F6F6;
+	}
+	
+	.ControlPanelTextControl {
+		line-height: 160%;
+		font-weight: normal;
+		color: #005FCE;
+		margin: 0 0 0 5px;
+		padding-right:15px;
+        padding-left:18px;
+        text-indent:-18px;
+	}
+	
+	.ControlPanelTextControl:hover {
+		background-color: #EFEFFB;
+	}
+	
+	#TextFilter {
+        padding-top:5px;
+        margin-left:12px;        
+	}
+	
+	#TxtFilterInput {
+		width: 170px;
+		color: gray;
+	}
+
+	#CPFilteringTable {
+        margin-left:5px;
+        width:165px;
+        border: none;
+    }
+
+    #CPFilteringTable td { border: none; }
+
+    #CPToTopImg { position:relative; top:3px; width:18px; height:17px; }
+    #CPCollapseImg { position:relative; top:2px; width:16px; height:16px; margin-right:3px; }
+
+	.ReportContent { margin-left: 225px; }
+}
+
+@media print {
+	#ControlPanel {
+		display: none;
+	}
+
+    #ShowPanelControl{
+		display:none;
+    }
+    
+    .ReportContent { margin-left: 0px; }
+}
+-->
+</style>
+
+<script type="text/javascript"> <!-- /* Copyright 2013-2017 The MathWorks, Inc */
+/* define String.trim() method if not defined (used by filterByText() function) */
+if(!String.prototype.trim) {
+  String.prototype.trim = function () {
+    return this.replace(/^\s+|\s+$/g,'');
+  };
+}
+
+// rtwreport needs it 
+function init() {
+    var showFailed = document.getElementById("Failed Checkbox");
+    var showPassed = document.getElementById("Passed Checkbox");
+    var showWarning = document.getElementById("Warning Checkbox");
+    var showNotRun = document.getElementById("Not Run Checkbox");
+    var showJustified = document.getElementById("Justified Checkbox");
+    var showIncomplete = document.getElementById("Incomplete Checkbox");      
+    
+    urlQueryStringRegexp = RegExp('\\?(.*)').exec(window.location.search);
+
+    if (urlQueryStringRegexp == null) {
+        /* refresh check boxes and search input */
+        showFailed.checked = true;
+        showPassed.checked = true;
+        showWarning.checked = true;
+        showNotRun.checked = true;
+        showJustified.checked = true;
+        showIncomplete.checked = true;
+    }
+    else 
+    {
+        showFailed.checked = false;
+        showPassed.checked = false;
+        showWarning.checked = false;
+        showNotRun.checked = false;
+        
+        urlQueryString = urlQueryStringRegexp[1];
+        
+        var queryArgs = [];
+        
+        if (urlQueryString.indexOf("&") == -1)
+        {
+            // Only 1 argument
+            queryArgs[0] = urlQueryString;
+        }
+        else
+        {
+            queryArgs = urlQueryString.split("&");
+        }
+        
+        for (var idx = 0; idx < queryArgs.length; ++idx)
+        {
+            // get in
+            if (queryArgs[idx].localeCompare("showPassedChecks") == 0) 
+            {
+                showPassed.checked = true;
+            }
+            else if (queryArgs[idx].localeCompare("showWarningChecks") == 0) 
+            {
+                showWarning.checked = true;
+            }
+            else if (queryArgs[idx].localeCompare("showFailedChecks") == 0)
+            {
+                showFailed.checked = true;
+            }
+            else if (queryArgs[idx].localeCompare("showNotRunChecks") == 0)
+            {
+                showNotRun.checked = true;
+            }
+        }
+            
+        // if nothing is selected, select everything
+        if (!showFailed.checked && !showPassed.checked && 
+            !showWarning.checked && !showNotRun.checked) 
+        {
+            showFailed.checked = true;
+            showPassed.checked = true;
+            showWarning.checked = true;
+            showNotRun.checked = true;
+            showJustified.checked = true;
+            showIncomplete.checked = true;
+        }
+    }
+    
+    updateVisibleChecks();
+}
+
+function markEmptyFolders(){
+	var nodeTypes = ["FailedCheck","PassedCheck",  "WarningCheck", "NotRunCheck"];
+	var folderArray = document.querySelectorAll("div.FolderContent");
+	
+	for (var n=0;n<folderArray.length;n++){
+		/* get direct check result children and check visibility */
+		var childNodes = folderArray[n].childNodes;
+		var noneVisible = true;
+		var noChecksInFolder = true;
+		
+		for (var ni=0;ni<childNodes.length;ni++){
+			if (childNodes[ni].nodeType == 1 && childNodes[ni].tagName.toLowerCase() == "div"){
+				if (childNodes[ni].className == nodeTypes[0] || childNodes[ni].className == nodeTypes[1] || childNodes[ni].className == nodeTypes[2] || childNodes[ni].className == nodeTypes[3]){
+					noChecksInFolder = false;
+					if (childNodes[ni].style.display != "none"){
+						noneVisible = false;
+                        break;
+					}
+				}
+			}
+		}
+		
+		/* Only display hidden message if any checks inside the folders and not just other folders */
+		if (!noChecksInFolder){
+			var hiddenMessage = folderArray[n].querySelector("div.EmptyFolderMessage");
+			
+			if (hiddenMessage && noneVisible == true){
+				hiddenMessage.style.display = "";
+			}else if (hiddenMessage && noneVisible == false){
+				hiddenMessage.style.display = "none";
+			}else{
+				/* hidden message not found */
+			}
+		}
+	}
+
+    return;
+}
+
+function updateVisibleChecks( /* show all flags */ checkbox ){
+	
+	var checkboxes = ["Failed Checkbox", "Passed Checkbox", "Warning Checkbox", "Not Run Checkbox", "Justified Checkbox", "Incomplete Checkbox"];
+	var nodeTypes = ["Failed Check","Passed Check",  "Warning Check", "Not Run Check", "Justified Check", "Incomplete Check"];
+	var textInput = document.getElementById("TxtFilterInput");
+	
+	
+	if (checkbox && textInput && textInput.color=="gray"){
+		var checkType = checkbox.id;
+		var ind = checkboxes.indexOf(checkType);
+		var nodes = document.getElementsByName(nodeTypes[ind]);
+		for (i = 0; i < nodes.length;i++){
+		    nodes[i].style.display = checkbox.checked ? "" : "none";
+		}
+	}
+	else{ /* Update all checks if called from init or if a previous text filter was applied */
+		for (i = 0; i < checkboxes.length; i++){
+			
+			  var show = document.getElementById(checkboxes[i]).checked ? "" : "none";
+			  var nodes = document.getElementsByName(nodeTypes[i]);
+			  for(j = 0; j < nodes.length; j++){
+				  nodes[j].style.display = show;
+			  }
+		   
+		}
+	}
+
+    /* clear text search */
+	if (textInput && checkbox){
+		textInput.value = "关键字";
+        textInput.style.color = "gray";
+        textInput.blur;
+	}
+
+    markEmptyFolders();
+
+    return; 
+}
+
+function filterByText(ev){
+	// get all the nodes
+	var allNodeTypes = ["Failed Check","Passed Check",  "Warning Check", "Not Run Check"];
+	var checkboxes = ["Failed Checkbox", "Passed Checkbox", "Warning Checkbox", "Not Run Checkbox"];
+	var nodeTypes = [];
+	
+	// get nodes depending on filter selections
+	for (var n=0; n<checkboxes.length; n++){
+		var checkbox = document.getElementById(checkboxes[n]);
+		if (checkbox && checkbox.checked){
+			nodeTypes.push(allNodeTypes[n]);
+		}
+	}
+	
+    var searchNodes = [".CheckHeading"];
+    var allnodes = [];
+	var alltext = [];
+	if (!ev) return;
+	var target = ev.target ? ev.target : window.event.srcElement;
+	var searchString = target.value;
+	
+	if (!searchString){
+        updateVisibleChecks();  // clear all and display by other filters
+	}else{
+		for (i = 0; i < nodeTypes.length; i++){
+			var nodes = document.getElementsByName(nodeTypes[i]);
+			for (j = 0; j < nodes.length; j++){
+				// get text from check heading
+				var checkContent = nodes[j].querySelector(searchNodes).innerHTML;
+				// creaet a regular expression to ignore case
+				var ss = new RegExp(searchString.trim(), "i");
+				if (ss.exec(checkContent)){
+				   nodes[j].style.display = "";
+				}else{
+				   nodes[j].style.display = "none";
+				}
+			}
+		}
+        markEmptyFolders();
+	}	
+}
+
+
+function MATableShrink(o,tagNameStr){
+    var temp = document.getElementsByName(tagNameStr);
+    var classUsed = document.getElementsByName('EmbedImages'); 
+    var embeddedMode = !(classUsed.length == 0);
+    var img = o.querySelector("img");
+
+    if (temp[0].style.display == "") 
+    {
+        temp[0].style.display = "none";
+        if (embeddedMode)
+        {
+            img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAkUlEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAEfQCCwt+JQABRHEYAAQQCzE2w9h//vzDUAcQQDgNgCkGacamEQYAAohiLwAEEEED8NkOAgABxEJMVOEDAAHESGlmAgggisMAIIAoNgAgwAC+/BqtC+40NQAAAABJRU5ErkJggg==";
+        }
+        else
+        {
+            img.src = "plus.png";
+        }
+    } 
+    else 
+    {
+        temp[0].style.display = "";
+        if (embeddedMode)
+        {
+            img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII=";
+        }
+        else
+        {
+            img.src = "minus.png";
+        }
+    }
+}
+
+// rtwreport needs it 
+function updateHyperlink() {
+    docObj = window.document;
+    loc = document.location;
+    var aHash = "";
+    var externalweb = "false";
+    if (loc.search || loc.hash) {
+        if (loc.search)
+            aHash = loc.search.substring(1);
+        else
+            aHash = loc.hash.substring(1);
+    }    
+    var args = new Array();
+    args = aHash.split('&');
+    for (var i = 0; i < args.length; ++i) {
+        var arg = args[i];
+          sep = arg.indexOf('=');
+        if (sep != -1) {
+            var cmd = arg.substring(0,sep);
+            var opt = arg.substring(sep+1);
+            switch (cmd.toLowerCase()) {
+            case "externalweb":
+                externalweb = opt;
+                break;
+            }
+        }
+    }        
+    if (externalweb === "true") {        
+        var objs = docObj.getElementsByTagName("a");
+        if (objs.length > 0 && objs[0].removeAttribute) {
+            for (var i = 0; i < objs.length; ++i) {           
+                if (objs[i].href.indexOf('matlab') > -1)           
+                    objs[i].removeAttribute("href");                
+            }
+        }
+    }
+    init();
+}
+    
+function findParentNode(e) {
+   var parent = e.parentElement;
+   if (!!parent) {
+    if (parent.id == "") {   
+       return findParentNode(parent);
+    } else {
+       return parent;
+    }
+   } else {
+    return null;
+   }
+}
+
+function expandParentNode(e) {
+   var parent = findParentNode(e);
+   while (!!parent) { 
+    var prefix = "FolderControl_";
+    var folderControl = document.getElementById(prefix.concat(parent.id));
+    if (parent.style.display == "none") {       
+       MATableShrink(folderControl,parent.id);
+    }
+    parent = findParentNode(parent);
+   }
+}
+
+function isHidden(e) {
+    return (e.offsetParent === null)
+}
+
+function navigateToElement(eleID) {
+   var e = document.getElementById(eleID);
+   if (isHidden(e)) {
+       expandParentNode(e);
+   }       
+   if (!!e && e.scrollIntoView) {
+       e.scrollIntoView();
+   }
+}
+
+function setTextContent(element, value) {
+    var content = element.textContent;
+    if (value === undefined) return;
+    
+    if (content !== undefined) element.textContent = value;
+    else element.innerText = value;
+}
+
+function hideControlPanel(control){
+	var panelComponents = ["ControlsCheckFiltering", "ControlsView", "ControlsTOC"];
+	var reportContent = document.querySelector(".ReportContent");
+	var controlPanel = document.getElementById("ControlPanel");
+	var isHidden = false;
+	
+    if (reportContent && control && controlPanel) {
+    	for (var n=0; n<panelComponents.length; n++){
+			var component = document.getElementById(panelComponents[n]);
+			
+			if (component && component.style.display == ""){
+				component.style.display = "none";
+            } else if (component && component.style.display == "none"){
+				component.style.display = "";
+			}
+		}
+		
+		if (controlPanel.style.width != "6px"){
+			reportContent.style.marginLeft = "25px";
+	    	controlPanel.style.width = "6px";
+	    	control.style.left = "0px";
+	       	var innerDiv = control.querySelector("#HidePanelControlInner");
+	       	setTextContent(innerDiv, "\u25BA");
+	    } else {
+	    	reportContent.style.marginLeft = "225px";
+        	controlPanel.style.width = "210px";
+        	control.style.left = "204px";
+        	var innerDiv = control.querySelector("#HidePanelControlInner");
+        	setTextContent(innerDiv, "\u25C0");
+        }
+    }
+}
+/* Copyright 2013 The MathWorks, Inc. */
+//COLLAPSIBLE FEATURE
+
+// global variables
+var GlobalCollapseState = "off";
+
+function collapseSDHelper(o, CollElementParent, disp, mode){
+    var CollElement = CollElementParent; /* ul/ol with lists, tbody with table */
+
+    if (CollElement.nodeName == "UL" || CollElement.nodeName == "OL"){
+        var CollName = "LI";
+    }else if (CollElement.nodeName == "TABLE"){
+        if (CollElement.querySelector('tbody')) {
+            /* tr modes are child nodes of tbody node */
+            CollElement = CollElement.querySelector('tbody');
+        }
+        var CollName = "TR";
+    }
+    
+    // get children (li for list and tr for table)
+    var children = CollElement.childNodes;
+
+    var nElements = 0;
+    for (var i=0;i<children.length;i++){
+        if (children[i].nodeName == CollName){
+            nElements = nElements + 1;
+            if (nElements > 5){
+                children[i].style.display = disp;
+            }
+        }
+    }
+    if (disp == "none"){
+        if (CollName == "LI"){
+            var text = " 项目)";
+        }else{
+            var text = " 行)";
+        }
+        
+        var textNode = document.createTextNode(("\u2228 更多 (" + (nElements-5) + text));
+        o.replaceChild(textNode,o.firstChild);
+
+        CollElementParent.setAttribute("dataCollapse", "on");
+
+        /* scroll to element if it is not visible */
+        if (mode == "single" && CollElement.offsetTop < document.documentElement.scrollTop){
+			CollElement.scrollIntoView();
+		}
+    }else{
+        var textNode = document.createTextNode(("\u2227 " + "更少"));
+        o.replaceChild(textNode,o.firstChild);
+
+        CollElementParent.setAttribute("dataCollapse", "off");
+    }
+}
+
+function collapseSD(o, ID){
+    var CollElement = document.getElementById(ID);
+    if (CollElement != null){
+        if (CollElement.getAttribute("dataCollapse") == "off"){
+            var disp="none";
+        }else{
+            var disp="";
+        }
+        collapseSDHelper(o, CollElement, disp, "single");
+    }
+}
+
+function collapseAllHelper(o, CollElement, CollInfo, disp){
+
+    if (CollElement != null){
+        var img = o.querySelector("img");
+        if (disp == "none"){
+            CollElement.style.display = disp;
+			img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAkUlEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAEfQCCwt+JQABRHEYAAQQCzE2w9h//vzDUAcQQDgNgCkGacamEQYAAohiLwAEEEED8NkOAgABxEJMVOEDAAHESGlmAgggisMAIIAoNgAgwAC+/BqtC+40NQAAAABJRU5ErkJggg==";
+        }else{
+            CollElement.style.display = disp;
+			img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII=";
+        }
+
+        if (CollInfo != null){
+            if (disp == "none"){
+                CollInfo.style.display = "";
+            }else{
+                CollInfo.style.display = "none";
+            }
+        }
+    }
+}
+
+function collapseAll(o, ID, ID2){
+    var CollElement = document.getElementById(ID);
+    var CollInfo = document.getElementById(ID2);
+
+    if (CollElement.style.display == ""){
+        var disp = "none";
+    }else{
+        var disp = "";
+    }
+
+    collapseAllHelper(o, CollElement, CollInfo, disp);
+}
+
+function expandCollapseAll(o){
+	/* IE has no method for getting elements by class name. Use querySelectorAll instead 
+       Note: requires IE not to be in IE7 compatability mode */
+    var SDCollapse = document.querySelectorAll(".SystemdefinedCollapse");
+    var Button = null;
+
+    if (GlobalCollapseState == "off"){
+        var disp = "none";
+        GlobalCollapseState = "on";
+
+        if (o && o.firstChild.nodeType == 3) {
+            var textNode = o.firstChild;
+        	textNode.nodeValue = " 显示检查详细信息";
+		}
+    }else{
+        var disp = "";
+        GlobalCollapseState = "off";
+
+        if (o && o.firstChild.nodeType == 3) {
+            var textNode = o.firstChild;
+        	textNode.nodeValue = " 隐藏检查详细信息";
+		}
+    }
+
+    for (var i=0;i<SDCollapse.length;i++){
+        Button = SDCollapse[i].nextSibling;
+        while(Button.nodeType !== 1){
+            Button = Button.nextSibling;
+        }
+        //Button = SDCollapse[i].parentNode.querySelector("span.SDCollapseControl");
+        collapseSDHelper(Button, SDCollapse[i], disp, "all");
+    }
+		
+    var AllCollapse = document.querySelectorAll(".AllCollapse");
+
+    for (i=0;i<AllCollapse.length;i++){
+        // get children of top level collapsible div
+        var children = AllCollapse[i].parentNode.children;
+        
+        // collapsible button is first child
+		Button = children[0];
+        
+        // get content to display in collapsed state
+        // this is optional and last child of collapsible div 
+        if (Button)
+        {
+            if (children.length>2)
+            {
+                collapseAllHelper(Button, AllCollapse[i], children[2], disp);
+            }
+            else
+            {
+                collapseAllHelper(Button, AllCollapse[i], null, disp);
+            }
+        }
+    }
+}
+
+
+function expandCollapseAllOnLoad(){
+    GlobalCollapseState = "on";
+    var Switch = document.getElementById("ExpandCollapseAll");
+    expandCollapseAll(Switch);
+}
+//END COLLAPSIBLE
+
+ --></script></head>  
+<body onload="updateHyperlink(); expandCollapseAllOnLoad();">  
+<span id="top">
+
+</span>
+<!-- mdladv_ignore_start --><div id="Container"><!-- mdladv_ignore_finish -->
+
+<!-- mdladv_ignore_start --><div id="ControlPanel">
+<div id="HidePanelControl" title="最小化/最大化控制面板" onclick="hideControlPanel(this)" onmouseover="this.style.cursor='pointer'">
+<div id="HidePanelControlInner">
+&#9664;
+</div>
+</div>
+<div id="ControlsCheckFiltering">
+<h2>
+筛选检查
+</h2>
+<table id="CPFilteringTable" border="1">
+<tr>
+<td align="left" valign="top">
+<input id="Passed Checkbox" checked="checked" onclick="updateVisibleChecks(this)" type="checkbox" />
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg==" /> 通过
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<input id="Failed Checkbox" checked="checked" onclick="updateVisibleChecks(this)" type="checkbox" />
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC" /> 失败
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<input id="Warning Checkbox" checked="checked" onclick="updateVisibleChecks(this)" type="checkbox" />
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC" /> 警告
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<input id="Not Run Checkbox" checked="checked" onclick="updateVisibleChecks(this)" type="checkbox" />
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII=" /> 未运行
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<input id="Justified Checkbox" checked="checked" onclick="updateVisibleChecks(this)" type="checkbox" />
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII=" /> 已申述
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<input id="Incomplete Checkbox" checked="checked" onclick="updateVisibleChecks(this)" type="checkbox" />
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg==" /> 未完成
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+
+</table>
+<div id="TextFilter">
+<input id="TxtFilterInput" onkeyup="filterByText(event)" onfocus="if (this.value=='关键字'){ this.value=''; this.style.color='black';}" onblur="if (this.value==''){ this.value='关键字'; this.style.color='gray';}" value="关键字" type="text" title="隐藏其标题中没有关键字的检查。" />
+
+</div>
+</div>
+<div id="ControlsTOC">
+<h2>
+导航
+</h2>
+<div id="TOCScrollableArea">
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.PerformanceAdvisor')">
+ 性能顾问</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.Baseline')">
+1 基线</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.Simulation')">
+2 仿真</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.BeforeUpdate')">
+2.1 更新前执行的检查</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.UpdateDiagram')">
+2.2 需要更新图的检查</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.Runtime')">
+2.3 需要仿真运行的检查</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationTargets')">
+3 仿真目标</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationModesComparison')">
+3.1 检查仿真模式设置</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationCompilerOptimization')">
+3.2 检查编译器优化设置</div>
+<div class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationHardwareAcceleration')">
+3.3 检查硬件加速设置</div>
+</div>
+</div>
+<div id="ControlsView">
+<h2>
+视图
+</h2>
+<div class="ControlPanelTextControl" title="滚动到报告的顶部" onmouseover="this.style.cursor='pointer'" onclick="navigateToElement('top')">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAARAQMAAADqlG66AAAAA3NCSVQICAjb4U/gAAAABlBMVEX///9Tktdg+Ox4AAAAAnRSTlMA/1uRIrUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAWdEVYdENyZWF0aW9uIFRpbWUAMTIvMTgvMDiz53+6AAAAGHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3NPsx9OAAAEEXRFWHRYTUw6Y29tLmFkb2JlLnhtcAA8P3hwYWNrZXQgYmVnaW49IiAgICIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA0LjEtYzAzNCA0Ni4yNzI5NzYsIFNhdCBKYW4gMjcgMjAwNyAyMjozNzozNyAgICAgICAgIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6eGFwPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHhhcDpDcmVhdG9yVG9vbD5BZG9iZSBGaXJld29ya3MgQ1MzPC94YXA6Q3JlYXRvclRvb2w+CiAgICAgICAgIDx4YXA6Q3JlYXRlRGF0ZT4yMDA4LTEyLTE4VDIyOjA2OjAxWjwveGFwOkNyZWF0ZURhdGU+CiAgICAgICAgIDx4YXA6TW9kaWZ5RGF0ZT4yMDA4LTEyLTE4VDIyOjA4OjQzWjwveGFwOk1vZGlmeURhdGU+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPgogICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3BuZzwvZGM6Zm9ybWF0PgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA9F2ciAAAAIElEQVQImWNgQAP8f5A4BxgYGB8wMDB/YGBg/4EmhwAAvEcFqqXqgcsAAAAASUVORK5CYII="  id="CPToTopImg"/>滚动到顶部</div>
+<div id="ExpandCollapseAll" class="ControlPanelTextControl" onmouseover="this.style.cursor='pointer'" onclick="expandCollapseAll(this)" title="展开/折叠所有可折叠的检查内容。">
+显示检查详细信息</div>
+</div>
+</div>
+<!-- mdladv_ignore_finish -->
+<!-- mdladv_ignore_start --><div class="ReportContent" id="VxSpdEsti0713"><!-- mdladv_ignore_finish --><table class="AdvTableNoBorder" width="100%" border="0">
+<tr>
+<td colspan="2" align="center">
+<b>
+Simulink 性能顾问报告 - <font color="#800000">VxSpdEsti0713.slx</font>
+</b>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+Simulink 版本: <font color="#800000">10.6</font>
+</b>
+
+</td>
+<td align="right" valign="top">
+<b>
+模型版本: <font color="#800000">1.38</font>
+</b>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+系统: <font color="#800000">VxSpdEsti0713</font>
+</b>
+
+</td>
+<td align="right" valign="top">
+<b>
+当前运行: <font color="#800000">2024/07/13 10:53:07</font>
+</b>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKTWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVN3WJP3Fj7f92UPVkLY8LGXbIEAIiOsCMgQWaIQkgBhhBASQMWFiApWFBURnEhVxILVCkidiOKgKLhnQYqIWotVXDjuH9yntX167+3t+9f7vOec5/zOec8PgBESJpHmomoAOVKFPDrYH49PSMTJvYACFUjgBCAQ5svCZwXFAADwA3l4fnSwP/wBr28AAgBw1S4kEsfh/4O6UCZXACCRAOAiEucLAZBSAMguVMgUAMgYALBTs2QKAJQAAGx5fEIiAKoNAOz0ST4FANipk9wXANiiHKkIAI0BAJkoRyQCQLsAYFWBUiwCwMIAoKxAIi4EwK4BgFm2MkcCgL0FAHaOWJAPQGAAgJlCLMwAIDgCAEMeE80DIEwDoDDSv+CpX3CFuEgBAMDLlc2XS9IzFLiV0Bp38vDg4iHiwmyxQmEXKRBmCeQinJebIxNI5wNMzgwAABr50cH+OD+Q5+bk4eZm52zv9MWi/mvwbyI+IfHf/ryMAgQAEE7P79pf5eXWA3DHAbB1v2upWwDaVgBo3/ldM9sJoFoK0Hr5i3k4/EAenqFQyDwdHAoLC+0lYqG9MOOLPv8z4W/gi372/EAe/tt68ABxmkCZrcCjg/1xYW52rlKO58sEQjFu9+cj/seFf/2OKdHiNLFcLBWK8ViJuFAiTcd5uVKRRCHJleIS6X8y8R+W/QmTdw0ArIZPwE62B7XLbMB+7gECiw5Y0nYAQH7zLYwaC5EAEGc0Mnn3AACTv/mPQCsBAM2XpOMAALzoGFyolBdMxggAAESggSqwQQcMwRSswA6cwR28wBcCYQZEQAwkwDwQQgbkgBwKoRiWQRlUwDrYBLWwAxqgEZrhELTBMTgN5+ASXIHrcBcGYBiewhi8hgkEQcgIE2EhOogRYo7YIs4IF5mOBCJhSDSSgKQg6YgUUSLFyHKkAqlCapFdSCPyLXIUOY1cQPqQ28ggMor8irxHMZSBslED1AJ1QLmoHxqKxqBz0XQ0D12AlqJr0Rq0Hj2AtqKn0UvodXQAfYqOY4DRMQ5mjNlhXIyHRWCJWBomxxZj5Vg1Vo81Yx1YN3YVG8CeYe8IJAKLgBPsCF6EEMJsgpCQR1hMWEOoJewjtBK6CFcJg4Qxwicik6hPtCV6EvnEeGI6sZBYRqwm7iEeIZ4lXicOE1+TSCQOyZLkTgohJZAySQtJa0jbSC2kU6Q+0hBpnEwm65Btyd7kCLKArCCXkbeQD5BPkvvJw+S3FDrFiOJMCaIkUqSUEko1ZT/lBKWfMkKZoKpRzame1AiqiDqfWkltoHZQL1OHqRM0dZolzZsWQ8ukLaPV0JppZ2n3aC/pdLoJ3YMeRZfQl9Jr6Afp5+mD9HcMDYYNg8dIYigZaxl7GacYtxkvmUymBdOXmchUMNcyG5lnmA+Yb1VYKvYqfBWRyhKVOpVWlX6V56pUVXNVP9V5qgtUq1UPq15WfaZGVbNQ46kJ1Bar1akdVbupNq7OUndSj1DPUV+jvl/9gvpjDbKGhUaghkijVGO3xhmNIRbGMmXxWELWclYD6yxrmE1iW7L57Ex2Bfsbdi97TFNDc6pmrGaRZp3mcc0BDsax4PA52ZxKziHODc57LQMtPy2x1mqtZq1+rTfaetq+2mLtcu0W7eva73VwnUCdLJ31Om0693UJuja6UbqFutt1z+o+02PreekJ9cr1Dund0Uf1bfSj9Rfq79bv0R83MDQINpAZbDE4Y/DMkGPoa5hpuNHwhOGoEctoupHEaKPRSaMnuCbuh2fjNXgXPmasbxxirDTeZdxrPGFiaTLbpMSkxeS+Kc2Ua5pmutG003TMzMgs3KzYrMnsjjnVnGueYb7ZvNv8jYWlRZzFSos2i8eW2pZ8ywWWTZb3rJhWPlZ5VvVW16xJ1lzrLOtt1ldsUBtXmwybOpvLtqitm63Edptt3xTiFI8p0in1U27aMez87ArsmuwG7Tn2YfYl9m32zx3MHBId1jt0O3xydHXMdmxwvOuk4TTDqcSpw+lXZxtnoXOd8zUXpkuQyxKXdpcXU22niqdun3rLleUa7rrStdP1o5u7m9yt2W3U3cw9xX2r+00umxvJXcM970H08PdY4nHM452nm6fC85DnL152Xlle+70eT7OcJp7WMG3I28Rb4L3Le2A6Pj1l+s7pAz7GPgKfep+Hvqa+It89viN+1n6Zfgf8nvs7+sv9j/i/4XnyFvFOBWABwQHlAb2BGoGzA2sDHwSZBKUHNQWNBbsGLww+FUIMCQ1ZH3KTb8AX8hv5YzPcZyya0RXKCJ0VWhv6MMwmTB7WEY6GzwjfEH5vpvlM6cy2CIjgR2yIuB9pGZkX+X0UKSoyqi7qUbRTdHF09yzWrORZ+2e9jvGPqYy5O9tqtnJ2Z6xqbFJsY+ybuIC4qriBeIf4RfGXEnQTJAntieTE2MQ9ieNzAudsmjOc5JpUlnRjruXcorkX5unOy553PFk1WZB8OIWYEpeyP+WDIEJQLxhP5aduTR0T8oSbhU9FvqKNolGxt7hKPJLmnVaV9jjdO31D+miGT0Z1xjMJT1IreZEZkrkj801WRNberM/ZcdktOZSclJyjUg1plrQr1zC3KLdPZisrkw3keeZtyhuTh8r35CP5c/PbFWyFTNGjtFKuUA4WTC+oK3hbGFt4uEi9SFrUM99m/ur5IwuCFny9kLBQuLCz2Lh4WfHgIr9FuxYji1MXdy4xXVK6ZHhp8NJ9y2jLspb9UOJYUlXyannc8o5Sg9KlpUMrglc0lamUycturvRauWMVYZVkVe9ql9VbVn8qF5VfrHCsqK74sEa45uJXTl/VfPV5bdra3kq3yu3rSOuk626s91m/r0q9akHV0IbwDa0b8Y3lG19tSt50oXpq9Y7NtM3KzQM1YTXtW8y2rNvyoTaj9nqdf13LVv2tq7e+2Sba1r/dd3vzDoMdFTve75TsvLUreFdrvUV99W7S7oLdjxpiG7q/5n7duEd3T8Wej3ulewf2Re/ranRvbNyvv7+yCW1SNo0eSDpw5ZuAb9qb7Zp3tXBaKg7CQeXBJ9+mfHvjUOihzsPcw83fmX+39QjrSHkr0jq/dawto22gPaG97+iMo50dXh1Hvrf/fu8x42N1xzWPV56gnSg98fnkgpPjp2Snnp1OPz3Umdx590z8mWtdUV29Z0PPnj8XdO5Mt1/3yfPe549d8Lxw9CL3Ytslt0utPa49R35w/eFIr1tv62X3y+1XPK509E3rO9Hv03/6asDVc9f41y5dn3m978bsG7duJt0cuCW69fh29u0XdwruTNxdeo94r/y+2v3qB/oP6n+0/rFlwG3g+GDAYM/DWQ/vDgmHnv6U/9OH4dJHzEfVI0YjjY+dHx8bDRq98mTOk+GnsqcTz8p+Vv9563Or59/94vtLz1j82PAL+YvPv655qfNy76uprzrHI8cfvM55PfGm/K3O233vuO+638e9H5ko/ED+UPPR+mPHp9BP9z7nfP78L/eE8/sl0p8zAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAACX0lEQVR42pyTvU9TURjGf/e2JaVFcrEtSEm61DTpQKqpCcQ0hEESEsMgMQ4mDsaEkYGJ0ck4MbAJAztBWOQvsAOxkWAIVgNNUBSlvf0gbe+9vR89DtUrlcQYz3jy/N73vM95XkkIwcWzsbktsm8/ky+oqFUNgPBAgGQ8TCYd4/7sXemiXvpVILeTFavruxwclUmNJhiKRJA9Pmp1nbNihWJJpVpRuZkcZGVpXuoqkNvJimcvsgSCClOTYzR1i0qtSa2uU28YNLUWmm5iGCa1yneuhX1srS1KADLA6vougaDCzPSEC7csm4czKZ48uIUsQcu0sR2Bvy/CaclkbmFZAMgbm9vi4KjM1OQY5WrD7RxSekmPjjB2I0aoX1Atf8OybYQQ+IMhdt+fsbG5LTzR65mnkaEoiqJ0PfvTlwqaZpLbO+blq9c4joXX60f2eJEkCRA4dgtvvqByezx+aebpiQSPZtMA7H88Ibd3jMfnd933+nrJF1Rktaq5bl807EOh6Ioto0FLr+FYhnsne3pQq1rHxD/hlmnz5t0J/3K84YEAZ8UKAo8LW5aD7bT/CrYdk/BAADkZD1MsqZfg4cgVVzwyfPVSAdvSScbDyJl0jGpFxTBMFxZCMDked8V3JkY7Xds2AEK0MY06mXSsk8S5hWWxf3iOvy/Cr2hHB/sZHurHNjXK5RL5w694fH4CfYPojRKphMLK0rzk7sK9x8/FacnEHwwhSfLvWds2wrF/Bh9Mo0400tMdZYCttUUplVBonp9iGue0HbPzXbIXSZZxnBZ6QyWVUFy4axv/d51/DABGnnJocWG90gAAAABJRU5ErkJggg==" /> 有 20 个项目的时间戳并非 2024/07/13 10:53:07
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+视为引用模型: <font color="#800000">off</font>
+</b>
+
+</td>
+<td align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+
+</table>
+
+<!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start --><span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.PerformanceAdvisor" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.PerformanceAdvisor')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish --> 性能顾问</b></font><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.PerformanceAdvisor"  id = "com.mathworks.Simulink.PerformanceAdvisor.PerformanceAdvisor" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.Baseline" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.Baseline')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->1 基线</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.Baseline" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />1&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />0</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.Baseline"  id = "com.mathworks.Simulink.PerformanceAdvisor.Baseline" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 20pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_197"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CreateBaseline">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CreateBaseline">
+创建基线</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+基线生成成功。仿真耗时 00:00:00.440 秒。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+停止时间
+</td>
+<td align="left" valign="top">
+10
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+检查以查看基线信号并设置其容差。
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.Simulation" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.Simulation')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->2 仿真</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.Simulation" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />16&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />2</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.Simulation"  id = "com.mathworks.Simulink.PerformanceAdvisor.Simulation" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; &#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.BeforeUpdate" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.BeforeUpdate')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->2.1 更新前执行的检查</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.BeforeUpdate" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />9&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />0</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.BeforeUpdate"  id = "com.mathworks.Simulink.PerformanceAdvisor.BeforeUpdate" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_198"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.IdentifyExpensiveDiagnostics">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.IdentifyExpensiveDiagnostics">
+标识耗费资源较多的诊断设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />一些诊断在仿真期间会产生运行时开销。审核模型 'VxSpdEsti0713' 的 模型配置 中的以下参数以及对这些参数的建议更改。<br /><br />此检查已通过。这意味着为了提高仿真速度，已进行以下设置。<table class="AdvTable SystemdefinedCollapse" width="80%" border="1" id="71c65b3f-2706-48ae-9f18-6f67167f1523" dataCollapse="off">
+<tr>
+<td colspan="5" align="center">
+
+</td>
+
+</tr>
+<tr>
+<th>
+&#160;
+</th>
+<th align="left" valign="top">
+<b>
+严重性
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+已检查的诊断项
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+原始值
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+新值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+Solver
+</b>
+
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'ConsistencyChecking' ">
+诊断 > 求解器数据不一致
+</a>
+
+</td>
+<td align="left" valign="top">
+none
+</td>
+<td align="left" valign="top">
+none
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+Signals
+</b>
+
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'SignalResolutionControl' ">
+诊断 > 数据有效性 > 信号解析
+</a>
+
+</td>
+<td align="left" valign="top">
+仅显式
+</td>
+<td align="left" valign="top">
+仅显式
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'CheckMatrixSingularityMsg' ">
+诊断 > 数据有效性 > 除以奇异矩阵
+</a>
+
+</td>
+<td align="left" valign="top">
+none
+</td>
+<td align="left" valign="top">
+none
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'SignalInfNanChecking' ">
+诊断 > 数据有效性 > 模块输出为 Inf 或 NaN
+</a>
+
+</td>
+<td align="left" valign="top">
+none
+</td>
+<td align="left" valign="top">
+none
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'SignalRangeChecking' ">
+诊断 > 数据有效性 > 仿真范围检查
+</a>
+
+</td>
+<td align="left" valign="top">
+none
+</td>
+<td align="left" valign="top">
+none
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'ArrayBoundsChecking' ">
+诊断 > 数据有效性 > 超出数组边界
+</a>
+
+</td>
+<td align="left" valign="top">
+none
+</td>
+<td align="left" valign="top">
+none
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+DSM Blocks
+</b>
+
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'ReadBeforeWriteMsg' ">
+诊断 > 数据有效性 > 检测写前读
+</a>
+
+</td>
+<td align="left" valign="top">
+DisableAll
+</td>
+<td align="left" valign="top">
+DisableAll
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'WriteAfterReadMsg' ">
+诊断 > 数据有效性 > 检测读后写
+</a>
+
+</td>
+<td align="left" valign="top">
+DisableAll
+</td>
+<td align="left" valign="top">
+DisableAll
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'WriteAfterWriteMsg' ">
+诊断 > 数据有效性 > 检测写后写
+</a>
+
+</td>
+<td align="left" valign="top">
+DisableAll
+</td>
+<td align="left" valign="top">
+DisableAll
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'MultiTaskDSMMsg' ">
+诊断 > 数据有效性 > 多任务数据存储
+</a>
+
+</td>
+<td align="left" valign="top">
+none
+</td>
+<td align="left" valign="top">
+none
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'UniqueDataStoreMsg' ">
+诊断 > 数据有效性 > 重复数据存储名称
+</a>
+
+</td>
+<td align="left" valign="top">
+none
+</td>
+<td align="left" valign="top">
+none
+</td>
+
+</tr>
+
+</table>
+<span class="SDCollapseControl" onclick="collapseSD(this, '71c65b3f-2706-48ae-9f18-6f67167f1523')" onmouseover="this.style.cursor = 'pointer'">
+&#8743; 更少
+</span>
+<br />
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_199"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.IdentifyApplicableOptimizations">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.IdentifyApplicableOptimizations">
+检查优化设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+一些优化设置可以提高仿真速度。审核模型 'VxSpdEsti0713' 的 模型配置 中的以下参数以及对这些参数的建议更改。<br /><br />此检查已通过。这意味着为了提高仿真速度，已进行以下设置。<table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="4" align="center">
+
+</td>
+
+</tr>
+<tr>
+<th align="left" valign="top">
+<b>
+严重性
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+已检查的诊断项
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+原始值
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+新值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'BlockReduction' ">
+配置参数 > 模块简化
+</a>
+
+</td>
+<td align="left" valign="top">
+on
+</td>
+<td align="left" valign="top">
+on
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'ConditionallyExecuteInputs' ">
+配置参数 > 条件输入分支执行
+</a>
+
+</td>
+<td align="left" valign="top">
+on
+</td>
+<td align="left" valign="top">
+on
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'OptimizeBlockIOStorage' ">
+配置参数 > 信号存储重用
+</a>
+
+</td>
+<td align="left" valign="top">
+on
+</td>
+<td align="left" valign="top">
+on
+</td>
+
+</tr>
+
+</table>
+
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_200"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.InefficientLookupTableBlocks">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.InefficientLookupTableBlocks">
+标识低效的 Lookup Table 模块</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />Lookup Table 和 Lookup Table (2-D) 模块不支持使用以前的结果进行搜索。当模块输入的变化相对于表间隔大小较小时，从以前的结果进行搜索可以提高仿真速度。<br /><br />此检查已通过。这意味着模型 'VxSpdEsti0713' 中或者不存在 Lookup Table 模块，或者这些模块都使用正确从而获得了最优性能。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_201"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.DetectIntSysObjBlocks">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.DetectIntSysObjBlocks">
+检查 MATLAB System 模块仿真模式</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />如果底层 System object 支持代码生成，将 "仿真方式" 参数设置为 "代码生成" 可以提高仿真速度。<br /><br />此检查已通过。这意味着模型 'VxSpdEsti0713' 中不存在低效的 System object 模块。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+手动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_202"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.DetectIntMATLABFcnBlocks">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.DetectIntMATLABFcnBlocks">
+标识 Interpreted MATLAB Function 模块</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />Interpreted MATLAB Function 模块会影响仿真速度。请考虑将 Interpreted MATLAB Function 模块替换为其他模块，如 MATLAB Function 模块或 Fcn 模块。<br /><br />此检查已通过。这意味着模型 'VxSpdEsti0713' 中不存在 Interpreted MATLAB Function 模块。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+手动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_203"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckSimTargetEchoStatus">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckSimTargetEchoStatus">
+标识仿真目标设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />仿真目标设置 '回显不带分号的表达式的输出' 已启用。禁用此设置可能会提高仿真速度。审核模型 'VxSpdEsti0713' 的 模型配置 中的以下设置。<br /><br />此检查已通过。这意味着为了提高仿真速度，已进行以下设置。<table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="4" align="center">
+
+</td>
+
+</tr>
+<tr>
+<th align="left" valign="top">
+<b>
+严重性
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+已检查的诊断项
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+原始值
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+新值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'SFSimEcho' ">
+配置参数 > 回显不带分号的表达式的输出
+</a>
+
+</td>
+<td align="left" valign="top">
+off
+</td>
+<td align="left" valign="top">
+关闭
+</td>
+
+</tr>
+
+</table>
+
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_204"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckModelRefRebuildSetting">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckModelRefRebuildSetting">
+检查模型引用重新编译设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />请考虑将模型 'VxSpdEsti0713' 的 模型配置 中的 '模型引用 > 重新编译' 选项设置为新值。<br /><br />此检查已通过。这意味着为了提高仿真速度，已进行以下设置。<table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="4" align="center">
+
+</td>
+
+</tr>
+<tr>
+<th align="left" valign="top">
+<b>
+严重性
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+已检查的诊断项
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+原始值
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+新值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'UpdateModelReferenceTargets' ">
+模型引用 > 重新编译
+</a>
+
+</td>
+<td align="left" valign="top">
+如果检测到已知依存关系的变化
+</td>
+<td align="left" valign="top">
+如果检测到已知依存关系的变化
+</td>
+
+</tr>
+
+</table>
+
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_205"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.IdentifyScopes">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.IdentifyScopes">
+标识示波器</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />示波器会影响仿真性能。要提高仿真性能，请关闭并注释掉示波器。<br /><br />此检查已通过。模型 'VxSpdEsti0713' 中不存在影响仿真性能的示波器。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_206"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.IdentifyActiveMMO">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.IdentifyActiveMMO">
+标识模型上的活动检测设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; &#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.UpdateDiagram" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.UpdateDiagram')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->2.2 需要更新图的检查</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.UpdateDiagram" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />5&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />0</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.UpdateDiagram"  id = "com.mathworks.Simulink.PerformanceAdvisor.UpdateDiagram" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_462"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckModelRefParallelBuild">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckModelRefParallelBuild">
+检查模型引用并行编译</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br />您的模型中的引用模型少于两个。无需使用并行编译。但是，请考虑对大型模型使用模型引用。使用多个模型引用来利用并行编译。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+模型编译时间的快速估计
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+并行编译开销时间估计因子
+</td>
+<td align="left" valign="top">
+0.5
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_463"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckDelayBlockCircularBufferSetting">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckDelayBlockCircularBufferSetting">
+检查 Delay 模块环形缓冲区设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />默认情况下，Delay 模块使用数组缓冲区来存储状态。然而，当 Delay 模块具有大状态时，数组缓冲区可能会减慢仿真。在这种情况下，使用环形缓冲区来存储状态可以提高仿真速度。注意，使用环形缓冲区可能会更改线性化结果。<br /><br />此检查已通过。模型 'VxSpdEsti0713' 中或者不存在 Delay 模块，或者其中所有 Delay 模块都适当地配置了环形缓冲区和数组缓冲区。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_464"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckIfNeedDecoupleContDiscRates">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckIfNeedDecoupleContDiscRates">
+检查连续和离散速率耦合</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />此检查已通过，因为未使用变步长求解器。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_465"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckIfNeedOptimalSolverResetCausedByZc">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckIfNeedOptimalSolverResetCausedByZc">
+检查过零对连续积分的影响</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />此检查已通过，因为未使用变步长求解器。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_466"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckDiscDriveContSignal">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckDiscDriveContSignal">
+检查驱动导数端口的离散信号</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />
+</p>
+<!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; &#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.Runtime" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.Runtime')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->2.3 需要仿真运行的检查</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.Runtime" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />2&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />2</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.Runtime"  id = "com.mathworks.Simulink.PerformanceAdvisor.Runtime" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_467"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.SolverTypeSelection">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.SolverTypeSelection">
+检查求解器类型选择</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br /><table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="4" align="center">
+
+</td>
+
+</tr>
+<tr>
+<th align="left" valign="top">
+<b>
+严重性
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+设置已检查
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+原始值
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+新值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+<td align="left" valign="top">
+<a href="matlab: modeladvisorprivate openCSAndHighlight VxSpdEsti0713 'SolverName' ">
+求解器名称--求解器类型
+</a>
+
+</td>
+<td align="left" valign="top">
+FixedStepDiscrete--离散(无连续状态)
+</td>
+<td align="left" valign="top">
+FixedStepDiscrete--离散(无连续状态)
+</td>
+
+</tr>
+
+</table>
+
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Not Run Check" id = "Not Run Check" class="NotRunCheck" style="margin-left: 30pt;"> <!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_468"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckMultiThreadCoSimSetting">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckMultiThreadCoSimSetting">
+选择多线程协同仿真设置打开或关闭</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p />未运行<!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Not Run Check" id = "Not Run Check" class="NotRunCheck" style="margin-left: 30pt;"> <!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_469"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckNumericCompensationCoSimSetting">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckNumericCompensationCoSimSetting">
+标识用于数值补偿的协同仿真信号</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p />未运行<!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_470"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckDataflow">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckDataflow">
+检查数据流域设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />检查已通过，因为模型中不存在数据流域。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+手动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationTargets" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.SimulationTargets')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->3 仿真目标</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.SimulationTargets" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />3&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />0</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.SimulationTargets"  id = "com.mathworks.Simulink.PerformanceAdvisor.SimulationTargets" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; &#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationModesComparison" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.SimulationModesComparison')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->3.1 检查仿真模式设置</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.SimulationModesComparison" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />1&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />0</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.SimulationModesComparison"  id = "com.mathworks.Simulink.PerformanceAdvisor.SimulationModesComparison" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_471"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckSimulationModesComparison">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckSimulationModesComparison">
+选择仿真模式</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />此检查已通过。这意味着使用 普通模式 的仿真(原始设置)比使用其他模式(**)的仿真更快。有关详细信息，请参阅下图，该图比较所有模式下的仿真时间。<br /><br /><br /><br /><br /> <img src ="file:///C:\Users\12045\Desktop\Vehicle_control_model\VxSpdEsti\slprj\modeladvisor\com_2emathworks_2eSimulink_2ePerformanceAdvisor_2ePerformanceAdvisor_\VxSpdEsti0713\simulationmodes.png"/><br /><br /><br /><br /><table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="3" align="center">
+
+</td>
+
+</tr>
+<tr>
+<th align="left" valign="top">
+<b>
+测量名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+单位
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+请求的仿真时间范围
+</td>
+<td align="left" valign="top">
+10
+</td>
+<td align="left" valign="top">
+仿真秒
+</td>
+
+</tr>
+
+</table>
+<br /><br /><table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="3" align="center">
+<b>
+最优仿真模式与所需的仿真次数
+</b>
+
+</td>
+
+</tr>
+<tr>
+<th align="left" valign="top">
+<b>
+最优仿真模式
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+范围下界
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+范围上界
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+普通模式
+</td>
+<td align="left" valign="top">
+1
+</td>
+<td align="left" valign="top">
+Inf
+</td>
+
+</tr>
+
+</table>
+<br /><br /><table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="6" align="center">
+
+</td>
+
+</tr>
+<tr>
+<th align="left" valign="top">
+<b>
+测量名称
+</b>
+
+</th>
+<th align="left" valign="top">
+普通模式
+</th>
+<th align="left" valign="top">
+加速模式
+</th>
+<th align="left" valign="top">
+快速加速模式
+</th>
+<th align="left" valign="top">
+快速加速模式，最新检查关闭
+</th>
+<th align="left" valign="top">
+<b>
+单位
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+编译阶段所需时间的估计
+</td>
+<td align="left" valign="top">
+0.000
+</td>
+<td align="left" valign="top">
+0.550
+</td>
+<td align="left" valign="top">
+6.385
+</td>
+<td align="left" valign="top">
+6.385 (*)
+</td>
+<td align="left" valign="top">
+挂钟(秒)
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+仿真阶段所需时间的估计
+</td>
+<td align="left" valign="top">
+0.427
+</td>
+<td align="left" valign="top">
+0.564
+</td>
+<td align="left" valign="top">
+2.238
+</td>
+<td align="left" valign="top">
+1.901
+</td>
+<td align="left" valign="top">
+挂钟(秒)
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+估计的仿真速率
+</td>
+<td align="left" valign="top">
+23.419
+</td>
+<td align="left" valign="top">
+17.730
+</td>
+<td align="left" valign="top">
+4.468
+</td>
+<td align="left" valign="top">
+5.260
+</td>
+<td align="left" valign="top">
+仿真秒/挂钟秒
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+没有设置和终止开销情况下的估计仿真速率
+</td>
+<td align="left" valign="top">
+256.410
+</td>
+<td align="left" valign="top">
+434.780
+</td>
+<td align="left" valign="top">
+5.893
+</td>
+<td align="left" valign="top">
+5.893
+</td>
+<td align="left" valign="top">
+仿真秒/挂钟秒
+</td>
+
+</tr>
+
+</table>
+<br />(*)这包括为此模型编译独立可执行文件所需的时间。此处包含编译时间只是为了与最新检查结果进行公平比较 - 当最新检查关闭时，实际上不编译可执行文件。<br />(**)要获得边际性能增益(~5%)，建议继续使用当前选择的仿真模式。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+手动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; &#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationCompilerOptimization" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.SimulationCompilerOptimization')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->3.2 检查编译器优化设置</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.SimulationCompilerOptimization" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />1&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />0</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.SimulationCompilerOptimization"  id = "com.mathworks.Simulink.PerformanceAdvisor.SimulationCompilerOptimization" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_472"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckSimulationCompilerOptimization">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckSimulationCompilerOptimization">
+选择打开或关闭编译器优化</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />检查已通过，因为仿真模式既没有设置为加速模式，也没有设置为快速加速模式，模型中也没有任何数据流域。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+手动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><br /><br /><font color="#800000"><b><!-- mdladv_ignore_start -->&#160; &#160; &#160; &#160; <span class="FolderControl" id="FolderControl_com.mathworks.Simulink.PerformanceAdvisor.SimulationHardwareAcceleration" onclick="MATableShrink(this,'com.mathworks.Simulink.PerformanceAdvisor.SimulationHardwareAcceleration')" onmouseover="this.style.cursor = 'pointer'">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAAhklEQVR42mL8//8/AyUAIICYGCgEAAFEsQEAAUSxAQABxIIu0NTURDBQ6urqGGFsgABiwaagpqYOp+aWliYUPkAAUewFgACi2ACAAGLBKcGCafafP/8wxAACCKcB2BRjAwABRLEXAAKIYgMAAoiFmKjCBwACiJHSzAQQQBR7ASCAKDYAIMAAUtQUow+YsTsAAAAASUVORK5CYII="  /></span>
+<!-- mdladv_ignore_finish -->3.3 检查硬件加速设置</b></font><span class = "SubResultsSummary" id= "SubResults_com.mathworks.Simulink.PerformanceAdvisor.SimulationHardwareAcceleration" >&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgBrVI7csIwEH3rMK7dZdI5J0jKZNLQJJM+aRPICRJuEG7gI+Ch5QD8ChoGOnwEOobONRgvWo0QDB9jD7xGK+3u05P2AReC9g+4XPbgLn5VWAXDN2WRykS4SevUHk9PEvDbSwUpB+rUw3HEcLhOnVFwQMCvz+pWCpBLN1WpOwwtAb8/+UicScbNh0qW7j0NBrGjtwn9F2gWeCgt/iRwjKYHFAWhIkvJbB712mwBt3fZjfMZ8PUpkb+jwIAJZ7FXYxTwVCV8fH+gAKKtgpRCFMcOQeIGynVx7lapVa60BDJPUFrLTQC2lrafSL1xA8y1TCWSW+GH+kesbGu0K5WxxBub8UJ/cihP1WqviTVjXFeRN9ClYgAAAABJRU5ErkJggg=="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEDSURBVHgBrVIxCsJAENwVGzux1MZCxDKg+AYVLHxBYmXjI/IECxsr4wsshPgHEUkZxCJNLCWdnWf2SI41uYBBpzhud2fm9vYO4EcgD9x+18QXruJtvYAfCCHsiXfd5QwSsQNfIDaxUpMKF7emMxhdfOgsljkR5ahGHER0XKNrKoNYbGfJ3CQbSw3Kq0I1idu0hIc91JotrQHhtllLToI6N1Agku5Uyqc1jgpoQMTH+aRi2uvEhQZ0cmMwVDHtdYPVGvDWedu6QRI+ZkBPpBNzg+c95INUHUTcKCsuGGBAi/yJR6NnAYotlIHA+djzHfWVS5kkYmBXAJmIC2lrBYi4+C94A/a+eag5PUw2AAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD3SURBVHgBzZI7EsFQFIb/I4oQRTSUsgOlNlqPGTtgB+yAHRg9Ywka/c0WFGp0aCgYxuvIZcwk8phkRuGr7uPc///P3AP8NVY9vbBqmgirSQRdiIrWApNhL01RTXUQB9FQDel+Wi/5tFmynWInTF2PnIDuSlu6q/kC1FxBHunIXDqRBKQ7GJ5iArX9UngTXJUe/NFJu/ZDBaQ7EZoIgtAStYwZKEA3ZeLcnzcrnLerLw3uuvcfd/vbKIExIsCgcnl6sFwJSHErS0rDOUqjuUeAiMeuFhxDEw2G8RmuVwtyaGIJvNmb02M2+RJ80MDuvxjnNT8wwy94AjZHSy+aGaDFAAAAAElFTkSuQmCC"  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADqSURBVHgBpZKvC8JAFMffZAPFslXTLBYNitVimBYx+A/of+CibYs2rcZVg4gYBYtFUJdWLFsxb0UUDOod3Insx43dBw7e4/i++753T3h/AQ5ywIlIAuvsgb65QPB8JQpUpQimVoNhU8W5QFooT7fg+XdIg1yQwDcHOKYtsMToRb1VwXHw+LlMNQMkRrbXzi10F1kAvWSPOyDnJSpuL/aRLsWoAvPDFeolBWy9i/M4cawDxGh5BOvkJopjHRDMnQMs/hy4kx4+afNQgSzQRVKMFXMLCWgbiRPqYNZv4AsW6GsNrRp2kBXuGXwAIu1X3q8Yjd0AAAAASUVORK5CYII="  />0&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />1&#160;&#160;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADhSURBVHgBtZI/CoMwFIdfQg/QyU3o4ubopjdw8gS9heANdOsVegGv0A66F3RzqOCkU92ypUYSCM0flOIHIY/k5cdHEoA/QaLI8/y9TBdLb48xTtI0fZkCqOd5wMYv8zxDXdes/FBKkyzLnmIPy43TNMEwDNrBOSOEHkVRXMXCSQ5wHAd83wcdYRiuc9M00LbtbSnvSgAz4KpGxnFcTYwGQRBYA7gBaAN2GOgDXNeFKIqsAVVVmQ3YhnTjWgghZgP2AocbsE9lNYjjWHuwLEvouk5ZVwxkvS3IX7mH7ezptfMFbNhwT85bFwwAAAAASUVORK5CYII="  />0</span>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "com.mathworks.Simulink.PerformanceAdvisor.SimulationHardwareAcceleration"  id = "com.mathworks.Simulink.PerformanceAdvisor.SimulationHardwareAcceleration" class="FolderContent"><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div class="EmptyFolderMessage" style="display:none;">
+所有检查都隐藏。
+</div>
+<!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 30pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_473"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.CheckSimulationHardwareAcceleration">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.CheckSimulationHardwareAcceleration">
+选择硬件加速设置</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />检查通过，因为仿真模式未设置为加速或快速加速模式。此外，该模型不包含数据流域或 MATLAB System 模块。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+手动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+false
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><div name = "Passed Check"  id = "Passed Check" class="PassedCheck" style="margin-left: 10pt;"><!-- mdladv_ignore_finish -->
+<p><hr /></p>  <a name="CheckRecord_474"></a><div class="CheckHeader" id="Header_com.mathworks.Simulink.PerformanceAdvisor.FinalValidation">
+<!-- mdladv_ignore_start --><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHTSURBVHgBrVO9ThtBEP7mLomDFEWXpEhFbD9BlC5SUGynSkdSpoiOMt2lovXdG0CqpEpIR2cXtPxJSNAgIyoaOKBBAuEzDRYSHmb29hYbRAWjk3a1O9/PzM4B9wy6dRIHAeBFBJpioJInUIfBHeAyQZyldxL4yatwwJgRYGAvGETEPGBLlDFxgubprMM4dPIyAtNv2T0dYid2e9L9mOw+o1FKsdzf0nPP2q4IOFZFHnLEziJRJXiDuDaNF6XnUo0/k5daEMBXcMCaidFQEgUvhi0069P4WJ3QlAADL3IEYu/tKIa5IFLwUtg2a+doG6vpWu7KRzjkgA3BXrSJ3WhT7JY1h6sG3BLwOLYE/GluEt1+TxSkUqaqI2BbatY/s4ot1MofaNEqK7gxN8lduS8aWti1JSDV9ev8d6TZQU4y1XbKjf9fRPmMhvsCMxfOAf0TVuxnh6pkSDSsMrLzHuNWUMeKw06fv2e6axo3jnp5Au2dBVPWtarzkAGDdzqV16+WBCGx/7d4SjYvQeZjvmGAvJ9oHs/mj1GETlZtrCeA9zDTODoSlJuQe/xA8+RPce6PMK+cr6NempfWBJr/7LH/+skjjy4uORWKX/IzfUPc3cBDxhXE6LNA6WFItQAAAABJRU5ErkJggg=="  />&#160;<!-- mdladv_ignore_finish --><span class="CheckHeading" id="Heading_com.mathworks.Simulink.PerformanceAdvisor.FinalValidation">
+最终验证</span>
+<!-- mdladv_ignore_start --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --><!-- mdladv_ignore_start --> (2024/07/13 10:52:09)<!-- mdladv_ignore_finish --><!-- mdladv_ignore_finish --></div>
+<!-- mdladv_ignore_start --><div class="subsection"><!-- mdladv_ignore_finish --><p /><p>
+<table class="AdvTable" width="80%" border="1">
+<tr>
+<td colspan="4" align="center">
+<b>
+性能验证摘要
+</b>
+
+</td>
+
+</tr>
+<tr>
+<th>
+&#160;
+</th>
+<th align="left" valign="top">
+<b>
+在此检查前
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+在此检查后
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+改进
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+性能
+</b>
+
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+&#160;
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+准确度
+</b>
+
+</td>
+<td align="left" valign="top">
+在给定容差内
+</td>
+<td align="left" valign="top">
+<b>
+<font color="Green">
+在给定容差内
+</font>
+
+</b>
+<a href="matlab: utilCallSdi(839,1421);">
+点击以查看
+</a>
+
+</td>
+<td align="left" valign="top">
+ <img src ="file:///D:\Program Files\MATLAB\R2022b\toolbox\simulink\simulink\modeladvisor\private\task_passed.png"/>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<b>
+仿真时间
+</b>
+
+</td>
+<td align="left" valign="top">
+00:00:00.440
+</td>
+<td align="left" valign="top">
+00:00:00.439
+</td>
+<td align="left" valign="top">
+<b>
+<font color="Green">
+0.23%
+</font>
+
+</b>
+
+</td>
+
+</tr>
+
+</table>
+<br /><b>
+<font color="Green">
+通过
+</font>
+
+</b>
+<br /><br />总体而言，性能顾问提高了模型的性能。
+</p>
+<!-- mdladv_ignore_start --><!-- inputparam_section_start --><H5><b>
+输入参数选择
+</b>
+</H5><table class="AdvTable" border="1">
+<tr>
+<th align="left" valign="top">
+<b>
+名称
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+值
+</b>
+
+</th>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+根据建议执行操作
+</td>
+<td align="left" valign="top">
+自动
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果仿真时间增加，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+如果精确度大于容差，验证和还原更改
+</td>
+<td align="left" valign="top">
+true
+</td>
+
+</tr>
+
+</table>
+<!-- inputparam_section_finish --><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish --><!-- mdladv_ignore_start --></div><!-- mdladv_ignore_finish -->
+
+</div>
+</div><span name = "EmbedImages" id="EmbedImages"></span>
+</body>  
+</html>  
