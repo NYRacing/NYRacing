@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240912_2018b_data.c
  *
- * VERSION : 1.123
+ * VERSION : 1.124
  *
- * DATE    : Sat Sep 14 22:02:59 2024
+ * DATE    : Tue Sep 17 23:58:55 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -15,21 +15,6 @@
 
 /* Constant parameters (default storage) */
 const ConstP_VehCtrlMdel240912_2018_T VehCtrlMdel240912_2018b_ConstP = {
-  /* Expression: [3 5 8;5 8 10;6 10 13;8 12 14]
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  { 3.0, 5.0, 6.0, 8.0, 5.0, 8.0, 10.0, 12.0, 8.0, 10.0, 13.0, 14.0 },
-
-  /* Expression: [0 5 20 25]
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  { 0.0, 5.0, 20.0, 25.0 },
-
-  /* Expression: [20 40 60]
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  { 20.0, 40.0, 60.0 },
-
   /* Expression: [229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.46;229.16;228.86;228.86;228.86;228.86;228.86;227.86;227.86;226.87;225.86;224.86;220.86;218.87;215.87]
    * Referenced by: '<S10>/228'
    */
@@ -85,7 +70,7 @@ const ConstP_VehCtrlMdel240912_2018_T VehCtrlMdel240912_2018b_ConstP = {
    */
   { 0.0, 25.0, 30.0, 35.0, 37.0, 40.0, 50.0 },
 
-  /* Computed Parameter: uDLookupTable_tableData_f
+  /* Computed Parameter: uDLookupTable_tableData
    * Referenced by: '<S153>/1-D Lookup Table'
    */
   { -26.072927474975586, -23.622480392456055, -20.834568023681641,
@@ -97,7 +82,7 @@ const ConstP_VehCtrlMdel240912_2018_T VehCtrlMdel240912_2018b_ConstP = {
     10.944144248962402, 13.743144035339355, 17.250120162963867,
     20.375423431396484, 24.070535659790039, 27.505584716796875 },
 
-  /* Computed Parameter: uDLookupTable_bp01Data_o
+  /* Computed Parameter: uDLookupTable_bp01Data
    * Referenced by: '<S153>/1-D Lookup Table'
    */
   { -119.99299621582031, -109.99700164794922, -100.0, -90.003402709960938,
@@ -251,12 +236,7 @@ const ConstP_VehCtrlMdel240912_2018_T VehCtrlMdel240912_2018b_ConstP = {
   /* Computed Parameter: uDLookupTable1_maxIndex
    * Referenced by: '<S7>/2-D Lookup Table1'
    */
-  { 10U, 19U },
-
-  /* Computed Parameter: uDLookupTable_maxIndex
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  { 3U, 2U }
+  { 10U, 19U }
 };
 
 /* File trailer for ECUCoder generated file VehCtrlMdel240912_2018b_data.c.

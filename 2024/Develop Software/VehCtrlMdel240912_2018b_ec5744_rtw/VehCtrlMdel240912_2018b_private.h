@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240912_2018b_private.h
  *
- * VERSION : 1.123
+ * VERSION : 1.124
  *
- * DATE    : Sat Sep 14 22:02:59 2024
+ * DATE    : Tue Sep 17 23:58:55 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -72,8 +72,6 @@ extern uint16_T look1_iu16bflftfIu16_binlc(uint16_T u0, const real32_T bp0[],
 extern real32_T look2_iflf_binlx(real32_T u0, real32_T u1, const real32_T bp0[],
   const real32_T bp1[], const real32_T table[], const uint32_T maxIndex[],
   uint32_T stride);
-extern real_T look2_binlx(real_T u0, real_T u1, const real_T bp0[], const real_T
-  bp1[], const real_T table[], const uint32_T maxIndex[], uint32_T stride);
 extern real32_T look1_iflf_binlc(real32_T u0, const real32_T bp0[], const
   real32_T table[], uint32_T maxIndex);
 extern void VehCtrlMdel240912_20_Timer1(boolean_T rtu_Trigger, real32_T

@@ -1329,6 +1329,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240912_2018b:3869"] = {rtwname: "<S10>/Constant44"};
 	this.rtwnameHashMap["<S10>/Constant45"] = {sid: "VehCtrlMdel240912_2018b:3857"};
 	this.sidHashMap["VehCtrlMdel240912_2018b:3857"] = {rtwname: "<S10>/Constant45"};
+	this.rtwnameHashMap["<S10>/Constant46"] = {sid: "VehCtrlMdel240912_2018b:3872"};
+	this.sidHashMap["VehCtrlMdel240912_2018b:3872"] = {rtwname: "<S10>/Constant46"};
 	this.rtwnameHashMap["<S10>/Constant5"] = {sid: "VehCtrlMdel240912_2018b:3706"};
 	this.sidHashMap["VehCtrlMdel240912_2018b:3706"] = {rtwname: "<S10>/Constant5"};
 	this.rtwnameHashMap["<S10>/Constant6"] = {sid: "VehCtrlMdel240912_2018b:3707"};
@@ -1399,6 +1401,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240912_2018b:3740"] = {rtwname: "<S10>/From30"};
 	this.rtwnameHashMap["<S10>/From31"] = {sid: "VehCtrlMdel240912_2018b:3741"};
 	this.sidHashMap["VehCtrlMdel240912_2018b:3741"] = {rtwname: "<S10>/From31"};
+	this.rtwnameHashMap["<S10>/From32"] = {sid: "VehCtrlMdel240912_2018b:3871"};
+	this.sidHashMap["VehCtrlMdel240912_2018b:3871"] = {rtwname: "<S10>/From32"};
 	this.rtwnameHashMap["<S10>/From4"] = {sid: "VehCtrlMdel240912_2018b:3742"};
 	this.sidHashMap["VehCtrlMdel240912_2018b:3742"] = {rtwname: "<S10>/From4"};
 	this.rtwnameHashMap["<S10>/From5"] = {sid: "VehCtrlMdel240912_2018b:3743"};
@@ -1605,6 +1609,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240912_2018b:3834"] = {rtwname: "<S10>/Switch8"};
 	this.rtwnameHashMap["<S10>/Terminator"] = {sid: "VehCtrlMdel240912_2018b:3835"};
 	this.sidHashMap["VehCtrlMdel240912_2018b:3835"] = {rtwname: "<S10>/Terminator"};
+	this.rtwnameHashMap["<S10>/Terminator1"] = {sid: "VehCtrlMdel240912_2018b:3870"};
+	this.sidHashMap["VehCtrlMdel240912_2018b:3870"] = {rtwname: "<S10>/Terminator1"};
 	this.rtwnameHashMap["<S10>/Unit Delay"] = {sid: "VehCtrlMdel240912_2018b:3836"};
 	this.sidHashMap["VehCtrlMdel240912_2018b:3836"] = {rtwname: "<S10>/Unit Delay"};
 	this.rtwnameHashMap["<S10>/Unit Delay1"] = {sid: "VehCtrlMdel240912_2018b:3837"};

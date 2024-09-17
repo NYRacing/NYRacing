@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240912_2018b.h
  *
- * VERSION : 1.123
+ * VERSION : 1.124
  *
- * DATE    : Sat Sep 14 22:02:59 2024
+ * DATE    : Tue Sep 17 23:58:55 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -414,21 +414,6 @@ typedef struct {
 
 /* Constant parameters (default storage) */
 typedef struct {
-  /* Expression: [3 5 8;5 8 10;6 10 13;8 12 14]
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  real_T uDLookupTable_tableData[12];
-
-  /* Expression: [0 5 20 25]
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  real_T uDLookupTable_bp01Data[4];
-
-  /* Expression: [20 40 60]
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  real_T uDLookupTable_bp02Data[3];
-
   /* Expression: [229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.85;229.46;229.16;228.86;228.86;228.86;228.86;228.86;227.86;227.86;226.87;225.86;224.86;220.86;218.87;215.87]
    * Referenced by: '<S10>/228'
    */
@@ -477,15 +462,15 @@ typedef struct {
    */
   real_T uDLookupTable2_bp01Data[7];
 
-  /* Computed Parameter: uDLookupTable_tableData_f
+  /* Computed Parameter: uDLookupTable_tableData
    * Referenced by: '<S153>/1-D Lookup Table'
    */
-  real_T uDLookupTable_tableData_f[24];
+  real_T uDLookupTable_tableData[24];
 
-  /* Computed Parameter: uDLookupTable_bp01Data_o
+  /* Computed Parameter: uDLookupTable_bp01Data
    * Referenced by: '<S153>/1-D Lookup Table'
    */
-  real_T uDLookupTable_bp01Data_o[24];
+  real_T uDLookupTable_bp01Data[24];
 
   /* Computed Parameter: uDLookupTable1_tableData
    * Referenced by: '<S153>/1-D Lookup Table1'
@@ -538,7 +523,7 @@ typedef struct {
    *   '<S19>/VehSpd_SlipTarget_mps'
    *   '<S20>/VehSpd_SlipTarget_mps'
    */
-  real32_T pooled51[4];
+  real32_T pooled52[4];
 
   /* Pooled Parameter (Expression: [0,3,25,30])
    * Referenced by:
@@ -552,7 +537,7 @@ typedef struct {
    *   '<S20>/VehicleStableTarget_mps'
    *   '<S20>/VehicleStableTarget_mps1'
    */
-  real32_T pooled52[4];
+  real32_T pooled53[4];
 
   /* Pooled Parameter (Expression: [0.4,0.4,1.2,1.2])
    * Referenced by:
@@ -563,14 +548,14 @@ typedef struct {
    *   '<S20>/VehicleStableTarget_mps'
    *   '<S20>/VehicleStableTarget_mps1'
    */
-  real32_T pooled59[4];
+  real32_T pooled60[4];
 
   /* Pooled Parameter (Expression: single([0,100]);)
    * Referenced by:
    *   '<S151>/1-D Lookup Table'
    *   '<S151>/1-D Lookup Table3'
    */
-  real32_T pooled63[2];
+  real32_T pooled64[2];
 
   /* Expression: single([1330,1590]);
    * Referenced by: '<S151>/1-D Lookup Table'
@@ -596,11 +581,6 @@ typedef struct {
    * Referenced by: '<S7>/2-D Lookup Table1'
    */
   uint32_T uDLookupTable1_maxIndex[2];
-
-  /* Computed Parameter: uDLookupTable_maxIndex
-   * Referenced by: '<S10>/2-D Lookup Table'
-   */
-  uint32_T uDLookupTable_maxIndex[2];
 } ConstP_VehCtrlMdel240912_2018_T;
 
 /* Real-time Model Data Structure */
@@ -687,6 +667,7 @@ extern RT_MODEL_VehCtrlMdel240912_20_T *const VehCtrlMdel240912_2018b_M;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S10>/2-D Lookup Table' : Unused code path elimination
  * Block '<S29>/FixPt Data Type Duplicate' : Unused code path elimination
  * Block '<S44>/Data Type Duplicate' : Unused code path elimination
  * Block '<S44>/Data Type Propagation' : Unused code path elimination
