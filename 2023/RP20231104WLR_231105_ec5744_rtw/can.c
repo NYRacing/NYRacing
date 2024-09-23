@@ -5,7 +5,7 @@
  *
  * VERSION : 1.1
  *
- * DATE    : Wed Sep 18 01:37:22 2024
+ * DATE    : Sat Sep 21 10:42:01 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -33,7 +33,7 @@ void ec_can0_init(CAN_Initialization* caninit)
   FLEXCAN(0).CTRL1.B.PSEG2 = 3;        /* Phase segment 2 */
   FLEXCAN(0).CTRL1.B.BOFFMSK = 0;
                /* 1: Bus off interrupt enabled; 0: Bus off interrupt disabled */
-  FLEXCAN(0).CTRL1.B.ERRMSK = 0;
+  FLEXCAN(0).CTRL1.B.ERRMSK = 1;
                    /* 1: Error interrupt enabled; 0: Error interrupt disabled */
   FLEXCAN(0).CTRL1.B.CLKSRC = 0;
              /* CAN engine clock source. 0: oscillator clock; 1: system clock */
