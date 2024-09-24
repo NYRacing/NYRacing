@@ -4,9 +4,9 @@
  *
  * Code generation for model "VehCtrlMdel240918_2018b".
  *
- * Model version              : 1.151
+ * Model version              : 1.163
  * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019
- * C source code generated on : Mon Sep 23 23:23:36 2024
+ * C source code generated on : Tue Sep 24 23:15:28 2024
  * 
  * Target selection: ec5744.tlc
  * Embedded hardware selection: Freescale MPC5500
@@ -831,19 +831,6 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
-      /* Name                   */      Acc_vol
-      /* Long identifier        */      ""
-      /* Data type              */      ULONG
-      /* Conversion method      */      VehCtrlMdel240918_2018b_CM_ufix32_En16
-      /* Resolution (Not used)  */      0
-      /* Accuracy (Not used)    */      0
-      /* Lower limit            */      0
-      /* Upper limit            */      65535.999984741211
-      ECU_ADDRESS                       @MemoryAddress@Acc_vol@
-    /end MEASUREMENT
-    
-    
-    /begin MEASUREMENT
       /* Name                   */      Acc_vol2
       /* Long identifier        */      ""
       /* Data type              */      ULONG
@@ -857,7 +844,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
-      /* Name                   */      Acc_POS1
+      /* Name                   */      Acc_vol
       /* Long identifier        */      ""
       /* Data type              */      ULONG
       /* Conversion method      */      VehCtrlMdel240918_2018b_CM_ufix32_En16
@@ -865,7 +852,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      65535.999984741211
-      ECU_ADDRESS                       @MemoryAddress@Acc_POS1@
+      ECU_ADDRESS                       @MemoryAddress@Acc_vol@
     /end MEASUREMENT
     
     
@@ -879,6 +866,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Lower limit            */      0
       /* Upper limit            */      65535.999984741211
       ECU_ADDRESS                       @MemoryAddress@Acc_POS2@
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
+      /* Name                   */      Acc_POS
+      /* Long identifier        */      ""
+      /* Data type              */      FLOAT32_IEEE
+      /* Conversion method      */      VehCtrlMdel240918_2018b_CM_single
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      -3.4E+38
+      /* Upper limit            */      3.4E+38
+      ECU_ADDRESS                       @MemoryAddress@Acc_POS@
     /end MEASUREMENT
     
     
@@ -961,6 +961,45 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
+      /* Name                   */      KeyPressed
+      /* Long identifier        */      ""
+      /* Data type              */      UBYTE
+      /* Conversion method      */      VehCtrlMdel240918_2018b_CM_boolean
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      1
+      ECU_ADDRESS                       @MemoryAddress@KeyPressed@
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
+      /* Name                   */      Brk
+      /* Long identifier        */      ""
+      /* Data type              */      UBYTE
+      /* Conversion method      */      VehCtrlMdel240918_2018b_CM_boolean
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      1
+      ECU_ADDRESS                       @MemoryAddress@Brk@
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
+      /* Name                   */      ACC_Release
+      /* Long identifier        */      ""
+      /* Data type              */      UBYTE
+      /* Conversion method      */      VehCtrlMdel240918_2018b_CM_boolean
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      1
+      ECU_ADDRESS                       @MemoryAddress@ACC_Release@
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
       /* Name                   */      beeper_state
       /* Long identifier        */      ""
       /* Data type              */      UBYTE
@@ -970,6 +1009,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Lower limit            */      0
       /* Upper limit            */      1
       ECU_ADDRESS                       @MemoryAddress@beeper_state@
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
+      /* Name                   */      Trq_CUT_final
+      /* Long identifier        */      ""
+      /* Data type              */      UBYTE
+      /* Conversion method      */      VehCtrlMdel240918_2018b_CM_boolean
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      1
+      ECU_ADDRESS                       @MemoryAddress@Trq_CUT_final@
     /end MEASUREMENT
     
     /begin COMPU_METHOD
@@ -988,6 +1040,15 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Format                 */      "%26.16"
       /* Units                  */      ""
       /* Coefficients           */      COEFFS 0 65536.000000 0.000000 0 0 1.000000
+    /end COMPU_METHOD
+    
+    /begin COMPU_METHOD
+      /* Name of CompuMethod    */      VehCtrlMdel240918_2018b_CM_single
+      /* Long identifier        */      "Q = V"
+      /* Conversion Type        */      RAT_FUNC
+      /* Format                 */      "%8.6"
+      /* Units                  */      ""
+      /* Coefficients           */      COEFFS 0 1 0 0 0 1
     /end COMPU_METHOD
     
     /begin COMPU_METHOD
@@ -1013,10 +1074,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Long identifier        */       "VehCtrlMdel240918_2018b"
       /* Root                    */       ROOT
       /begin SUB_GROUP
+        Root_CTRL
         Root_Drive_Ready
         Root_Input
         Root_Input_Processing
         Root_OUTPUT
+      /end SUB_GROUP
+    /end GROUP
+    
+    /begin GROUP 
+      /* Name                   */       Root_CTRL
+      /* Long identifier        */       "VehCtrlMdel240918_2018b/CTRL"
+      /begin SUB_GROUP
+        S1_MoTrqReq
       /end SUB_GROUP
     /end GROUP
     
@@ -1059,9 +1129,20 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
+      /* Name                   */       S1_MoTrqReq
+      /* Long identifier        */       "VehCtrlMdel240918_2018b/CTRL/MoTrqReq"
+      /begin REF_MEASUREMENT
+        Trq_CUT_final
+      /end REF_MEASUREMENT
+    /end GROUP
+    
+    /begin GROUP 
       /* Name                   */       S2_Subsystem
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Drive_Ready/Subsystem"
       /begin REF_MEASUREMENT
+        ACC_Release
+        Brk
+        KeyPressed
         beeper_state
       /end REF_MEASUREMENT
     /end GROUP
@@ -1070,7 +1151,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_ABS_Receive
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/ABS_Receive"
       /begin SUB_GROUP
-        S94_ABS_BUS_state
+        S98_ABS_BUS_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1078,8 +1159,8 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_AMKMCU_Receive
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive"
       /begin SUB_GROUP
-        S95_FLAMKMCU
-        S95_FRAMKMCU
+        S99_FLAMKMCU
+        S99_FRAMKMCU
       /end SUB_GROUP
     /end GROUP
     
@@ -1098,8 +1179,8 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_EMRAXMCU_RECIEVE
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/EMRAXMCU_RECIEVE"
       /begin SUB_GROUP
-        S98_MCU_pwr
-        S98_MCU_state
+        S102_MCU_pwr
+        S102_MCU_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1107,7 +1188,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_IMU_Recieve
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/IMU_Recieve"
       /begin SUB_GROUP
-        S99_IMU_state
+        S103_IMU_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1115,7 +1196,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_StrSnis_Receive
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/StrSnis_Receive"
       /begin SUB_GROUP
-        S100_StrWhSnis_state
+        S104_StrWhSnis_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1132,7 +1213,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S4_Function_Call_Subsystem
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input_Processing/Function-Call Subsystem"
       /begin SUB_GROUP
-        S178_AccBrkPedal
+        S182_AccBrkPedal
       /end SUB_GROUP
     /end GROUP
     
@@ -1146,70 +1227,70 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S94_ABS_BUS_state
+      /* Name                   */       S98_ABS_BUS_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/ABS_Receive/ABS_BUS_state"
       /begin SUB_GROUP
-        S102_IMU_state
+        S106_IMU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S95_FLAMKMCU
+      /* Name                   */       S99_FLAMKMCU
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FLAMKMCU"
       /begin SUB_GROUP
-        S108_AMKMCU_state
-        S108_AMKMCU_state1
-        S108_AMKMCU_state2
+        S112_AMKMCU_state
+        S112_AMKMCU_state1
+        S112_AMKMCU_state2
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S95_FRAMKMCU
+      /* Name                   */       S99_FRAMKMCU
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FRAMKMCU"
       /begin SUB_GROUP
-        S109_AMKMCU_state
-        S109_AMKMCU_state1
-        S109_AMKMCU_state2
+        S113_AMKMCU_state
+        S113_AMKMCU_state1
+        S113_AMKMCU_state2
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S98_MCU_pwr
+      /* Name                   */       S102_MCU_pwr
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/EMRAXMCU_RECIEVE/MCU_pwr"
       /begin SUB_GROUP
-        S151_MCU_VCUMeter1
+        S155_MCU_VCUMeter1
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S98_MCU_state
+      /* Name                   */       S102_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/EMRAXMCU_RECIEVE/MCU_state"
       /begin SUB_GROUP
-        S152_MCU_state
+        S156_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S99_IMU_state
+      /* Name                   */       S103_IMU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/IMU_Recieve/IMU_state"
       /begin SUB_GROUP
-        S165_MCU_state
+        S169_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S100_StrWhSnis_state
+      /* Name                   */       S104_StrWhSnis_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/StrSnis_Receive/StrWhSnis_state"
       /begin SUB_GROUP
-        S170_IMU_state
+        S174_IMU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S178_AccBrkPedal
+      /* Name                   */       S182_AccBrkPedal
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input_Processing/Function-Call Subsystem/AccBrkPedal"
       /begin REF_MEASUREMENT
-        Acc_POS1
+        Acc_POS
         Acc_POS2
         Acc_vol
         Acc_vol2
@@ -1219,7 +1300,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S102_IMU_state
+      /* Name                   */       S106_IMU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/ABS_Receive/ABS_BUS_state/IMU_state"
       /begin REF_MEASUREMENT
         ABS_WS_FL
@@ -1230,55 +1311,55 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S108_AMKMCU_state
+      /* Name                   */       S112_AMKMCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state"
       /begin SUB_GROUP
-        S110_MCU_state
+        S114_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S108_AMKMCU_state1
+      /* Name                   */       S112_AMKMCU_state1
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1"
       /begin SUB_GROUP
-        S111_MCU_state
+        S115_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S108_AMKMCU_state2
+      /* Name                   */       S112_AMKMCU_state2
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2"
       /begin SUB_GROUP
-        S112_MCU_state
+        S116_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S109_AMKMCU_state
+      /* Name                   */       S113_AMKMCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state"
       /begin SUB_GROUP
-        S128_MCU_state
+        S132_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S109_AMKMCU_state1
+      /* Name                   */       S113_AMKMCU_state1
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1"
       /begin SUB_GROUP
-        S129_MCU_state
+        S133_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S109_AMKMCU_state2
+      /* Name                   */       S113_AMKMCU_state2
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2"
       /begin SUB_GROUP
-        S130_MCU_state
+        S134_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S151_MCU_VCUMeter1
+      /* Name                   */       S155_MCU_VCUMeter1
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/EMRAXMCU_RECIEVE/MCU_pwr/MCU_VCUMeter1"
       /begin REF_MEASUREMENT
         AC_current
@@ -1289,7 +1370,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S152_MCU_state
+      /* Name                   */       S156_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/EMRAXMCU_RECIEVE/MCU_state/MCU_state"
       /begin REF_MEASUREMENT
         L12V_error
@@ -1302,7 +1383,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S165_MCU_state
+      /* Name                   */       S169_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/IMU_Recieve/IMU_state/MCU_state"
       /begin REF_MEASUREMENT
         IMU_Ax_Value
@@ -1312,7 +1393,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S170_IMU_state
+      /* Name                   */       S174_IMU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/StrSnis_Receive/StrWhSnis_state/IMU_state"
       /begin REF_MEASUREMENT
         StrWhlAng
@@ -1322,7 +1403,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S110_MCU_state
+      /* Name                   */       S114_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state/MCU_state"
       /begin REF_MEASUREMENT
         MCFL_ActualVelocity
@@ -1337,7 +1418,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S111_MCU_state
+      /* Name                   */       S115_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1/MCU_state"
       /begin REF_MEASUREMENT
         MCFL_ErrorInfo
@@ -1345,7 +1426,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S112_MCU_state
+      /* Name                   */       S116_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2/MCU_state"
       /begin REF_MEASUREMENT
         MCFL_TempIGBT
@@ -1355,7 +1436,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S128_MCU_state
+      /* Name                   */       S132_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state/MCU_state"
       /begin REF_MEASUREMENT
         MCFR_ActualVelocity
@@ -1369,7 +1450,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S129_MCU_state
+      /* Name                   */       S133_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1/MCU_state"
       /begin REF_MEASUREMENT
         MCFR_ErrorInfo
@@ -1377,7 +1458,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S130_MCU_state
+      /* Name                   */       S134_MCU_state
       /* Long identifier        */       "VehCtrlMdel240918_2018b/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2/MCU_state"
       /begin REF_MEASUREMENT
         MCFR_TempIGBT

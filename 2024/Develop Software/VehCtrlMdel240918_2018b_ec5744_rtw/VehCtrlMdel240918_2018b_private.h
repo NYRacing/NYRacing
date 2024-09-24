@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240918_2018b_private.h
  *
- * VERSION : 1.151
+ * VERSION : 1.163
  *
- * DATE    : Mon Sep 23 23:23:35 2024
+ * DATE    : Tue Sep 24 23:15:25 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -63,9 +63,9 @@ preprocessor word size checks.
 #endif
 
 /* #define mydefine 100.0 */
-extern uint32_T look1_iu32n16bflftfIu32_binlc(uint32_T u0, const real32_T bp0[],
-  const real32_T table[], uint32_T maxIndex);
 extern uint16_T look1_iu16bflftfIu16_binlc(uint16_T u0, const real32_T bp0[],
+  const real32_T table[], uint32_T maxIndex);
+extern uint32_T look1_iu32n16bflftfIu32_binlc(uint32_T u0, const real32_T bp0[],
   const real32_T table[], uint32_T maxIndex);
 extern real_T look1_binlx(real_T u0, const real_T bp0[], const real_T table[],
   uint32_T maxIndex);
@@ -76,6 +76,8 @@ extern real32_T look1_iflf_binlc(real32_T u0, const real32_T bp0[], const
   real32_T table[], uint32_T maxIndex);
 extern void VehCtrlMdel240918_20_Timer1(boolean_T rtu_Trigger, real32_T
   rtu_CountTime, real_T *rty_Exit, DW_Timer1_VehCtrlMdel240918_2_T *localDW);
+extern void VehCtrlMdel240918_201_Timer(boolean_T rtu_Trigger, real32_T
+  rtu_CountTime, real_T *rty_Exit, DW_Timer_VehCtrlMdel240918_20_T *localDW);
 extern void VehCtrlMdel240918_2018b_step0(void);
 extern void VehCtrlMdel240918_2018b_step1(void);
 extern void VehCtrlMdel240918_2018b_step2(void);

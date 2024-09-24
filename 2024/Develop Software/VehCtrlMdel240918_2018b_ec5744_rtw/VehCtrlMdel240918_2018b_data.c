@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240918_2018b_data.c
  *
- * VERSION : 1.151
+ * VERSION : 1.163
  *
- * DATE    : Mon Sep 23 23:23:35 2024
+ * DATE    : Tue Sep 24 23:15:25 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -71,7 +71,7 @@ const ConstP_VehCtrlMdel240918_2018_T VehCtrlMdel240918_2018b_ConstP = {
   { 0.0, 25.0, 30.0, 35.0, 37.0, 40.0, 50.0 },
 
   /* Computed Parameter: uDLookupTable_tableData
-   * Referenced by: '<S182>/1-D Lookup Table'
+   * Referenced by: '<S186>/1-D Lookup Table'
    */
   { -26.072927474975586, -23.622480392456055, -20.834568023681641,
     -18.0024471282959, -15.197903633117676, -12.620231628417969,
@@ -83,7 +83,7 @@ const ConstP_VehCtrlMdel240918_2018_T VehCtrlMdel240918_2018b_ConstP = {
     20.375423431396484, 24.070535659790039, 27.505584716796875 },
 
   /* Computed Parameter: uDLookupTable_bp01Data
-   * Referenced by: '<S182>/1-D Lookup Table'
+   * Referenced by: '<S186>/1-D Lookup Table'
    */
   { -119.99299621582031, -109.99700164794922, -100.0, -90.003402709960938,
     -80.006698608398438, -69.993301391601563, -59.996601104736328, -50.0,
@@ -93,7 +93,7 @@ const ConstP_VehCtrlMdel240918_2018_T VehCtrlMdel240918_2018b_ConstP = {
     80.006698608398438, 90.003402709960938, 100.0, 109.99700164794922 },
 
   /* Computed Parameter: uDLookupTable1_tableData
-   * Referenced by: '<S182>/1-D Lookup Table1'
+   * Referenced by: '<S186>/1-D Lookup Table1'
    */
   { -26.816255569458008, -23.524848937988281, -19.851047515869141,
     -16.282583236694336, -13.406760215759277, -10.314791679382324,
@@ -105,7 +105,7 @@ const ConstP_VehCtrlMdel240918_2018_T VehCtrlMdel240918_2018b_ConstP = {
     23.630111694335938, 26.306495666503906 },
 
   /* Computed Parameter: uDLookupTable1_bp01Data
-   * Referenced by: '<S182>/1-D Lookup Table1'
+   * Referenced by: '<S186>/1-D Lookup Table1'
    */
   { -119.99500274658203, -109.99299621582031, -99.9916000366211,
     -90.006698608398438, -80.004997253417969, -70.003402709960938,
@@ -175,70 +175,51 @@ const ConstP_VehCtrlMdel240918_2018_T VehCtrlMdel240918_2018b_ConstP = {
 
   /* Pooled Parameter (Expression: [0.3,0.3,2.5,2.5])
    * Referenced by:
-   *   '<S18>/VehSpd_SlipTarget_mps'
    *   '<S19>/VehSpd_SlipTarget_mps'
    *   '<S20>/VehSpd_SlipTarget_mps'
+   *   '<S21>/VehSpd_SlipTarget_mps'
    */
   { 0.3F, 0.3F, 2.5F, 2.5F },
 
   /* Pooled Parameter (Expression: [0,3,25,30])
    * Referenced by:
-   *   '<S18>/VehSpd_SlipTarget_mps'
-   *   '<S18>/VehicleStableTarget_mps'
-   *   '<S18>/VehicleStableTarget_mps1'
    *   '<S19>/VehSpd_SlipTarget_mps'
    *   '<S19>/VehicleStableTarget_mps'
    *   '<S19>/VehicleStableTarget_mps1'
    *   '<S20>/VehSpd_SlipTarget_mps'
    *   '<S20>/VehicleStableTarget_mps'
    *   '<S20>/VehicleStableTarget_mps1'
+   *   '<S21>/VehSpd_SlipTarget_mps'
+   *   '<S21>/VehicleStableTarget_mps'
+   *   '<S21>/VehicleStableTarget_mps1'
    */
   { 0.0F, 3.0F, 25.0F, 30.0F },
 
   /* Pooled Parameter (Expression: [0.4,0.4,1.2,1.2])
    * Referenced by:
-   *   '<S18>/VehicleStableTarget_mps'
-   *   '<S18>/VehicleStableTarget_mps1'
    *   '<S19>/VehicleStableTarget_mps'
    *   '<S19>/VehicleStableTarget_mps1'
    *   '<S20>/VehicleStableTarget_mps'
    *   '<S20>/VehicleStableTarget_mps1'
+   *   '<S21>/VehicleStableTarget_mps'
+   *   '<S21>/VehicleStableTarget_mps1'
    */
   { 0.4F, 0.4F, 1.2F, 1.2F },
 
-  /* Expression: single([100,0]);
-   * Referenced by: '<S180>/1-D Lookup Table'
+  /* Pooled Parameter (Expression: single([500,4500]);)
+   * Referenced by: '<S184>/1-D Lookup Table1'
    */
-  { 100.0F, 0.0F },
-
-  /* Expression: single([3050,3300]);
-   * Referenced by: '<S180>/1-D Lookup Table'
-   */
-  { 3050.0F, 3300.0F },
+  { 500.0F, 4500.0F },
 
   /* Expression: single([0,100]);
-   * Referenced by: '<S180>/1-D Lookup Table3'
+   * Referenced by: '<S184>/1-D Lookup Table3'
    */
   { 0.0F, 100.0F },
 
-  /* Expression: single([3540,3800])
-   * Referenced by: '<S180>/1-D Lookup Table3'
+  /* Expression: single([3540,3790])
+   * Referenced by: '<S184>/1-D Lookup Table3'
    */
-  { 3540.0F, 3800.0F },
-
-  /* Pooled Parameter (Expression: single([0,10000]);)
-   * Referenced by:
-   *   '<S180>/1-D Lookup Table1'
-   *   '<S180>/1-D Lookup Table2'
-   */
-  { 0.0F, 10000.0F },
-
-  /* Pooled Parameter (Expression: single([500,4500]);)
-   * Referenced by:
-   *   '<S180>/1-D Lookup Table1'
-   *   '<S180>/1-D Lookup Table2'
-   */
-  { 500.0F, 4500.0F },
+  { 3540.0F, 3790.0F },
 
   /* Computed Parameter: uDLookupTable1_maxIndex
    * Referenced by: '<S7>/2-D Lookup Table1'
