@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240918_2018b_types.h
  *
- * VERSION : 1.163
+ * VERSION : 1.169
  *
- * DATE    : Tue Sep 24 23:15:25 2024
+ * DATE    : Wed Sep 25 22:39:30 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -13,10 +13,11 @@
 #ifndef RTW_HEADER_VehCtrlMdel240918_2018b_types_h_
 #define RTW_HEADER_VehCtrlMdel240918_2018b_types_h_
 #include "rtwtypes.h"
-#ifndef DEFINED_TYPEDEF_FOR_struct_yQsOshnkIdTklzMvw9YDE_
-#define DEFINED_TYPEDEF_FOR_struct_yQsOshnkIdTklzMvw9YDE_
+#ifndef DEFINED_TYPEDEF_FOR_struct_qn7p6B0ylX7thqQTW6O2mG_
+#define DEFINED_TYPEDEF_FOR_struct_qn7p6B0ylX7thqQTW6O2mG_
 
 typedef struct {
+  boolean_T TroqueOn;
   boolean_T Trq_CUT;
   real32_T TrqR_cmd;
   real32_T TrqFR_cmd;
@@ -25,7 +26,7 @@ typedef struct {
   boolean_T TCSFR_flgActv;
   boolean_T TCSR_flgActv;
   real_T VCU_SpdCmd_Emrax;
-} struct_yQsOshnkIdTklzMvw9YDE;
+} struct_qn7p6B0ylX7thqQTW6O2mG;
 
 #endif
 
