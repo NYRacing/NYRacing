@@ -45,10 +45,15 @@ ABS_WS_RR
 IMU_Ay_Value
 IMU_Ax_Value
 IMU_Yaw_Value
+EMRAX_Trq_CUT
+AMK_Trq_CUT
 Acc_vol2
 Acc_vol
 Acc_POS2
 Acc_POS
+TrqR_cmd
+TrqFR_cmd
+TrqFL_cmd
 F_BrkPrs
 Acc1
 Acc2
@@ -59,4 +64,8 @@ KeyPressed
 Brk
 ACC_Release
 beeper_state
+MCFL_DCOn_setpoints
+MCFR_DCEnable
+MCFR_InverterOn
 Trq_CUT_final
+TroqueOn
