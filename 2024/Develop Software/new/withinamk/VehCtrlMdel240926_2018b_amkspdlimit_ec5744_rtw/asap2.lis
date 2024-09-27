@@ -50,6 +50,7 @@ AMK_Trq_CUT
 Acc_vol2
 Acc_vol
 Acc_POS2
+VehVxEst_mps
 Acc_POS
 TrqR_cmd
 TrqFR_cmd

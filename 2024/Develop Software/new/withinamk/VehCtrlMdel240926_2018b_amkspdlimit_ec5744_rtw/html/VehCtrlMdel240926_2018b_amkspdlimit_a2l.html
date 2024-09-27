@@ -23,11 +23,11 @@
 <tr name="6" id="6">
 <td><a id="l6" class='ln'>6</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="7" id="7">
-<td><a id="l7" class='ln'>7</a></td><td><span class="ct"> * Model version              : 1.174</span></td></tr>
+<td><a id="l7" class='ln'>7</a></td><td><span class="ct"> * Model version              : 1.176</span></td></tr>
 <tr name="8" id="8">
 <td><a id="l8" class='ln'>8</a></td><td><span class="ct"> * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019</span></td></tr>
 <tr name="9" id="9">
-<td><a id="l9" class='ln'>9</a></td><td><span class="ct"> * C source code generated on : Thu Sep 26 14:50:33 2024</span></td></tr>
+<td><a id="l9" class='ln'>9</a></td><td><span class="ct"> * C source code generated on : Fri Sep 27 09:28:22 2024</span></td></tr>
 <tr name="10" id="10">
 <td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * </span></td></tr>
 <tr name="11" id="11">
@@ -1807,7 +1807,7 @@
 <tr name="898" id="898">
 <td><a id="l898" class='ln'>898</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="899" id="899">
-<td><a id="l899" class='ln'>899</a></td><td>      /* Name                   */      Acc_POS</td></tr>
+<td><a id="l899" class='ln'>899</a></td><td>      /* Name                   */      VehVxEst_mps</td></tr>
 <tr name="900" id="900">
 <td><a id="l900" class='ln'>900</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="901" id="901">
@@ -1823,7 +1823,7 @@
 <tr name="906" id="906">
 <td><a id="l906" class='ln'>906</a></td><td>      /* Upper limit            */      3.4E+38</td></tr>
 <tr name="907" id="907">
-<td><a id="l907" class='ln'>907</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc_POS@</td></tr>
+<td><a id="l907" class='ln'>907</a></td><td>      ECU_ADDRESS                       @MemoryAddress@VehVxEst_mps@</td></tr>
 <tr name="908" id="908">
 <td><a id="l908" class='ln'>908</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="909" id="909">
@@ -1833,7 +1833,7 @@
 <tr name="911" id="911">
 <td><a id="l911" class='ln'>911</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="912" id="912">
-<td><a id="l912" class='ln'>912</a></td><td>      /* Name                   */      TrqR_cmd</td></tr>
+<td><a id="l912" class='ln'>912</a></td><td>      /* Name                   */      Acc_POS</td></tr>
 <tr name="913" id="913">
 <td><a id="l913" class='ln'>913</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="914" id="914">
@@ -1849,7 +1849,7 @@
 <tr name="919" id="919">
 <td><a id="l919" class='ln'>919</a></td><td>      /* Upper limit            */      3.4E+38</td></tr>
 <tr name="920" id="920">
-<td><a id="l920" class='ln'>920</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TrqR_cmd@</td></tr>
+<td><a id="l920" class='ln'>920</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc_POS@</td></tr>
 <tr name="921" id="921">
 <td><a id="l921" class='ln'>921</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="922" id="922">
@@ -1859,7 +1859,7 @@
 <tr name="924" id="924">
 <td><a id="l924" class='ln'>924</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="925" id="925">
-<td><a id="l925" class='ln'>925</a></td><td>      /* Name                   */      TrqFR_cmd</td></tr>
+<td><a id="l925" class='ln'>925</a></td><td>      /* Name                   */      TrqR_cmd</td></tr>
 <tr name="926" id="926">
 <td><a id="l926" class='ln'>926</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="927" id="927">
@@ -1875,7 +1875,7 @@
 <tr name="932" id="932">
 <td><a id="l932" class='ln'>932</a></td><td>      /* Upper limit            */      3.4E+38</td></tr>
 <tr name="933" id="933">
-<td><a id="l933" class='ln'>933</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TrqFR_cmd@</td></tr>
+<td><a id="l933" class='ln'>933</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TrqR_cmd@</td></tr>
 <tr name="934" id="934">
 <td><a id="l934" class='ln'>934</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="935" id="935">
@@ -1885,7 +1885,7 @@
 <tr name="937" id="937">
 <td><a id="l937" class='ln'>937</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="938" id="938">
-<td><a id="l938" class='ln'>938</a></td><td>      /* Name                   */      TrqFL_cmd</td></tr>
+<td><a id="l938" class='ln'>938</a></td><td>      /* Name                   */      TrqFR_cmd</td></tr>
 <tr name="939" id="939">
 <td><a id="l939" class='ln'>939</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="940" id="940">
@@ -1901,7 +1901,7 @@
 <tr name="945" id="945">
 <td><a id="l945" class='ln'>945</a></td><td>      /* Upper limit            */      3.4E+38</td></tr>
 <tr name="946" id="946">
-<td><a id="l946" class='ln'>946</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TrqFL_cmd@</td></tr>
+<td><a id="l946" class='ln'>946</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TrqFR_cmd@</td></tr>
 <tr name="947" id="947">
 <td><a id="l947" class='ln'>947</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="948" id="948">
@@ -1911,23 +1911,23 @@
 <tr name="950" id="950">
 <td><a id="l950" class='ln'>950</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="951" id="951">
-<td><a id="l951" class='ln'>951</a></td><td>      /* Name                   */      F_BrkPrs</td></tr>
+<td><a id="l951" class='ln'>951</a></td><td>      /* Name                   */      TrqFL_cmd</td></tr>
 <tr name="952" id="952">
 <td><a id="l952" class='ln'>952</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="953" id="953">
-<td><a id="l953" class='ln'>953</a></td><td>      /* Data type              */      UWORD</td></tr>
+<td><a id="l953" class='ln'>953</a></td><td>      /* Data type              */      FLOAT32_IEEE</td></tr>
 <tr name="954" id="954">
-<td><a id="l954" class='ln'>954</a></td><td>      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_uint16</td></tr>
+<td><a id="l954" class='ln'>954</a></td><td>      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single</td></tr>
 <tr name="955" id="955">
 <td><a id="l955" class='ln'>955</a></td><td>      /* Resolution (Not used)  */      0</td></tr>
 <tr name="956" id="956">
 <td><a id="l956" class='ln'>956</a></td><td>      /* Accuracy (Not used)    */      0</td></tr>
 <tr name="957" id="957">
-<td><a id="l957" class='ln'>957</a></td><td>      /* Lower limit            */      0</td></tr>
+<td><a id="l957" class='ln'>957</a></td><td>      /* Lower limit            */      -3.4E+38</td></tr>
 <tr name="958" id="958">
-<td><a id="l958" class='ln'>958</a></td><td>      /* Upper limit            */      65535</td></tr>
+<td><a id="l958" class='ln'>958</a></td><td>      /* Upper limit            */      3.4E+38</td></tr>
 <tr name="959" id="959">
-<td><a id="l959" class='ln'>959</a></td><td>      ECU_ADDRESS                       @MemoryAddress@F_BrkPrs@</td></tr>
+<td><a id="l959" class='ln'>959</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TrqFL_cmd@</td></tr>
 <tr name="960" id="960">
 <td><a id="l960" class='ln'>960</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="961" id="961">
@@ -1937,7 +1937,7 @@
 <tr name="963" id="963">
 <td><a id="l963" class='ln'>963</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="964" id="964">
-<td><a id="l964" class='ln'>964</a></td><td>      /* Name                   */      Acc1</td></tr>
+<td><a id="l964" class='ln'>964</a></td><td>      /* Name                   */      F_BrkPrs</td></tr>
 <tr name="965" id="965">
 <td><a id="l965" class='ln'>965</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="966" id="966">
@@ -1953,7 +1953,7 @@
 <tr name="971" id="971">
 <td><a id="l971" class='ln'>971</a></td><td>      /* Upper limit            */      65535</td></tr>
 <tr name="972" id="972">
-<td><a id="l972" class='ln'>972</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc1@</td></tr>
+<td><a id="l972" class='ln'>972</a></td><td>      ECU_ADDRESS                       @MemoryAddress@F_BrkPrs@</td></tr>
 <tr name="973" id="973">
 <td><a id="l973" class='ln'>973</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="974" id="974">
@@ -1963,7 +1963,7 @@
 <tr name="976" id="976">
 <td><a id="l976" class='ln'>976</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="977" id="977">
-<td><a id="l977" class='ln'>977</a></td><td>      /* Name                   */      Acc2</td></tr>
+<td><a id="l977" class='ln'>977</a></td><td>      /* Name                   */      Acc1</td></tr>
 <tr name="978" id="978">
 <td><a id="l978" class='ln'>978</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="979" id="979">
@@ -1979,7 +1979,7 @@
 <tr name="984" id="984">
 <td><a id="l984" class='ln'>984</a></td><td>      /* Upper limit            */      65535</td></tr>
 <tr name="985" id="985">
-<td><a id="l985" class='ln'>985</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc2@</td></tr>
+<td><a id="l985" class='ln'>985</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc1@</td></tr>
 <tr name="986" id="986">
 <td><a id="l986" class='ln'>986</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="987" id="987">
@@ -1989,7 +1989,7 @@
 <tr name="989" id="989">
 <td><a id="l989" class='ln'>989</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="990" id="990">
-<td><a id="l990" class='ln'>990</a></td><td>      /* Name                   */      Brk1</td></tr>
+<td><a id="l990" class='ln'>990</a></td><td>      /* Name                   */      Acc2</td></tr>
 <tr name="991" id="991">
 <td><a id="l991" class='ln'>991</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="992" id="992">
@@ -2005,7 +2005,7 @@
 <tr name="997" id="997">
 <td><a id="l997" class='ln'>997</a></td><td>      /* Upper limit            */      65535</td></tr>
 <tr name="998" id="998">
-<td><a id="l998" class='ln'>998</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Brk1@</td></tr>
+<td><a id="l998" class='ln'>998</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc2@</td></tr>
 <tr name="999" id="999">
 <td><a id="l999" class='ln'>999</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1000" id="1000">
@@ -2015,7 +2015,7 @@
 <tr name="1002" id="1002">
 <td><a id="l1002" class='ln'>1002</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1003" id="1003">
-<td><a id="l1003" class='ln'>1003</a></td><td>      /* Name                   */      Brk2</td></tr>
+<td><a id="l1003" class='ln'>1003</a></td><td>      /* Name                   */      Brk1</td></tr>
 <tr name="1004" id="1004">
 <td><a id="l1004" class='ln'>1004</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1005" id="1005">
@@ -2031,7 +2031,7 @@
 <tr name="1010" id="1010">
 <td><a id="l1010" class='ln'>1010</a></td><td>      /* Upper limit            */      65535</td></tr>
 <tr name="1011" id="1011">
-<td><a id="l1011" class='ln'>1011</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Brk2@</td></tr>
+<td><a id="l1011" class='ln'>1011</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Brk1@</td></tr>
 <tr name="1012" id="1012">
 <td><a id="l1012" class='ln'>1012</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1013" id="1013">
@@ -2041,13 +2041,13 @@
 <tr name="1015" id="1015">
 <td><a id="l1015" class='ln'>1015</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1016" id="1016">
-<td><a id="l1016" class='ln'>1016</a></td><td>      /* Name                   */      HVCUTOFF</td></tr>
+<td><a id="l1016" class='ln'>1016</a></td><td>      /* Name                   */      Brk2</td></tr>
 <tr name="1017" id="1017">
 <td><a id="l1017" class='ln'>1017</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1018" id="1018">
-<td><a id="l1018" class='ln'>1018</a></td><td>      /* Data type              */      UBYTE</td></tr>
+<td><a id="l1018" class='ln'>1018</a></td><td>      /* Data type              */      UWORD</td></tr>
 <tr name="1019" id="1019">
-<td><a id="l1019" class='ln'>1019</a></td><td>      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean</td></tr>
+<td><a id="l1019" class='ln'>1019</a></td><td>      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_uint16</td></tr>
 <tr name="1020" id="1020">
 <td><a id="l1020" class='ln'>1020</a></td><td>      /* Resolution (Not used)  */      0</td></tr>
 <tr name="1021" id="1021">
@@ -2055,9 +2055,9 @@
 <tr name="1022" id="1022">
 <td><a id="l1022" class='ln'>1022</a></td><td>      /* Lower limit            */      0</td></tr>
 <tr name="1023" id="1023">
-<td><a id="l1023" class='ln'>1023</a></td><td>      /* Upper limit            */      1</td></tr>
+<td><a id="l1023" class='ln'>1023</a></td><td>      /* Upper limit            */      65535</td></tr>
 <tr name="1024" id="1024">
-<td><a id="l1024" class='ln'>1024</a></td><td>      ECU_ADDRESS                       @MemoryAddress@HVCUTOFF@</td></tr>
+<td><a id="l1024" class='ln'>1024</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Brk2@</td></tr>
 <tr name="1025" id="1025">
 <td><a id="l1025" class='ln'>1025</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1026" id="1026">
@@ -2067,7 +2067,7 @@
 <tr name="1028" id="1028">
 <td><a id="l1028" class='ln'>1028</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1029" id="1029">
-<td><a id="l1029" class='ln'>1029</a></td><td>      /* Name                   */      KeyPressed</td></tr>
+<td><a id="l1029" class='ln'>1029</a></td><td>      /* Name                   */      HVCUTOFF</td></tr>
 <tr name="1030" id="1030">
 <td><a id="l1030" class='ln'>1030</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1031" id="1031">
@@ -2083,7 +2083,7 @@
 <tr name="1036" id="1036">
 <td><a id="l1036" class='ln'>1036</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1037" id="1037">
-<td><a id="l1037" class='ln'>1037</a></td><td>      ECU_ADDRESS                       @MemoryAddress@KeyPressed@</td></tr>
+<td><a id="l1037" class='ln'>1037</a></td><td>      ECU_ADDRESS                       @MemoryAddress@HVCUTOFF@</td></tr>
 <tr name="1038" id="1038">
 <td><a id="l1038" class='ln'>1038</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1039" id="1039">
@@ -2093,7 +2093,7 @@
 <tr name="1041" id="1041">
 <td><a id="l1041" class='ln'>1041</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1042" id="1042">
-<td><a id="l1042" class='ln'>1042</a></td><td>      /* Name                   */      Brk</td></tr>
+<td><a id="l1042" class='ln'>1042</a></td><td>      /* Name                   */      KeyPressed</td></tr>
 <tr name="1043" id="1043">
 <td><a id="l1043" class='ln'>1043</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1044" id="1044">
@@ -2109,7 +2109,7 @@
 <tr name="1049" id="1049">
 <td><a id="l1049" class='ln'>1049</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1050" id="1050">
-<td><a id="l1050" class='ln'>1050</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Brk@</td></tr>
+<td><a id="l1050" class='ln'>1050</a></td><td>      ECU_ADDRESS                       @MemoryAddress@KeyPressed@</td></tr>
 <tr name="1051" id="1051">
 <td><a id="l1051" class='ln'>1051</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1052" id="1052">
@@ -2119,7 +2119,7 @@
 <tr name="1054" id="1054">
 <td><a id="l1054" class='ln'>1054</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1055" id="1055">
-<td><a id="l1055" class='ln'>1055</a></td><td>      /* Name                   */      ACC_Release</td></tr>
+<td><a id="l1055" class='ln'>1055</a></td><td>      /* Name                   */      Brk</td></tr>
 <tr name="1056" id="1056">
 <td><a id="l1056" class='ln'>1056</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1057" id="1057">
@@ -2135,7 +2135,7 @@
 <tr name="1062" id="1062">
 <td><a id="l1062" class='ln'>1062</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1063" id="1063">
-<td><a id="l1063" class='ln'>1063</a></td><td>      ECU_ADDRESS                       @MemoryAddress@ACC_Release@</td></tr>
+<td><a id="l1063" class='ln'>1063</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Brk@</td></tr>
 <tr name="1064" id="1064">
 <td><a id="l1064" class='ln'>1064</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1065" id="1065">
@@ -2145,7 +2145,7 @@
 <tr name="1067" id="1067">
 <td><a id="l1067" class='ln'>1067</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1068" id="1068">
-<td><a id="l1068" class='ln'>1068</a></td><td>      /* Name                   */      beeper_state</td></tr>
+<td><a id="l1068" class='ln'>1068</a></td><td>      /* Name                   */      ACC_Release</td></tr>
 <tr name="1069" id="1069">
 <td><a id="l1069" class='ln'>1069</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1070" id="1070">
@@ -2161,7 +2161,7 @@
 <tr name="1075" id="1075">
 <td><a id="l1075" class='ln'>1075</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1076" id="1076">
-<td><a id="l1076" class='ln'>1076</a></td><td>      ECU_ADDRESS                       @MemoryAddress@beeper_state@</td></tr>
+<td><a id="l1076" class='ln'>1076</a></td><td>      ECU_ADDRESS                       @MemoryAddress@ACC_Release@</td></tr>
 <tr name="1077" id="1077">
 <td><a id="l1077" class='ln'>1077</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1078" id="1078">
@@ -2171,7 +2171,7 @@
 <tr name="1080" id="1080">
 <td><a id="l1080" class='ln'>1080</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1081" id="1081">
-<td><a id="l1081" class='ln'>1081</a></td><td>      /* Name                   */      MCFL_DCOn_setpoints</td></tr>
+<td><a id="l1081" class='ln'>1081</a></td><td>      /* Name                   */      beeper_state</td></tr>
 <tr name="1082" id="1082">
 <td><a id="l1082" class='ln'>1082</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1083" id="1083">
@@ -2187,7 +2187,7 @@
 <tr name="1088" id="1088">
 <td><a id="l1088" class='ln'>1088</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1089" id="1089">
-<td><a id="l1089" class='ln'>1089</a></td><td>      ECU_ADDRESS                       @MemoryAddress@MCFL_DCOn_setpoints@</td></tr>
+<td><a id="l1089" class='ln'>1089</a></td><td>      ECU_ADDRESS                       @MemoryAddress@beeper_state@</td></tr>
 <tr name="1090" id="1090">
 <td><a id="l1090" class='ln'>1090</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1091" id="1091">
@@ -2197,7 +2197,7 @@
 <tr name="1093" id="1093">
 <td><a id="l1093" class='ln'>1093</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1094" id="1094">
-<td><a id="l1094" class='ln'>1094</a></td><td>      /* Name                   */      MCFR_DCEnable</td></tr>
+<td><a id="l1094" class='ln'>1094</a></td><td>      /* Name                   */      MCFL_DCOn_setpoints</td></tr>
 <tr name="1095" id="1095">
 <td><a id="l1095" class='ln'>1095</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1096" id="1096">
@@ -2213,7 +2213,7 @@
 <tr name="1101" id="1101">
 <td><a id="l1101" class='ln'>1101</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1102" id="1102">
-<td><a id="l1102" class='ln'>1102</a></td><td>      ECU_ADDRESS                       @MemoryAddress@MCFR_DCEnable@</td></tr>
+<td><a id="l1102" class='ln'>1102</a></td><td>      ECU_ADDRESS                       @MemoryAddress@MCFL_DCOn_setpoints@</td></tr>
 <tr name="1103" id="1103">
 <td><a id="l1103" class='ln'>1103</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1104" id="1104">
@@ -2223,7 +2223,7 @@
 <tr name="1106" id="1106">
 <td><a id="l1106" class='ln'>1106</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1107" id="1107">
-<td><a id="l1107" class='ln'>1107</a></td><td>      /* Name                   */      MCFR_InverterOn</td></tr>
+<td><a id="l1107" class='ln'>1107</a></td><td>      /* Name                   */      MCFR_DCEnable</td></tr>
 <tr name="1108" id="1108">
 <td><a id="l1108" class='ln'>1108</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1109" id="1109">
@@ -2239,7 +2239,7 @@
 <tr name="1114" id="1114">
 <td><a id="l1114" class='ln'>1114</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1115" id="1115">
-<td><a id="l1115" class='ln'>1115</a></td><td>      ECU_ADDRESS                       @MemoryAddress@MCFR_InverterOn@</td></tr>
+<td><a id="l1115" class='ln'>1115</a></td><td>      ECU_ADDRESS                       @MemoryAddress@MCFR_DCEnable@</td></tr>
 <tr name="1116" id="1116">
 <td><a id="l1116" class='ln'>1116</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1117" id="1117">
@@ -2249,7 +2249,7 @@
 <tr name="1119" id="1119">
 <td><a id="l1119" class='ln'>1119</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1120" id="1120">
-<td><a id="l1120" class='ln'>1120</a></td><td>      /* Name                   */      TroqueOn</td></tr>
+<td><a id="l1120" class='ln'>1120</a></td><td>      /* Name                   */      MCFR_InverterOn</td></tr>
 <tr name="1121" id="1121">
 <td><a id="l1121" class='ln'>1121</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1122" id="1122">
@@ -2265,7 +2265,7 @@
 <tr name="1127" id="1127">
 <td><a id="l1127" class='ln'>1127</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1128" id="1128">
-<td><a id="l1128" class='ln'>1128</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TroqueOn@</td></tr>
+<td><a id="l1128" class='ln'>1128</a></td><td>      ECU_ADDRESS                       @MemoryAddress@MCFR_InverterOn@</td></tr>
 <tr name="1129" id="1129">
 <td><a id="l1129" class='ln'>1129</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1130" id="1130">
@@ -2275,7 +2275,7 @@
 <tr name="1132" id="1132">
 <td><a id="l1132" class='ln'>1132</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1133" id="1133">
-<td><a id="l1133" class='ln'>1133</a></td><td>      /* Name                   */      Trq_CUT_final</td></tr>
+<td><a id="l1133" class='ln'>1133</a></td><td>      /* Name                   */      TroqueOn</td></tr>
 <tr name="1134" id="1134">
 <td><a id="l1134" class='ln'>1134</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1135" id="1135">
@@ -2291,273 +2291,273 @@
 <tr name="1140" id="1140">
 <td><a id="l1140" class='ln'>1140</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1141" id="1141">
-<td><a id="l1141" class='ln'>1141</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Trq_CUT_final@</td></tr>
+<td><a id="l1141" class='ln'>1141</a></td><td>      ECU_ADDRESS                       @MemoryAddress@TroqueOn@</td></tr>
 <tr name="1142" id="1142">
 <td><a id="l1142" class='ln'>1142</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1143" id="1143">
 <td><a id="l1143" class='ln'>1143</a></td><td>    </td></tr>
 <tr name="1144" id="1144">
-<td><a id="l1144" class='ln'>1144</a></td><td>    /begin COMPU_METHOD</td></tr>
+<td><a id="l1144" class='ln'>1144</a></td><td>    </td></tr>
 <tr name="1145" id="1145">
-<td><a id="l1145" class='ln'>1145</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_double</td></tr>
+<td><a id="l1145" class='ln'>1145</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1146" id="1146">
-<td><a id="l1146" class='ln'>1146</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
+<td><a id="l1146" class='ln'>1146</a></td><td>      /* Name                   */      Trq_CUT_final</td></tr>
 <tr name="1147" id="1147">
-<td><a id="l1147" class='ln'>1147</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
+<td><a id="l1147" class='ln'>1147</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1148" id="1148">
-<td><a id="l1148" class='ln'>1148</a></td><td>      /* Format                 */      "%15.10"</td></tr>
+<td><a id="l1148" class='ln'>1148</a></td><td>      /* Data type              */      UBYTE</td></tr>
 <tr name="1149" id="1149">
-<td><a id="l1149" class='ln'>1149</a></td><td>      /* Units                  */      ""</td></tr>
+<td><a id="l1149" class='ln'>1149</a></td><td>      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean</td></tr>
 <tr name="1150" id="1150">
-<td><a id="l1150" class='ln'>1150</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
+<td><a id="l1150" class='ln'>1150</a></td><td>      /* Resolution (Not used)  */      0</td></tr>
 <tr name="1151" id="1151">
-<td><a id="l1151" class='ln'>1151</a></td><td>    /end COMPU_METHOD</td></tr>
+<td><a id="l1151" class='ln'>1151</a></td><td>      /* Accuracy (Not used)    */      0</td></tr>
 <tr name="1152" id="1152">
-<td><a id="l1152" class='ln'>1152</a></td><td>    </td></tr>
+<td><a id="l1152" class='ln'>1152</a></td><td>      /* Lower limit            */      0</td></tr>
 <tr name="1153" id="1153">
-<td><a id="l1153" class='ln'>1153</a></td><td>    /begin COMPU_METHOD</td></tr>
+<td><a id="l1153" class='ln'>1153</a></td><td>      /* Upper limit            */      1</td></tr>
 <tr name="1154" id="1154">
-<td><a id="l1154" class='ln'>1154</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_ufix32_En16</td></tr>
+<td><a id="l1154" class='ln'>1154</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Trq_CUT_final@</td></tr>
 <tr name="1155" id="1155">
-<td><a id="l1155" class='ln'>1155</a></td><td>      /* Long identifier        */      "Q = V*65536.000000"</td></tr>
+<td><a id="l1155" class='ln'>1155</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1156" id="1156">
-<td><a id="l1156" class='ln'>1156</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
+<td><a id="l1156" class='ln'>1156</a></td><td>    </td></tr>
 <tr name="1157" id="1157">
-<td><a id="l1157" class='ln'>1157</a></td><td>      /* Format                 */      "%26.16"</td></tr>
+<td><a id="l1157" class='ln'>1157</a></td><td>    /begin COMPU_METHOD</td></tr>
 <tr name="1158" id="1158">
-<td><a id="l1158" class='ln'>1158</a></td><td>      /* Units                  */      ""</td></tr>
+<td><a id="l1158" class='ln'>1158</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_double</td></tr>
 <tr name="1159" id="1159">
-<td><a id="l1159" class='ln'>1159</a></td><td>      /* Coefficients           */      COEFFS 0 65536.000000 0.000000 0 0 1.000000</td></tr>
+<td><a id="l1159" class='ln'>1159</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
 <tr name="1160" id="1160">
-<td><a id="l1160" class='ln'>1160</a></td><td>    /end COMPU_METHOD</td></tr>
+<td><a id="l1160" class='ln'>1160</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
 <tr name="1161" id="1161">
-<td><a id="l1161" class='ln'>1161</a></td><td>    </td></tr>
+<td><a id="l1161" class='ln'>1161</a></td><td>      /* Format                 */      "%15.10"</td></tr>
 <tr name="1162" id="1162">
-<td><a id="l1162" class='ln'>1162</a></td><td>    /begin COMPU_METHOD</td></tr>
+<td><a id="l1162" class='ln'>1162</a></td><td>      /* Units                  */      ""</td></tr>
 <tr name="1163" id="1163">
-<td><a id="l1163" class='ln'>1163</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single</td></tr>
+<td><a id="l1163" class='ln'>1163</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
 <tr name="1164" id="1164">
-<td><a id="l1164" class='ln'>1164</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
+<td><a id="l1164" class='ln'>1164</a></td><td>    /end COMPU_METHOD</td></tr>
 <tr name="1165" id="1165">
-<td><a id="l1165" class='ln'>1165</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
+<td><a id="l1165" class='ln'>1165</a></td><td>    </td></tr>
 <tr name="1166" id="1166">
-<td><a id="l1166" class='ln'>1166</a></td><td>      /* Format                 */      "%8.6"</td></tr>
+<td><a id="l1166" class='ln'>1166</a></td><td>    /begin COMPU_METHOD</td></tr>
 <tr name="1167" id="1167">
-<td><a id="l1167" class='ln'>1167</a></td><td>      /* Units                  */      ""</td></tr>
+<td><a id="l1167" class='ln'>1167</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_ufix32_En16</td></tr>
 <tr name="1168" id="1168">
-<td><a id="l1168" class='ln'>1168</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
+<td><a id="l1168" class='ln'>1168</a></td><td>      /* Long identifier        */      "Q = V*65536.000000"</td></tr>
 <tr name="1169" id="1169">
-<td><a id="l1169" class='ln'>1169</a></td><td>    /end COMPU_METHOD</td></tr>
+<td><a id="l1169" class='ln'>1169</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
 <tr name="1170" id="1170">
-<td><a id="l1170" class='ln'>1170</a></td><td>    </td></tr>
+<td><a id="l1170" class='ln'>1170</a></td><td>      /* Format                 */      "%26.16"</td></tr>
 <tr name="1171" id="1171">
-<td><a id="l1171" class='ln'>1171</a></td><td>    /begin COMPU_METHOD</td></tr>
+<td><a id="l1171" class='ln'>1171</a></td><td>      /* Units                  */      ""</td></tr>
 <tr name="1172" id="1172">
-<td><a id="l1172" class='ln'>1172</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_uint16</td></tr>
+<td><a id="l1172" class='ln'>1172</a></td><td>      /* Coefficients           */      COEFFS 0 65536.000000 0.000000 0 0 1.000000</td></tr>
 <tr name="1173" id="1173">
-<td><a id="l1173" class='ln'>1173</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
+<td><a id="l1173" class='ln'>1173</a></td><td>    /end COMPU_METHOD</td></tr>
 <tr name="1174" id="1174">
-<td><a id="l1174" class='ln'>1174</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
+<td><a id="l1174" class='ln'>1174</a></td><td>    </td></tr>
 <tr name="1175" id="1175">
-<td><a id="l1175" class='ln'>1175</a></td><td>      /* Format                 */      "%5.0"</td></tr>
+<td><a id="l1175" class='ln'>1175</a></td><td>    /begin COMPU_METHOD</td></tr>
 <tr name="1176" id="1176">
-<td><a id="l1176" class='ln'>1176</a></td><td>      /* Units                  */      ""</td></tr>
+<td><a id="l1176" class='ln'>1176</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single</td></tr>
 <tr name="1177" id="1177">
-<td><a id="l1177" class='ln'>1177</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
+<td><a id="l1177" class='ln'>1177</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
 <tr name="1178" id="1178">
-<td><a id="l1178" class='ln'>1178</a></td><td>    /end COMPU_METHOD</td></tr>
+<td><a id="l1178" class='ln'>1178</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
 <tr name="1179" id="1179">
-<td><a id="l1179" class='ln'>1179</a></td><td>    </td></tr>
+<td><a id="l1179" class='ln'>1179</a></td><td>      /* Format                 */      "%8.6"</td></tr>
 <tr name="1180" id="1180">
-<td><a id="l1180" class='ln'>1180</a></td><td>    /begin COMPU_METHOD</td></tr>
+<td><a id="l1180" class='ln'>1180</a></td><td>      /* Units                  */      ""</td></tr>
 <tr name="1181" id="1181">
-<td><a id="l1181" class='ln'>1181</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean</td></tr>
+<td><a id="l1181" class='ln'>1181</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
 <tr name="1182" id="1182">
-<td><a id="l1182" class='ln'>1182</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
+<td><a id="l1182" class='ln'>1182</a></td><td>    /end COMPU_METHOD</td></tr>
 <tr name="1183" id="1183">
-<td><a id="l1183" class='ln'>1183</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
+<td><a id="l1183" class='ln'>1183</a></td><td>    </td></tr>
 <tr name="1184" id="1184">
-<td><a id="l1184" class='ln'>1184</a></td><td>      /* Format                 */      "%1.0"</td></tr>
+<td><a id="l1184" class='ln'>1184</a></td><td>    /begin COMPU_METHOD</td></tr>
 <tr name="1185" id="1185">
-<td><a id="l1185" class='ln'>1185</a></td><td>      /* Units                  */      ""</td></tr>
+<td><a id="l1185" class='ln'>1185</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_uint16</td></tr>
 <tr name="1186" id="1186">
-<td><a id="l1186" class='ln'>1186</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
+<td><a id="l1186" class='ln'>1186</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
 <tr name="1187" id="1187">
-<td><a id="l1187" class='ln'>1187</a></td><td>    /end COMPU_METHOD</td></tr>
+<td><a id="l1187" class='ln'>1187</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
 <tr name="1188" id="1188">
-<td><a id="l1188" class='ln'>1188</a></td><td>    </td></tr>
+<td><a id="l1188" class='ln'>1188</a></td><td>      /* Format                 */      "%5.0"</td></tr>
 <tr name="1189" id="1189">
-<td><a id="l1189" class='ln'>1189</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1189" class='ln'>1189</a></td><td>      /* Units                  */      ""</td></tr>
 <tr name="1190" id="1190">
-<td><a id="l1190" class='ln'>1190</a></td><td>      /* Name                   */       VehCtrlMdel240926_2018b_amkspdlimit</td></tr>
+<td><a id="l1190" class='ln'>1190</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
 <tr name="1191" id="1191">
-<td><a id="l1191" class='ln'>1191</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit"</td></tr>
+<td><a id="l1191" class='ln'>1191</a></td><td>    /end COMPU_METHOD</td></tr>
 <tr name="1192" id="1192">
-<td><a id="l1192" class='ln'>1192</a></td><td>      /* Root                    */       ROOT</td></tr>
+<td><a id="l1192" class='ln'>1192</a></td><td>    </td></tr>
 <tr name="1193" id="1193">
-<td><a id="l1193" class='ln'>1193</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1193" class='ln'>1193</a></td><td>    /begin COMPU_METHOD</td></tr>
 <tr name="1194" id="1194">
-<td><a id="l1194" class='ln'>1194</a></td><td>        Root_CTRL</td></tr>
+<td><a id="l1194" class='ln'>1194</a></td><td>      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean</td></tr>
 <tr name="1195" id="1195">
-<td><a id="l1195" class='ln'>1195</a></td><td>        Root_Drive_Ready</td></tr>
+<td><a id="l1195" class='ln'>1195</a></td><td>      /* Long identifier        */      "Q = V"</td></tr>
 <tr name="1196" id="1196">
-<td><a id="l1196" class='ln'>1196</a></td><td>        Root_Input</td></tr>
+<td><a id="l1196" class='ln'>1196</a></td><td>      /* Conversion Type        */      RAT_FUNC</td></tr>
 <tr name="1197" id="1197">
-<td><a id="l1197" class='ln'>1197</a></td><td>        Root_Input_Processing</td></tr>
+<td><a id="l1197" class='ln'>1197</a></td><td>      /* Format                 */      "%1.0"</td></tr>
 <tr name="1198" id="1198">
-<td><a id="l1198" class='ln'>1198</a></td><td>        Root_OUTPUT</td></tr>
+<td><a id="l1198" class='ln'>1198</a></td><td>      /* Units                  */      ""</td></tr>
 <tr name="1199" id="1199">
-<td><a id="l1199" class='ln'>1199</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1199" class='ln'>1199</a></td><td>      /* Coefficients           */      COEFFS 0 1 0 0 0 1</td></tr>
 <tr name="1200" id="1200">
-<td><a id="l1200" class='ln'>1200</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1200" class='ln'>1200</a></td><td>    /end COMPU_METHOD</td></tr>
 <tr name="1201" id="1201">
-<td><a id="l1201" class='ln'>1201</a></td><td>        AMK_Trq_CUT</td></tr>
+<td><a id="l1201" class='ln'>1201</a></td><td>    </td></tr>
 <tr name="1202" id="1202">
-<td><a id="l1202" class='ln'>1202</a></td><td>        EMRAX_Trq_CUT</td></tr>
+<td><a id="l1202" class='ln'>1202</a></td><td>    /begin GROUP </td></tr>
 <tr name="1203" id="1203">
-<td><a id="l1203" class='ln'>1203</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1203" class='ln'>1203</a></td><td>      /* Name                   */       VehCtrlMdel240926_2018b_amkspdlimit</td></tr>
 <tr name="1204" id="1204">
-<td><a id="l1204" class='ln'>1204</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1204" class='ln'>1204</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit"</td></tr>
 <tr name="1205" id="1205">
-<td><a id="l1205" class='ln'>1205</a></td><td>    </td></tr>
+<td><a id="l1205" class='ln'>1205</a></td><td>      /* Root                    */       ROOT</td></tr>
 <tr name="1206" id="1206">
-<td><a id="l1206" class='ln'>1206</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1206" class='ln'>1206</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1207" id="1207">
-<td><a id="l1207" class='ln'>1207</a></td><td>      /* Name                   */       Root_CTRL</td></tr>
+<td><a id="l1207" class='ln'>1207</a></td><td>        Root_CTRL</td></tr>
 <tr name="1208" id="1208">
-<td><a id="l1208" class='ln'>1208</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/CTRL"</td></tr>
+<td><a id="l1208" class='ln'>1208</a></td><td>        Root_Drive_Ready</td></tr>
 <tr name="1209" id="1209">
-<td><a id="l1209" class='ln'>1209</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1209" class='ln'>1209</a></td><td>        Root_Input</td></tr>
 <tr name="1210" id="1210">
-<td><a id="l1210" class='ln'>1210</a></td><td>        S1_MoTrqReq</td></tr>
+<td><a id="l1210" class='ln'>1210</a></td><td>        Root_Input_Processing</td></tr>
 <tr name="1211" id="1211">
-<td><a id="l1211" class='ln'>1211</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1211" class='ln'>1211</a></td><td>        Root_OUTPUT</td></tr>
 <tr name="1212" id="1212">
-<td><a id="l1212" class='ln'>1212</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1212" class='ln'>1212</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1213" id="1213">
-<td><a id="l1213" class='ln'>1213</a></td><td>    </td></tr>
+<td><a id="l1213" class='ln'>1213</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1214" id="1214">
-<td><a id="l1214" class='ln'>1214</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1214" class='ln'>1214</a></td><td>        AMK_Trq_CUT</td></tr>
 <tr name="1215" id="1215">
-<td><a id="l1215" class='ln'>1215</a></td><td>      /* Name                   */       Root_Drive_Ready</td></tr>
+<td><a id="l1215" class='ln'>1215</a></td><td>        EMRAX_Trq_CUT</td></tr>
 <tr name="1216" id="1216">
-<td><a id="l1216" class='ln'>1216</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Drive_Ready"</td></tr>
+<td><a id="l1216" class='ln'>1216</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1217" id="1217">
-<td><a id="l1217" class='ln'>1217</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1217" class='ln'>1217</a></td><td>    /end GROUP</td></tr>
 <tr name="1218" id="1218">
-<td><a id="l1218" class='ln'>1218</a></td><td>        S2_Subsystem</td></tr>
+<td><a id="l1218" class='ln'>1218</a></td><td>    </td></tr>
 <tr name="1219" id="1219">
-<td><a id="l1219" class='ln'>1219</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1219" class='ln'>1219</a></td><td>    /begin GROUP </td></tr>
 <tr name="1220" id="1220">
-<td><a id="l1220" class='ln'>1220</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1220" class='ln'>1220</a></td><td>      /* Name                   */       Root_CTRL</td></tr>
 <tr name="1221" id="1221">
-<td><a id="l1221" class='ln'>1221</a></td><td>    </td></tr>
+<td><a id="l1221" class='ln'>1221</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/CTRL"</td></tr>
 <tr name="1222" id="1222">
-<td><a id="l1222" class='ln'>1222</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1222" class='ln'>1222</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1223" id="1223">
-<td><a id="l1223" class='ln'>1223</a></td><td>      /* Name                   */       Root_Input</td></tr>
+<td><a id="l1223" class='ln'>1223</a></td><td>        S1_MoTrqReq</td></tr>
 <tr name="1224" id="1224">
-<td><a id="l1224" class='ln'>1224</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input"</td></tr>
+<td><a id="l1224" class='ln'>1224</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1225" id="1225">
-<td><a id="l1225" class='ln'>1225</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1225" class='ln'>1225</a></td><td>    /end GROUP</td></tr>
 <tr name="1226" id="1226">
-<td><a id="l1226" class='ln'>1226</a></td><td>        S3_ABS_Receive</td></tr>
+<td><a id="l1226" class='ln'>1226</a></td><td>    </td></tr>
 <tr name="1227" id="1227">
-<td><a id="l1227" class='ln'>1227</a></td><td>        S3_AMKMCU_Receive</td></tr>
+<td><a id="l1227" class='ln'>1227</a></td><td>    /begin GROUP </td></tr>
 <tr name="1228" id="1228">
-<td><a id="l1228" class='ln'>1228</a></td><td>        S3_AccBrk_BUS</td></tr>
+<td><a id="l1228" class='ln'>1228</a></td><td>      /* Name                   */       Root_Drive_Ready</td></tr>
 <tr name="1229" id="1229">
-<td><a id="l1229" class='ln'>1229</a></td><td>        S3_EMRAXMCU_RECIEVE</td></tr>
+<td><a id="l1229" class='ln'>1229</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Drive_Ready"</td></tr>
 <tr name="1230" id="1230">
-<td><a id="l1230" class='ln'>1230</a></td><td>        S3_IMU_Recieve</td></tr>
+<td><a id="l1230" class='ln'>1230</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1231" id="1231">
-<td><a id="l1231" class='ln'>1231</a></td><td>        S3_StrSnis_Receive</td></tr>
+<td><a id="l1231" class='ln'>1231</a></td><td>        S2_Subsystem</td></tr>
 <tr name="1232" id="1232">
-<td><a id="l1232" class='ln'>1232</a></td><td>        S3_key</td></tr>
+<td><a id="l1232" class='ln'>1232</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1233" id="1233">
-<td><a id="l1233" class='ln'>1233</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1233" class='ln'>1233</a></td><td>    /end GROUP</td></tr>
 <tr name="1234" id="1234">
-<td><a id="l1234" class='ln'>1234</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1234" class='ln'>1234</a></td><td>    </td></tr>
 <tr name="1235" id="1235">
-<td><a id="l1235" class='ln'>1235</a></td><td>    </td></tr>
+<td><a id="l1235" class='ln'>1235</a></td><td>    /begin GROUP </td></tr>
 <tr name="1236" id="1236">
-<td><a id="l1236" class='ln'>1236</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1236" class='ln'>1236</a></td><td>      /* Name                   */       Root_Input</td></tr>
 <tr name="1237" id="1237">
-<td><a id="l1237" class='ln'>1237</a></td><td>      /* Name                   */       Root_Input_Processing</td></tr>
+<td><a id="l1237" class='ln'>1237</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input"</td></tr>
 <tr name="1238" id="1238">
-<td><a id="l1238" class='ln'>1238</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing"</td></tr>
+<td><a id="l1238" class='ln'>1238</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1239" id="1239">
-<td><a id="l1239" class='ln'>1239</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1239" class='ln'>1239</a></td><td>        S3_ABS_Receive</td></tr>
 <tr name="1240" id="1240">
-<td><a id="l1240" class='ln'>1240</a></td><td>        S4_Function_Call_Subsystem</td></tr>
+<td><a id="l1240" class='ln'>1240</a></td><td>        S3_AMKMCU_Receive</td></tr>
 <tr name="1241" id="1241">
-<td><a id="l1241" class='ln'>1241</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1241" class='ln'>1241</a></td><td>        S3_AccBrk_BUS</td></tr>
 <tr name="1242" id="1242">
-<td><a id="l1242" class='ln'>1242</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1242" class='ln'>1242</a></td><td>        S3_EMRAXMCU_RECIEVE</td></tr>
 <tr name="1243" id="1243">
-<td><a id="l1243" class='ln'>1243</a></td><td>    </td></tr>
+<td><a id="l1243" class='ln'>1243</a></td><td>        S3_IMU_Recieve</td></tr>
 <tr name="1244" id="1244">
-<td><a id="l1244" class='ln'>1244</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1244" class='ln'>1244</a></td><td>        S3_StrSnis_Receive</td></tr>
 <tr name="1245" id="1245">
-<td><a id="l1245" class='ln'>1245</a></td><td>      /* Name                   */       Root_OUTPUT</td></tr>
+<td><a id="l1245" class='ln'>1245</a></td><td>        S3_key</td></tr>
 <tr name="1246" id="1246">
-<td><a id="l1246" class='ln'>1246</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT"</td></tr>
+<td><a id="l1246" class='ln'>1246</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1247" id="1247">
-<td><a id="l1247" class='ln'>1247</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1247" class='ln'>1247</a></td><td>    /end GROUP</td></tr>
 <tr name="1248" id="1248">
-<td><a id="l1248" class='ln'>1248</a></td><td>        S5_VCU2EmraxMCU</td></tr>
+<td><a id="l1248" class='ln'>1248</a></td><td>    </td></tr>
 <tr name="1249" id="1249">
-<td><a id="l1249" class='ln'>1249</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1249" class='ln'>1249</a></td><td>    /begin GROUP </td></tr>
 <tr name="1250" id="1250">
-<td><a id="l1250" class='ln'>1250</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1250" class='ln'>1250</a></td><td>      /* Name                   */       Root_Input_Processing</td></tr>
 <tr name="1251" id="1251">
-<td><a id="l1251" class='ln'>1251</a></td><td>    </td></tr>
+<td><a id="l1251" class='ln'>1251</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing"</td></tr>
 <tr name="1252" id="1252">
-<td><a id="l1252" class='ln'>1252</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1252" class='ln'>1252</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1253" id="1253">
-<td><a id="l1253" class='ln'>1253</a></td><td>      /* Name                   */       S1_MoTrqReq</td></tr>
+<td><a id="l1253" class='ln'>1253</a></td><td>        S4_Function_Call_Subsystem</td></tr>
 <tr name="1254" id="1254">
-<td><a id="l1254" class='ln'>1254</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/CTRL/MoTrqReq"</td></tr>
+<td><a id="l1254" class='ln'>1254</a></td><td>        S4_Subsystem</td></tr>
 <tr name="1255" id="1255">
-<td><a id="l1255" class='ln'>1255</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1255" class='ln'>1255</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1256" id="1256">
-<td><a id="l1256" class='ln'>1256</a></td><td>        TroqueOn</td></tr>
+<td><a id="l1256" class='ln'>1256</a></td><td>    /end GROUP</td></tr>
 <tr name="1257" id="1257">
-<td><a id="l1257" class='ln'>1257</a></td><td>        TrqFL_cmd</td></tr>
+<td><a id="l1257" class='ln'>1257</a></td><td>    </td></tr>
 <tr name="1258" id="1258">
-<td><a id="l1258" class='ln'>1258</a></td><td>        TrqFR_cmd</td></tr>
+<td><a id="l1258" class='ln'>1258</a></td><td>    /begin GROUP </td></tr>
 <tr name="1259" id="1259">
-<td><a id="l1259" class='ln'>1259</a></td><td>        TrqR_cmd</td></tr>
+<td><a id="l1259" class='ln'>1259</a></td><td>      /* Name                   */       Root_OUTPUT</td></tr>
 <tr name="1260" id="1260">
-<td><a id="l1260" class='ln'>1260</a></td><td>        Trq_CUT_final</td></tr>
+<td><a id="l1260" class='ln'>1260</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT"</td></tr>
 <tr name="1261" id="1261">
-<td><a id="l1261" class='ln'>1261</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1261" class='ln'>1261</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1262" id="1262">
-<td><a id="l1262" class='ln'>1262</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1262" class='ln'>1262</a></td><td>        S5_VCU2EmraxMCU</td></tr>
 <tr name="1263" id="1263">
-<td><a id="l1263" class='ln'>1263</a></td><td>    </td></tr>
+<td><a id="l1263" class='ln'>1263</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1264" id="1264">
-<td><a id="l1264" class='ln'>1264</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1264" class='ln'>1264</a></td><td>    /end GROUP</td></tr>
 <tr name="1265" id="1265">
-<td><a id="l1265" class='ln'>1265</a></td><td>      /* Name                   */       S2_Subsystem</td></tr>
+<td><a id="l1265" class='ln'>1265</a></td><td>    </td></tr>
 <tr name="1266" id="1266">
-<td><a id="l1266" class='ln'>1266</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Drive_Ready/Subsystem"</td></tr>
+<td><a id="l1266" class='ln'>1266</a></td><td>    /begin GROUP </td></tr>
 <tr name="1267" id="1267">
-<td><a id="l1267" class='ln'>1267</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1267" class='ln'>1267</a></td><td>      /* Name                   */       S1_MoTrqReq</td></tr>
 <tr name="1268" id="1268">
-<td><a id="l1268" class='ln'>1268</a></td><td>        ACC_Release</td></tr>
+<td><a id="l1268" class='ln'>1268</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/CTRL/MoTrqReq"</td></tr>
 <tr name="1269" id="1269">
-<td><a id="l1269" class='ln'>1269</a></td><td>        Brk</td></tr>
+<td><a id="l1269" class='ln'>1269</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1270" id="1270">
-<td><a id="l1270" class='ln'>1270</a></td><td>        KeyPressed</td></tr>
+<td><a id="l1270" class='ln'>1270</a></td><td>        TroqueOn</td></tr>
 <tr name="1271" id="1271">
-<td><a id="l1271" class='ln'>1271</a></td><td>        MCFL_DCOn_setpoints</td></tr>
+<td><a id="l1271" class='ln'>1271</a></td><td>        TrqFL_cmd</td></tr>
 <tr name="1272" id="1272">
-<td><a id="l1272" class='ln'>1272</a></td><td>        MCFR_DCEnable</td></tr>
+<td><a id="l1272" class='ln'>1272</a></td><td>        TrqFR_cmd</td></tr>
 <tr name="1273" id="1273">
-<td><a id="l1273" class='ln'>1273</a></td><td>        MCFR_InverterOn</td></tr>
+<td><a id="l1273" class='ln'>1273</a></td><td>        TrqR_cmd</td></tr>
 <tr name="1274" id="1274">
-<td><a id="l1274" class='ln'>1274</a></td><td>        beeper_state</td></tr>
+<td><a id="l1274" class='ln'>1274</a></td><td>        Trq_CUT_final</td></tr>
 <tr name="1275" id="1275">
 <td><a id="l1275" class='ln'>1275</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1276" id="1276">
@@ -2567,659 +2567,735 @@
 <tr name="1278" id="1278">
 <td><a id="l1278" class='ln'>1278</a></td><td>    /begin GROUP </td></tr>
 <tr name="1279" id="1279">
-<td><a id="l1279" class='ln'>1279</a></td><td>      /* Name                   */       S3_ABS_Receive</td></tr>
+<td><a id="l1279" class='ln'>1279</a></td><td>      /* Name                   */       S2_Subsystem</td></tr>
 <tr name="1280" id="1280">
-<td><a id="l1280" class='ln'>1280</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive"</td></tr>
+<td><a id="l1280" class='ln'>1280</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Drive_Ready/Subsystem"</td></tr>
 <tr name="1281" id="1281">
-<td><a id="l1281" class='ln'>1281</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1281" class='ln'>1281</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1282" id="1282">
-<td><a id="l1282" class='ln'>1282</a></td><td>        S115_ABS_BUS_state</td></tr>
+<td><a id="l1282" class='ln'>1282</a></td><td>        ACC_Release</td></tr>
 <tr name="1283" id="1283">
-<td><a id="l1283" class='ln'>1283</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1283" class='ln'>1283</a></td><td>        Brk</td></tr>
 <tr name="1284" id="1284">
-<td><a id="l1284" class='ln'>1284</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1284" class='ln'>1284</a></td><td>        KeyPressed</td></tr>
 <tr name="1285" id="1285">
-<td><a id="l1285" class='ln'>1285</a></td><td>    </td></tr>
+<td><a id="l1285" class='ln'>1285</a></td><td>        MCFL_DCOn_setpoints</td></tr>
 <tr name="1286" id="1286">
-<td><a id="l1286" class='ln'>1286</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1286" class='ln'>1286</a></td><td>        MCFR_DCEnable</td></tr>
 <tr name="1287" id="1287">
-<td><a id="l1287" class='ln'>1287</a></td><td>      /* Name                   */       S3_AMKMCU_Receive</td></tr>
+<td><a id="l1287" class='ln'>1287</a></td><td>        MCFR_InverterOn</td></tr>
 <tr name="1288" id="1288">
-<td><a id="l1288" class='ln'>1288</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive"</td></tr>
+<td><a id="l1288" class='ln'>1288</a></td><td>        beeper_state</td></tr>
 <tr name="1289" id="1289">
-<td><a id="l1289" class='ln'>1289</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1289" class='ln'>1289</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1290" id="1290">
-<td><a id="l1290" class='ln'>1290</a></td><td>        S116_FLAMKMCU</td></tr>
+<td><a id="l1290" class='ln'>1290</a></td><td>    /end GROUP</td></tr>
 <tr name="1291" id="1291">
-<td><a id="l1291" class='ln'>1291</a></td><td>        S116_FRAMKMCU</td></tr>
+<td><a id="l1291" class='ln'>1291</a></td><td>    </td></tr>
 <tr name="1292" id="1292">
-<td><a id="l1292" class='ln'>1292</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1292" class='ln'>1292</a></td><td>    /begin GROUP </td></tr>
 <tr name="1293" id="1293">
-<td><a id="l1293" class='ln'>1293</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1293" class='ln'>1293</a></td><td>      /* Name                   */       S3_ABS_Receive</td></tr>
 <tr name="1294" id="1294">
-<td><a id="l1294" class='ln'>1294</a></td><td>    </td></tr>
+<td><a id="l1294" class='ln'>1294</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive"</td></tr>
 <tr name="1295" id="1295">
-<td><a id="l1295" class='ln'>1295</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1295" class='ln'>1295</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1296" id="1296">
-<td><a id="l1296" class='ln'>1296</a></td><td>      /* Name                   */       S3_AccBrk_BUS</td></tr>
+<td><a id="l1296" class='ln'>1296</a></td><td>        S115_ABS_BUS_state</td></tr>
 <tr name="1297" id="1297">
-<td><a id="l1297" class='ln'>1297</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AccBrk_BUS"</td></tr>
+<td><a id="l1297" class='ln'>1297</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1298" id="1298">
-<td><a id="l1298" class='ln'>1298</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1298" class='ln'>1298</a></td><td>    /end GROUP</td></tr>
 <tr name="1299" id="1299">
-<td><a id="l1299" class='ln'>1299</a></td><td>        Acc1</td></tr>
+<td><a id="l1299" class='ln'>1299</a></td><td>    </td></tr>
 <tr name="1300" id="1300">
-<td><a id="l1300" class='ln'>1300</a></td><td>        Acc2</td></tr>
+<td><a id="l1300" class='ln'>1300</a></td><td>    /begin GROUP </td></tr>
 <tr name="1301" id="1301">
-<td><a id="l1301" class='ln'>1301</a></td><td>        Brk1</td></tr>
+<td><a id="l1301" class='ln'>1301</a></td><td>      /* Name                   */       S3_AMKMCU_Receive</td></tr>
 <tr name="1302" id="1302">
-<td><a id="l1302" class='ln'>1302</a></td><td>        Brk2</td></tr>
+<td><a id="l1302" class='ln'>1302</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive"</td></tr>
 <tr name="1303" id="1303">
-<td><a id="l1303" class='ln'>1303</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1303" class='ln'>1303</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1304" id="1304">
-<td><a id="l1304" class='ln'>1304</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1304" class='ln'>1304</a></td><td>        S116_FLAMKMCU</td></tr>
 <tr name="1305" id="1305">
-<td><a id="l1305" class='ln'>1305</a></td><td>    </td></tr>
+<td><a id="l1305" class='ln'>1305</a></td><td>        S116_FRAMKMCU</td></tr>
 <tr name="1306" id="1306">
-<td><a id="l1306" class='ln'>1306</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1306" class='ln'>1306</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1307" id="1307">
-<td><a id="l1307" class='ln'>1307</a></td><td>      /* Name                   */       S3_EMRAXMCU_RECIEVE</td></tr>
+<td><a id="l1307" class='ln'>1307</a></td><td>    /end GROUP</td></tr>
 <tr name="1308" id="1308">
-<td><a id="l1308" class='ln'>1308</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE"</td></tr>
+<td><a id="l1308" class='ln'>1308</a></td><td>    </td></tr>
 <tr name="1309" id="1309">
-<td><a id="l1309" class='ln'>1309</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1309" class='ln'>1309</a></td><td>    /begin GROUP </td></tr>
 <tr name="1310" id="1310">
-<td><a id="l1310" class='ln'>1310</a></td><td>        S119_MCU_pwr</td></tr>
+<td><a id="l1310" class='ln'>1310</a></td><td>      /* Name                   */       S3_AccBrk_BUS</td></tr>
 <tr name="1311" id="1311">
-<td><a id="l1311" class='ln'>1311</a></td><td>        S119_MCU_state</td></tr>
+<td><a id="l1311" class='ln'>1311</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AccBrk_BUS"</td></tr>
 <tr name="1312" id="1312">
-<td><a id="l1312" class='ln'>1312</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1312" class='ln'>1312</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1313" id="1313">
-<td><a id="l1313" class='ln'>1313</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1313" class='ln'>1313</a></td><td>        Acc1</td></tr>
 <tr name="1314" id="1314">
-<td><a id="l1314" class='ln'>1314</a></td><td>    </td></tr>
+<td><a id="l1314" class='ln'>1314</a></td><td>        Acc2</td></tr>
 <tr name="1315" id="1315">
-<td><a id="l1315" class='ln'>1315</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1315" class='ln'>1315</a></td><td>        Brk1</td></tr>
 <tr name="1316" id="1316">
-<td><a id="l1316" class='ln'>1316</a></td><td>      /* Name                   */       S3_IMU_Recieve</td></tr>
+<td><a id="l1316" class='ln'>1316</a></td><td>        Brk2</td></tr>
 <tr name="1317" id="1317">
-<td><a id="l1317" class='ln'>1317</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve"</td></tr>
+<td><a id="l1317" class='ln'>1317</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1318" id="1318">
-<td><a id="l1318" class='ln'>1318</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1318" class='ln'>1318</a></td><td>    /end GROUP</td></tr>
 <tr name="1319" id="1319">
-<td><a id="l1319" class='ln'>1319</a></td><td>        S120_IMU_state</td></tr>
+<td><a id="l1319" class='ln'>1319</a></td><td>    </td></tr>
 <tr name="1320" id="1320">
-<td><a id="l1320" class='ln'>1320</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1320" class='ln'>1320</a></td><td>    /begin GROUP </td></tr>
 <tr name="1321" id="1321">
-<td><a id="l1321" class='ln'>1321</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1321" class='ln'>1321</a></td><td>      /* Name                   */       S3_EMRAXMCU_RECIEVE</td></tr>
 <tr name="1322" id="1322">
-<td><a id="l1322" class='ln'>1322</a></td><td>    </td></tr>
+<td><a id="l1322" class='ln'>1322</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE"</td></tr>
 <tr name="1323" id="1323">
-<td><a id="l1323" class='ln'>1323</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1323" class='ln'>1323</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1324" id="1324">
-<td><a id="l1324" class='ln'>1324</a></td><td>      /* Name                   */       S3_StrSnis_Receive</td></tr>
+<td><a id="l1324" class='ln'>1324</a></td><td>        S119_MCU_pwr</td></tr>
 <tr name="1325" id="1325">
-<td><a id="l1325" class='ln'>1325</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive"</td></tr>
+<td><a id="l1325" class='ln'>1325</a></td><td>        S119_MCU_state</td></tr>
 <tr name="1326" id="1326">
-<td><a id="l1326" class='ln'>1326</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1326" class='ln'>1326</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1327" id="1327">
-<td><a id="l1327" class='ln'>1327</a></td><td>        S121_StrWhSnis_state</td></tr>
+<td><a id="l1327" class='ln'>1327</a></td><td>    /end GROUP</td></tr>
 <tr name="1328" id="1328">
-<td><a id="l1328" class='ln'>1328</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1328" class='ln'>1328</a></td><td>    </td></tr>
 <tr name="1329" id="1329">
-<td><a id="l1329" class='ln'>1329</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1329" class='ln'>1329</a></td><td>    /begin GROUP </td></tr>
 <tr name="1330" id="1330">
-<td><a id="l1330" class='ln'>1330</a></td><td>    </td></tr>
+<td><a id="l1330" class='ln'>1330</a></td><td>      /* Name                   */       S3_IMU_Recieve</td></tr>
 <tr name="1331" id="1331">
-<td><a id="l1331" class='ln'>1331</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1331" class='ln'>1331</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve"</td></tr>
 <tr name="1332" id="1332">
-<td><a id="l1332" class='ln'>1332</a></td><td>      /* Name                   */       S3_key</td></tr>
+<td><a id="l1332" class='ln'>1332</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1333" id="1333">
-<td><a id="l1333" class='ln'>1333</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/key"</td></tr>
+<td><a id="l1333" class='ln'>1333</a></td><td>        S120_IMU_state</td></tr>
 <tr name="1334" id="1334">
-<td><a id="l1334" class='ln'>1334</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1334" class='ln'>1334</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1335" id="1335">
-<td><a id="l1335" class='ln'>1335</a></td><td>        HVCUTOFF</td></tr>
+<td><a id="l1335" class='ln'>1335</a></td><td>    /end GROUP</td></tr>
 <tr name="1336" id="1336">
-<td><a id="l1336" class='ln'>1336</a></td><td>        ignition</td></tr>
+<td><a id="l1336" class='ln'>1336</a></td><td>    </td></tr>
 <tr name="1337" id="1337">
-<td><a id="l1337" class='ln'>1337</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1337" class='ln'>1337</a></td><td>    /begin GROUP </td></tr>
 <tr name="1338" id="1338">
-<td><a id="l1338" class='ln'>1338</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1338" class='ln'>1338</a></td><td>      /* Name                   */       S3_StrSnis_Receive</td></tr>
 <tr name="1339" id="1339">
-<td><a id="l1339" class='ln'>1339</a></td><td>    </td></tr>
+<td><a id="l1339" class='ln'>1339</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive"</td></tr>
 <tr name="1340" id="1340">
-<td><a id="l1340" class='ln'>1340</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1340" class='ln'>1340</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1341" id="1341">
-<td><a id="l1341" class='ln'>1341</a></td><td>      /* Name                   */       S4_Function_Call_Subsystem</td></tr>
+<td><a id="l1341" class='ln'>1341</a></td><td>        S121_StrWhSnis_state</td></tr>
 <tr name="1342" id="1342">
-<td><a id="l1342" class='ln'>1342</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem"</td></tr>
+<td><a id="l1342" class='ln'>1342</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1343" id="1343">
-<td><a id="l1343" class='ln'>1343</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1343" class='ln'>1343</a></td><td>    /end GROUP</td></tr>
 <tr name="1344" id="1344">
-<td><a id="l1344" class='ln'>1344</a></td><td>        S199_AccBrkPedal</td></tr>
+<td><a id="l1344" class='ln'>1344</a></td><td>    </td></tr>
 <tr name="1345" id="1345">
-<td><a id="l1345" class='ln'>1345</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1345" class='ln'>1345</a></td><td>    /begin GROUP </td></tr>
 <tr name="1346" id="1346">
-<td><a id="l1346" class='ln'>1346</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1346" class='ln'>1346</a></td><td>      /* Name                   */       S3_key</td></tr>
 <tr name="1347" id="1347">
-<td><a id="l1347" class='ln'>1347</a></td><td>    </td></tr>
+<td><a id="l1347" class='ln'>1347</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/key"</td></tr>
 <tr name="1348" id="1348">
-<td><a id="l1348" class='ln'>1348</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1348" class='ln'>1348</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1349" id="1349">
-<td><a id="l1349" class='ln'>1349</a></td><td>      /* Name                   */       S5_VCU2EmraxMCU</td></tr>
+<td><a id="l1349" class='ln'>1349</a></td><td>        HVCUTOFF</td></tr>
 <tr name="1350" id="1350">
-<td><a id="l1350" class='ln'>1350</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU"</td></tr>
+<td><a id="l1350" class='ln'>1350</a></td><td>        ignition</td></tr>
 <tr name="1351" id="1351">
-<td><a id="l1351" class='ln'>1351</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1351" class='ln'>1351</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1352" id="1352">
-<td><a id="l1352" class='ln'>1352</a></td><td>        Gear_Trs</td></tr>
+<td><a id="l1352" class='ln'>1352</a></td><td>    /end GROUP</td></tr>
 <tr name="1353" id="1353">
-<td><a id="l1353" class='ln'>1353</a></td><td>        Mode_Trs</td></tr>
+<td><a id="l1353" class='ln'>1353</a></td><td>    </td></tr>
 <tr name="1354" id="1354">
-<td><a id="l1354" class='ln'>1354</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1354" class='ln'>1354</a></td><td>    /begin GROUP </td></tr>
 <tr name="1355" id="1355">
-<td><a id="l1355" class='ln'>1355</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1355" class='ln'>1355</a></td><td>      /* Name                   */       S4_Function_Call_Subsystem</td></tr>
 <tr name="1356" id="1356">
-<td><a id="l1356" class='ln'>1356</a></td><td>    </td></tr>
+<td><a id="l1356" class='ln'>1356</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem"</td></tr>
 <tr name="1357" id="1357">
-<td><a id="l1357" class='ln'>1357</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1357" class='ln'>1357</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1358" id="1358">
-<td><a id="l1358" class='ln'>1358</a></td><td>      /* Name                   */       S115_ABS_BUS_state</td></tr>
+<td><a id="l1358" class='ln'>1358</a></td><td>        S199_AccBrkPedal</td></tr>
 <tr name="1359" id="1359">
-<td><a id="l1359" class='ln'>1359</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive/ABS_BUS_state"</td></tr>
+<td><a id="l1359" class='ln'>1359</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1360" id="1360">
-<td><a id="l1360" class='ln'>1360</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1360" class='ln'>1360</a></td><td>    /end GROUP</td></tr>
 <tr name="1361" id="1361">
-<td><a id="l1361" class='ln'>1361</a></td><td>        S123_IMU_state</td></tr>
+<td><a id="l1361" class='ln'>1361</a></td><td>    </td></tr>
 <tr name="1362" id="1362">
-<td><a id="l1362" class='ln'>1362</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1362" class='ln'>1362</a></td><td>    /begin GROUP </td></tr>
 <tr name="1363" id="1363">
-<td><a id="l1363" class='ln'>1363</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1363" class='ln'>1363</a></td><td>      /* Name                   */       S4_Subsystem</td></tr>
 <tr name="1364" id="1364">
-<td><a id="l1364" class='ln'>1364</a></td><td>    </td></tr>
+<td><a id="l1364" class='ln'>1364</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem"</td></tr>
 <tr name="1365" id="1365">
-<td><a id="l1365" class='ln'>1365</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1365" class='ln'>1365</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1366" id="1366">
-<td><a id="l1366" class='ln'>1366</a></td><td>      /* Name                   */       S116_FLAMKMCU</td></tr>
+<td><a id="l1366" class='ln'>1366</a></td><td>        S200_WhlSpdSelect</td></tr>
 <tr name="1367" id="1367">
-<td><a id="l1367" class='ln'>1367</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU"</td></tr>
+<td><a id="l1367" class='ln'>1367</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1368" id="1368">
-<td><a id="l1368" class='ln'>1368</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1368" class='ln'>1368</a></td><td>    /end GROUP</td></tr>
 <tr name="1369" id="1369">
-<td><a id="l1369" class='ln'>1369</a></td><td>        S129_AMKMCU_state</td></tr>
+<td><a id="l1369" class='ln'>1369</a></td><td>    </td></tr>
 <tr name="1370" id="1370">
-<td><a id="l1370" class='ln'>1370</a></td><td>        S129_AMKMCU_state1</td></tr>
+<td><a id="l1370" class='ln'>1370</a></td><td>    /begin GROUP </td></tr>
 <tr name="1371" id="1371">
-<td><a id="l1371" class='ln'>1371</a></td><td>        S129_AMKMCU_state2</td></tr>
+<td><a id="l1371" class='ln'>1371</a></td><td>      /* Name                   */       S5_VCU2EmraxMCU</td></tr>
 <tr name="1372" id="1372">
-<td><a id="l1372" class='ln'>1372</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1372" class='ln'>1372</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU"</td></tr>
 <tr name="1373" id="1373">
-<td><a id="l1373" class='ln'>1373</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1373" class='ln'>1373</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1374" id="1374">
-<td><a id="l1374" class='ln'>1374</a></td><td>    </td></tr>
+<td><a id="l1374" class='ln'>1374</a></td><td>        Gear_Trs</td></tr>
 <tr name="1375" id="1375">
-<td><a id="l1375" class='ln'>1375</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1375" class='ln'>1375</a></td><td>        Mode_Trs</td></tr>
 <tr name="1376" id="1376">
-<td><a id="l1376" class='ln'>1376</a></td><td>      /* Name                   */       S116_FRAMKMCU</td></tr>
+<td><a id="l1376" class='ln'>1376</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1377" id="1377">
-<td><a id="l1377" class='ln'>1377</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU"</td></tr>
+<td><a id="l1377" class='ln'>1377</a></td><td>    /end GROUP</td></tr>
 <tr name="1378" id="1378">
-<td><a id="l1378" class='ln'>1378</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1378" class='ln'>1378</a></td><td>    </td></tr>
 <tr name="1379" id="1379">
-<td><a id="l1379" class='ln'>1379</a></td><td>        S130_AMKMCU_state</td></tr>
+<td><a id="l1379" class='ln'>1379</a></td><td>    /begin GROUP </td></tr>
 <tr name="1380" id="1380">
-<td><a id="l1380" class='ln'>1380</a></td><td>        S130_AMKMCU_state1</td></tr>
+<td><a id="l1380" class='ln'>1380</a></td><td>      /* Name                   */       S115_ABS_BUS_state</td></tr>
 <tr name="1381" id="1381">
-<td><a id="l1381" class='ln'>1381</a></td><td>        S130_AMKMCU_state2</td></tr>
+<td><a id="l1381" class='ln'>1381</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive/ABS_BUS_state"</td></tr>
 <tr name="1382" id="1382">
-<td><a id="l1382" class='ln'>1382</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1382" class='ln'>1382</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1383" id="1383">
-<td><a id="l1383" class='ln'>1383</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1383" class='ln'>1383</a></td><td>        S123_IMU_state</td></tr>
 <tr name="1384" id="1384">
-<td><a id="l1384" class='ln'>1384</a></td><td>    </td></tr>
+<td><a id="l1384" class='ln'>1384</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1385" id="1385">
-<td><a id="l1385" class='ln'>1385</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1385" class='ln'>1385</a></td><td>    /end GROUP</td></tr>
 <tr name="1386" id="1386">
-<td><a id="l1386" class='ln'>1386</a></td><td>      /* Name                   */       S119_MCU_pwr</td></tr>
+<td><a id="l1386" class='ln'>1386</a></td><td>    </td></tr>
 <tr name="1387" id="1387">
-<td><a id="l1387" class='ln'>1387</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_pwr"</td></tr>
+<td><a id="l1387" class='ln'>1387</a></td><td>    /begin GROUP </td></tr>
 <tr name="1388" id="1388">
-<td><a id="l1388" class='ln'>1388</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1388" class='ln'>1388</a></td><td>      /* Name                   */       S116_FLAMKMCU</td></tr>
 <tr name="1389" id="1389">
-<td><a id="l1389" class='ln'>1389</a></td><td>        S172_MCU_VCUMeter1</td></tr>
+<td><a id="l1389" class='ln'>1389</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU"</td></tr>
 <tr name="1390" id="1390">
-<td><a id="l1390" class='ln'>1390</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1390" class='ln'>1390</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1391" id="1391">
-<td><a id="l1391" class='ln'>1391</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1391" class='ln'>1391</a></td><td>        S129_AMKMCU_state</td></tr>
 <tr name="1392" id="1392">
-<td><a id="l1392" class='ln'>1392</a></td><td>    </td></tr>
+<td><a id="l1392" class='ln'>1392</a></td><td>        S129_AMKMCU_state1</td></tr>
 <tr name="1393" id="1393">
-<td><a id="l1393" class='ln'>1393</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1393" class='ln'>1393</a></td><td>        S129_AMKMCU_state2</td></tr>
 <tr name="1394" id="1394">
-<td><a id="l1394" class='ln'>1394</a></td><td>      /* Name                   */       S119_MCU_state</td></tr>
+<td><a id="l1394" class='ln'>1394</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1395" id="1395">
-<td><a id="l1395" class='ln'>1395</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_state"</td></tr>
+<td><a id="l1395" class='ln'>1395</a></td><td>    /end GROUP</td></tr>
 <tr name="1396" id="1396">
-<td><a id="l1396" class='ln'>1396</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1396" class='ln'>1396</a></td><td>    </td></tr>
 <tr name="1397" id="1397">
-<td><a id="l1397" class='ln'>1397</a></td><td>        S173_MCU_state</td></tr>
+<td><a id="l1397" class='ln'>1397</a></td><td>    /begin GROUP </td></tr>
 <tr name="1398" id="1398">
-<td><a id="l1398" class='ln'>1398</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1398" class='ln'>1398</a></td><td>      /* Name                   */       S116_FRAMKMCU</td></tr>
 <tr name="1399" id="1399">
-<td><a id="l1399" class='ln'>1399</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1399" class='ln'>1399</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU"</td></tr>
 <tr name="1400" id="1400">
-<td><a id="l1400" class='ln'>1400</a></td><td>    </td></tr>
+<td><a id="l1400" class='ln'>1400</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1401" id="1401">
-<td><a id="l1401" class='ln'>1401</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1401" class='ln'>1401</a></td><td>        S130_AMKMCU_state</td></tr>
 <tr name="1402" id="1402">
-<td><a id="l1402" class='ln'>1402</a></td><td>      /* Name                   */       S120_IMU_state</td></tr>
+<td><a id="l1402" class='ln'>1402</a></td><td>        S130_AMKMCU_state1</td></tr>
 <tr name="1403" id="1403">
-<td><a id="l1403" class='ln'>1403</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve/IMU_state"</td></tr>
+<td><a id="l1403" class='ln'>1403</a></td><td>        S130_AMKMCU_state2</td></tr>
 <tr name="1404" id="1404">
-<td><a id="l1404" class='ln'>1404</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1404" class='ln'>1404</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1405" id="1405">
-<td><a id="l1405" class='ln'>1405</a></td><td>        S186_MCU_state</td></tr>
+<td><a id="l1405" class='ln'>1405</a></td><td>    /end GROUP</td></tr>
 <tr name="1406" id="1406">
-<td><a id="l1406" class='ln'>1406</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1406" class='ln'>1406</a></td><td>    </td></tr>
 <tr name="1407" id="1407">
-<td><a id="l1407" class='ln'>1407</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1407" class='ln'>1407</a></td><td>    /begin GROUP </td></tr>
 <tr name="1408" id="1408">
-<td><a id="l1408" class='ln'>1408</a></td><td>    </td></tr>
+<td><a id="l1408" class='ln'>1408</a></td><td>      /* Name                   */       S119_MCU_pwr</td></tr>
 <tr name="1409" id="1409">
-<td><a id="l1409" class='ln'>1409</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1409" class='ln'>1409</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_pwr"</td></tr>
 <tr name="1410" id="1410">
-<td><a id="l1410" class='ln'>1410</a></td><td>      /* Name                   */       S121_StrWhSnis_state</td></tr>
+<td><a id="l1410" class='ln'>1410</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1411" id="1411">
-<td><a id="l1411" class='ln'>1411</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive/StrWhSnis_state"</td></tr>
+<td><a id="l1411" class='ln'>1411</a></td><td>        S172_MCU_VCUMeter1</td></tr>
 <tr name="1412" id="1412">
-<td><a id="l1412" class='ln'>1412</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1412" class='ln'>1412</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1413" id="1413">
-<td><a id="l1413" class='ln'>1413</a></td><td>        S191_IMU_state</td></tr>
+<td><a id="l1413" class='ln'>1413</a></td><td>    /end GROUP</td></tr>
 <tr name="1414" id="1414">
-<td><a id="l1414" class='ln'>1414</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1414" class='ln'>1414</a></td><td>    </td></tr>
 <tr name="1415" id="1415">
-<td><a id="l1415" class='ln'>1415</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1415" class='ln'>1415</a></td><td>    /begin GROUP </td></tr>
 <tr name="1416" id="1416">
-<td><a id="l1416" class='ln'>1416</a></td><td>    </td></tr>
+<td><a id="l1416" class='ln'>1416</a></td><td>      /* Name                   */       S119_MCU_state</td></tr>
 <tr name="1417" id="1417">
-<td><a id="l1417" class='ln'>1417</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1417" class='ln'>1417</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_state"</td></tr>
 <tr name="1418" id="1418">
-<td><a id="l1418" class='ln'>1418</a></td><td>      /* Name                   */       S199_AccBrkPedal</td></tr>
+<td><a id="l1418" class='ln'>1418</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1419" id="1419">
-<td><a id="l1419" class='ln'>1419</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem/AccBrkPedal"</td></tr>
+<td><a id="l1419" class='ln'>1419</a></td><td>        S173_MCU_state</td></tr>
 <tr name="1420" id="1420">
-<td><a id="l1420" class='ln'>1420</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1420" class='ln'>1420</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1421" id="1421">
-<td><a id="l1421" class='ln'>1421</a></td><td>        Acc_POS</td></tr>
+<td><a id="l1421" class='ln'>1421</a></td><td>    /end GROUP</td></tr>
 <tr name="1422" id="1422">
-<td><a id="l1422" class='ln'>1422</a></td><td>        Acc_POS2</td></tr>
+<td><a id="l1422" class='ln'>1422</a></td><td>    </td></tr>
 <tr name="1423" id="1423">
-<td><a id="l1423" class='ln'>1423</a></td><td>        Acc_vol</td></tr>
+<td><a id="l1423" class='ln'>1423</a></td><td>    /begin GROUP </td></tr>
 <tr name="1424" id="1424">
-<td><a id="l1424" class='ln'>1424</a></td><td>        Acc_vol2</td></tr>
+<td><a id="l1424" class='ln'>1424</a></td><td>      /* Name                   */       S120_IMU_state</td></tr>
 <tr name="1425" id="1425">
-<td><a id="l1425" class='ln'>1425</a></td><td>        F_BrkPrs</td></tr>
+<td><a id="l1425" class='ln'>1425</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve/IMU_state"</td></tr>
 <tr name="1426" id="1426">
-<td><a id="l1426" class='ln'>1426</a></td><td>        Trq_CUT</td></tr>
+<td><a id="l1426" class='ln'>1426</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1427" id="1427">
-<td><a id="l1427" class='ln'>1427</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1427" class='ln'>1427</a></td><td>        S186_MCU_state</td></tr>
 <tr name="1428" id="1428">
-<td><a id="l1428" class='ln'>1428</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1428" class='ln'>1428</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1429" id="1429">
-<td><a id="l1429" class='ln'>1429</a></td><td>    </td></tr>
+<td><a id="l1429" class='ln'>1429</a></td><td>    /end GROUP</td></tr>
 <tr name="1430" id="1430">
-<td><a id="l1430" class='ln'>1430</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1430" class='ln'>1430</a></td><td>    </td></tr>
 <tr name="1431" id="1431">
-<td><a id="l1431" class='ln'>1431</a></td><td>      /* Name                   */       S123_IMU_state</td></tr>
+<td><a id="l1431" class='ln'>1431</a></td><td>    /begin GROUP </td></tr>
 <tr name="1432" id="1432">
-<td><a id="l1432" class='ln'>1432</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive/ABS_BUS_state/IMU_state"</td></tr>
+<td><a id="l1432" class='ln'>1432</a></td><td>      /* Name                   */       S121_StrWhSnis_state</td></tr>
 <tr name="1433" id="1433">
-<td><a id="l1433" class='ln'>1433</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1433" class='ln'>1433</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive/StrWhSnis_state"</td></tr>
 <tr name="1434" id="1434">
-<td><a id="l1434" class='ln'>1434</a></td><td>        ABS_WS_FL</td></tr>
+<td><a id="l1434" class='ln'>1434</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1435" id="1435">
-<td><a id="l1435" class='ln'>1435</a></td><td>        ABS_WS_FR</td></tr>
+<td><a id="l1435" class='ln'>1435</a></td><td>        S191_IMU_state</td></tr>
 <tr name="1436" id="1436">
-<td><a id="l1436" class='ln'>1436</a></td><td>        ABS_WS_RL</td></tr>
+<td><a id="l1436" class='ln'>1436</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1437" id="1437">
-<td><a id="l1437" class='ln'>1437</a></td><td>        ABS_WS_RR</td></tr>
+<td><a id="l1437" class='ln'>1437</a></td><td>    /end GROUP</td></tr>
 <tr name="1438" id="1438">
-<td><a id="l1438" class='ln'>1438</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1438" class='ln'>1438</a></td><td>    </td></tr>
 <tr name="1439" id="1439">
-<td><a id="l1439" class='ln'>1439</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1439" class='ln'>1439</a></td><td>    /begin GROUP </td></tr>
 <tr name="1440" id="1440">
-<td><a id="l1440" class='ln'>1440</a></td><td>    </td></tr>
+<td><a id="l1440" class='ln'>1440</a></td><td>      /* Name                   */       S199_AccBrkPedal</td></tr>
 <tr name="1441" id="1441">
-<td><a id="l1441" class='ln'>1441</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1441" class='ln'>1441</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem/AccBrkPedal"</td></tr>
 <tr name="1442" id="1442">
-<td><a id="l1442" class='ln'>1442</a></td><td>      /* Name                   */       S129_AMKMCU_state</td></tr>
+<td><a id="l1442" class='ln'>1442</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1443" id="1443">
-<td><a id="l1443" class='ln'>1443</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state"</td></tr>
+<td><a id="l1443" class='ln'>1443</a></td><td>        Acc_POS</td></tr>
 <tr name="1444" id="1444">
-<td><a id="l1444" class='ln'>1444</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1444" class='ln'>1444</a></td><td>        Acc_POS2</td></tr>
 <tr name="1445" id="1445">
-<td><a id="l1445" class='ln'>1445</a></td><td>        S131_MCU_state</td></tr>
+<td><a id="l1445" class='ln'>1445</a></td><td>        Acc_vol</td></tr>
 <tr name="1446" id="1446">
-<td><a id="l1446" class='ln'>1446</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1446" class='ln'>1446</a></td><td>        Acc_vol2</td></tr>
 <tr name="1447" id="1447">
-<td><a id="l1447" class='ln'>1447</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1447" class='ln'>1447</a></td><td>        F_BrkPrs</td></tr>
 <tr name="1448" id="1448">
-<td><a id="l1448" class='ln'>1448</a></td><td>    </td></tr>
+<td><a id="l1448" class='ln'>1448</a></td><td>        Trq_CUT</td></tr>
 <tr name="1449" id="1449">
-<td><a id="l1449" class='ln'>1449</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1449" class='ln'>1449</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1450" id="1450">
-<td><a id="l1450" class='ln'>1450</a></td><td>      /* Name                   */       S129_AMKMCU_state1</td></tr>
+<td><a id="l1450" class='ln'>1450</a></td><td>    /end GROUP</td></tr>
 <tr name="1451" id="1451">
-<td><a id="l1451" class='ln'>1451</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1"</td></tr>
+<td><a id="l1451" class='ln'>1451</a></td><td>    </td></tr>
 <tr name="1452" id="1452">
-<td><a id="l1452" class='ln'>1452</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1452" class='ln'>1452</a></td><td>    /begin GROUP </td></tr>
 <tr name="1453" id="1453">
-<td><a id="l1453" class='ln'>1453</a></td><td>        S132_MCU_state</td></tr>
+<td><a id="l1453" class='ln'>1453</a></td><td>      /* Name                   */       S200_WhlSpdSelect</td></tr>
 <tr name="1454" id="1454">
-<td><a id="l1454" class='ln'>1454</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1454" class='ln'>1454</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect"</td></tr>
 <tr name="1455" id="1455">
-<td><a id="l1455" class='ln'>1455</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1455" class='ln'>1455</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1456" id="1456">
-<td><a id="l1456" class='ln'>1456</a></td><td>    </td></tr>
+<td><a id="l1456" class='ln'>1456</a></td><td>        S264_Filter</td></tr>
 <tr name="1457" id="1457">
-<td><a id="l1457" class='ln'>1457</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1457" class='ln'>1457</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1458" id="1458">
-<td><a id="l1458" class='ln'>1458</a></td><td>      /* Name                   */       S129_AMKMCU_state2</td></tr>
+<td><a id="l1458" class='ln'>1458</a></td><td>    /end GROUP</td></tr>
 <tr name="1459" id="1459">
-<td><a id="l1459" class='ln'>1459</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2"</td></tr>
+<td><a id="l1459" class='ln'>1459</a></td><td>    </td></tr>
 <tr name="1460" id="1460">
-<td><a id="l1460" class='ln'>1460</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1460" class='ln'>1460</a></td><td>    /begin GROUP </td></tr>
 <tr name="1461" id="1461">
-<td><a id="l1461" class='ln'>1461</a></td><td>        S133_MCU_state</td></tr>
+<td><a id="l1461" class='ln'>1461</a></td><td>      /* Name                   */       S123_IMU_state</td></tr>
 <tr name="1462" id="1462">
-<td><a id="l1462" class='ln'>1462</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1462" class='ln'>1462</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive/ABS_BUS_state/IMU_state"</td></tr>
 <tr name="1463" id="1463">
-<td><a id="l1463" class='ln'>1463</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1463" class='ln'>1463</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1464" id="1464">
-<td><a id="l1464" class='ln'>1464</a></td><td>    </td></tr>
+<td><a id="l1464" class='ln'>1464</a></td><td>        ABS_WS_FL</td></tr>
 <tr name="1465" id="1465">
-<td><a id="l1465" class='ln'>1465</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1465" class='ln'>1465</a></td><td>        ABS_WS_FR</td></tr>
 <tr name="1466" id="1466">
-<td><a id="l1466" class='ln'>1466</a></td><td>      /* Name                   */       S130_AMKMCU_state</td></tr>
+<td><a id="l1466" class='ln'>1466</a></td><td>        ABS_WS_RL</td></tr>
 <tr name="1467" id="1467">
-<td><a id="l1467" class='ln'>1467</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state"</td></tr>
+<td><a id="l1467" class='ln'>1467</a></td><td>        ABS_WS_RR</td></tr>
 <tr name="1468" id="1468">
-<td><a id="l1468" class='ln'>1468</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1468" class='ln'>1468</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1469" id="1469">
-<td><a id="l1469" class='ln'>1469</a></td><td>        S149_MCU_state</td></tr>
+<td><a id="l1469" class='ln'>1469</a></td><td>    /end GROUP</td></tr>
 <tr name="1470" id="1470">
-<td><a id="l1470" class='ln'>1470</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1470" class='ln'>1470</a></td><td>    </td></tr>
 <tr name="1471" id="1471">
-<td><a id="l1471" class='ln'>1471</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1471" class='ln'>1471</a></td><td>    /begin GROUP </td></tr>
 <tr name="1472" id="1472">
-<td><a id="l1472" class='ln'>1472</a></td><td>    </td></tr>
+<td><a id="l1472" class='ln'>1472</a></td><td>      /* Name                   */       S129_AMKMCU_state</td></tr>
 <tr name="1473" id="1473">
-<td><a id="l1473" class='ln'>1473</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1473" class='ln'>1473</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state"</td></tr>
 <tr name="1474" id="1474">
-<td><a id="l1474" class='ln'>1474</a></td><td>      /* Name                   */       S130_AMKMCU_state1</td></tr>
+<td><a id="l1474" class='ln'>1474</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1475" id="1475">
-<td><a id="l1475" class='ln'>1475</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1"</td></tr>
+<td><a id="l1475" class='ln'>1475</a></td><td>        S131_MCU_state</td></tr>
 <tr name="1476" id="1476">
-<td><a id="l1476" class='ln'>1476</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1476" class='ln'>1476</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1477" id="1477">
-<td><a id="l1477" class='ln'>1477</a></td><td>        S150_MCU_state</td></tr>
+<td><a id="l1477" class='ln'>1477</a></td><td>    /end GROUP</td></tr>
 <tr name="1478" id="1478">
-<td><a id="l1478" class='ln'>1478</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1478" class='ln'>1478</a></td><td>    </td></tr>
 <tr name="1479" id="1479">
-<td><a id="l1479" class='ln'>1479</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1479" class='ln'>1479</a></td><td>    /begin GROUP </td></tr>
 <tr name="1480" id="1480">
-<td><a id="l1480" class='ln'>1480</a></td><td>    </td></tr>
+<td><a id="l1480" class='ln'>1480</a></td><td>      /* Name                   */       S129_AMKMCU_state1</td></tr>
 <tr name="1481" id="1481">
-<td><a id="l1481" class='ln'>1481</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1481" class='ln'>1481</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1"</td></tr>
 <tr name="1482" id="1482">
-<td><a id="l1482" class='ln'>1482</a></td><td>      /* Name                   */       S130_AMKMCU_state2</td></tr>
+<td><a id="l1482" class='ln'>1482</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1483" id="1483">
-<td><a id="l1483" class='ln'>1483</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2"</td></tr>
+<td><a id="l1483" class='ln'>1483</a></td><td>        S132_MCU_state</td></tr>
 <tr name="1484" id="1484">
-<td><a id="l1484" class='ln'>1484</a></td><td>      /begin SUB_GROUP</td></tr>
+<td><a id="l1484" class='ln'>1484</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1485" id="1485">
-<td><a id="l1485" class='ln'>1485</a></td><td>        S151_MCU_state</td></tr>
+<td><a id="l1485" class='ln'>1485</a></td><td>    /end GROUP</td></tr>
 <tr name="1486" id="1486">
-<td><a id="l1486" class='ln'>1486</a></td><td>      /end SUB_GROUP</td></tr>
+<td><a id="l1486" class='ln'>1486</a></td><td>    </td></tr>
 <tr name="1487" id="1487">
-<td><a id="l1487" class='ln'>1487</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1487" class='ln'>1487</a></td><td>    /begin GROUP </td></tr>
 <tr name="1488" id="1488">
-<td><a id="l1488" class='ln'>1488</a></td><td>    </td></tr>
+<td><a id="l1488" class='ln'>1488</a></td><td>      /* Name                   */       S129_AMKMCU_state2</td></tr>
 <tr name="1489" id="1489">
-<td><a id="l1489" class='ln'>1489</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1489" class='ln'>1489</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2"</td></tr>
 <tr name="1490" id="1490">
-<td><a id="l1490" class='ln'>1490</a></td><td>      /* Name                   */       S172_MCU_VCUMeter1</td></tr>
+<td><a id="l1490" class='ln'>1490</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1491" id="1491">
-<td><a id="l1491" class='ln'>1491</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_pwr/MCU_VCUMeter1"</td></tr>
+<td><a id="l1491" class='ln'>1491</a></td><td>        S133_MCU_state</td></tr>
 <tr name="1492" id="1492">
-<td><a id="l1492" class='ln'>1492</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1492" class='ln'>1492</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1493" id="1493">
-<td><a id="l1493" class='ln'>1493</a></td><td>        AC_current</td></tr>
+<td><a id="l1493" class='ln'>1493</a></td><td>    /end GROUP</td></tr>
 <tr name="1494" id="1494">
-<td><a id="l1494" class='ln'>1494</a></td><td>        DC_current</td></tr>
+<td><a id="l1494" class='ln'>1494</a></td><td>    </td></tr>
 <tr name="1495" id="1495">
-<td><a id="l1495" class='ln'>1495</a></td><td>        MCU_Temp</td></tr>
+<td><a id="l1495" class='ln'>1495</a></td><td>    /begin GROUP </td></tr>
 <tr name="1496" id="1496">
-<td><a id="l1496" class='ln'>1496</a></td><td>        motor_Temp</td></tr>
+<td><a id="l1496" class='ln'>1496</a></td><td>      /* Name                   */       S130_AMKMCU_state</td></tr>
 <tr name="1497" id="1497">
-<td><a id="l1497" class='ln'>1497</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1497" class='ln'>1497</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state"</td></tr>
 <tr name="1498" id="1498">
-<td><a id="l1498" class='ln'>1498</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1498" class='ln'>1498</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1499" id="1499">
-<td><a id="l1499" class='ln'>1499</a></td><td>    </td></tr>
+<td><a id="l1499" class='ln'>1499</a></td><td>        S149_MCU_state</td></tr>
 <tr name="1500" id="1500">
-<td><a id="l1500" class='ln'>1500</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1500" class='ln'>1500</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1501" id="1501">
-<td><a id="l1501" class='ln'>1501</a></td><td>      /* Name                   */       S173_MCU_state</td></tr>
+<td><a id="l1501" class='ln'>1501</a></td><td>    /end GROUP</td></tr>
 <tr name="1502" id="1502">
-<td><a id="l1502" class='ln'>1502</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_state/MCU_state"</td></tr>
+<td><a id="l1502" class='ln'>1502</a></td><td>    </td></tr>
 <tr name="1503" id="1503">
-<td><a id="l1503" class='ln'>1503</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1503" class='ln'>1503</a></td><td>    /begin GROUP </td></tr>
 <tr name="1504" id="1504">
-<td><a id="l1504" class='ln'>1504</a></td><td>        L12V_error</td></tr>
+<td><a id="l1504" class='ln'>1504</a></td><td>      /* Name                   */       S130_AMKMCU_state1</td></tr>
 <tr name="1505" id="1505">
-<td><a id="l1505" class='ln'>1505</a></td><td>        RPM</td></tr>
+<td><a id="l1505" class='ln'>1505</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1"</td></tr>
 <tr name="1506" id="1506">
-<td><a id="l1506" class='ln'>1506</a></td><td>        alarm</td></tr>
+<td><a id="l1506" class='ln'>1506</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1507" id="1507">
-<td><a id="l1507" class='ln'>1507</a></td><td>        controller_ready</td></tr>
+<td><a id="l1507" class='ln'>1507</a></td><td>        S150_MCU_state</td></tr>
 <tr name="1508" id="1508">
-<td><a id="l1508" class='ln'>1508</a></td><td>        selfcheck</td></tr>
+<td><a id="l1508" class='ln'>1508</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1509" id="1509">
-<td><a id="l1509" class='ln'>1509</a></td><td>        trq</td></tr>
+<td><a id="l1509" class='ln'>1509</a></td><td>    /end GROUP</td></tr>
 <tr name="1510" id="1510">
-<td><a id="l1510" class='ln'>1510</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1510" class='ln'>1510</a></td><td>    </td></tr>
 <tr name="1511" id="1511">
-<td><a id="l1511" class='ln'>1511</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1511" class='ln'>1511</a></td><td>    /begin GROUP </td></tr>
 <tr name="1512" id="1512">
-<td><a id="l1512" class='ln'>1512</a></td><td>    </td></tr>
+<td><a id="l1512" class='ln'>1512</a></td><td>      /* Name                   */       S130_AMKMCU_state2</td></tr>
 <tr name="1513" id="1513">
-<td><a id="l1513" class='ln'>1513</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1513" class='ln'>1513</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2"</td></tr>
 <tr name="1514" id="1514">
-<td><a id="l1514" class='ln'>1514</a></td><td>      /* Name                   */       S186_MCU_state</td></tr>
+<td><a id="l1514" class='ln'>1514</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1515" id="1515">
-<td><a id="l1515" class='ln'>1515</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve/IMU_state/MCU_state"</td></tr>
+<td><a id="l1515" class='ln'>1515</a></td><td>        S151_MCU_state</td></tr>
 <tr name="1516" id="1516">
-<td><a id="l1516" class='ln'>1516</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1516" class='ln'>1516</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1517" id="1517">
-<td><a id="l1517" class='ln'>1517</a></td><td>        IMU_Ax_Value</td></tr>
+<td><a id="l1517" class='ln'>1517</a></td><td>    /end GROUP</td></tr>
 <tr name="1518" id="1518">
-<td><a id="l1518" class='ln'>1518</a></td><td>        IMU_Ay_Value</td></tr>
+<td><a id="l1518" class='ln'>1518</a></td><td>    </td></tr>
 <tr name="1519" id="1519">
-<td><a id="l1519" class='ln'>1519</a></td><td>        IMU_Yaw_Value</td></tr>
+<td><a id="l1519" class='ln'>1519</a></td><td>    /begin GROUP </td></tr>
 <tr name="1520" id="1520">
-<td><a id="l1520" class='ln'>1520</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1520" class='ln'>1520</a></td><td>      /* Name                   */       S172_MCU_VCUMeter1</td></tr>
 <tr name="1521" id="1521">
-<td><a id="l1521" class='ln'>1521</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1521" class='ln'>1521</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_pwr/MCU_VCUMeter1"</td></tr>
 <tr name="1522" id="1522">
-<td><a id="l1522" class='ln'>1522</a></td><td>    </td></tr>
+<td><a id="l1522" class='ln'>1522</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1523" id="1523">
-<td><a id="l1523" class='ln'>1523</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1523" class='ln'>1523</a></td><td>        AC_current</td></tr>
 <tr name="1524" id="1524">
-<td><a id="l1524" class='ln'>1524</a></td><td>      /* Name                   */       S191_IMU_state</td></tr>
+<td><a id="l1524" class='ln'>1524</a></td><td>        DC_current</td></tr>
 <tr name="1525" id="1525">
-<td><a id="l1525" class='ln'>1525</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive/StrWhSnis_state/IMU_state"</td></tr>
+<td><a id="l1525" class='ln'>1525</a></td><td>        MCU_Temp</td></tr>
 <tr name="1526" id="1526">
-<td><a id="l1526" class='ln'>1526</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1526" class='ln'>1526</a></td><td>        motor_Temp</td></tr>
 <tr name="1527" id="1527">
-<td><a id="l1527" class='ln'>1527</a></td><td>        StrWhlAng</td></tr>
+<td><a id="l1527" class='ln'>1527</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1528" id="1528">
-<td><a id="l1528" class='ln'>1528</a></td><td>        StrWhlAngAliveRollCnt</td></tr>
+<td><a id="l1528" class='ln'>1528</a></td><td>    /end GROUP</td></tr>
 <tr name="1529" id="1529">
-<td><a id="l1529" class='ln'>1529</a></td><td>        StrWhlAngV</td></tr>
+<td><a id="l1529" class='ln'>1529</a></td><td>    </td></tr>
 <tr name="1530" id="1530">
-<td><a id="l1530" class='ln'>1530</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1530" class='ln'>1530</a></td><td>    /begin GROUP </td></tr>
 <tr name="1531" id="1531">
-<td><a id="l1531" class='ln'>1531</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1531" class='ln'>1531</a></td><td>      /* Name                   */       S173_MCU_state</td></tr>
 <tr name="1532" id="1532">
-<td><a id="l1532" class='ln'>1532</a></td><td>    </td></tr>
+<td><a id="l1532" class='ln'>1532</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_state/MCU_state"</td></tr>
 <tr name="1533" id="1533">
-<td><a id="l1533" class='ln'>1533</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1533" class='ln'>1533</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1534" id="1534">
-<td><a id="l1534" class='ln'>1534</a></td><td>      /* Name                   */       S131_MCU_state</td></tr>
+<td><a id="l1534" class='ln'>1534</a></td><td>        L12V_error</td></tr>
 <tr name="1535" id="1535">
-<td><a id="l1535" class='ln'>1535</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state/MCU_state"</td></tr>
+<td><a id="l1535" class='ln'>1535</a></td><td>        RPM</td></tr>
 <tr name="1536" id="1536">
-<td><a id="l1536" class='ln'>1536</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1536" class='ln'>1536</a></td><td>        alarm</td></tr>
 <tr name="1537" id="1537">
-<td><a id="l1537" class='ln'>1537</a></td><td>        MCFL_ActualVelocity</td></tr>
+<td><a id="l1537" class='ln'>1537</a></td><td>        controller_ready</td></tr>
 <tr name="1538" id="1538">
-<td><a id="l1538" class='ln'>1538</a></td><td>        MCFL_DCVoltage</td></tr>
+<td><a id="l1538" class='ln'>1538</a></td><td>        selfcheck</td></tr>
 <tr name="1539" id="1539">
-<td><a id="l1539" class='ln'>1539</a></td><td>        MCFL_bDCOn</td></tr>
+<td><a id="l1539" class='ln'>1539</a></td><td>        trq</td></tr>
 <tr name="1540" id="1540">
-<td><a id="l1540" class='ln'>1540</a></td><td>        MCFL_bError</td></tr>
+<td><a id="l1540" class='ln'>1540</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1541" id="1541">
-<td><a id="l1541" class='ln'>1541</a></td><td>        MCFL_bInverterOn</td></tr>
+<td><a id="l1541" class='ln'>1541</a></td><td>    /end GROUP</td></tr>
 <tr name="1542" id="1542">
-<td><a id="l1542" class='ln'>1542</a></td><td>        MCFL_bQuitDCOn</td></tr>
+<td><a id="l1542" class='ln'>1542</a></td><td>    </td></tr>
 <tr name="1543" id="1543">
-<td><a id="l1543" class='ln'>1543</a></td><td>        MCFL_bQuitInverterOn</td></tr>
+<td><a id="l1543" class='ln'>1543</a></td><td>    /begin GROUP </td></tr>
 <tr name="1544" id="1544">
-<td><a id="l1544" class='ln'>1544</a></td><td>        MCFL_bSystemReady</td></tr>
+<td><a id="l1544" class='ln'>1544</a></td><td>      /* Name                   */       S186_MCU_state</td></tr>
 <tr name="1545" id="1545">
-<td><a id="l1545" class='ln'>1545</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1545" class='ln'>1545</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve/IMU_state/MCU_state"</td></tr>
 <tr name="1546" id="1546">
-<td><a id="l1546" class='ln'>1546</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1546" class='ln'>1546</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1547" id="1547">
-<td><a id="l1547" class='ln'>1547</a></td><td>    </td></tr>
+<td><a id="l1547" class='ln'>1547</a></td><td>        IMU_Ax_Value</td></tr>
 <tr name="1548" id="1548">
-<td><a id="l1548" class='ln'>1548</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1548" class='ln'>1548</a></td><td>        IMU_Ay_Value</td></tr>
 <tr name="1549" id="1549">
-<td><a id="l1549" class='ln'>1549</a></td><td>      /* Name                   */       S132_MCU_state</td></tr>
+<td><a id="l1549" class='ln'>1549</a></td><td>        IMU_Yaw_Value</td></tr>
 <tr name="1550" id="1550">
-<td><a id="l1550" class='ln'>1550</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1/MCU_state"</td></tr>
+<td><a id="l1550" class='ln'>1550</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1551" id="1551">
-<td><a id="l1551" class='ln'>1551</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1551" class='ln'>1551</a></td><td>    /end GROUP</td></tr>
 <tr name="1552" id="1552">
-<td><a id="l1552" class='ln'>1552</a></td><td>        MCFL_ErrorInfo</td></tr>
+<td><a id="l1552" class='ln'>1552</a></td><td>    </td></tr>
 <tr name="1553" id="1553">
-<td><a id="l1553" class='ln'>1553</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1553" class='ln'>1553</a></td><td>    /begin GROUP </td></tr>
 <tr name="1554" id="1554">
-<td><a id="l1554" class='ln'>1554</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1554" class='ln'>1554</a></td><td>      /* Name                   */       S191_IMU_state</td></tr>
 <tr name="1555" id="1555">
-<td><a id="l1555" class='ln'>1555</a></td><td>    </td></tr>
+<td><a id="l1555" class='ln'>1555</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive/StrWhSnis_state/IMU_state"</td></tr>
 <tr name="1556" id="1556">
-<td><a id="l1556" class='ln'>1556</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1556" class='ln'>1556</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1557" id="1557">
-<td><a id="l1557" class='ln'>1557</a></td><td>      /* Name                   */       S133_MCU_state</td></tr>
+<td><a id="l1557" class='ln'>1557</a></td><td>        StrWhlAng</td></tr>
 <tr name="1558" id="1558">
-<td><a id="l1558" class='ln'>1558</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2/MCU_state"</td></tr>
+<td><a id="l1558" class='ln'>1558</a></td><td>        StrWhlAngAliveRollCnt</td></tr>
 <tr name="1559" id="1559">
-<td><a id="l1559" class='ln'>1559</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1559" class='ln'>1559</a></td><td>        StrWhlAngV</td></tr>
 <tr name="1560" id="1560">
-<td><a id="l1560" class='ln'>1560</a></td><td>        MCFL_TempIGBT</td></tr>
+<td><a id="l1560" class='ln'>1560</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1561" id="1561">
-<td><a id="l1561" class='ln'>1561</a></td><td>        MCFL_TempInverter</td></tr>
+<td><a id="l1561" class='ln'>1561</a></td><td>    /end GROUP</td></tr>
 <tr name="1562" id="1562">
-<td><a id="l1562" class='ln'>1562</a></td><td>        MCFL_TempMotor</td></tr>
+<td><a id="l1562" class='ln'>1562</a></td><td>    </td></tr>
 <tr name="1563" id="1563">
-<td><a id="l1563" class='ln'>1563</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1563" class='ln'>1563</a></td><td>    /begin GROUP </td></tr>
 <tr name="1564" id="1564">
-<td><a id="l1564" class='ln'>1564</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1564" class='ln'>1564</a></td><td>      /* Name                   */       S264_Filter</td></tr>
 <tr name="1565" id="1565">
-<td><a id="l1565" class='ln'>1565</a></td><td>    </td></tr>
+<td><a id="l1565" class='ln'>1565</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter"</td></tr>
 <tr name="1566" id="1566">
-<td><a id="l1566" class='ln'>1566</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1566" class='ln'>1566</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1567" id="1567">
-<td><a id="l1567" class='ln'>1567</a></td><td>      /* Name                   */       S149_MCU_state</td></tr>
+<td><a id="l1567" class='ln'>1567</a></td><td>        VehVxEst_mps</td></tr>
 <tr name="1568" id="1568">
-<td><a id="l1568" class='ln'>1568</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state/MCU_state"</td></tr>
+<td><a id="l1568" class='ln'>1568</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1569" id="1569">
-<td><a id="l1569" class='ln'>1569</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1569" class='ln'>1569</a></td><td>    /end GROUP</td></tr>
 <tr name="1570" id="1570">
-<td><a id="l1570" class='ln'>1570</a></td><td>        MCFR_ActualVelocity</td></tr>
+<td><a id="l1570" class='ln'>1570</a></td><td>    </td></tr>
 <tr name="1571" id="1571">
-<td><a id="l1571" class='ln'>1571</a></td><td>        MCFR_DCVoltage</td></tr>
+<td><a id="l1571" class='ln'>1571</a></td><td>    /begin GROUP </td></tr>
 <tr name="1572" id="1572">
-<td><a id="l1572" class='ln'>1572</a></td><td>        MCFR_bDCOn</td></tr>
+<td><a id="l1572" class='ln'>1572</a></td><td>      /* Name                   */       S131_MCU_state</td></tr>
 <tr name="1573" id="1573">
-<td><a id="l1573" class='ln'>1573</a></td><td>        MCFR_bError</td></tr>
+<td><a id="l1573" class='ln'>1573</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state/MCU_state"</td></tr>
 <tr name="1574" id="1574">
-<td><a id="l1574" class='ln'>1574</a></td><td>        MCFR_bInverterOn</td></tr>
+<td><a id="l1574" class='ln'>1574</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1575" id="1575">
-<td><a id="l1575" class='ln'>1575</a></td><td>        MCFR_bQuitInverterOn</td></tr>
+<td><a id="l1575" class='ln'>1575</a></td><td>        MCFL_ActualVelocity</td></tr>
 <tr name="1576" id="1576">
-<td><a id="l1576" class='ln'>1576</a></td><td>        MCFR_bSystemReady</td></tr>
+<td><a id="l1576" class='ln'>1576</a></td><td>        MCFL_DCVoltage</td></tr>
 <tr name="1577" id="1577">
-<td><a id="l1577" class='ln'>1577</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1577" class='ln'>1577</a></td><td>        MCFL_bDCOn</td></tr>
 <tr name="1578" id="1578">
-<td><a id="l1578" class='ln'>1578</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1578" class='ln'>1578</a></td><td>        MCFL_bError</td></tr>
 <tr name="1579" id="1579">
-<td><a id="l1579" class='ln'>1579</a></td><td>    </td></tr>
+<td><a id="l1579" class='ln'>1579</a></td><td>        MCFL_bInverterOn</td></tr>
 <tr name="1580" id="1580">
-<td><a id="l1580" class='ln'>1580</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1580" class='ln'>1580</a></td><td>        MCFL_bQuitDCOn</td></tr>
 <tr name="1581" id="1581">
-<td><a id="l1581" class='ln'>1581</a></td><td>      /* Name                   */       S150_MCU_state</td></tr>
+<td><a id="l1581" class='ln'>1581</a></td><td>        MCFL_bQuitInverterOn</td></tr>
 <tr name="1582" id="1582">
-<td><a id="l1582" class='ln'>1582</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1/MCU_state"</td></tr>
+<td><a id="l1582" class='ln'>1582</a></td><td>        MCFL_bSystemReady</td></tr>
 <tr name="1583" id="1583">
-<td><a id="l1583" class='ln'>1583</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1583" class='ln'>1583</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1584" id="1584">
-<td><a id="l1584" class='ln'>1584</a></td><td>        MCFR_ErrorInfo</td></tr>
+<td><a id="l1584" class='ln'>1584</a></td><td>    /end GROUP</td></tr>
 <tr name="1585" id="1585">
-<td><a id="l1585" class='ln'>1585</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1585" class='ln'>1585</a></td><td>    </td></tr>
 <tr name="1586" id="1586">
-<td><a id="l1586" class='ln'>1586</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1586" class='ln'>1586</a></td><td>    /begin GROUP </td></tr>
 <tr name="1587" id="1587">
-<td><a id="l1587" class='ln'>1587</a></td><td>    </td></tr>
+<td><a id="l1587" class='ln'>1587</a></td><td>      /* Name                   */       S132_MCU_state</td></tr>
 <tr name="1588" id="1588">
-<td><a id="l1588" class='ln'>1588</a></td><td>    /begin GROUP </td></tr>
+<td><a id="l1588" class='ln'>1588</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1/MCU_state"</td></tr>
 <tr name="1589" id="1589">
-<td><a id="l1589" class='ln'>1589</a></td><td>      /* Name                   */       S151_MCU_state</td></tr>
+<td><a id="l1589" class='ln'>1589</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1590" id="1590">
-<td><a id="l1590" class='ln'>1590</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2/MCU_state"</td></tr>
+<td><a id="l1590" class='ln'>1590</a></td><td>        MCFL_ErrorInfo</td></tr>
 <tr name="1591" id="1591">
-<td><a id="l1591" class='ln'>1591</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<td><a id="l1591" class='ln'>1591</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1592" id="1592">
-<td><a id="l1592" class='ln'>1592</a></td><td>        MCFR_TempIGBT</td></tr>
+<td><a id="l1592" class='ln'>1592</a></td><td>    /end GROUP</td></tr>
 <tr name="1593" id="1593">
-<td><a id="l1593" class='ln'>1593</a></td><td>        MCFR_TempInverter</td></tr>
+<td><a id="l1593" class='ln'>1593</a></td><td>    </td></tr>
 <tr name="1594" id="1594">
-<td><a id="l1594" class='ln'>1594</a></td><td>        MCFR_TempMotor</td></tr>
+<td><a id="l1594" class='ln'>1594</a></td><td>    /begin GROUP </td></tr>
 <tr name="1595" id="1595">
-<td><a id="l1595" class='ln'>1595</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<td><a id="l1595" class='ln'>1595</a></td><td>      /* Name                   */       S133_MCU_state</td></tr>
 <tr name="1596" id="1596">
-<td><a id="l1596" class='ln'>1596</a></td><td>    /end GROUP</td></tr>
+<td><a id="l1596" class='ln'>1596</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2/MCU_state"</td></tr>
 <tr name="1597" id="1597">
-<td><a id="l1597" class='ln'>1597</a></td><td>    </td></tr>
+<td><a id="l1597" class='ln'>1597</a></td><td>      /begin REF_MEASUREMENT</td></tr>
 <tr name="1598" id="1598">
-<td><a id="l1598" class='ln'>1598</a></td><td>    </td></tr>
+<td><a id="l1598" class='ln'>1598</a></td><td>        MCFL_TempIGBT</td></tr>
 <tr name="1599" id="1599">
-<td><a id="l1599" class='ln'>1599</a></td><td>  /end MODULE</td></tr>
+<td><a id="l1599" class='ln'>1599</a></td><td>        MCFL_TempInverter</td></tr>
 <tr name="1600" id="1600">
-<td><a id="l1600" class='ln'>1600</a></td><td>  </td></tr>
+<td><a id="l1600" class='ln'>1600</a></td><td>        MCFL_TempMotor</td></tr>
 <tr name="1601" id="1601">
-<td><a id="l1601" class='ln'>1601</a></td><td>  </td></tr>
+<td><a id="l1601" class='ln'>1601</a></td><td>      /end REF_MEASUREMENT</td></tr>
 <tr name="1602" id="1602">
-<td><a id="l1602" class='ln'>1602</a></td><td>/end PROJECT</td></tr>
+<td><a id="l1602" class='ln'>1602</a></td><td>    /end GROUP</td></tr>
 <tr name="1603" id="1603">
-<td><a id="l1603" class='ln'>1603</a></td><td>/* (add any file trailer comments here) */</td></tr>
+<td><a id="l1603" class='ln'>1603</a></td><td>    </td></tr>
 <tr name="1604" id="1604">
-<td><a id="l1604" class='ln'>1604</a></td><td>/* EOF VehCtrlMdel240926_2018b_amkspdlimit.a2l */</td></tr>
+<td><a id="l1604" class='ln'>1604</a></td><td>    /begin GROUP </td></tr>
 <tr name="1605" id="1605">
-<td><a id="l1605" class='ln'>1605</a></td><td></td></tr>
+<td><a id="l1605" class='ln'>1605</a></td><td>      /* Name                   */       S149_MCU_state</td></tr>
+<tr name="1606" id="1606">
+<td><a id="l1606" class='ln'>1606</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state/MCU_state"</td></tr>
+<tr name="1607" id="1607">
+<td><a id="l1607" class='ln'>1607</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<tr name="1608" id="1608">
+<td><a id="l1608" class='ln'>1608</a></td><td>        MCFR_ActualVelocity</td></tr>
+<tr name="1609" id="1609">
+<td><a id="l1609" class='ln'>1609</a></td><td>        MCFR_DCVoltage</td></tr>
+<tr name="1610" id="1610">
+<td><a id="l1610" class='ln'>1610</a></td><td>        MCFR_bDCOn</td></tr>
+<tr name="1611" id="1611">
+<td><a id="l1611" class='ln'>1611</a></td><td>        MCFR_bError</td></tr>
+<tr name="1612" id="1612">
+<td><a id="l1612" class='ln'>1612</a></td><td>        MCFR_bInverterOn</td></tr>
+<tr name="1613" id="1613">
+<td><a id="l1613" class='ln'>1613</a></td><td>        MCFR_bQuitInverterOn</td></tr>
+<tr name="1614" id="1614">
+<td><a id="l1614" class='ln'>1614</a></td><td>        MCFR_bSystemReady</td></tr>
+<tr name="1615" id="1615">
+<td><a id="l1615" class='ln'>1615</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<tr name="1616" id="1616">
+<td><a id="l1616" class='ln'>1616</a></td><td>    /end GROUP</td></tr>
+<tr name="1617" id="1617">
+<td><a id="l1617" class='ln'>1617</a></td><td>    </td></tr>
+<tr name="1618" id="1618">
+<td><a id="l1618" class='ln'>1618</a></td><td>    /begin GROUP </td></tr>
+<tr name="1619" id="1619">
+<td><a id="l1619" class='ln'>1619</a></td><td>      /* Name                   */       S150_MCU_state</td></tr>
+<tr name="1620" id="1620">
+<td><a id="l1620" class='ln'>1620</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1/MCU_state"</td></tr>
+<tr name="1621" id="1621">
+<td><a id="l1621" class='ln'>1621</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<tr name="1622" id="1622">
+<td><a id="l1622" class='ln'>1622</a></td><td>        MCFR_ErrorInfo</td></tr>
+<tr name="1623" id="1623">
+<td><a id="l1623" class='ln'>1623</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<tr name="1624" id="1624">
+<td><a id="l1624" class='ln'>1624</a></td><td>    /end GROUP</td></tr>
+<tr name="1625" id="1625">
+<td><a id="l1625" class='ln'>1625</a></td><td>    </td></tr>
+<tr name="1626" id="1626">
+<td><a id="l1626" class='ln'>1626</a></td><td>    /begin GROUP </td></tr>
+<tr name="1627" id="1627">
+<td><a id="l1627" class='ln'>1627</a></td><td>      /* Name                   */       S151_MCU_state</td></tr>
+<tr name="1628" id="1628">
+<td><a id="l1628" class='ln'>1628</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2/MCU_state"</td></tr>
+<tr name="1629" id="1629">
+<td><a id="l1629" class='ln'>1629</a></td><td>      /begin REF_MEASUREMENT</td></tr>
+<tr name="1630" id="1630">
+<td><a id="l1630" class='ln'>1630</a></td><td>        MCFR_TempIGBT</td></tr>
+<tr name="1631" id="1631">
+<td><a id="l1631" class='ln'>1631</a></td><td>        MCFR_TempInverter</td></tr>
+<tr name="1632" id="1632">
+<td><a id="l1632" class='ln'>1632</a></td><td>        MCFR_TempMotor</td></tr>
+<tr name="1633" id="1633">
+<td><a id="l1633" class='ln'>1633</a></td><td>      /end REF_MEASUREMENT</td></tr>
+<tr name="1634" id="1634">
+<td><a id="l1634" class='ln'>1634</a></td><td>    /end GROUP</td></tr>
+<tr name="1635" id="1635">
+<td><a id="l1635" class='ln'>1635</a></td><td>    </td></tr>
+<tr name="1636" id="1636">
+<td><a id="l1636" class='ln'>1636</a></td><td>    </td></tr>
+<tr name="1637" id="1637">
+<td><a id="l1637" class='ln'>1637</a></td><td>  /end MODULE</td></tr>
+<tr name="1638" id="1638">
+<td><a id="l1638" class='ln'>1638</a></td><td>  </td></tr>
+<tr name="1639" id="1639">
+<td><a id="l1639" class='ln'>1639</a></td><td>  </td></tr>
+<tr name="1640" id="1640">
+<td><a id="l1640" class='ln'>1640</a></td><td>/end PROJECT</td></tr>
+<tr name="1641" id="1641">
+<td><a id="l1641" class='ln'>1641</a></td><td>/* (add any file trailer comments here) */</td></tr>
+<tr name="1642" id="1642">
+<td><a id="l1642" class='ln'>1642</a></td><td>/* EOF VehCtrlMdel240926_2018b_amkspdlimit.a2l */</td></tr>
+<tr name="1643" id="1643">
+<td><a id="l1643" class='ln'>1643</a></td><td></td></tr>
 </table>
 </pre>
 </body>

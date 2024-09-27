@@ -3,9 +3,9 @@
  *
  * FILE    : rtGetNaN.c
  *
- * VERSION : 1.175
+ * VERSION : 1.193
  *
- * DATE    : Thu Sep 26 15:36:01 2024
+ * DATE    : Fri Sep 27 22:23:24 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */

@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit.h
  *
- * VERSION : 1.174
+ * VERSION : 1.176
  *
- * DATE    : Thu Sep 26 14:50:31 2024
+ * DATE    : Fri Sep 27 09:28:20 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -73,9 +73,9 @@ typedef struct {
 
 /* Block signals (default storage) */
 typedef struct {
-  CAN_DATATYPE CANPack1;               /* '<S335>/CAN Pack1' */
-  CAN_DATATYPE CANPack1_a;             /* '<S336>/CAN Pack1' */
-  CAN_DATATYPE CANPack1_d;             /* '<S334>/CAN Pack1' */
+  CAN_DATATYPE CANPack1;               /* '<S336>/CAN Pack1' */
+  CAN_DATATYPE CANPack1_a;             /* '<S337>/CAN Pack1' */
+  CAN_DATATYPE CANPack1_d;             /* '<S335>/CAN Pack1' */
   CAN_DATATYPE CANUnPackMessage4;      /* '<S179>/CANUnPackMessage4' */
   CAN_DATATYPE CANUnPackMessage4_g;    /* '<S174>/CANUnPackMessage4' */
   CAN_DATATYPE CANUnPackMessage4_j;    /* '<S152>/CANUnPackMessage4' */
@@ -88,14 +88,14 @@ typedef struct {
   CAN_DATATYPE CANUnPackMessage4_ja;   /* '<S124>/CANUnPackMessage4' */
   CAN_DATATYPE CANUnPackMessage4_h;    /* '<S187>/CANUnPackMessage4' */
   CAN_DATATYPE CANUnPackMessage4_i;    /* '<S171>/CANUnPackMessage4' */
-  real_T MCFR_TorqueLimitP;            /* '<S335>/Switch' */
-  real_T MCFL_TorqueLimitP;            /* '<S334>/Switch' */
-  real_T Exit;                         /* '<S263>/Timer2' */
-  real_T Exit_l;                       /* '<S263>/Timer1' */
-  real_T Exit_a;                       /* '<S262>/Timer3' */
-  real_T Exit_lh;                      /* '<S262>/Timer2' */
-  real_T Exit_lh4;                     /* '<S262>/Timer1' */
-  real_T Exit_c;                       /* '<S262>/Timer' */
+  real_T MCFR_TorqueLimitP;            /* '<S336>/Switch' */
+  real_T MCFL_TorqueLimitP;            /* '<S335>/Switch' */
+  real_T Exit;                         /* '<S264>/Timer2' */
+  real_T Exit_l;                       /* '<S264>/Timer1' */
+  real_T Exit_a;                       /* '<S263>/Timer3' */
+  real_T Exit_lh;                      /* '<S263>/Timer2' */
+  real_T Exit_lh4;                     /* '<S263>/Timer1' */
+  real_T Exit_c;                       /* '<S263>/Timer' */
   real_T Exit_h;                       /* '<S204>/Timer3' */
   real_T Exit_o;                       /* '<S204>/Timer2' */
   real_T Exit_i;                       /* '<S204>/Timer1' */
@@ -133,8 +133,8 @@ typedef struct {
   real_T DYC_Enable_OUT;               /* '<S7>/Chart' */
   real_T TCSR_Enable_OUT;              /* '<S7>/Chart' */
   real_T TCSF_Enable_OUT;              /* '<S7>/Chart' */
-  uint32_T CANReceive_o3;              /* '<S360>/CANReceive' */
-  uint32_T CANReceive_o3_l;            /* '<S345>/CANReceive' */
+  uint32_T CANReceive_o3;              /* '<S361>/CANReceive' */
+  uint32_T CANReceive_o3_l;            /* '<S346>/CANReceive' */
   uint32_T CANReceive1_o3;             /* '<S119>/CANReceive1' */
   uint32_T CANReceive3_o3;             /* '<S119>/CANReceive3' */
   uint32_T CANReceive3_o3_e;           /* '<S129>/CANReceive3' */
@@ -147,23 +147,23 @@ typedef struct {
   uint32_T CANReceive3_o3_m;           /* '<S115>/CANReceive3' */
   uint32_T CANReceive3_o3_cz;          /* '<S120>/CANReceive3' */
   uint32_T CANReceive3_o3_l;           /* '<S118>/CANReceive3' */
-  int32_T DataTypeConversion2;         /* '<S336>/Data Type Conversion2' */
-  uint16_T CastToSingle1;              /* '<S337>/Cast To Single1' */
-  uint16_T CastToBoolean4;             /* '<S336>/Cast To Boolean4' */
-  uint16_T CastToBoolean6;             /* '<S336>/Cast To Boolean6' */
-  uint8_T CANReceive_o2;               /* '<S360>/CANReceive' */
-  uint8_T CANReceive_o4[8];            /* '<S360>/CANReceive' */
-  uint8_T CANReceive_o5;               /* '<S360>/CANReceive' */
-  uint8_T CANReceive_o2_p;             /* '<S345>/CANReceive' */
-  uint8_T CANReceive_o4_i[8];          /* '<S345>/CANReceive' */
-  uint8_T CANReceive_o5_l;             /* '<S345>/CANReceive' */
-  uint8_T CANTransmit;                 /* '<S352>/CANTransmit' */
-  uint8_T CANPackMessage[8];           /* '<S335>/CANPackMessage' */
-  uint8_T CANTransmit_l;               /* '<S335>/CANTransmit' */
-  uint8_T CANPackMessage_d[8];         /* '<S336>/CANPackMessage' */
-  uint8_T CANTransmit_k;               /* '<S336>/CANTransmit' */
-  uint8_T CANPackMessage_h[8];         /* '<S334>/CANPackMessage' */
-  uint8_T CANTransmit_c;               /* '<S334>/CANTransmit' */
+  int32_T DataTypeConversion2;         /* '<S337>/Data Type Conversion2' */
+  uint16_T CastToSingle1;              /* '<S338>/Cast To Single1' */
+  uint16_T CastToBoolean4;             /* '<S337>/Cast To Boolean4' */
+  uint16_T CastToBoolean6;             /* '<S337>/Cast To Boolean6' */
+  uint8_T CANReceive_o2;               /* '<S361>/CANReceive' */
+  uint8_T CANReceive_o4[8];            /* '<S361>/CANReceive' */
+  uint8_T CANReceive_o5;               /* '<S361>/CANReceive' */
+  uint8_T CANReceive_o2_p;             /* '<S346>/CANReceive' */
+  uint8_T CANReceive_o4_i[8];          /* '<S346>/CANReceive' */
+  uint8_T CANReceive_o5_l;             /* '<S346>/CANReceive' */
+  uint8_T CANTransmit;                 /* '<S353>/CANTransmit' */
+  uint8_T CANPackMessage[8];           /* '<S336>/CANPackMessage' */
+  uint8_T CANTransmit_l;               /* '<S336>/CANTransmit' */
+  uint8_T CANPackMessage_d[8];         /* '<S337>/CANPackMessage' */
+  uint8_T CANTransmit_k;               /* '<S337>/CANTransmit' */
+  uint8_T CANPackMessage_h[8];         /* '<S335>/CANPackMessage' */
+  uint8_T CANTransmit_c;               /* '<S335>/CANTransmit' */
   uint8_T CANReceive1_o2;              /* '<S119>/CANReceive1' */
   uint8_T CANReceive1_o4[8];           /* '<S119>/CANReceive1' */
   uint8_T CANReceive1_o5;              /* '<S119>/CANReceive1' */
@@ -246,49 +246,49 @@ typedef struct {
   real_T UnitDelay_DSTATE_gb;          /* '<S26>/Unit Delay' */
   real_T b;                            /* '<S7>/Chart' */
   real_T DYC_flag;                     /* '<S7>/Chart' */
-  real32_T UnitDelay_DSTATE_pj;        /* '<S278>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_n2;      /* '<S282>/Delay Input2' */
-  real32_T UnitDelay_DSTATE_j;         /* '<S271>/Unit Delay' */
-  real32_T UnitDelay_DSTATE_pjk;       /* '<S279>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_e;       /* '<S285>/Delay Input2' */
-  real32_T UnitDelay1_DSTATE_n;        /* '<S271>/Unit Delay1' */
-  real32_T UnitDelay_DSTATE_a;         /* '<S280>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_hk3;     /* '<S288>/Delay Input2' */
-  real32_T UnitDelay2_DSTATE_l;        /* '<S271>/Unit Delay2' */
-  real32_T UnitDelay_DSTATE_nc;        /* '<S281>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_c;       /* '<S291>/Delay Input2' */
-  real32_T UnitDelay3_DSTATE_h;        /* '<S271>/Unit Delay3' */
-  real32_T UnitDelay_DSTATE_l;         /* '<S298>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_i;       /* '<S302>/Delay Input2' */
-  real32_T UnitDelay4_DSTATE_ik;       /* '<S272>/Unit Delay4' */
-  real32_T UnitDelay_DSTATE_a0;        /* '<S272>/Unit Delay' */
-  real32_T UnitDelay_DSTATE_ap;        /* '<S299>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_el;      /* '<S305>/Delay Input2' */
-  real32_T UnitDelay5_DSTATE;          /* '<S272>/Unit Delay5' */
-  real32_T UnitDelay1_DSTATE_am;       /* '<S272>/Unit Delay1' */
-  real32_T UnitDelay_DSTATE_o;         /* '<S300>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_p;       /* '<S308>/Delay Input2' */
-  real32_T UnitDelay6_DSTATE;          /* '<S272>/Unit Delay6' */
-  real32_T UnitDelay2_DSTATE_c;        /* '<S272>/Unit Delay2' */
-  real32_T UnitDelay_DSTATE_ah;        /* '<S301>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_mt;      /* '<S311>/Delay Input2' */
-  real32_T UnitDelay7_DSTATE;          /* '<S272>/Unit Delay7' */
-  real32_T UnitDelay3_DSTATE_d;        /* '<S272>/Unit Delay3' */
+  real32_T UnitDelay_DSTATE_pj;        /* '<S279>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_n2;      /* '<S283>/Delay Input2' */
+  real32_T UnitDelay_DSTATE_j;         /* '<S272>/Unit Delay' */
+  real32_T UnitDelay_DSTATE_pjk;       /* '<S280>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_e;       /* '<S286>/Delay Input2' */
+  real32_T UnitDelay1_DSTATE_n;        /* '<S272>/Unit Delay1' */
+  real32_T UnitDelay_DSTATE_a;         /* '<S281>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_hk3;     /* '<S289>/Delay Input2' */
+  real32_T UnitDelay2_DSTATE_l;        /* '<S272>/Unit Delay2' */
+  real32_T UnitDelay_DSTATE_nc;        /* '<S282>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_c;       /* '<S292>/Delay Input2' */
+  real32_T UnitDelay3_DSTATE_h;        /* '<S272>/Unit Delay3' */
+  real32_T UnitDelay_DSTATE_l;         /* '<S299>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_i;       /* '<S303>/Delay Input2' */
+  real32_T UnitDelay4_DSTATE_ik;       /* '<S273>/Unit Delay4' */
+  real32_T UnitDelay_DSTATE_a0;        /* '<S273>/Unit Delay' */
+  real32_T UnitDelay_DSTATE_ap;        /* '<S300>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_el;      /* '<S306>/Delay Input2' */
+  real32_T UnitDelay5_DSTATE;          /* '<S273>/Unit Delay5' */
+  real32_T UnitDelay1_DSTATE_am;       /* '<S273>/Unit Delay1' */
+  real32_T UnitDelay_DSTATE_o;         /* '<S301>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_p;       /* '<S309>/Delay Input2' */
+  real32_T UnitDelay6_DSTATE;          /* '<S273>/Unit Delay6' */
+  real32_T UnitDelay2_DSTATE_c;        /* '<S273>/Unit Delay2' */
+  real32_T UnitDelay_DSTATE_ah;        /* '<S302>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_mt;      /* '<S312>/Delay Input2' */
+  real32_T UnitDelay7_DSTATE;          /* '<S273>/Unit Delay7' */
+  real32_T UnitDelay3_DSTATE_d;        /* '<S273>/Unit Delay3' */
   real32_T UnitDelay_DSTATE_lh;        /* '<S200>/Unit Delay' */
   real32_T UnitDelay4_DSTATE_m;        /* '<S261>/Unit Delay4' */
   real32_T UnitDelay1_DSTATE_k;        /* '<S200>/Unit Delay1' */
   real32_T UnitDelay1_DSTATE_o;        /* '<S261>/Unit Delay1' */
-  real32_T UnitDelay3_DSTATE_p;        /* '<S263>/Unit Delay3' */
-  real32_T UnitDelay1_DSTATE_d;        /* '<S263>/Unit Delay1' */
-  real32_T UnitDelay2_DSTATE_f;        /* '<S263>/Unit Delay2' */
-  real32_T UnitDelay4_DSTATE_mn;       /* '<S263>/Unit Delay4' */
+  real32_T UnitDelay3_DSTATE_p;        /* '<S264>/Unit Delay3' */
+  real32_T UnitDelay1_DSTATE_d;        /* '<S264>/Unit Delay1' */
+  real32_T UnitDelay2_DSTATE_f;        /* '<S264>/Unit Delay2' */
+  real32_T UnitDelay4_DSTATE_mn;       /* '<S264>/Unit Delay4' */
   real32_T UnitDelay_DSTATE_d;         /* '<S261>/Unit Delay' */
   real32_T UnitDelay2_DSTATE_i;        /* '<S261>/Unit Delay2' */
-  real32_T DelayInput2_DSTATE_g;       /* '<S323>/Delay Input2' */
-  real32_T DelayInput2_DSTATE_af;      /* '<S321>/Delay Input2' */
-  real32_T DelayInput2_DSTATE_f;       /* '<S327>/Delay Input2' */
-  real32_T UnitDelay_DSTATE_ncs;       /* '<S320>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_hu;      /* '<S322>/Delay Input2' */
+  real32_T DelayInput2_DSTATE_g;       /* '<S324>/Delay Input2' */
+  real32_T DelayInput2_DSTATE_af;      /* '<S322>/Delay Input2' */
+  real32_T DelayInput2_DSTATE_f;       /* '<S328>/Delay Input2' */
+  real32_T UnitDelay_DSTATE_ncs;       /* '<S321>/Unit Delay' */
+  real32_T DelayInput2_DSTATE_hu;      /* '<S323>/Delay Input2' */
   real32_T DelayInput2_DSTATE_d;       /* '<S44>/Delay Input2' */
   real32_T UnitDelay4_DSTATE_n;        /* '<S10>/Unit Delay4' */
   real32_T UnitDelay5_DSTATE_b;        /* '<S10>/Unit Delay5' */
@@ -313,9 +313,9 @@ typedef struct {
   uint32_T FunctionCallSubsystem_PREV_T;/* '<S4>/Function-Call Subsystem' */
   uint32_T previousTicks;              /* '<S105>/Chart2' */
   uint32_T MoTrqReq_PREV_T;            /* '<S1>/MoTrqReq' */
-  int_T CANPack1_ModeSignalID;         /* '<S335>/CAN Pack1' */
-  int_T CANPack1_ModeSignalID_l;       /* '<S336>/CAN Pack1' */
-  int_T CANPack1_ModeSignalID_f;       /* '<S334>/CAN Pack1' */
+  int_T CANPack1_ModeSignalID;         /* '<S336>/CAN Pack1' */
+  int_T CANPack1_ModeSignalID_l;       /* '<S337>/CAN Pack1' */
+  int_T CANPack1_ModeSignalID_f;       /* '<S335>/CAN Pack1' */
   int_T CANUnpack_ModeSignalID;        /* '<S179>/CAN Unpack' */
   int_T CANUnpack_StatusPortID;        /* '<S179>/CAN Unpack' */
   int_T CANUnpack_ModeSignalID_b;      /* '<S174>/CAN Unpack' */
@@ -383,12 +383,12 @@ typedef struct {
   boolean_T Subsystem_RESET_ELAPS_T;   /* '<S4>/Subsystem' */
   boolean_T FunctionCallSubsystem_RESET_ELA;/* '<S4>/Function-Call Subsystem' */
   boolean_T MoTrqReq_RESET_ELAPS_T;    /* '<S1>/MoTrqReq' */
-  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer2_j;/* '<S263>/Timer2' */
-  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer1_p;/* '<S263>/Timer1' */
-  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer3_i;/* '<S262>/Timer3' */
-  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer2_g;/* '<S262>/Timer2' */
-  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer1_m;/* '<S262>/Timer1' */
-  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer_o;/* '<S262>/Timer' */
+  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer2_j;/* '<S264>/Timer2' */
+  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer1_p;/* '<S264>/Timer1' */
+  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer3_i;/* '<S263>/Timer3' */
+  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer2_g;/* '<S263>/Timer2' */
+  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer1_m;/* '<S263>/Timer1' */
+  DW_Timer1_VehCtrlMdel240926_2_T sf_Timer_o;/* '<S263>/Timer' */
   DW_Timer1_VehCtrlMdel240926_2_T sf_Timer3;/* '<S204>/Timer3' */
   DW_Timer1_VehCtrlMdel240926_2_T sf_Timer2_l;/* '<S204>/Timer2' */
   DW_Timer1_VehCtrlMdel240926_2_T sf_Timer1_n;/* '<S204>/Timer1' */
@@ -595,8 +595,8 @@ extern const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP;
  * these signals and export their symbols.
  *
  */
-extern real_T Gear_Trs;                /* '<S336>/Switch2' */
-extern real_T Mode_Trs;                /* '<S336>/Switch3' */
+extern real_T Gear_Trs;                /* '<S337>/Switch2' */
+extern real_T Mode_Trs;                /* '<S337>/Switch3' */
 extern real_T Trq_CUT;                 /* '<S201>/Timer' */
 extern real_T ignition;                /* '<S122>/Timer' */
 extern real_T L12V_error;              /* '<S179>/CAN Unpack' */
@@ -647,6 +647,7 @@ extern real_T AMK_Trq_CUT;             /*  */
 extern uint32_T Acc_vol2;              /* '<S201>/Add3' */
 extern uint32_T Acc_vol;               /* '<S201>/Add2' */
 extern uint32_T Acc_POS2;              /* '<S201>/1-D Lookup Table3' */
+extern real32_T VehVxEst_mps;          /* '<S321>/Add' */
 extern real32_T Acc_POS;               /* '<S201>/MATLAB Function' */
 extern real32_T TrqR_cmd;              /* '<S7>/Saturation1' */
 extern real32_T TrqFR_cmd;             /* '<S7>/Saturation2' */
@@ -767,14 +768,8 @@ extern RT_MODEL_VehCtrlMdel240926_20_T *const VehCtrlMdel240926_2018b_amks_M;
  * Block '<S201>/1-D Lookup Table2' : Unused code path elimination
  * Block '<S201>/Abs1' : Unused code path elimination
  * Block '<S201>/Add4' : Unused code path elimination
- * Block '<S207>/Compare' : Unused code path elimination
- * Block '<S207>/Constant' : Unused code path elimination
- * Block '<S208>/Compare' : Unused code path elimination
- * Block '<S208>/Constant' : Unused code path elimination
  * Block '<S216>/Compare' : Unused code path elimination
  * Block '<S216>/Constant' : Unused code path elimination
- * Block '<S201>/Logical Operator6' : Unused code path elimination
- * Block '<S201>/Logical Operator7' : Unused code path elimination
  * Block '<S226>/FixPt Data Type Duplicate' : Unused code path elimination
  * Block '<S232>/Data Type Duplicate' : Unused code path elimination
  * Block '<S232>/Data Type Propagation' : Unused code path elimination
@@ -808,61 +803,61 @@ extern RT_MODEL_VehCtrlMdel240926_20_T *const VehCtrlMdel240926_2018b_amks_M;
  * Block '<S252>/FixPt Data Type Duplicate' : Unused code path elimination
  * Block '<S260>/Data Type Duplicate' : Unused code path elimination
  * Block '<S260>/Data Type Propagation' : Unused code path elimination
- * Block '<S282>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S283>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S285>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S285>/Data Type Propagation' : Unused code path elimination
  * Block '<S284>/Data Type Duplicate' : Unused code path elimination
  * Block '<S284>/Data Type Propagation' : Unused code path elimination
- * Block '<S283>/Data Type Duplicate' : Unused code path elimination
- * Block '<S283>/Data Type Propagation' : Unused code path elimination
- * Block '<S285>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S286>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S288>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S288>/Data Type Propagation' : Unused code path elimination
  * Block '<S287>/Data Type Duplicate' : Unused code path elimination
  * Block '<S287>/Data Type Propagation' : Unused code path elimination
- * Block '<S286>/Data Type Duplicate' : Unused code path elimination
- * Block '<S286>/Data Type Propagation' : Unused code path elimination
- * Block '<S288>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S289>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S291>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S291>/Data Type Propagation' : Unused code path elimination
  * Block '<S290>/Data Type Duplicate' : Unused code path elimination
  * Block '<S290>/Data Type Propagation' : Unused code path elimination
- * Block '<S289>/Data Type Duplicate' : Unused code path elimination
- * Block '<S289>/Data Type Propagation' : Unused code path elimination
- * Block '<S291>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S292>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S294>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S294>/Data Type Propagation' : Unused code path elimination
  * Block '<S293>/Data Type Duplicate' : Unused code path elimination
  * Block '<S293>/Data Type Propagation' : Unused code path elimination
- * Block '<S292>/Data Type Duplicate' : Unused code path elimination
- * Block '<S292>/Data Type Propagation' : Unused code path elimination
- * Block '<S302>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S303>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S305>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S305>/Data Type Propagation' : Unused code path elimination
  * Block '<S304>/Data Type Duplicate' : Unused code path elimination
  * Block '<S304>/Data Type Propagation' : Unused code path elimination
- * Block '<S303>/Data Type Duplicate' : Unused code path elimination
- * Block '<S303>/Data Type Propagation' : Unused code path elimination
- * Block '<S305>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S306>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S308>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S308>/Data Type Propagation' : Unused code path elimination
  * Block '<S307>/Data Type Duplicate' : Unused code path elimination
  * Block '<S307>/Data Type Propagation' : Unused code path elimination
- * Block '<S306>/Data Type Duplicate' : Unused code path elimination
- * Block '<S306>/Data Type Propagation' : Unused code path elimination
- * Block '<S308>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S309>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S311>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S311>/Data Type Propagation' : Unused code path elimination
  * Block '<S310>/Data Type Duplicate' : Unused code path elimination
  * Block '<S310>/Data Type Propagation' : Unused code path elimination
- * Block '<S309>/Data Type Duplicate' : Unused code path elimination
- * Block '<S309>/Data Type Propagation' : Unused code path elimination
- * Block '<S311>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S312>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S314>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S314>/Data Type Propagation' : Unused code path elimination
  * Block '<S313>/Data Type Duplicate' : Unused code path elimination
  * Block '<S313>/Data Type Propagation' : Unused code path elimination
- * Block '<S312>/Data Type Duplicate' : Unused code path elimination
- * Block '<S312>/Data Type Propagation' : Unused code path elimination
- * Block '<S263>/Discrete-Time Integrator' : Unused code path elimination
- * Block '<S327>/FixPt Data Type Duplicate' : Unused code path elimination
- * Block '<S329>/Data Type Duplicate' : Unused code path elimination
- * Block '<S329>/Data Type Propagation' : Unused code path elimination
- * Block '<S328>/Data Type Duplicate' : Unused code path elimination
- * Block '<S328>/Data Type Propagation' : Unused code path elimination
- * Block '<S321>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S264>/Discrete-Time Integrator' : Unused code path elimination
+ * Block '<S328>/FixPt Data Type Duplicate' : Unused code path elimination
  * Block '<S330>/Data Type Duplicate' : Unused code path elimination
  * Block '<S330>/Data Type Propagation' : Unused code path elimination
+ * Block '<S329>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S329>/Data Type Propagation' : Unused code path elimination
  * Block '<S322>/FixPt Data Type Duplicate' : Unused code path elimination
  * Block '<S331>/Data Type Duplicate' : Unused code path elimination
  * Block '<S331>/Data Type Propagation' : Unused code path elimination
  * Block '<S323>/FixPt Data Type Duplicate' : Unused code path elimination
  * Block '<S332>/Data Type Duplicate' : Unused code path elimination
  * Block '<S332>/Data Type Propagation' : Unused code path elimination
+ * Block '<S324>/FixPt Data Type Duplicate' : Unused code path elimination
+ * Block '<S333>/Data Type Duplicate' : Unused code path elimination
+ * Block '<S333>/Data Type Propagation' : Unused code path elimination
  * Block '<S6>/Constant' : Unused code path elimination
  * Block '<S7>/Data Type Conversion1' : Eliminate redundant data type conversion
  * Block '<S7>/Data Type Conversion10' : Eliminate redundant data type conversion
@@ -879,13 +874,13 @@ extern RT_MODEL_VehCtrlMdel240926_20_T *const VehCtrlMdel240926_2018b_amks_M;
  * Block '<S201>/Data Type Conversion1' : Eliminate redundant data type conversion
  * Block '<S261>/Cast To Double' : Eliminate redundant data type conversion
  * Block '<S261>/Cast To Double1' : Eliminate redundant data type conversion
- * Block '<S262>/Cast To Double' : Eliminate redundant data type conversion
- * Block '<S262>/Cast To Double1' : Eliminate redundant data type conversion
- * Block '<S262>/Cast To Double2' : Eliminate redundant data type conversion
- * Block '<S262>/Cast To Double3' : Eliminate redundant data type conversion
- * Block '<S320>/Gain1' : Eliminated nontunable gain of 1
- * Block '<S336>/Data Type Conversion1' : Eliminate redundant data type conversion
- * Block '<S337>/Cast To Single' : Eliminate redundant data type conversion
+ * Block '<S263>/Cast To Double' : Eliminate redundant data type conversion
+ * Block '<S263>/Cast To Double1' : Eliminate redundant data type conversion
+ * Block '<S263>/Cast To Double2' : Eliminate redundant data type conversion
+ * Block '<S263>/Cast To Double3' : Eliminate redundant data type conversion
+ * Block '<S321>/Gain1' : Eliminated nontunable gain of 1
+ * Block '<S337>/Data Type Conversion1' : Eliminate redundant data type conversion
+ * Block '<S338>/Cast To Single' : Eliminate redundant data type conversion
  * Block '<S7>/Constant' : Unused code path elimination
  * Block '<S7>/Constant4' : Unused code path elimination
  */
@@ -1166,106 +1161,107 @@ extern RT_MODEL_VehCtrlMdel240926_20_T *const VehCtrlMdel240926_2018b_amks_M;
  * '<S259>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem/WhlSpdii_mps/Rate Limiter Dynamic2/Saturation Dynamic'
  * '<S260>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem/WhlSpdii_mps/Rate Limiter Dynamic3/Saturation Dynamic'
  * '<S261>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/IntglJudgment '
- * '<S262>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment'
- * '<S263>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect'
- * '<S264>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/坐标系转换'
- * '<S265>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/IntglJudgment /Compare To Constant'
- * '<S266>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/IntglJudgment /Compare To Constant1'
- * '<S267>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer'
- * '<S268>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer1'
- * '<S269>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer2'
- * '<S270>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer3'
- * '<S271>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断'
- * '<S272>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断'
- * '<S273>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断'
- * '<S274>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant'
- * '<S275>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant1'
- * '<S276>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant2'
- * '<S277>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant3'
- * '<S278>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter'
- * '<S279>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1'
- * '<S280>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2'
- * '<S281>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3'
- * '<S282>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter/Rate Limiter Dynamic'
- * '<S283>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter/Saturation Dynamic'
- * '<S284>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S285>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1/Rate Limiter Dynamic'
- * '<S286>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1/Saturation Dynamic'
- * '<S287>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S288>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2/Rate Limiter Dynamic'
- * '<S289>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2/Saturation Dynamic'
- * '<S290>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S291>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3/Rate Limiter Dynamic'
- * '<S292>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3/Saturation Dynamic'
- * '<S293>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S294>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant'
- * '<S295>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant1'
- * '<S296>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant2'
- * '<S297>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant3'
- * '<S298>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter'
- * '<S299>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1'
- * '<S300>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2'
- * '<S301>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3'
- * '<S302>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter/Rate Limiter Dynamic'
- * '<S303>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter/Saturation Dynamic'
- * '<S304>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S305>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1/Rate Limiter Dynamic'
- * '<S306>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1/Saturation Dynamic'
- * '<S307>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S308>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2/Rate Limiter Dynamic'
- * '<S309>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2/Saturation Dynamic'
- * '<S310>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S311>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3/Rate Limiter Dynamic'
- * '<S312>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3/Saturation Dynamic'
- * '<S313>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S314>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant'
- * '<S315>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant1'
- * '<S316>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant2'
- * '<S317>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant3'
- * '<S318>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Compare To Constant'
- * '<S319>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Compare To Constant1'
- * '<S320>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter'
- * '<S321>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic'
- * '<S322>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic1'
- * '<S323>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic2'
- * '<S324>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Subsystem'
- * '<S325>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Timer1'
- * '<S326>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Timer2'
- * '<S327>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter/Rate Limiter Dynamic'
- * '<S328>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter/Saturation Dynamic'
- * '<S329>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S330>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic/Saturation Dynamic'
- * '<S331>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic1/Saturation Dynamic'
- * '<S332>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic2/Saturation Dynamic'
- * '<S333>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/Beeper'
- * '<S334>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2AMKMCUFL'
- * '<S335>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2AMKMCUFR'
- * '<S336>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU'
- * '<S337>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/WP_OUTPUT'
- * '<S338>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/Beeper/MeaModule'
- * '<S339>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU/MeaModule1'
- * '<S340>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU/MeaModule2'
- * '<S341>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL'
- * '<S342>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ'
- * '<S343>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/EEPROM'
- * '<S344>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling'
- * '<S345>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem'
- * '<S346>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem'
- * '<S347>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem'
- * '<S348>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/Com0'
- * '<S349>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/Com1'
- * '<S350>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/Com2'
- * '<S351>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/If Action Subsystem'
- * '<S352>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/If Action Subsystem1'
- * '<S353>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq100ms'
- * '<S354>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq10ms'
- * '<S355>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq500ms'
- * '<S356>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq50ms'
- * '<S357>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq5ms'
- * '<S358>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/EEPROM/EEPROMOperation'
- * '<S359>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling/CCPBackground'
- * '<S360>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling/CCPReceive'
- * '<S361>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling/CCPReceive/Nothing'
+ * '<S262>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/MeaModule'
+ * '<S263>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment'
+ * '<S264>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect'
+ * '<S265>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/坐标系转换'
+ * '<S266>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/IntglJudgment /Compare To Constant'
+ * '<S267>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/IntglJudgment /Compare To Constant1'
+ * '<S268>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer'
+ * '<S269>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer1'
+ * '<S270>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer2'
+ * '<S271>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/Timer3'
+ * '<S272>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断'
+ * '<S273>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断'
+ * '<S274>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断'
+ * '<S275>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant'
+ * '<S276>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant1'
+ * '<S277>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant2'
+ * '<S278>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Compare To Constant3'
+ * '<S279>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter'
+ * '<S280>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1'
+ * '<S281>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2'
+ * '<S282>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3'
+ * '<S283>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter/Rate Limiter Dynamic'
+ * '<S284>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter/Saturation Dynamic'
+ * '<S285>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S286>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1/Rate Limiter Dynamic'
+ * '<S287>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1/Saturation Dynamic'
+ * '<S288>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter1/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S289>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2/Rate Limiter Dynamic'
+ * '<S290>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2/Saturation Dynamic'
+ * '<S291>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter2/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S292>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3/Rate Limiter Dynamic'
+ * '<S293>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3/Saturation Dynamic'
+ * '<S294>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差判断/Filter3/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S295>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant'
+ * '<S296>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant1'
+ * '<S297>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant2'
+ * '<S298>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Compare To Constant3'
+ * '<S299>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter'
+ * '<S300>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1'
+ * '<S301>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2'
+ * '<S302>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3'
+ * '<S303>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter/Rate Limiter Dynamic'
+ * '<S304>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter/Saturation Dynamic'
+ * '<S305>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S306>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1/Rate Limiter Dynamic'
+ * '<S307>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1/Saturation Dynamic'
+ * '<S308>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter1/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S309>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2/Rate Limiter Dynamic'
+ * '<S310>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2/Saturation Dynamic'
+ * '<S311>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter2/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S312>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3/Rate Limiter Dynamic'
+ * '<S313>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3/Saturation Dynamic'
+ * '<S314>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/加速度差的微分的判断/Filter3/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S315>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant'
+ * '<S316>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant1'
+ * '<S317>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant2'
+ * '<S318>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSlpageJudgment/速差判断/Compare To Constant3'
+ * '<S319>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Compare To Constant'
+ * '<S320>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Compare To Constant1'
+ * '<S321>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter'
+ * '<S322>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic'
+ * '<S323>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic1'
+ * '<S324>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic2'
+ * '<S325>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Subsystem'
+ * '<S326>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Timer1'
+ * '<S327>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Timer2'
+ * '<S328>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter/Rate Limiter Dynamic'
+ * '<S329>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter/Saturation Dynamic'
+ * '<S330>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S331>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic/Saturation Dynamic'
+ * '<S332>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic1/Saturation Dynamic'
+ * '<S333>' : 'VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Rate Limiter Dynamic2/Saturation Dynamic'
+ * '<S334>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/Beeper'
+ * '<S335>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2AMKMCUFL'
+ * '<S336>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2AMKMCUFR'
+ * '<S337>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU'
+ * '<S338>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/WP_OUTPUT'
+ * '<S339>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/Beeper/MeaModule'
+ * '<S340>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU/MeaModule1'
+ * '<S341>' : 'VehCtrlMdel240926_2018b_amkspdlimit/OUTPUT/VCU2EmraxMCU/MeaModule2'
+ * '<S342>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL'
+ * '<S343>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ'
+ * '<S344>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/EEPROM'
+ * '<S345>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling'
+ * '<S346>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem'
+ * '<S347>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem'
+ * '<S348>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem'
+ * '<S349>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/Com0'
+ * '<S350>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/Com1'
+ * '<S351>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/Com2'
+ * '<S352>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/If Action Subsystem'
+ * '<S353>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/BL/Function-Call Subsystem/Function-Call Subsystem/Enabled Subsystem/If Action Subsystem1'
+ * '<S354>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq100ms'
+ * '<S355>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq10ms'
+ * '<S356>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq500ms'
+ * '<S357>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq50ms'
+ * '<S358>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/DAQ/daq5ms'
+ * '<S359>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/EEPROM/EEPROMOperation'
+ * '<S360>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling/CCPBackground'
+ * '<S361>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling/CCPReceive'
+ * '<S362>' : 'VehCtrlMdel240926_2018b_amkspdlimit/RapidECUSetting/Polling/CCPReceive/Nothing'
  */
 #endif                   /* RTW_HEADER_VehCtrlMdel240926_2018b_amkspdlimit_h_ */
 
