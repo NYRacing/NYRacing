@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_data.c
  *
- * VERSION : 1.176
+ * VERSION : 1.202
  *
- * DATE    : Fri Sep 27 09:28:20 2024
+ * DATE    : Sun Sep 29 18:35:37 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -71,7 +71,7 @@ const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP = {
   { 0.0, 25.0, 30.0, 35.0, 37.0, 40.0, 50.0 },
 
   /* Computed Parameter: uDLookupTable_tableData
-   * Referenced by: '<S203>/1-D Lookup Table'
+   * Referenced by: '<S207>/1-D Lookup Table'
    */
   { -26.072927474975586, -23.622480392456055, -20.834568023681641,
     -18.0024471282959, -15.197903633117676, -12.620231628417969,
@@ -83,7 +83,7 @@ const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP = {
     20.375423431396484, 24.070535659790039, 27.505584716796875 },
 
   /* Computed Parameter: uDLookupTable_bp01Data
-   * Referenced by: '<S203>/1-D Lookup Table'
+   * Referenced by: '<S207>/1-D Lookup Table'
    */
   { -119.99299621582031, -109.99700164794922, -100.0, -90.003402709960938,
     -80.006698608398438, -69.993301391601563, -59.996601104736328, -50.0,
@@ -93,7 +93,7 @@ const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP = {
     80.006698608398438, 90.003402709960938, 100.0, 109.99700164794922 },
 
   /* Computed Parameter: uDLookupTable1_tableData
-   * Referenced by: '<S203>/1-D Lookup Table1'
+   * Referenced by: '<S207>/1-D Lookup Table1'
    */
   { -26.816255569458008, -23.524848937988281, -19.851047515869141,
     -16.282583236694336, -13.406760215759277, -10.314791679382324,
@@ -105,7 +105,7 @@ const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP = {
     23.630111694335938, 26.306495666503906 },
 
   /* Computed Parameter: uDLookupTable1_bp01Data
-   * Referenced by: '<S203>/1-D Lookup Table1'
+   * Referenced by: '<S207>/1-D Lookup Table1'
    */
   { -119.99500274658203, -109.99299621582031, -99.9916000366211,
     -90.006698608398438, -80.004997253417969, -70.003402709960938,
@@ -128,6 +128,16 @@ const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP = {
    *   '<S7>/BrakeCompensateCoefFront2'
    */
   { 550.0F, 1700.0F },
+
+  /* Expression: single([1000,0]);
+   * Referenced by: '<S7>/BrakeCompensateCoefRear'
+   */
+  { 1000.0F, 0.0F },
+
+  /* Expression: single([550,1500]);
+   * Referenced by: '<S7>/BrakeCompensateCoefRear'
+   */
+  { 550.0F, 1500.0F },
 
   /* Expression: single([0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;20 20 20 20 20 20 20 18 18 18 17 17 16 16 15 15 15 14 14 14;35 35 35 35 35 35 30 30 25 25 25 25 20 20 20 20 20 20 20 18;50 50 50 50 50 50 50 50 50 40 40 40 40 40 40 40 40 40 38 35;79 79 79 79 85 85 85 90 95 100 110 110 110 100 90 90 80 72 70 65;100 100 100 105 105 105 110 110 110 110 115 115 125 125 120 110 90 80 76 70;120 120 120 120 125 125 125 135 135 135 135 135 135 130 130 120 100 90 82 74;125 125 125 130 135 140 145 155 155 155 155 155 155 155 155 135 110 100 88 82;130 160 160 160 160 170 160 160 160 160 160 160 160 160 160 142 120 105 94 88;130 160 160 160 160 170 160 160 160 160 160 160 160 160 160 142 120 105 95 91;170 170 180 180 180 210 200 200 200 200 200 200 190 180 180 152 133 118 106 100])
    * Referenced by: '<S7>/2-D Lookup Table1'
@@ -169,59 +179,49 @@ const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP = {
 
   /* Pooled Parameter (Expression: [0.3,0.3,2.5,2.5])
    * Referenced by:
-   *   '<S27>/VehSpd_SlipTarget_mps'
    *   '<S28>/VehSpd_SlipTarget_mps'
    *   '<S29>/VehSpd_SlipTarget_mps'
+   *   '<S30>/VehSpd_SlipTarget_mps'
    */
   { 0.3F, 0.3F, 2.5F, 2.5F },
 
   /* Pooled Parameter (Expression: [0,3,25,30])
    * Referenced by:
-   *   '<S27>/VehSpd_SlipTarget_mps'
-   *   '<S27>/VehicleStableTarget_mps'
-   *   '<S27>/VehicleStableTarget_mps1'
    *   '<S28>/VehSpd_SlipTarget_mps'
    *   '<S28>/VehicleStableTarget_mps'
    *   '<S28>/VehicleStableTarget_mps1'
    *   '<S29>/VehSpd_SlipTarget_mps'
    *   '<S29>/VehicleStableTarget_mps'
    *   '<S29>/VehicleStableTarget_mps1'
+   *   '<S30>/VehSpd_SlipTarget_mps'
+   *   '<S30>/VehicleStableTarget_mps'
+   *   '<S30>/VehicleStableTarget_mps1'
    */
   { 0.0F, 3.0F, 25.0F, 30.0F },
 
   /* Pooled Parameter (Expression: [0.4,0.4,1.2,1.2])
    * Referenced by:
-   *   '<S27>/VehicleStableTarget_mps'
-   *   '<S27>/VehicleStableTarget_mps1'
    *   '<S28>/VehicleStableTarget_mps'
    *   '<S28>/VehicleStableTarget_mps1'
    *   '<S29>/VehicleStableTarget_mps'
    *   '<S29>/VehicleStableTarget_mps1'
+   *   '<S30>/VehicleStableTarget_mps'
+   *   '<S30>/VehicleStableTarget_mps1'
    */
   { 0.4F, 0.4F, 1.2F, 1.2F },
 
-  /* Expression: single([1000,0]);
-   * Referenced by: '<S7>/BrakeCompensateCoefRear'
-   */
-  { 1000.0F, 0.0F },
-
-  /* Expression: single([550,1500]);
-   * Referenced by: '<S7>/BrakeCompensateCoefRear'
-   */
-  { 550.0F, 1500.0F },
-
   /* Pooled Parameter (Expression: single([500,4500]);)
-   * Referenced by: '<S201>/1-D Lookup Table1'
+   * Referenced by: '<S205>/1-D Lookup Table1'
    */
   { 500.0F, 4500.0F },
 
   /* Expression: single([0,100]);
-   * Referenced by: '<S201>/1-D Lookup Table3'
+   * Referenced by: '<S205>/1-D Lookup Table3'
    */
   { 0.0F, 100.0F },
 
   /* Expression: single([3540,3790])
-   * Referenced by: '<S201>/1-D Lookup Table3'
+   * Referenced by: '<S205>/1-D Lookup Table3'
    */
   { 3540.0F, 3790.0F },
 

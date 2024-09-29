@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_types.h
  *
- * VERSION : 1.176
+ * VERSION : 1.202
  *
- * DATE    : Fri Sep 27 09:28:20 2024
+ * DATE    : Sun Sep 29 18:35:37 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -292,18 +292,19 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_AVF77ZR5Bb3Y69BkPtaFJD_
-#define DEFINED_TYPEDEF_FOR_struct_AVF77ZR5Bb3Y69BkPtaFJD_
+#ifndef DEFINED_TYPEDEF_FOR_struct_LFRmNwDxkXchQ2Iw1kQhoD_
+#define DEFINED_TYPEDEF_FOR_struct_LFRmNwDxkXchQ2Iw1kQhoD_
 
 typedef struct {
   real_T ignition;
   boolean_T HVCUTOFF;
-} struct_AVF77ZR5Bb3Y69BkPtaFJD;
+  real_T AMKSWITCH;
+} struct_LFRmNwDxkXchQ2Iw1kQhoD;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_XrLvOJ5DlvPTNMmXFdrncF_
-#define DEFINED_TYPEDEF_FOR_struct_XrLvOJ5DlvPTNMmXFdrncF_
+#ifndef DEFINED_TYPEDEF_FOR_struct_SAo6bU6GM4RZlYJN28Ez7C_
+#define DEFINED_TYPEDEF_FOR_struct_SAo6bU6GM4RZlYJN28Ez7C_
 
 typedef struct {
   struct_K5cKe8WzTvKtCDgoaM96DE IMU;
@@ -313,21 +314,21 @@ typedef struct {
   struct_4YQUTqbEsFrktSsAh2zFNF BMS_BUS;
   struct_oSrQ2LBjXc27gABuWl7wTC ABS_BUS;
   struct_PrCRZsfUQUgTMs8pMJ2LJD EMRAXMCU_Receive;
-  struct_AVF77ZR5Bb3Y69BkPtaFJD KEY;
-} struct_XrLvOJ5DlvPTNMmXFdrncF;
+  struct_LFRmNwDxkXchQ2Iw1kQhoD KEY;
+} struct_SAo6bU6GM4RZlYJN28Ez7C;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_4WFxCDY5TeQmh8DkrlL1FE_
-#define DEFINED_TYPEDEF_FOR_struct_4WFxCDY5TeQmh8DkrlL1FE_
+#ifndef DEFINED_TYPEDEF_FOR_struct_qbxLh3MeVXgMbTDqzsh8IB_
+#define DEFINED_TYPEDEF_FOR_struct_qbxLh3MeVXgMbTDqzsh8IB_
 
 typedef struct {
   struct_K5cKe8WzTvKtCDgoaM96DE IMU_Processing;
   struct_EZ1YTIdnW9R1PG0j9eMP1C AccBrkPedal_Processing;
   struct_gHi1xswnyKifC1oLKCDbeD SWAS_Processing;
   struct_XaCvvqTqdLQ0rV6twwRd8 WhlSpdii_mps;
-  struct_XrLvOJ5DlvPTNMmXFdrncF BUS;
-} struct_4WFxCDY5TeQmh8DkrlL1FE;
+  struct_SAo6bU6GM4RZlYJN28Ez7C BUS;
+} struct_qbxLh3MeVXgMbTDqzsh8IB;
 
 #endif
 

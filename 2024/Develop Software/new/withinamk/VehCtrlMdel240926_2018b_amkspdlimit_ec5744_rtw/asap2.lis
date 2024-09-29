@@ -1,6 +1,7 @@
 Gear_Trs
 Mode_Trs
 Trq_CUT
+AMKSWITCH
 ignition
 L12V_error
 alarm
@@ -12,6 +13,7 @@ AC_current
 DC_current
 MCU_Temp
 motor_Temp
+voltage
 MCFR_ActualVelocity
 MCFR_DCVoltage
 MCFR_bDCOn
@@ -68,5 +70,6 @@ beeper_state
 MCFL_DCOn_setpoints
 MCFR_DCEnable
 MCFR_InverterOn
+TrqR_cmd_raw
 TroqueOn
 Trq_CUT_final
