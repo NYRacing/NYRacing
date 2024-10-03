@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   24 \
+    NumChartData   26 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -133,17 +133,31 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_MC_InverterOn"\
+      Name         "is_MCFL_InverterOn"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MC_InverterOn"\
+      Path         "MCFL_InverterOn"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_active_MC_InverterOn"\
+      Name         "is_active_MCFL_InverterOn"\
       Description  "StateIsActive"\
       SFName       ""\
-      Path         "MC_InverterOn"\
+      Path         "MCFL_InverterOn"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_MCFR_InverterOn"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MCFR_InverterOn"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_MCFR_InverterOn"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "MCFR_InverterOn"\
       SrcLocation  ""\
     }\
     ChartData {\

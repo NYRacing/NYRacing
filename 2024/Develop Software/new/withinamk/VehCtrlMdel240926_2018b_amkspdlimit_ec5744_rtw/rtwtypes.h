@@ -3,9 +3,9 @@
  *
  * FILE    : rtwtypes.h
  *
- * VERSION : 1.202
+ * VERSION : 1.212
  *
- * DATE    : Sun Sep 29 18:35:37 2024
+ * DATE    : Wed Oct  2 16:46:03 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */

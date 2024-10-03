@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit.c
  *
- * VERSION : 1.202
+ * VERSION : 1.212
  *
- * DATE    : Sun Sep 29 18:35:37 2024
+ * DATE    : Wed Oct  2 16:46:03 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -20,7 +20,7 @@
 #define VehCtrlMdel240926_20_IN_Trigger ((uint8_T)3U)
 #define VehCtrlMdel240926_IN_InterState ((uint8_T)1U)
 
-/* Named constants for Chart: '<S123>/Timer' */
+/* Named constants for Chart: '<S118>/Timer' */
 #define VehCtrlMdel240926_2018_IN_Out_n ((uint8_T)2U)
 #define VehCtrlMdel240926__IN_Trigger_c ((uint8_T)3U)
 #define VehCtrlMdel2409_IN_InterState_n ((uint8_T)1U)
@@ -37,40 +37,43 @@
 #define VehCtrlMdel24_IN_TCSR_Disenable ((uint8_T)2U)
 #define VehCtrlMdel2_IN_F_TVD_TCS_STATE ((uint8_T)3U)
 
-/* Named constants for Chart: '<S106>/Chart2' */
-#define VehCtrlM_IN_MC_InverterOn_State ((uint8_T)7U)
+/* Named constants for Chart: '<S101>/Chart2' */
+#define VehCtr_IN_MCFL_InverterOn_State ((uint8_T)6U)
+#define VehCtr_IN_MCFR_InverterOn_State ((uint8_T)7U)
 #define VehCtrlMdel240926_2018_IN_Guard ((uint8_T)1U)
 #define VehCtrlMdel240926_2018_IN_Ready ((uint8_T)5U)
 #define VehCtrlMdel240926_2018_IN_Trans ((uint8_T)7U)
-#define VehCtrlMdel240926_2018_IN_start ((uint8_T)9U)
+#define VehCtrlMdel240926_2018_IN_start ((uint8_T)10U)
 #define VehCtrlMdel240926_2018b_IN_Init ((uint8_T)2U)
 #define VehCtrlMdel240926_2018b__IN_OFF ((uint8_T)1U)
 #define VehCtrlMdel240926_2018b_a_IN_ON ((uint8_T)2U)
 #define VehCtrlMdel240926_201_IN_AMKCAN ((uint8_T)1U)
 #define VehCtrlMdel240926_20_IN_Standby ((uint8_T)6U)
-#define VehCtrlMdel240926_IN_MC_DCready ((uint8_T)6U)
-#define VehCtrlMdel240926_IN_SYSRDYCECK ((uint8_T)8U)
+#define VehCtrlMdel240926_IN_MC_DCready ((uint8_T)8U)
+#define VehCtrlMdel240926_IN_SYSRDYCECK ((uint8_T)9U)
 #define VehCtrlMdel240926_event_AMKDCON (3)
 #define VehCtrlMdel240926_event_EbeepON (5)
 #define VehCtrlMdel24092_IN_MCDCOncheck ((uint8_T)5U)
 #define VehCtrlMdel24092_event_AMKCANON (1)
 #define VehCtrlMdel24092_event_AMKDCOFF (2)
 #define VehCtrlMdel24092_event_EbeepOFF (4)
-#define VehCtrlMdel24092_event_TorqueON (11)
+#define VehCtrlMdel24092_event_TorqueON (15)
 #define VehCtrlMdel2409_IN_MCUReadyFail ((uint8_T)4U)
 #define VehCtrlMdel2409_event_AMKCANOFF (0)
-#define VehCtrlMdel2409_event_TorqueOFF (10)
+#define VehCtrlMdel2409_event_TorqueOFF (14)
 #define VehCtrlMdel240_IN_AMKDCOnFinish ((uint8_T)2U)
 #define VehCtrlMdel240_IN_DCOnCheckPass ((uint8_T)3U)
 #define VehCtrlMdel240_IN_InitStateBack ((uint8_T)3U)
 #define VehCtrlMdel240_IN_WaitForEngine ((uint8_T)8U)
-#define VehCtrlMdel240_event_InverterON (7)
-#define VehCtrlMdel24_event_InverterOFF (6)
 #define VehCtrlMdel2_IN_MCDCEnableState ((uint8_T)4U)
-#define VehCtrlMdel2_event_MCDCEnableON (9)
-#define VehCtrlMdel_event_MCDCEnableOFF (8)
+#define VehCtrlMdel2_event_InverterFLON (7)
+#define VehCtrlMdel2_event_InverterFRON (9)
+#define VehCtrlMdel2_event_MCDCEnableON (13)
+#define VehCtrlMdel_event_InverterFLOFF (6)
+#define VehCtrlMdel_event_InverterFROFF (8)
+#define VehCtrlMdel_event_MCDCEnableOFF (12)
 
-/* Named constants for Chart: '<S123>/Timer1' */
+/* Named constants for Chart: '<S118>/Timer1' */
 #define VehCtrlMdel240926_2018_IN_Out_b ((uint8_T)2U)
 #define VehCtrlMdel240926__IN_Trigger_e ((uint8_T)3U)
 #define VehCtrlMdel2409_IN_InterState_d ((uint8_T)1U)
@@ -81,76 +84,80 @@ EE_Data ecflashdatanew[1024];
 /* Exported block signals */
 real_T Gear_Trs;                       /* '<S341>/Switch2' */
 real_T Mode_Trs;                       /* '<S341>/Switch3' */
-real_T Trq_CUT;                        /* '<S205>/Timer' */
-real_T AMKSWITCH;                      /* '<S123>/Timer1' */
-real_T ignition;                       /* '<S123>/Timer' */
-real_T L12V_error;                     /* '<S181>/CAN Unpack' */
-real_T alarm;                          /* '<S181>/CAN Unpack' */
-real_T controller_ready;               /* '<S181>/CAN Unpack' */
-real_T selfcheck;                      /* '<S181>/CAN Unpack' */
-real_T RPM;                            /* '<S181>/CAN Unpack' */
-real_T trq;                            /* '<S181>/CAN Unpack' */
-real_T AC_current;                     /* '<S175>/CAN Unpack' */
-real_T DC_current;                     /* '<S175>/CAN Unpack' */
-real_T MCU_Temp;                       /* '<S175>/CAN Unpack' */
-real_T motor_Temp;                     /* '<S175>/CAN Unpack' */
-real_T voltage;                        /* '<S175>/CAN Unpack' */
-real_T MCFR_ActualVelocity;            /* '<S153>/CAN Unpack' */
-real_T MCFR_DCVoltage;                 /* '<S153>/CAN Unpack' */
-real_T MCFR_bDCOn;                     /* '<S153>/CAN Unpack' */
-real_T MCFR_bError;                    /* '<S153>/CAN Unpack' */
-real_T MCFR_bInverterOn;               /* '<S153>/CAN Unpack' */
-real_T MCFR_bQuitInverterOn;           /* '<S153>/CAN Unpack' */
-real_T MCFR_bSystemReady;              /* '<S153>/CAN Unpack' */
-real_T MCFR_TempIGBT;                  /* '<S163>/CAN Unpack' */
-real_T MCFR_TempInverter;              /* '<S163>/CAN Unpack' */
-real_T MCFR_TempMotor;                 /* '<S163>/CAN Unpack' */
-real_T MCFR_ErrorInfo;                 /* '<S161>/CAN Unpack' */
-real_T MCFL_DCVoltage;                 /* '<S135>/CAN Unpack' */
-real_T MCFL_bDCOn;                     /* '<S135>/CAN Unpack' */
-real_T MCFL_bError;                    /* '<S135>/CAN Unpack' */
-real_T MCFL_bInverterOn;               /* '<S135>/CAN Unpack' */
-real_T MCFL_bQuitDCOn;                 /* '<S135>/CAN Unpack' */
-real_T MCFL_bQuitInverterOn;           /* '<S135>/CAN Unpack' */
-real_T MCFL_bSystemReady;              /* '<S135>/CAN Unpack' */
-real_T MCFL_ActualVelocity;            /* '<S135>/Gain' */
-real_T MCFL_TempIGBT;                  /* '<S146>/CAN Unpack' */
-real_T MCFL_TempInverter;              /* '<S146>/CAN Unpack' */
-real_T MCFL_TempMotor;                 /* '<S146>/CAN Unpack' */
-real_T MCFL_ErrorInfo;                 /* '<S144>/CAN Unpack' */
-real_T StrWhlAngAliveRollCnt;          /* '<S194>/CAN Unpack1' */
-real_T StrWhlAng;                      /* '<S194>/CAN Unpack1' */
-real_T StrWhlAngV;                     /* '<S194>/CAN Unpack1' */
-real_T ABS_WS_FL;                      /* '<S125>/CAN Unpack1' */
-real_T ABS_WS_FR;                      /* '<S125>/CAN Unpack1' */
-real_T ABS_WS_RL;                      /* '<S125>/CAN Unpack1' */
-real_T ABS_WS_RR;                      /* '<S125>/CAN Unpack1' */
-real_T IMU_Ay_Value;                   /* '<S189>/CAN Unpack' */
-real_T IMU_Ax_Value;                   /* '<S189>/CAN Unpack' */
-real_T IMU_Yaw_Value;                  /* '<S189>/CAN Unpack' */
+real_T AMKFL_Current;                  /* '<S205>/Switch' */
+real_T AMKFR_Current;                  /* '<S205>/Switch1' */
+real_T Trq_CUT;                        /* '<S202>/Timer' */
+real_T AMKSWITCH;                      /* '<S118>/Timer1' */
+real_T ignition;                       /* '<S118>/Timer' */
+real_T L12V_error;                     /* '<S178>/CAN Unpack' */
+real_T alarm;                          /* '<S178>/CAN Unpack' */
+real_T controller_ready;               /* '<S178>/CAN Unpack' */
+real_T selfcheck;                      /* '<S178>/CAN Unpack' */
+real_T RPM;                            /* '<S178>/CAN Unpack' */
+real_T trq;                            /* '<S178>/CAN Unpack' */
+real_T AC_current;                     /* '<S172>/CAN Unpack' */
+real_T DC_current;                     /* '<S172>/CAN Unpack' */
+real_T MCU_Temp;                       /* '<S172>/CAN Unpack' */
+real_T motor_Temp;                     /* '<S172>/CAN Unpack' */
+real_T voltage;                        /* '<S172>/CAN Unpack' */
+real_T MCFR_ActualTorque;              /* '<S149>/CAN Unpack' */
+real_T MCFR_ActualVelocity;            /* '<S149>/CAN Unpack' */
+real_T MCFR_DCVoltage;                 /* '<S149>/CAN Unpack' */
+real_T MCFR_bDCOn;                     /* '<S149>/CAN Unpack' */
+real_T MCFR_bError;                    /* '<S149>/CAN Unpack' */
+real_T MCFR_bInverterOn;               /* '<S149>/CAN Unpack' */
+real_T MCFR_bQuitInverterOn;           /* '<S149>/CAN Unpack' */
+real_T MCFR_bSystemReady;              /* '<S149>/CAN Unpack' */
+real_T MCFR_TempIGBT;                  /* '<S160>/CAN Unpack' */
+real_T MCFR_TempInverter;              /* '<S160>/CAN Unpack' */
+real_T MCFR_TempMotor;                 /* '<S160>/CAN Unpack' */
+real_T MCFR_ErrorInfo;                 /* '<S158>/CAN Unpack' */
+real_T MCFL_ActualTorque;              /* '<S130>/CAN Unpack' */
+real_T MCFL_DCVoltage;                 /* '<S130>/CAN Unpack' */
+real_T MCFL_bDCOn;                     /* '<S130>/CAN Unpack' */
+real_T MCFL_bError;                    /* '<S130>/CAN Unpack' */
+real_T MCFL_bInverterOn;               /* '<S130>/CAN Unpack' */
+real_T MCFL_bQuitDCOn;                 /* '<S130>/CAN Unpack' */
+real_T MCFL_bQuitInverterOn;           /* '<S130>/CAN Unpack' */
+real_T MCFL_bSystemReady;              /* '<S130>/CAN Unpack' */
+real_T MCFL_ActualVelocity;            /* '<S130>/Gain' */
+real_T MCFL_TempIGBT;                  /* '<S142>/CAN Unpack' */
+real_T MCFL_TempInverter;              /* '<S142>/CAN Unpack' */
+real_T MCFL_TempMotor;                 /* '<S142>/CAN Unpack' */
+real_T MCFL_ErrorInfo;                 /* '<S140>/CAN Unpack' */
+real_T StrWhlAngAliveRollCnt;          /* '<S191>/CAN Unpack1' */
+real_T StrWhlAng;                      /* '<S191>/CAN Unpack1' */
+real_T StrWhlAngV;                     /* '<S191>/CAN Unpack1' */
+real_T ABS_WS_FL;                      /* '<S120>/CAN Unpack1' */
+real_T ABS_WS_FR;                      /* '<S120>/CAN Unpack1' */
+real_T ABS_WS_RL;                      /* '<S120>/CAN Unpack1' */
+real_T ABS_WS_RR;                      /* '<S120>/CAN Unpack1' */
+real_T IMU_Ay_Value;                   /* '<S186>/CAN Unpack' */
+real_T IMU_Ax_Value;                   /* '<S186>/CAN Unpack' */
+real_T IMU_Yaw_Value;                  /* '<S186>/CAN Unpack' */
 real_T EMRAX_Trq_CUT;                  /*  */
 real_T AMK_Trq_CUT;                    /*  */
-uint32_T Acc_vol2;                     /* '<S205>/Add3' */
-uint32_T Acc_vol;                      /* '<S205>/Add2' */
-uint32_T Acc_POS2;                     /* '<S205>/1-D Lookup Table3' */
+uint32_T Acc_vol2;                     /* '<S202>/Add3' */
+uint32_T Acc_vol;                      /* '<S202>/Add2' */
+uint32_T Acc_POS2;                     /* '<S202>/1-D Lookup Table3' */
 real32_T VehVxEst_mps;                 /* '<S325>/Add' */
-real32_T Acc_POS;                      /* '<S205>/MATLAB Function' */
-real32_T TrqR_cmd;                     /* '<S7>/Saturation1' */
-real32_T TrqFR_cmd;                    /* '<S7>/Saturation2' */
-real32_T TrqFL_cmd;                    /* '<S7>/Saturation3' */
-uint16_T F_BrkPrs;                     /* '<S205>/1-D Lookup Table1' */
-uint16_T Acc1;                         /* '<S118>/Acc3' */
-uint16_T Acc2;                         /* '<S118>/Acc4' */
-uint16_T Brk1;                         /* '<S118>/Brk1' */
-uint16_T Brk2;                         /* '<S118>/Brk2' */
-boolean_T HVCUTOFF;                    /* '<S123>/Constant' */
-boolean_T KeyPressed;                  /* '<S106>/Cast To Boolean' */
-boolean_T Brk;                         /* '<S108>/Compare' */
-boolean_T ACC_Release;                 /* '<S109>/Compare' */
-boolean_T beeper_state;                /* '<S106>/Chart2' */
-boolean_T MCFL_DCOn_setpoints;         /* '<S106>/Chart2' */
-boolean_T MCFR_DCEnable;               /* '<S106>/Chart2' */
-boolean_T MCFR_InverterOn;             /* '<S106>/Chart2' */
+real32_T Acc_POS;                      /* '<S202>/MATLAB Function' */
+real32_T EmraxTrqR_cmd;                /* '<S7>/Saturation1' */
+real32_T AMKTrqFR_cmd;                 /* '<S7>/Saturation2' */
+real32_T AMKTrqFL_cmd;                 /* '<S7>/Saturation3' */
+uint16_T F_BrkPrs;                     /* '<S202>/1-D Lookup Table1' */
+uint16_T Acc1;                         /* '<S113>/Acc3' */
+uint16_T Acc2;                         /* '<S113>/Acc4' */
+uint16_T Brk1;                         /* '<S113>/Brk1' */
+uint16_T Brk2;                         /* '<S113>/Brk2' */
+boolean_T HVCUTOFF;                    /* '<S118>/Constant' */
+boolean_T KeyPressed;                  /* '<S101>/Cast To Boolean' */
+boolean_T Brk;                         /* '<S103>/Compare' */
+boolean_T ACC_Release;                 /* '<S104>/Compare' */
+boolean_T beeper_state;                /* '<S101>/Chart2' */
+boolean_T MCFL_DCOn_setpoints;         /* '<S101>/Chart2' */
+boolean_T MCFR_DCEnable;               /* '<S101>/Chart2' */
+boolean_T MCFR_InverterOn;             /* '<S101>/Chart2' */
 boolean_T TrqR_cmd_raw;                /* '<S7>/Logical Operator1' */
 boolean_T TroqueOn;                    /* '<S7>/Logical Operator6' */
 boolean_T Trq_CUT_final;               /* '<S7>/Logical Operator4' */
@@ -169,11 +176,10 @@ RT_MODEL_VehCtrlMdel240926_20_T *const VehCtrlMdel240926_2018b_amks_M =
 /* Forward declaration for local functions */
 static void VehC_enter_atomic_WaitForEngine(void);
 static void VehCtrlMdel240926_2018b_VehStat(const real_T *controller_ready_e,
-  const real_T *Switch, const real_T *Switch3, const real_T *Switch10, const
+  const real_T *Switch_k, const real_T *Switch3, const real_T *Switch10, const
   real_T *Switch11);
-static void VehCtrlMdel_enter_atomic_AMKCAN(void);
 static void VehCtrlMdel240926_20_AMKDCready(const real_T *MCFL_bDCOn_j, const
-  real_T *MCFR_bDCOn_n, const real_T *Switch, const real_T *Switch3, const
+  real_T *MCFR_bDCOn_n, const real_T *Switch_k, const real_T *Switch3, const
   real_T *Switch10, const real_T *Switch11);
 static void rate_monotonic_scheduler(void);
 void ISR_PIT_CH3(void)
@@ -561,13 +567,13 @@ real32_T look1_iflf_binlc(real32_T u0, const real32_T bp0[], const real32_T
 
 void ISR_FlexCAN_2_MB0(void)
 {
-  /* Call the system: <S349>/CCPReceive */
+  /* Call the system: <S350>/CCPReceive */
   {
-    /* S-Function (ec5744_caninterruptslb1): '<S349>/ReceiveandTransmitInterrupt' */
+    /* S-Function (ec5744_caninterruptslb1): '<S350>/ReceiveandTransmitInterrupt' */
 
-    /* Output and update for function-call system: '<S349>/CCPReceive' */
+    /* Output and update for function-call system: '<S350>/CCPReceive' */
 
-    /* S-Function (ec5744_canreceiveslb): '<S365>/CANReceive' */
+    /* S-Function (ec5744_canreceiveslb): '<S366>/CANReceive' */
 
     /* Receive CAN message */
     {
@@ -604,11 +610,11 @@ void ISR_FlexCAN_2_MB0(void)
       can2buf0looprx++;
     }
 
-    /* Nothing to do for system: <S365>/Nothing */
+    /* Nothing to do for system: <S366>/Nothing */
 
-    /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S365>/CANReceive' */
+    /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S366>/CANReceive' */
 
-    /* End of Outputs for S-Function (ec5744_caninterruptslb1): '<S349>/ReceiveandTransmitInterrupt' */
+    /* End of Outputs for S-Function (ec5744_caninterruptslb1): '<S350>/ReceiveandTransmitInterrupt' */
   }
 
   FLEXCAN(2).IFLAG1.B.BUF0I = 1;
@@ -682,11 +688,11 @@ static void rate_monotonic_scheduler(void)
  * Output and update for atomic system:
  *    '<S8>/Timer1'
  *    '<S8>/Timer2'
- *    '<S207>/Timer'
- *    '<S208>/Timer'
- *    '<S208>/Timer1'
- *    '<S208>/Timer2'
- *    '<S208>/Timer3'
+ *    '<S204>/Timer'
+ *    '<S206>/Timer'
+ *    '<S206>/Timer1'
+ *    '<S206>/Timer2'
+ *    '<S206>/Timer3'
  *    '<S267>/Timer'
  *    '<S267>/Timer1'
  *    '<S267>/Timer2'
@@ -751,15 +757,15 @@ void VehCtrlMdel240926_20_Timer1(boolean_T rtu_Trigger, real32_T rtu_CountTime,
 
 /*
  * Output and update for atomic system:
- *    '<S123>/Timer'
- *    '<S205>/Timer'
+ *    '<S118>/Timer'
+ *    '<S202>/Timer'
  */
 void VehCtrlMdel240926_201_Timer(boolean_T rtu_Trigger, real32_T rtu_CountTime,
   real_T *rty_Exit, DW_Timer_VehCtrlMdel240926_20_T *localDW)
 {
   boolean_T sf_internal_predicateOutput;
 
-  /* Chart: '<S123>/Timer' */
+  /* Chart: '<S118>/Timer' */
   if (localDW->bitsForTID3.is_active_c21_VehCtrlMdel240926 == 0U) {
     localDW->bitsForTID3.is_active_c21_VehCtrlMdel240926 = 1U;
     localDW->bitsForTID3.is_c21_VehCtrlMdel240926_2018b_ = 3U;
@@ -808,10 +814,10 @@ void VehCtrlMdel240926_201_Timer(boolean_T rtu_Trigger, real32_T rtu_CountTime,
     }
   }
 
-  /* End of Chart: '<S123>/Timer' */
+  /* End of Chart: '<S118>/Timer' */
 }
 
-/* Function for Chart: '<S106>/Chart2' */
+/* Function for Chart: '<S101>/Chart2' */
 static void VehC_enter_atomic_WaitForEngine(void)
 {
   int32_T b_previousEvent;
@@ -874,21 +880,41 @@ static void VehC_enter_atomic_WaitForEngine(void)
     }
   }
 
-  VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel24_event_InverterOFF;
-  if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MC_InverterOn != 0U)
-  {
-    switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn) {
+  VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel_event_InverterFLOFF;
+  if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFL_InverterOn !=
+      0U) {
+    switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn) {
      case VehCtrlMdel240926_2018b__IN_OFF:
       if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-          VehCtrlMdel240_event_InverterON) {
-        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn = 2U;
+          VehCtrlMdel2_event_InverterFLON) {
+        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn = 2U;
       }
       break;
 
      case VehCtrlMdel240926_2018b_a_IN_ON:
       if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-          VehCtrlMdel24_event_InverterOFF) {
-        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn = 1U;
+          VehCtrlMdel_event_InverterFLOFF) {
+        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn = 1U;
+      }
+      break;
+    }
+  }
+
+  VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel_event_InverterFROFF;
+  if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFR_InverterOn !=
+      0U) {
+    switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn) {
+     case VehCtrlMdel240926_2018b__IN_OFF:
+      if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+          VehCtrlMdel2_event_InverterFRON) {
+        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn = 2U;
+      }
+      break;
+
+     case VehCtrlMdel240926_2018b_a_IN_ON:
+      if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+          VehCtrlMdel_event_InverterFROFF) {
+        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn = 1U;
       }
       break;
     }
@@ -918,9 +944,9 @@ static void VehC_enter_atomic_WaitForEngine(void)
   VehCtrlMdel240926_2018b_amksp_B.errorReset = 0.0;
 }
 
-/* Function for Chart: '<S106>/Chart2' */
+/* Function for Chart: '<S101>/Chart2' */
 static void VehCtrlMdel240926_2018b_VehStat(const real_T *controller_ready_e,
-  const real_T *Switch, const real_T *Switch3, const real_T *Switch10, const
+  const real_T *Switch_k, const real_T *Switch3, const real_T *Switch10, const
   real_T *Switch11)
 {
   boolean_T sf_internal_predicateOutput;
@@ -958,7 +984,7 @@ static void VehCtrlMdel240926_2018b_VehStat(const real_T *controller_ready_e,
         VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_VehStat = 6U;
       } else {
         sf_internal_predicateOutput = ((!(*controller_ready_e != 0.0)) ||
-          (!(*Switch != 0.0)) || (!(*Switch3 != 0.0)));
+          (!(*Switch_k != 0.0)) || (!(*Switch3 != 0.0)));
         if (sf_internal_predicateOutput) {
           VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_VehStat = 3U;
         }
@@ -985,22 +1011,22 @@ static void VehCtrlMdel240926_2018b_VehStat(const real_T *controller_ready_e,
     break;
 
    case VehCtrlMdel240926_2018_IN_Ready:
-    sf_internal_predicateOutput = ((!(*controller_ready_e != 0.0)) || (!(*Switch
-      != 0.0)) || (!(*Switch3 != 0.0)));
+    sf_internal_predicateOutput = ((!(*controller_ready_e != 0.0)) ||
+      (!(*Switch_k != 0.0)) || (!(*Switch3 != 0.0)));
     if (sf_internal_predicateOutput) {
       VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_VehStat = 4U;
     }
     break;
 
    case VehCtrlMdel240926_20_IN_Standby:
-    sf_internal_predicateOutput = ((!(*Switch != 0.0)) || (!(*Switch3 != 0.0)) ||
-      (!(*controller_ready_e != 0.0)));
+    sf_internal_predicateOutput = ((!(*Switch_k != 0.0)) || (!(*Switch3 != 0.0))
+      || (!(*controller_ready_e != 0.0)));
     if (sf_internal_predicateOutput) {
       VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_VehStat = 8U;
       VehC_enter_atomic_WaitForEngine();
     } else {
       sf_internal_predicateOutput = (KeyPressed && Brk && ACC_Release &&
-        (*controller_ready_e != 0.0) && (*Switch != 0.0) && (*Switch3 != 0.0) &&
+        (*controller_ready_e != 0.0) && (*Switch_k != 0.0) && (*Switch3 != 0.0) &&
         (*Switch10 != 0.0) && (*Switch11 != 0.0));
       if (sf_internal_predicateOutput) {
         VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_VehStat = 1U;
@@ -1039,7 +1065,7 @@ static void VehCtrlMdel240926_2018b_VehStat(const real_T *controller_ready_e,
 
    case VehCtrlMdel240_IN_WaitForEngine:
     VehCtrlMdel240926_2018b_amksp_B.errorReset = 0.0;
-    sf_internal_predicateOutput = ((*Switch != 0.0) && (*Switch3 != 0.0) &&
+    sf_internal_predicateOutput = ((*Switch_k != 0.0) && (*Switch3 != 0.0) &&
       (*controller_ready_e != 0.0));
     if (sf_internal_predicateOutput) {
       VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_VehStat = 6U;
@@ -1048,65 +1074,33 @@ static void VehCtrlMdel240926_2018b_VehStat(const real_T *controller_ready_e,
   }
 }
 
-/* Function for Chart: '<S106>/Chart2' */
-static void VehCtrlMdel_enter_atomic_AMKCAN(void)
-{
-  int32_T b_previousEvent;
-  b_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
-  VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel24092_event_AMKCANON;
-  if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_AMKCANenable != 0U)
-  {
-    switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKCANenable) {
-     case VehCtrlMdel240926_2018b__IN_OFF:
-      if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-          VehCtrlMdel24092_event_AMKCANON) {
-        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKCANenable = 2U;
-      }
-      break;
-
-     case VehCtrlMdel240926_2018b_a_IN_ON:
-      if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-          VehCtrlMdel2409_event_AMKCANOFF) {
-        VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKCANenable = 1U;
-      }
-      break;
-    }
-  }
-
-  VehCtrlMdel240926_2018b_amks_DW.sfEvent = b_previousEvent;
-}
-
-/* Function for Chart: '<S106>/Chart2' */
+/* Function for Chart: '<S101>/Chart2' */
 static void VehCtrlMdel240926_20_AMKDCready(const real_T *MCFL_bDCOn_j, const
-  real_T *MCFR_bDCOn_n, const real_T *Switch, const real_T *Switch3, const
+  real_T *MCFR_bDCOn_n, const real_T *Switch_k, const real_T *Switch3, const
   real_T *Switch10, const real_T *Switch11)
 {
   boolean_T sf_internal_predicateOutput;
-  int32_T e_previousEvent;
+  int32_T g_previousEvent;
   switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready) {
    case VehCtrlMdel240926_201_IN_AMKCAN:
     sf_internal_predicateOutput = (KeyPressed && Brk && ACC_Release);
     if (sf_internal_predicateOutput) {
-      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 6U;
+      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 8U;
       VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
     }
     break;
 
    case VehCtrlMdel240_IN_AMKDCOnFinish:
-    if (KeyPressed) {
-      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 1U;
-      VehCtrlMdel_enter_atomic_AMKCAN();
-    }
     break;
 
    case VehCtrlMdel240_IN_DCOnCheckPass:
     sf_internal_predicateOutput =
       ((VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 100U) &&
-       (*MCFL_bDCOn_j != 0.0) && (*MCFR_bDCOn_n != 0.0));
+       (*MCFR_bDCOn_n != 0.0) && (*MCFL_bDCOn_j != 0.0));
     if (sf_internal_predicateOutput) {
       VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 4U;
       VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
-      e_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
+      g_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
       VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel2_event_MCDCEnableON;
       if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCDCEnable != 0U)
       {
@@ -1127,36 +1121,37 @@ static void VehCtrlMdel240926_20_AMKDCready(const real_T *MCFL_bDCOn_j, const
         }
       }
 
-      VehCtrlMdel240926_2018b_amks_DW.sfEvent = e_previousEvent;
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = g_previousEvent;
     }
     break;
 
    case VehCtrlMdel2_IN_MCDCEnableState:
     if (VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 100U) {
-      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 7U;
+      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 6U;
       VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
-      e_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
-      VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel240_event_InverterON;
-      if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MC_InverterOn !=
-          0U) {
-        switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn) {
+      g_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel2_event_InverterFLON;
+      if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFL_InverterOn
+          != 0U) {
+        switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn)
+    {
          case VehCtrlMdel240926_2018b__IN_OFF:
           if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-              VehCtrlMdel240_event_InverterON) {
-            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn = 2U;
+              VehCtrlMdel2_event_InverterFLON) {
+            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn = 2U;
           }
           break;
 
          case VehCtrlMdel240926_2018b_a_IN_ON:
           if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-              VehCtrlMdel24_event_InverterOFF) {
-            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn = 1U;
+              VehCtrlMdel_event_InverterFLOFF) {
+            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn = 1U;
           }
           break;
         }
       }
 
-      VehCtrlMdel240926_2018b_amks_DW.sfEvent = e_previousEvent;
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = g_previousEvent;
     }
     break;
 
@@ -1167,9 +1162,46 @@ static void VehCtrlMdel240926_20_AMKDCready(const real_T *MCFL_bDCOn_j, const
     }
     break;
 
-   case VehCtrlMdel240926_IN_MC_DCready:
+   case VehCtr_IN_MCFL_InverterOn_State:
+    if (VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 500U) {
+      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 7U;
+      VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
+      g_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel2_event_InverterFRON;
+      if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFR_InverterOn
+          != 0U) {
+        switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn)
+    {
+         case VehCtrlMdel240926_2018b__IN_OFF:
+          if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+              VehCtrlMdel2_event_InverterFRON) {
+            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn = 2U;
+          }
+          break;
+
+         case VehCtrlMdel240926_2018b_a_IN_ON:
+          if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+              VehCtrlMdel_event_InverterFROFF) {
+            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn = 1U;
+          }
+          break;
+        }
+      }
+
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = g_previousEvent;
+    }
+    break;
+
+   case VehCtr_IN_MCFR_InverterOn_State:
     if (VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 100U) {
-      e_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
+      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 9U;
+      VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
+    }
+    break;
+
+   case VehCtrlMdel240926_IN_MC_DCready:
+    if (VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 50U) {
+      g_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
       VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel240926_event_AMKDCON;
       if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_AMKDCon != 0U) {
         switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCon) {
@@ -1189,26 +1221,20 @@ static void VehCtrlMdel240926_20_AMKDCready(const real_T *MCFL_bDCOn_j, const
         }
       }
 
-      VehCtrlMdel240926_2018b_amks_DW.sfEvent = e_previousEvent;
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = g_previousEvent;
       VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 5U;
-      VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
-    }
-    break;
-
-   case VehCtrlM_IN_MC_InverterOn_State:
-    if (VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 100U) {
-      VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 8U;
       VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
     }
     break;
 
    case VehCtrlMdel240926_IN_SYSRDYCECK:
     sf_internal_predicateOutput =
-      ((VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 800U) && (*Switch
-        != 0.0) && (*Switch3 != 0.0) && (*Switch10 != 0.0) && (*Switch11 != 0.0));
+      ((VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 800U) &&
+       (*Switch_k != 0.0) && (*Switch3 != 0.0) && (*Switch10 != 0.0) &&
+       (*Switch11 != 0.0));
     if (sf_internal_predicateOutput) {
       VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 2U;
-      e_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
+      g_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
       VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel24092_event_TorqueON;
       if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MC_TorqueCUT !=
           0U) {
@@ -1229,14 +1255,35 @@ static void VehCtrlMdel240926_20_AMKDCready(const real_T *MCFL_bDCOn_j, const
         }
       }
 
-      VehCtrlMdel240926_2018b_amks_DW.sfEvent = e_previousEvent;
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = g_previousEvent;
     }
     break;
 
    case VehCtrlMdel240926_2018_IN_start:
     if (VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 >= 500U) {
       VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 1U;
-      VehCtrlMdel_enter_atomic_AMKCAN();
+      g_previousEvent = VehCtrlMdel240926_2018b_amks_DW.sfEvent;
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = VehCtrlMdel24092_event_AMKCANON;
+      if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_AMKCANenable !=
+          0U) {
+        switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKCANenable) {
+         case VehCtrlMdel240926_2018b__IN_OFF:
+          if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+              VehCtrlMdel24092_event_AMKCANON) {
+            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKCANenable = 2U;
+          }
+          break;
+
+         case VehCtrlMdel240926_2018b_a_IN_ON:
+          if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+              VehCtrlMdel2409_event_AMKCANOFF) {
+            VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKCANenable = 1U;
+          }
+          break;
+        }
+      }
+
+      VehCtrlMdel240926_2018b_amks_DW.sfEvent = g_previousEvent;
     }
     break;
   }
@@ -1253,28 +1300,28 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step0(void) /* Sample time: [0.0005s, 0
 /* Model step function for TID1 */
 void VehCtrlMdel240926_2018b_amkspdlimit_step1(void) /* Sample time: [0.001s, 0.0s] */
 {
-  /* S-Function (fcncallgen): '<S349>/Function-Call Generator' incorporates:
-   *  SubSystem: '<S349>/CCPBackground'
+  /* S-Function (fcncallgen): '<S350>/Function-Call Generator' incorporates:
+   *  SubSystem: '<S350>/CCPBackground'
    */
 
-  /* S-Function (ec5744_ccpslb): '<S364>/CCPBackground' */
+  /* S-Function (ec5744_ccpslb): '<S365>/CCPBackground' */
   ccpBackground();
   Lin0_Background();
 
-  /* End of Outputs for S-Function (fcncallgen): '<S349>/Function-Call Generator' */
+  /* End of Outputs for S-Function (fcncallgen): '<S350>/Function-Call Generator' */
 }
 
 /* Model step function for TID2 */
 void VehCtrlMdel240926_2018b_amkspdlimit_step2(void) /* Sample time: [0.005s, 0.0s] */
 {
-  /* S-Function (fcncallgen): '<S347>/5ms' incorporates:
-   *  SubSystem: '<S347>/daq5ms'
+  /* S-Function (fcncallgen): '<S348>/5ms' incorporates:
+   *  SubSystem: '<S348>/daq5ms'
    */
 
-  /* S-Function (ec5744_ccpslb1): '<S362>/CCPDAQ' */
+  /* S-Function (ec5744_ccpslb1): '<S363>/CCPDAQ' */
   ccpDaq(0);
 
-  /* End of Outputs for S-Function (fcncallgen): '<S347>/5ms' */
+  /* End of Outputs for S-Function (fcncallgen): '<S348>/5ms' */
 }
 
 /* Model step function for TID3 */
@@ -1282,7 +1329,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 {
   boolean_T rtb_ignition;
   real_T rtb_Gain5;
-  real_T rtb_Yk1_l;
+  real_T rtb_Yk1;
   real_T rtb_Gain4;
   real_T rtb_Switch2_on;
   real32_T rtb_Add;
@@ -1294,31 +1341,25 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   boolean_T rtb_LowerRelop1_b;
   real_T elapseTime;
   real_T rtb_UkYk1;
-  real_T rtb_Add2;
   real_T rtb_g_mpss1;
-  real_T rtb_UkYk1_ix;
-  real_T rtb_StrWhlAngV;
   real32_T rtb_Add4_j;
   real32_T rtb_Add7;
   real32_T rtb_Add6_p;
   real32_T rtb_Switch2_mn;
-  real32_T rtb_Divide;
+  real32_T rtb_Divide_g;
   real32_T rtb_Switch2_b0;
   real32_T rtb_CastToDouble;
   boolean_T rtb_Compare_b;
   real32_T rtb_VxIMU_est;
   real32_T rtb_Ax;
-  real32_T rtb_Saturation1_i;
-  real32_T rtb_UkYk1_ea;
   real32_T rtb_Add10;
-  real32_T rtb_Add10_ey;
   real_T rtb_deltafalllimit_iz;
   real_T rtb_deltafalllimit_i4;
   real32_T rtb_deltafalllimit_n;
   real32_T rtb_deltafalllimit_om;
   boolean_T rtb_UpperRelop_ir;
   real32_T rtb_MaxWhlSpd_mps_n;
-  uint32_T rtb_Gain1_h;
+  uint32_T rtb_Gain1;
   uint32_T rtb_Gain;
   uint32_T FunctionCallSubsystem_ELAPS_T;
   int32_T Brk_F;
@@ -1327,30 +1368,31 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   real_T WhlSpdRR_mps;
   real_T WhlSpdRL_mps;
   real_T FLWhlStrAng;
+  real_T FRWhlStrAng;
   boolean_T rtb_LogicalOperator_idx_0;
 
   /* S-Function (fcncallgen): '<S3>/10ms7' incorporates:
    *  SubSystem: '<S3>/key'
    */
-  /* SignalConversion generated from: '<S123>/Constant' */
+  /* SignalConversion generated from: '<S118>/Constant' */
   HVCUTOFF = true;
 
-  /* S-Function (ec5744_swislbu3): '<S123>/SwitchInput' */
+  /* S-Function (ec5744_swislbu3): '<S118>/SwitchInput' */
 
   /* Read the the value of the specified switch input */
   VehCtrlMdel240926_2018b_amksp_B.Drive_ready= ec_gpio_read(92);
 
-  /* Logic: '<S123>/Logical Operator' */
+  /* Logic: '<S118>/Logical Operator' */
   rtb_ignition = !VehCtrlMdel240926_2018b_amksp_B.Drive_ready;
 
-  /* Chart: '<S123>/Timer' incorporates:
-   *  Constant: '<S123>/Constant5'
+  /* Chart: '<S118>/Timer' incorporates:
+   *  Constant: '<S118>/Constant5'
    */
   VehCtrlMdel240926_201_Timer(rtb_ignition, 0.11F, &ignition,
     &VehCtrlMdel240926_2018b_amks_DW.sf_Timer);
 
-  /* Chart: '<S123>/Timer1' incorporates:
-   *  Constant: '<S123>/Constant1'
+  /* Chart: '<S118>/Timer1' incorporates:
+   *  Constant: '<S118>/Constant1'
    */
   if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_c23_VehCtrlMdel240926
       == 0U) {
@@ -1378,9 +1420,8 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
      default:
       /* case IN_Trigger: */
       AMKSWITCH = 0.0;
-      rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.x <
-        0.10999999940395355);
-      if (rtb_LogicalOperator7) {
+      rtb_ignition = (VehCtrlMdel240926_2018b_amks_DW.x < 0.10999999940395355);
+      if (rtb_ignition) {
         VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_c23_VehCtrlMdel240926_2018b_
           = 3U;
         VehCtrlMdel240926_2018b_amks_DW.x += 0.01;
@@ -1397,13 +1438,13 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Chart: '<S123>/Timer1' */
+  /* End of Chart: '<S118>/Timer1' */
   /* End of Outputs for S-Function (fcncallgen): '<S3>/10ms7' */
 
   /* S-Function (fcncallgen): '<S3>/10ms6' incorporates:
    *  SubSystem: '<S3>/EMRAXMCU_RECIEVE'
    */
-  /* S-Function (ec5744_canreceiveslb): '<S120>/CANReceive1' */
+  /* S-Function (ec5744_canreceiveslb): '<S115>/CANReceive1' */
 
   /* Receive CAN message */
   {
@@ -1432,15 +1473,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can0buf1looprx++;
   }
 
-  /* Call the system: <S120>/MCU_pwr */
+  /* Call the system: <S115>/MCU_pwr */
 
-  /* Output and update for function-call system: '<S120>/MCU_pwr' */
+  /* Output and update for function-call system: '<S115>/MCU_pwr' */
 
-  /* Outputs for Enabled SubSystem: '<S173>/MCU_VCUMeter1' incorporates:
-   *  EnablePort: '<S175>/Enable'
+  /* Outputs for Enabled SubSystem: '<S170>/MCU_VCUMeter1' incorporates:
+   *  EnablePort: '<S172>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive1_o2 > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S175>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S172>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -1475,9 +1516,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S175>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S172>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S175>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S172>/CAN Unpack' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_g.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_g.ID !=
            INVALID_CAN_ID) ) {
@@ -1680,11 +1721,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S173>/MCU_VCUMeter1' */
+  /* End of Outputs for SubSystem: '<S170>/MCU_VCUMeter1' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S120>/CANReceive1' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S115>/CANReceive1' */
 
-  /* S-Function (ec5744_canreceiveslb): '<S120>/CANReceive3' */
+  /* S-Function (ec5744_canreceiveslb): '<S115>/CANReceive3' */
 
   /* Receive CAN message */
   {
@@ -1713,15 +1754,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can0buf0looprx++;
   }
 
-  /* Call the system: <S120>/MCU_state */
+  /* Call the system: <S115>/MCU_state */
 
-  /* Output and update for function-call system: '<S120>/MCU_state' */
+  /* Output and update for function-call system: '<S115>/MCU_state' */
 
-  /* Outputs for Enabled SubSystem: '<S174>/MCU_state' incorporates:
-   *  EnablePort: '<S181>/Enable'
+  /* Outputs for Enabled SubSystem: '<S171>/MCU_state' incorporates:
+   *  EnablePort: '<S178>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive3_o2 > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S181>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S178>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -1756,9 +1797,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S181>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S178>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S181>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S178>/CAN Unpack' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4.ID !=
            INVALID_CAN_ID) ) {
@@ -2300,15 +2341,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S174>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S171>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S120>/CANReceive3' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S115>/CANReceive3' */
   /* End of Outputs for S-Function (fcncallgen): '<S3>/10ms6' */
 
   /* S-Function (fcncallgen): '<S3>/10ms3' incorporates:
    *  SubSystem: '<S3>/ABS_Receive'
    */
-  /* S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' */
+  /* S-Function (ec5744_canreceiveslb): '<S111>/CANReceive3' */
 
   /* Receive CAN message */
   {
@@ -2345,15 +2386,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf16looprx++;
   }
 
-  /* Call the system: <S116>/ABS_BUS_state */
+  /* Call the system: <S111>/ABS_BUS_state */
 
-  /* Output and update for function-call system: '<S116>/ABS_BUS_state' */
+  /* Output and update for function-call system: '<S111>/ABS_BUS_state' */
 
-  /* Outputs for Enabled SubSystem: '<S124>/IMU_state' incorporates:
-   *  EnablePort: '<S125>/Enable'
+  /* Outputs for Enabled SubSystem: '<S119>/IMU_state' incorporates:
+   *  EnablePort: '<S120>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive3_o2_m > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S125>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S120>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -2388,9 +2429,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S125>/CAN Unpack1' */
+    /* S-Function (scanunpack): '<S120>/CAN Unpack1' */
     {
-      /* S-Function (scanunpack): '<S125>/CAN Unpack1' */
+      /* S-Function (scanunpack): '<S120>/CAN Unpack1' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_ja.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_ja.ID !=
            INVALID_CAN_ID) ) {
@@ -2563,15 +2604,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S124>/IMU_state' */
+  /* End of Outputs for SubSystem: '<S119>/IMU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S111>/CANReceive3' */
   /* End of Outputs for S-Function (fcncallgen): '<S3>/10ms3' */
 
   /* S-Function (fcncallgen): '<S3>/10ms4' incorporates:
    *  SubSystem: '<S3>/StrSnis_Receive'
    */
-  /* S-Function (ec5744_canreceiveslb): '<S122>/CANReceive3' */
+  /* S-Function (ec5744_canreceiveslb): '<S117>/CANReceive3' */
 
   /* Receive CAN message */
   {
@@ -2608,15 +2649,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf7looprx++;
   }
 
-  /* Call the system: <S122>/StrWhSnis_state */
+  /* Call the system: <S117>/StrWhSnis_state */
 
-  /* Output and update for function-call system: '<S122>/StrWhSnis_state' */
+  /* Output and update for function-call system: '<S117>/StrWhSnis_state' */
 
-  /* Outputs for Enabled SubSystem: '<S193>/IMU_state' incorporates:
-   *  EnablePort: '<S194>/Enable'
+  /* Outputs for Enabled SubSystem: '<S190>/IMU_state' incorporates:
+   *  EnablePort: '<S191>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive3_o2_p > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S194>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S191>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -2651,9 +2692,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S194>/CAN Unpack1' */
+    /* S-Function (scanunpack): '<S191>/CAN Unpack1' */
     {
-      /* S-Function (scanunpack): '<S194>/CAN Unpack1' */
+      /* S-Function (scanunpack): '<S191>/CAN Unpack1' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_l.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_l.ID !=
            INVALID_CAN_ID) ) {
@@ -2775,15 +2816,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S193>/IMU_state' */
+  /* End of Outputs for SubSystem: '<S190>/IMU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S122>/CANReceive3' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S117>/CANReceive3' */
   /* End of Outputs for S-Function (fcncallgen): '<S3>/10ms4' */
 
   /* S-Function (fcncallgen): '<S3>/10ms5' incorporates:
    *  SubSystem: '<S3>/AMKMCU_Receive'
    */
-  /* S-Function (ec5744_canreceiveslb): '<S130>/CANReceive3' */
+  /* S-Function (ec5744_canreceiveslb): '<S125>/CANReceive3' */
 
   /* Receive CAN message */
   {
@@ -2820,15 +2861,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf1looprx++;
   }
 
-  /* Call the system: <S130>/AMKMCU_state */
+  /* Call the system: <S125>/AMKMCU_state */
 
-  /* Output and update for function-call system: '<S130>/AMKMCU_state' */
+  /* Output and update for function-call system: '<S125>/AMKMCU_state' */
 
-  /* Outputs for Enabled SubSystem: '<S132>/MCU_state' incorporates:
-   *  EnablePort: '<S135>/Enable'
+  /* Outputs for Enabled SubSystem: '<S127>/MCU_state' incorporates:
+   *  EnablePort: '<S130>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive3_o2_l > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S135>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S130>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -2863,9 +2904,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S135>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S130>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S135>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S130>/CAN Unpack' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_e.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_e.ID !=
            INVALID_CAN_ID) ) {
@@ -2909,7 +2950,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
               {
                 real64_T result = (real64_T) outValue;
                 result = result * 0.0098;
-                VehCtrlMdel240926_2018b_amksp_B.MCFL_ActualTorque = result;
+                MCFL_ActualTorque = result;
               }
             }
 
@@ -3309,15 +3350,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       }
     }
 
-    /* Gain: '<S135>/Gain' */
+    /* Gain: '<S130>/Gain' */
     MCFL_ActualVelocity = -VehCtrlMdel240926_2018b_amksp_B.MCFL_ActualVelocity_p;
   }
 
-  /* End of Outputs for SubSystem: '<S132>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S127>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive3' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive3' */
 
-  /* S-Function (ec5744_canreceiveslb): '<S130>/CANReceive1' */
+  /* S-Function (ec5744_canreceiveslb): '<S125>/CANReceive1' */
 
   /* Receive CAN message */
   {
@@ -3354,15 +3395,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf2looprx++;
   }
 
-  /* Call the system: <S130>/AMKMCU_state1 */
+  /* Call the system: <S125>/AMKMCU_state1 */
 
-  /* Output and update for function-call system: '<S130>/AMKMCU_state1' */
+  /* Output and update for function-call system: '<S125>/AMKMCU_state1' */
 
-  /* Outputs for Enabled SubSystem: '<S133>/MCU_state' incorporates:
-   *  EnablePort: '<S144>/Enable'
+  /* Outputs for Enabled SubSystem: '<S128>/MCU_state' incorporates:
+   *  EnablePort: '<S140>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive1_o2_l > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S144>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S140>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -3397,9 +3438,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S144>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S140>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S144>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S140>/CAN Unpack' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_b.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_b.ID !=
            INVALID_CAN_ID) ) {
@@ -3500,11 +3541,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S133>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S128>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive1' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive1' */
 
-  /* S-Function (ec5744_canreceiveslb): '<S130>/CANReceive2' */
+  /* S-Function (ec5744_canreceiveslb): '<S125>/CANReceive2' */
 
   /* Receive CAN message */
   {
@@ -3529,15 +3570,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf3looprx++;
   }
 
-  /* Call the system: <S130>/AMKMCU_state2 */
+  /* Call the system: <S125>/AMKMCU_state2 */
 
-  /* Output and update for function-call system: '<S130>/AMKMCU_state2' */
+  /* Output and update for function-call system: '<S125>/AMKMCU_state2' */
 
-  /* Outputs for Enabled SubSystem: '<S134>/MCU_state' incorporates:
-   *  EnablePort: '<S146>/Enable'
+  /* Outputs for Enabled SubSystem: '<S129>/MCU_state' incorporates:
+   *  EnablePort: '<S142>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive2_o2 > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S146>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S142>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -3566,9 +3607,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S146>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S142>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S146>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S142>/CAN Unpack' */
       if ((6 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_c.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_c.ID !=
            INVALID_CAN_ID) ) {
@@ -3698,11 +3739,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S134>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S129>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive2' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive2' */
 
-  /* S-Function (ec5744_canreceiveslb): '<S131>/CANReceive3' */
+  /* S-Function (ec5744_canreceiveslb): '<S126>/CANReceive3' */
 
   /* Receive CAN message */
   {
@@ -3739,15 +3780,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf4looprx++;
   }
 
-  /* Call the system: <S131>/AMKMCU_state */
+  /* Call the system: <S126>/AMKMCU_state */
 
-  /* Output and update for function-call system: '<S131>/AMKMCU_state' */
+  /* Output and update for function-call system: '<S126>/AMKMCU_state' */
 
-  /* Outputs for Enabled SubSystem: '<S150>/MCU_state' incorporates:
-   *  EnablePort: '<S153>/Enable'
+  /* Outputs for Enabled SubSystem: '<S146>/MCU_state' incorporates:
+   *  EnablePort: '<S149>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive3_o2_a > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S153>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S149>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -3782,9 +3823,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S153>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S149>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S153>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S149>/CAN Unpack' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_j.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_j.ID !=
            INVALID_CAN_ID) ) {
@@ -3828,7 +3869,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
               {
                 real64_T result = (real64_T) outValue;
                 result = result * 0.0098;
-                VehCtrlMdel240926_2018b_amksp_B.MCFR_ActualTorque = result;
+                MCFR_ActualTorque = result;
               }
             }
 
@@ -4229,11 +4270,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S150>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S146>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive3' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive3' */
 
-  /* S-Function (ec5744_canreceiveslb): '<S131>/CANReceive1' */
+  /* S-Function (ec5744_canreceiveslb): '<S126>/CANReceive1' */
 
   /* Receive CAN message */
   {
@@ -4270,15 +4311,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf5looprx++;
   }
 
-  /* Call the system: <S131>/AMKMCU_state1 */
+  /* Call the system: <S126>/AMKMCU_state1 */
 
-  /* Output and update for function-call system: '<S131>/AMKMCU_state1' */
+  /* Output and update for function-call system: '<S126>/AMKMCU_state1' */
 
-  /* Outputs for Enabled SubSystem: '<S151>/MCU_state' incorporates:
-   *  EnablePort: '<S161>/Enable'
+  /* Outputs for Enabled SubSystem: '<S147>/MCU_state' incorporates:
+   *  EnablePort: '<S158>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive1_o2_o > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S161>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S158>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -4313,9 +4354,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S161>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S158>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S161>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S158>/CAN Unpack' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_p.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_p.ID !=
            INVALID_CAN_ID) ) {
@@ -4416,11 +4457,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S151>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S147>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive1' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive1' */
 
-  /* S-Function (ec5744_canreceiveslb): '<S131>/CANReceive2' */
+  /* S-Function (ec5744_canreceiveslb): '<S126>/CANReceive2' */
 
   /* Receive CAN message */
   {
@@ -4451,15 +4492,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf0looprx++;
   }
 
-  /* Call the system: <S131>/AMKMCU_state2 */
+  /* Call the system: <S126>/AMKMCU_state2 */
 
-  /* Output and update for function-call system: '<S131>/AMKMCU_state2' */
+  /* Output and update for function-call system: '<S126>/AMKMCU_state2' */
 
-  /* Outputs for Enabled SubSystem: '<S152>/MCU_state' incorporates:
-   *  EnablePort: '<S163>/Enable'
+  /* Outputs for Enabled SubSystem: '<S148>/MCU_state' incorporates:
+   *  EnablePort: '<S160>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive2_o2_p > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S163>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S160>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -4488,9 +4529,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S163>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S160>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S163>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S160>/CAN Unpack' */
       if ((6 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_n.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_n.ID !=
            INVALID_CAN_ID) ) {
@@ -4620,30 +4661,30 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S152>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S148>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive2' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive2' */
   /* End of Outputs for S-Function (fcncallgen): '<S3>/10ms5' */
 
   /* S-Function (fcncallgen): '<S3>/10ms' incorporates:
    *  SubSystem: '<S3>/AccBrk_BUS'
    */
-  /* S-Function (ec5744_asislbu3): '<S118>/Acc3' */
+  /* S-Function (ec5744_asislbu3): '<S113>/Acc3' */
 
   /* Read the ADC conversion result of the analog signal */
   Acc1= adc_read_chan(1,2);
 
-  /* S-Function (ec5744_asislbu3): '<S118>/Acc4' */
+  /* S-Function (ec5744_asislbu3): '<S113>/Acc4' */
 
   /* Read the ADC conversion result of the analog signal */
   Acc2= adc_read_chan(1,4);
 
-  /* S-Function (ec5744_asislbu3): '<S118>/Brk1' */
+  /* S-Function (ec5744_asislbu3): '<S113>/Brk1' */
 
   /* Read the ADC conversion result of the analog signal */
   Brk1= adc_read_chan(1,0);
 
-  /* S-Function (ec5744_asislbu3): '<S118>/Brk2' */
+  /* S-Function (ec5744_asislbu3): '<S113>/Brk2' */
 
   /* Read the ADC conversion result of the analog signal */
   Brk2= adc_read_chan(0,13);
@@ -4653,7 +4694,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* S-Function (fcncallgen): '<S3>/10ms2' incorporates:
    *  SubSystem: '<S3>/IMU_Recieve'
    */
-  /* S-Function (ec5744_canreceiveslb): '<S121>/CANReceive3' */
+  /* S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' */
 
   /* Receive CAN message */
   {
@@ -4690,15 +4731,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can1buf17looprx++;
   }
 
-  /* Call the system: <S121>/IMU_state */
+  /* Call the system: <S116>/IMU_state */
 
-  /* Output and update for function-call system: '<S121>/IMU_state' */
+  /* Output and update for function-call system: '<S116>/IMU_state' */
 
-  /* Outputs for Enabled SubSystem: '<S188>/MCU_state' incorporates:
-   *  EnablePort: '<S189>/Enable'
+  /* Outputs for Enabled SubSystem: '<S185>/MCU_state' incorporates:
+   *  EnablePort: '<S186>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive3_o2_ma > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S189>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S186>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -4733,9 +4774,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       canunpackloop++;
     }
 
-    /* S-Function (scanunpack): '<S189>/CAN Unpack' */
+    /* S-Function (scanunpack): '<S186>/CAN Unpack' */
     {
-      /* S-Function (scanunpack): '<S189>/CAN Unpack' */
+      /* S-Function (scanunpack): '<S186>/CAN Unpack' */
       if ((8 == VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_h.Length) &&
           (VehCtrlMdel240926_2018b_amksp_B.CANUnPackMessage4_h.ID !=
            INVALID_CAN_ID) ) {
@@ -5005,15 +5046,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S188>/MCU_state' */
+  /* End of Outputs for SubSystem: '<S185>/MCU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S121>/CANReceive3' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' */
   /* End of Outputs for S-Function (fcncallgen): '<S3>/10ms2' */
 
   /* S-Function (fcncallgen): '<S3>/10ms1' incorporates:
    *  SubSystem: '<S3>/BMS_Recive'
    */
-  /* S-Function (ec5744_canreceiveslb): '<S119>/CANReceive3' */
+  /* S-Function (ec5744_canreceiveslb): '<S114>/CANReceive3' */
 
   /* Receive CAN message */
   {
@@ -5050,15 +5091,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     can0buf3looprx++;
   }
 
-  /* Call the system: <S119>/ABS_BUS_state */
+  /* Call the system: <S114>/ABS_BUS_state */
 
-  /* Output and update for function-call system: '<S119>/ABS_BUS_state' */
+  /* Output and update for function-call system: '<S114>/ABS_BUS_state' */
 
-  /* Outputs for Enabled SubSystem: '<S171>/IMU_state' incorporates:
-   *  EnablePort: '<S172>/Enable'
+  /* Outputs for Enabled SubSystem: '<S168>/IMU_state' incorporates:
+   *  EnablePort: '<S169>/Enable'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.CANReceive3_o2_k > 0) {
-    /* S-Function (ecucoder_canunmessage): '<S172>/CANUnPackMessage4' */
+    /* S-Function (ecucoder_canunmessage): '<S169>/CANUnPackMessage4' */
 
     /*Unpack CAN message*/
     {
@@ -5094,9 +5135,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
   }
 
-  /* End of Outputs for SubSystem: '<S171>/IMU_state' */
+  /* End of Outputs for SubSystem: '<S168>/IMU_state' */
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S119>/CANReceive3' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S114>/CANReceive3' */
   /* End of Outputs for S-Function (fcncallgen): '<S3>/10ms1' */
 
   /* S-Function (fcncallgen): '<S4>/10ms' incorporates:
@@ -5114,220 +5155,220 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b_amks_M->Timing.clockTick3;
   VehCtrlMdel240926_2018b_amks_DW.FunctionCallSubsystem_RESET_ELA = false;
 
-  /* Lookup_n-D: '<S205>/1-D Lookup Table1' */
+  /* Lookup_n-D: '<S202>/1-D Lookup Table1' */
   F_BrkPrs = look1_iu16bflftfIu16_binlc(Brk1,
-    VehCtrlMdel240926_2018b__ConstP.pooled68,
-    VehCtrlMdel240926_2018b__ConstP.pooled68, 1U);
+    VehCtrlMdel240926_2018b__ConstP.pooled57,
+    VehCtrlMdel240926_2018b__ConstP.pooled57, 1U);
 
-  /* DataTypeConversion: '<S205>/Data Type Conversion' */
+  /* DataTypeConversion: '<S202>/Data Type Conversion' */
   rtb_Add = F_BrkPrs;
 
-  /* SignalConversion generated from: '<S203>/Out1' */
+  /* SignalConversion generated from: '<S200>/Out1' */
   Brk_F = (int32_T)rtb_Add;
 
-  /* Gain: '<S205>/Gain2' */
-  rtb_Gain1_h = 45875U * Acc2;
+  /* Gain: '<S202>/Gain2' */
+  rtb_Gain1 = 45875U * Acc2;
 
-  /* Gain: '<S205>/Gain3' incorporates:
-   *  UnitDelay: '<S205>/Unit Delay1'
+  /* Gain: '<S202>/Gain3' incorporates:
+   *  UnitDelay: '<S202>/Unit Delay1'
    */
   rtb_Gain = 39322U * VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_fm;
 
-  /* Sum: '<S205>/Add3' */
-  Acc_vol2 = (rtb_Gain >> 1) + rtb_Gain1_h;
+  /* Sum: '<S202>/Add3' */
+  Acc_vol2 = (rtb_Gain >> 1) + rtb_Gain1;
 
-  /* RelationalOperator: '<S213>/Compare' */
+  /* RelationalOperator: '<S211>/Compare' */
   rtb_ignition = (Acc_vol2 <= 32768000U);
 
-  /* RelationalOperator: '<S214>/Compare' */
+  /* RelationalOperator: '<S212>/Compare' */
   rtb_LogicalOperator2 = (Acc_vol2 >= 294912000U);
 
-  /* Logic: '<S205>/Logical Operator1' */
+  /* Logic: '<S202>/Logical Operator1' */
   rtb_ignition = (rtb_ignition || rtb_LogicalOperator2);
 
-  /* Gain: '<S205>/Gain' */
+  /* Gain: '<S202>/Gain' */
   rtb_Gain = 45875U * Acc1;
 
-  /* UnitDelay: '<S205>/Unit Delay' incorporates:
-   *  UnitDelay: '<S205>/Unit Delay1'
+  /* UnitDelay: '<S202>/Unit Delay' incorporates:
+   *  UnitDelay: '<S202>/Unit Delay1'
    */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_fm =
     VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_k;
 
-  /* Gain: '<S205>/Gain1' incorporates:
-   *  UnitDelay: '<S205>/Unit Delay1'
+  /* Gain: '<S202>/Gain1' incorporates:
+   *  UnitDelay: '<S202>/Unit Delay1'
    */
-  rtb_Gain1_h = 39322U * VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_fm;
+  rtb_Gain1 = 39322U * VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_fm;
 
-  /* Sum: '<S205>/Add2' */
-  Acc_vol = (rtb_Gain1_h >> 1) + rtb_Gain;
+  /* Sum: '<S202>/Add2' */
+  Acc_vol = (rtb_Gain1 >> 1) + rtb_Gain;
 
-  /* RelationalOperator: '<S209>/Compare' */
+  /* RelationalOperator: '<S207>/Compare' */
   rtb_LogicalOperator2 = (Acc_vol <= 32768000U);
 
-  /* RelationalOperator: '<S210>/Compare' */
+  /* RelationalOperator: '<S208>/Compare' */
   rtb_Compare = (Acc_vol >= 294912000U);
 
-  /* Logic: '<S205>/Logical Operator' */
+  /* Logic: '<S202>/Logical Operator' */
   rtb_LogicalOperator2 = (rtb_LogicalOperator2 || rtb_Compare);
 
-  /* Logic: '<S205>/Logical Operator2' */
+  /* Logic: '<S202>/Logical Operator2' */
   rtb_LogicalOperator2 = (rtb_LogicalOperator2 || rtb_ignition);
 
-  /* DataTypeConversion: '<S205>/Data Type Conversion2' */
+  /* DataTypeConversion: '<S202>/Data Type Conversion2' */
   rtb_Add = (real32_T)Acc_vol * 1.52587891E-5F;
 
-  /* MATLAB Function: '<S205>/MATLAB Function' */
+  /* MATLAB Function: '<S202>/MATLAB Function' */
   Acc_POS = fmaxf(fminf((rtb_Add - 2300.0F) * -0.4F, 100.0F), 0.0F);
 
-  /* Lookup_n-D: '<S205>/1-D Lookup Table3' */
+  /* Lookup_n-D: '<S202>/1-D Lookup Table3' */
   Acc_POS2 = look1_iu32n16bflftfIu32_binlc(Acc_vol2,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable3_bp01Data,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable3_tableData, 1U);
 
-  /* DataTypeConversion: '<S205>/Data Type Conversion4' */
+  /* DataTypeConversion: '<S202>/Data Type Conversion4' */
   rtb_Add = (real32_T)Acc_POS2 * 1.52587891E-5F;
 
-  /* Sum: '<S205>/Add1' */
+  /* Sum: '<S202>/Add1' */
   rtb_Acc_POS = Acc_POS - rtb_Add;
 
-  /* Abs: '<S205>/Abs' */
+  /* Abs: '<S202>/Abs' */
   rtb_Acc_POS = fabsf(rtb_Acc_POS);
-
-  /* RelationalOperator: '<S217>/Compare' incorporates:
-   *  Constant: '<S217>/Constant'
-   */
-  rtb_Compare = (rtb_Acc_POS > 15.0F);
 
   /* RelationalOperator: '<S215>/Compare' incorporates:
    *  Constant: '<S215>/Constant'
    */
+  rtb_Compare = (rtb_Acc_POS > 15.0F);
+
+  /* RelationalOperator: '<S213>/Compare' incorporates:
+   *  Constant: '<S213>/Constant'
+   */
   rtb_ignition = (Acc_POS > 100.0F);
+
+  /* RelationalOperator: '<S214>/Compare' incorporates:
+   *  Constant: '<S214>/Constant'
+   */
+  rtb_LogicalOperator7 = (rtb_Add > 100.0F);
+
+  /* Logic: '<S202>/Logical Operator3' */
+  rtb_ignition = (rtb_ignition || rtb_LogicalOperator7);
 
   /* RelationalOperator: '<S216>/Compare' incorporates:
    *  Constant: '<S216>/Constant'
    */
-  rtb_LogicalOperator7 = (rtb_Add > 100.0F);
-
-  /* Logic: '<S205>/Logical Operator3' */
-  rtb_ignition = (rtb_ignition || rtb_LogicalOperator7);
-
-  /* RelationalOperator: '<S218>/Compare' incorporates:
-   *  Constant: '<S218>/Constant'
-   */
   rtb_LogicalOperator7 = (Brk1 <= 300);
 
-  /* RelationalOperator: '<S219>/Compare' incorporates:
-   *  Constant: '<S219>/Constant'
+  /* RelationalOperator: '<S217>/Compare' incorporates:
+   *  Constant: '<S217>/Constant'
    */
   rtb_Compare_am = (Brk1 >= 4500);
 
-  /* Logic: '<S205>/Logical Operator5' */
+  /* Logic: '<S202>/Logical Operator5' */
   rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
 
-  /* RelationalOperator: '<S211>/Compare' incorporates:
-   *  Constant: '<S211>/Constant'
+  /* RelationalOperator: '<S209>/Compare' incorporates:
+   *  Constant: '<S209>/Constant'
    */
   rtb_Compare_am = (Brk2 <= 300);
 
-  /* RelationalOperator: '<S212>/Compare' incorporates:
-   *  Constant: '<S212>/Constant'
+  /* RelationalOperator: '<S210>/Compare' incorporates:
+   *  Constant: '<S210>/Constant'
    */
   rtb_LowerRelop1_b = (Brk2 >= 4500);
 
-  /* Logic: '<S205>/Logical Operator6' */
+  /* Logic: '<S202>/Logical Operator6' */
   rtb_Compare_am = (rtb_Compare_am || rtb_LowerRelop1_b);
 
-  /* Logic: '<S205>/Logical Operator7' */
+  /* Logic: '<S202>/Logical Operator7' */
   rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
 
-  /* Logic: '<S205>/Logical Operator4' */
+  /* Logic: '<S202>/Logical Operator4' */
   rtb_ignition = (rtb_ignition || rtb_Compare || rtb_LogicalOperator2 ||
                   rtb_LogicalOperator7);
 
-  /* Chart: '<S205>/Timer' incorporates:
-   *  Constant: '<S205>/Constant1'
+  /* Chart: '<S202>/Timer' incorporates:
+   *  Constant: '<S202>/Constant1'
    */
   VehCtrlMdel240926_201_Timer(rtb_ignition, 0.11F, &Trq_CUT,
     &VehCtrlMdel240926_2018b_amks_DW.sf_Timer_a);
 
-  /* UnitDelay: '<S240>/Delay Input2'
+  /* UnitDelay: '<S238>/Delay Input2'
    *
-   * Block description for '<S240>/Delay Input2':
+   * Block description for '<S238>/Delay Input2':
    *
    *  Store in Global RAM
    */
-  rtb_Yk1_l = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE;
+  rtb_Yk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE;
 
-  /* SampleTimeMath: '<S240>/sample time'
+  /* SampleTimeMath: '<S238>/sample time'
    *
-   * About '<S240>/sample time':
+   * About '<S238>/sample time':
    *  y = K where K = ( w * Ts )
    */
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
-  /* Product: '<S240>/delta rise limit' */
+  /* Product: '<S238>/delta rise limit' */
   rtb_Gain5 = 1200.0 * elapseTime;
 
-  /* Sum: '<S240>/Difference Inputs1'
+  /* Sum: '<S238>/Difference Inputs1'
    *
-   * Block description for '<S240>/Difference Inputs1':
+   * Block description for '<S238>/Difference Inputs1':
    *
    *  Add in CPU
    */
-  rtb_UkYk1 = StrWhlAng - rtb_Yk1_l;
+  rtb_UkYk1 = StrWhlAng - rtb_Yk1;
 
-  /* RelationalOperator: '<S243>/LowerRelop1' */
+  /* RelationalOperator: '<S241>/LowerRelop1' */
   rtb_LowerRelop1_b = (rtb_UkYk1 > rtb_Gain5);
 
-  /* Switch: '<S243>/Switch2' */
+  /* Switch: '<S241>/Switch2' */
   if (!rtb_LowerRelop1_b) {
-    /* Product: '<S240>/delta fall limit' */
+    /* Product: '<S238>/delta fall limit' */
     rtb_deltafalllimit_iz = -1200.0 * elapseTime;
 
-    /* RelationalOperator: '<S243>/UpperRelop' */
+    /* RelationalOperator: '<S241>/UpperRelop' */
     rtb_ignition = (rtb_UkYk1 < rtb_deltafalllimit_iz);
 
-    /* Switch: '<S243>/Switch' */
+    /* Switch: '<S241>/Switch' */
     if (rtb_ignition) {
       rtb_UkYk1 = rtb_deltafalllimit_iz;
     }
 
-    /* End of Switch: '<S243>/Switch' */
+    /* End of Switch: '<S241>/Switch' */
     rtb_Gain5 = rtb_UkYk1;
   }
 
-  /* End of Switch: '<S243>/Switch2' */
+  /* End of Switch: '<S241>/Switch2' */
 
-  /* Sum: '<S240>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S240>/Delay Input2'
+  /* Sum: '<S238>/Difference Inputs2' incorporates:
+   *  UnitDelay: '<S238>/Delay Input2'
    *
-   * Block description for '<S240>/Difference Inputs2':
+   * Block description for '<S238>/Difference Inputs2':
    *
    *  Add in CPU
    *
-   * Block description for '<S240>/Delay Input2':
+   * Block description for '<S238>/Delay Input2':
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE = rtb_Gain5 + rtb_Yk1_l;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE = rtb_Gain5 + rtb_Yk1;
 
-  /* Abs: '<S207>/Abs' incorporates:
-   *  UnitDelay: '<S240>/Delay Input2'
+  /* Abs: '<S204>/Abs' incorporates:
+   *  UnitDelay: '<S238>/Delay Input2'
    *
-   * Block description for '<S240>/Delay Input2':
+   * Block description for '<S238>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_Gain5 = fabs(VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE);
 
-  /* RelationalOperator: '<S239>/Compare' incorporates:
-   *  Constant: '<S239>/Constant'
+  /* RelationalOperator: '<S237>/Compare' incorporates:
+   *  Constant: '<S237>/Constant'
    */
   rtb_ignition = (rtb_Gain5 > 120.0);
 
-  /* Chart: '<S207>/Timer' incorporates:
-   *  Constant: '<S207>/Constant5'
+  /* Chart: '<S204>/Timer' incorporates:
+   *  Constant: '<S204>/Constant5'
    */
   VehCtrlMdel240926_20_Timer1(rtb_ignition, 0.11F,
     &VehCtrlMdel240926_2018b_amksp_B.Exit_on,
@@ -5349,7 +5390,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
   /* Product: '<S253>/delta rise limit' */
-  rtb_Yk1_l = 10.0 * elapseTime;
+  rtb_Yk1 = 10.0 * elapseTime;
 
   /* Sum: '<S253>/Difference Inputs1'
    *
@@ -5360,28 +5401,28 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_UkYk1 = ABS_WS_RL - rtb_Gain5;
 
   /* RelationalOperator: '<S261>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_UkYk1 > rtb_Yk1_l);
+  rtb_LowerRelop1_b = (rtb_UkYk1 > rtb_Yk1);
 
   /* Switch: '<S261>/Switch2' */
   if (!rtb_LowerRelop1_b) {
     /* Product: '<S253>/delta fall limit' */
-    rtb_Yk1_l = -10.0 * elapseTime;
+    rtb_Yk1 = -10.0 * elapseTime;
 
     /* RelationalOperator: '<S261>/UpperRelop' */
-    rtb_ignition = (rtb_UkYk1 < rtb_Yk1_l);
+    rtb_ignition = (rtb_UkYk1 < rtb_Yk1);
 
     /* Switch: '<S261>/Switch' */
     if (rtb_ignition) {
-      rtb_UkYk1 = rtb_Yk1_l;
+      rtb_UkYk1 = rtb_Yk1;
     }
 
     /* End of Switch: '<S261>/Switch' */
-    rtb_Yk1_l = rtb_UkYk1;
+    rtb_Yk1 = rtb_UkYk1;
   }
 
   /* End of Switch: '<S261>/Switch2' */
 
-  /* Saturate: '<S208>/Saturation' incorporates:
+  /* Saturate: '<S206>/Saturation' incorporates:
    *  Sum: '<S253>/Difference Inputs2'
    *  UnitDelay: '<S253>/Delay Input2'
    *
@@ -5393,7 +5434,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_a = rtb_Yk1_l + rtb_Gain5;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_a = rtb_Yk1 + rtb_Gain5;
   if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_a > 30.0) {
     rtb_Gain5 = 30.0;
   } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_a < 0.0) {
@@ -5402,9 +5443,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     rtb_Gain5 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_a;
   }
 
-  /* End of Saturate: '<S208>/Saturation' */
+  /* End of Saturate: '<S206>/Saturation' */
 
-  /* Gain: '<S208>/Gain' */
+  /* Gain: '<S206>/Gain' */
   rtb_Gain5 *= 0.27777777777777779;
 
   /* RelationalOperator: '<S245>/Compare' incorporates:
@@ -5417,11 +5458,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    */
   rtb_Compare_am = (rtb_Gain5 < 40.0);
 
-  /* Logic: '<S208>/OR' */
+  /* Logic: '<S206>/OR' */
   rtb_ignition = (rtb_LowerRelop1_b || rtb_Compare_am);
 
-  /* Chart: '<S208>/Timer' incorporates:
-   *  Constant: '<S208>/Constant5'
+  /* Chart: '<S206>/Timer' incorporates:
+   *  Constant: '<S206>/Constant5'
    */
   VehCtrlMdel240926_20_Timer1(rtb_ignition, 0.11F,
     &VehCtrlMdel240926_2018b_amksp_B.Exit_le,
@@ -5433,7 +5474,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Yk1_l = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_b;
+  rtb_Yk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_b;
 
   /* SampleTimeMath: '<S254>/sample time'
    *
@@ -5451,7 +5492,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Add in CPU
    */
-  rtb_UkYk1 = ABS_WS_RR - rtb_Yk1_l;
+  rtb_UkYk1 = ABS_WS_RR - rtb_Yk1;
 
   /* RelationalOperator: '<S262>/LowerRelop1' */
   rtb_LowerRelop1_b = (rtb_UkYk1 > rtb_Gain4);
@@ -5475,7 +5516,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
   /* End of Switch: '<S262>/Switch2' */
 
-  /* Saturate: '<S208>/Saturation1' incorporates:
+  /* Saturate: '<S206>/Saturation1' incorporates:
    *  Sum: '<S254>/Difference Inputs2'
    *  UnitDelay: '<S254>/Delay Input2'
    *
@@ -5487,7 +5528,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_b = rtb_Gain4 + rtb_Yk1_l;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_b = rtb_Gain4 + rtb_Yk1;
   if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_b > 30.0) {
     rtb_Gain4 = 30.0;
   } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_b < 0.0) {
@@ -5496,9 +5537,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     rtb_Gain4 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_b;
   }
 
-  /* End of Saturate: '<S208>/Saturation1' */
+  /* End of Saturate: '<S206>/Saturation1' */
 
-  /* Gain: '<S208>/Gain3' */
+  /* Gain: '<S206>/Gain3' */
   rtb_Gain4 *= 0.27777777777777779;
 
   /* RelationalOperator: '<S247>/Compare' incorporates:
@@ -5511,11 +5552,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    */
   rtb_Compare_am = (rtb_Gain4 < 40.0);
 
-  /* Logic: '<S208>/OR1' */
+  /* Logic: '<S206>/OR1' */
   rtb_ignition = (rtb_LowerRelop1_b || rtb_Compare_am);
 
-  /* Chart: '<S208>/Timer1' incorporates:
-   *  Constant: '<S208>/Constant1'
+  /* Chart: '<S206>/Timer1' incorporates:
+   *  Constant: '<S206>/Constant1'
    */
   VehCtrlMdel240926_20_Timer1(rtb_ignition, 0.11F,
     &VehCtrlMdel240926_2018b_amksp_B.Exit_i,
@@ -5527,7 +5568,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Yk1_l = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_h;
+  rtb_Yk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_h;
 
   /* SampleTimeMath: '<S255>/sample time'
    *
@@ -5545,7 +5586,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Add in CPU
    */
-  rtb_UkYk1 = MCFR_ActualVelocity - rtb_Yk1_l;
+  rtb_UkYk1 = MCFR_ActualVelocity - rtb_Yk1;
 
   /* RelationalOperator: '<S263>/LowerRelop1' */
   rtb_LowerRelop1_b = (rtb_UkYk1 > rtb_Switch2_on);
@@ -5569,7 +5610,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
   /* End of Switch: '<S263>/Switch2' */
 
-  /* Saturate: '<S208>/Saturation2' incorporates:
+  /* Saturate: '<S206>/Saturation2' incorporates:
    *  Sum: '<S255>/Difference Inputs2'
    *  UnitDelay: '<S255>/Delay Input2'
    *
@@ -5582,7 +5623,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_h = rtb_Switch2_on +
-    rtb_Yk1_l;
+    rtb_Yk1;
   if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_h > 30.0) {
     rtb_Switch2_on = 30.0;
   } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_h < 0.0) {
@@ -5591,9 +5632,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     rtb_Switch2_on = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_h;
   }
 
-  /* End of Saturate: '<S208>/Saturation2' */
+  /* End of Saturate: '<S206>/Saturation2' */
 
-  /* Gain: '<S208>/Gain1' */
+  /* Gain: '<S206>/Gain1' */
   rtb_Switch2_on *= 0.1341030088495575;
 
   /* RelationalOperator: '<S249>/Compare' incorporates:
@@ -5606,11 +5647,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    */
   rtb_Compare_am = (rtb_Switch2_on < 40.0);
 
-  /* Logic: '<S208>/OR2' */
+  /* Logic: '<S206>/OR2' */
   rtb_ignition = (rtb_LowerRelop1_b || rtb_Compare_am);
 
-  /* Chart: '<S208>/Timer2' incorporates:
-   *  Constant: '<S208>/Constant4'
+  /* Chart: '<S206>/Timer2' incorporates:
+   *  Constant: '<S206>/Constant4'
    */
   VehCtrlMdel240926_20_Timer1(rtb_ignition, 0.11F,
     &VehCtrlMdel240926_2018b_amksp_B.Exit_o,
@@ -5622,7 +5663,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Yk1_l = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n;
+  rtb_Yk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n;
 
   /* SampleTimeMath: '<S256>/sample time'
    *
@@ -5640,7 +5681,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Add in CPU
    */
-  rtb_deltafalllimit_iz = MCFL_ActualVelocity - rtb_Yk1_l;
+  rtb_deltafalllimit_iz = MCFL_ActualVelocity - rtb_Yk1;
 
   /* RelationalOperator: '<S264>/LowerRelop1' */
   rtb_LowerRelop1_b = (rtb_deltafalllimit_iz > rtb_UkYk1);
@@ -5664,7 +5705,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
   /* End of Switch: '<S264>/Switch2' */
 
-  /* Saturate: '<S208>/Saturation3' incorporates:
+  /* Saturate: '<S206>/Saturation3' incorporates:
    *  Sum: '<S256>/Difference Inputs2'
    *  UnitDelay: '<S256>/Delay Input2'
    *
@@ -5676,7 +5717,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n = rtb_UkYk1 + rtb_Yk1_l;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n = rtb_UkYk1 + rtb_Yk1;
   if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n > 30.0) {
     rtb_UkYk1 = 30.0;
   } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n < 0.0) {
@@ -5685,9 +5726,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n;
   }
 
-  /* End of Saturate: '<S208>/Saturation3' */
+  /* End of Saturate: '<S206>/Saturation3' */
 
-  /* Gain: '<S208>/Gain2' */
+  /* Gain: '<S206>/Gain2' */
   rtb_UkYk1 *= 0.1341030088495575;
 
   /* RelationalOperator: '<S251>/Compare' incorporates:
@@ -5700,190 +5741,190 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    */
   rtb_Compare_am = (rtb_UkYk1 < 40.0);
 
-  /* Logic: '<S208>/OR3' */
+  /* Logic: '<S206>/OR3' */
   rtb_ignition = (rtb_LowerRelop1_b || rtb_Compare_am);
 
-  /* Chart: '<S208>/Timer3' incorporates:
-   *  Constant: '<S208>/Constant8'
+  /* Chart: '<S206>/Timer3' incorporates:
+   *  Constant: '<S206>/Constant8'
    */
   VehCtrlMdel240926_20_Timer1(rtb_ignition, 0.11F,
     &VehCtrlMdel240926_2018b_amksp_B.Exit_h,
     &VehCtrlMdel240926_2018b_amks_DW.sf_Timer3);
 
-  /* SignalConversion generated from: '<S203>/Out1' */
+  /* SignalConversion generated from: '<S200>/Out1' */
   WhlSpdFL = rtb_UkYk1;
 
-  /* SignalConversion generated from: '<S203>/Out1' */
+  /* SignalConversion generated from: '<S200>/Out1' */
   WhlSpdFR = rtb_Switch2_on;
 
-  /* SignalConversion generated from: '<S203>/Out1' */
+  /* SignalConversion generated from: '<S200>/Out1' */
   WhlSpdRR_mps = rtb_Gain4;
 
-  /* SignalConversion generated from: '<S203>/Out1' */
+  /* SignalConversion generated from: '<S200>/Out1' */
   WhlSpdRL_mps = rtb_Gain5;
 
-  /* Gain: '<S207>/Gain' incorporates:
-   *  UnitDelay: '<S240>/Delay Input2'
+  /* Gain: '<S204>/Gain' incorporates:
+   *  UnitDelay: '<S238>/Delay Input2'
    *
-   * Block description for '<S240>/Delay Input2':
+   * Block description for '<S238>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_UkYk1 = 0.7 * VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE;
 
-  /* UnitDelay: '<S207>/Unit Delay' */
+  /* UnitDelay: '<S204>/Unit Delay' */
   rtb_Switch2_on = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE;
 
-  /* Gain: '<S207>/Gain1' */
+  /* Gain: '<S204>/Gain1' */
   rtb_Switch2_on *= 0.3;
 
-  /* Sum: '<S207>/Add2' */
+  /* Sum: '<S204>/Add2' */
   rtb_UkYk1 += rtb_Switch2_on;
 
-  /* Lookup_n-D: '<S207>/1-D Lookup Table' */
+  /* Lookup_n-D: '<S204>/1-D Lookup Table' */
   rtb_Switch2_on = look1_binlx(rtb_UkYk1,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable_bp01Data,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable_tableData, 23U);
 
-  /* SignalConversion generated from: '<S203>/Out1' */
+  /* SignalConversion generated from: '<S200>/Out1' */
   FLWhlStrAng = rtb_Switch2_on;
 
-  /* Lookup_n-D: '<S207>/1-D Lookup Table1' */
+  /* Lookup_n-D: '<S204>/1-D Lookup Table1' */
   rtb_Switch2_on = look1_binlx(rtb_UkYk1,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable1_bp01Data,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable1_tableData, 23U);
 
-  /* SignalConversion generated from: '<S203>/Out1' */
-  rtb_Yk1_l = rtb_Switch2_on;
+  /* SignalConversion generated from: '<S200>/Out1' */
+  FRWhlStrAng = rtb_Switch2_on;
 
-  /* SignalConversion generated from: '<S203>/Out1' */
-  rtb_deltafalllimit_iz = rtb_UkYk1;
+  /* SignalConversion generated from: '<S200>/Out1' */
+  rtb_Yk1 = rtb_UkYk1;
 
-  /* Sum: '<S205>/Add' */
+  /* Sum: '<S202>/Add' */
   rtb_Add += Acc_POS;
 
-  /* Product: '<S205>/Divide' incorporates:
-   *  Constant: '<S205>/Constant'
+  /* Product: '<S202>/Divide' incorporates:
+   *  Constant: '<S202>/Constant'
    */
   rtb_Acc_POS = (real32_T)(rtb_Add / 2.0);
 
-  /* UnitDelay: '<S230>/Delay Input2'
+  /* UnitDelay: '<S228>/Delay Input2'
    *
-   * Block description for '<S230>/Delay Input2':
+   * Block description for '<S228>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_l;
 
-  /* SampleTimeMath: '<S230>/sample time'
+  /* SampleTimeMath: '<S228>/sample time'
    *
-   * About '<S230>/sample time':
+   * About '<S228>/sample time':
    *  y = K where K = ( w * Ts )
    */
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
-  /* Product: '<S230>/delta rise limit' incorporates:
-   *  Constant: '<S229>/Constant'
+  /* Product: '<S228>/delta rise limit' incorporates:
+   *  Constant: '<S227>/Constant'
    */
   rtb_Switch2_on = 5000.0 * elapseTime;
 
-  /* UnitDelay: '<S229>/Unit Delay' */
+  /* UnitDelay: '<S227>/Unit Delay' */
   rtb_Gain4 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_g;
 
-  /* Gain: '<S229>/Gain1' */
+  /* Gain: '<S227>/Gain1' */
   rtb_Gain4 *= 0.3;
 
-  /* Gain: '<S206>/g_mpss' incorporates:
-   *  UnitDelay: '<S229>/Unit Delay'
+  /* Gain: '<S203>/g_mpss' incorporates:
+   *  UnitDelay: '<S227>/Unit Delay'
    */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_g = 9.8 * IMU_Ay_Value;
 
-  /* Gain: '<S229>/Gain' incorporates:
-   *  UnitDelay: '<S229>/Unit Delay'
+  /* Gain: '<S227>/Gain' incorporates:
+   *  UnitDelay: '<S227>/Unit Delay'
    */
   rtb_Gain5 = 0.7 * VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_g;
 
-  /* Sum: '<S229>/Add2' */
-  rtb_Add2 = rtb_Gain4 + rtb_Gain5;
+  /* Sum: '<S227>/Add2' */
+  rtb_deltafalllimit_iz = rtb_Gain4 + rtb_Gain5;
 
-  /* Sum: '<S230>/Difference Inputs1'
+  /* Sum: '<S228>/Difference Inputs1'
    *
-   * Block description for '<S230>/Difference Inputs1':
+   * Block description for '<S228>/Difference Inputs1':
    *
    *  Add in CPU
    */
-  rtb_Add2 -= rtb_UkYk1;
+  rtb_deltafalllimit_iz -= rtb_UkYk1;
 
-  /* RelationalOperator: '<S236>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Add2 > rtb_Switch2_on);
+  /* RelationalOperator: '<S234>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_deltafalllimit_iz > rtb_Switch2_on);
 
-  /* Switch: '<S236>/Switch2' */
+  /* Switch: '<S234>/Switch2' */
   if (!rtb_LowerRelop1_b) {
-    /* Product: '<S230>/delta fall limit' incorporates:
-     *  Constant: '<S229>/Constant1'
+    /* Product: '<S228>/delta fall limit' incorporates:
+     *  Constant: '<S227>/Constant1'
      */
     rtb_deltafalllimit_i4 = -5000.0 * elapseTime;
 
-    /* RelationalOperator: '<S236>/UpperRelop' */
-    rtb_ignition = (rtb_Add2 < rtb_deltafalllimit_i4);
+    /* RelationalOperator: '<S234>/UpperRelop' */
+    rtb_ignition = (rtb_deltafalllimit_iz < rtb_deltafalllimit_i4);
 
-    /* Switch: '<S236>/Switch' */
+    /* Switch: '<S234>/Switch' */
     if (rtb_ignition) {
-      rtb_Add2 = rtb_deltafalllimit_i4;
+      rtb_deltafalllimit_iz = rtb_deltafalllimit_i4;
     }
 
-    /* End of Switch: '<S236>/Switch' */
-    rtb_Switch2_on = rtb_Add2;
+    /* End of Switch: '<S234>/Switch' */
+    rtb_Switch2_on = rtb_deltafalllimit_iz;
   }
 
-  /* End of Switch: '<S236>/Switch2' */
+  /* End of Switch: '<S234>/Switch2' */
 
-  /* Sum: '<S230>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S230>/Delay Input2'
+  /* Sum: '<S228>/Difference Inputs2' incorporates:
+   *  UnitDelay: '<S228>/Delay Input2'
    *
-   * Block description for '<S230>/Difference Inputs2':
+   * Block description for '<S228>/Difference Inputs2':
    *
    *  Add in CPU
    *
-   * Block description for '<S230>/Delay Input2':
+   * Block description for '<S228>/Delay Input2':
    *
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_l = rtb_Switch2_on +
     rtb_UkYk1;
 
-  /* RelationalOperator: '<S233>/LowerRelop1' incorporates:
-   *  Constant: '<S229>/Constant6'
-   *  UnitDelay: '<S230>/Delay Input2'
+  /* RelationalOperator: '<S231>/LowerRelop1' incorporates:
+   *  Constant: '<S227>/Constant6'
+   *  UnitDelay: '<S228>/Delay Input2'
    *
-   * Block description for '<S230>/Delay Input2':
+   * Block description for '<S228>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_LowerRelop1_b = (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_l >
                        1.5);
 
-  /* Switch: '<S233>/Switch2' incorporates:
-   *  Constant: '<S229>/Constant6'
+  /* Switch: '<S231>/Switch2' incorporates:
+   *  Constant: '<S227>/Constant6'
    */
   if (rtb_LowerRelop1_b) {
     rtb_UkYk1 = 1.5;
   } else {
-    /* RelationalOperator: '<S233>/UpperRelop' incorporates:
-     *  Constant: '<S229>/Constant7'
-     *  UnitDelay: '<S230>/Delay Input2'
+    /* RelationalOperator: '<S231>/UpperRelop' incorporates:
+     *  Constant: '<S227>/Constant7'
+     *  UnitDelay: '<S228>/Delay Input2'
      *
-     * Block description for '<S230>/Delay Input2':
+     * Block description for '<S228>/Delay Input2':
      *
      *  Store in Global RAM
      */
     rtb_ignition = (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_l < -1.5);
 
-    /* Switch: '<S233>/Switch' incorporates:
-     *  Constant: '<S229>/Constant7'
-     *  UnitDelay: '<S230>/Delay Input2'
+    /* Switch: '<S231>/Switch' incorporates:
+     *  Constant: '<S227>/Constant7'
+     *  UnitDelay: '<S228>/Delay Input2'
      *
-     * Block description for '<S230>/Delay Input2':
+     * Block description for '<S228>/Delay Input2':
      *
      *  Store in Global RAM
      */
@@ -5893,127 +5934,127 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_l;
     }
 
-    /* End of Switch: '<S233>/Switch' */
+    /* End of Switch: '<S231>/Switch' */
   }
 
-  /* End of Switch: '<S233>/Switch2' */
+  /* End of Switch: '<S231>/Switch2' */
 
-  /* SignalConversion generated from: '<S203>/Out1' */
-  rtb_Add2 = rtb_UkYk1;
+  /* SignalConversion generated from: '<S200>/Out1' */
+  rtb_deltafalllimit_iz = rtb_UkYk1;
 
-  /* UnitDelay: '<S231>/Delay Input2'
+  /* UnitDelay: '<S229>/Delay Input2'
    *
-   * Block description for '<S231>/Delay Input2':
+   * Block description for '<S229>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_m;
 
-  /* SampleTimeMath: '<S231>/sample time'
+  /* SampleTimeMath: '<S229>/sample time'
    *
-   * About '<S231>/sample time':
+   * About '<S229>/sample time':
    *  y = K where K = ( w * Ts )
    */
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
-  /* Product: '<S231>/delta rise limit' incorporates:
-   *  Constant: '<S229>/Constant2'
+  /* Product: '<S229>/delta rise limit' incorporates:
+   *  Constant: '<S227>/Constant2'
    */
   rtb_Switch2_on = 5000.0 * elapseTime;
 
-  /* Gain: '<S206>/g_mpss1' */
+  /* Gain: '<S203>/g_mpss1' */
   rtb_g_mpss1 = 9.8 * IMU_Ax_Value;
 
-  /* Gain: '<S229>/Gain2' */
+  /* Gain: '<S227>/Gain2' */
   rtb_Gain4 = 0.7 * rtb_g_mpss1;
 
-  /* UnitDelay: '<S229>/Unit Delay1' */
+  /* UnitDelay: '<S227>/Unit Delay1' */
   rtb_Gain5 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE;
 
-  /* Gain: '<S229>/Gain3' */
+  /* Gain: '<S227>/Gain3' */
   rtb_Gain5 *= 0.3;
 
-  /* Sum: '<S229>/Add1' */
+  /* Sum: '<S227>/Add1' */
   rtb_deltafalllimit_i4 = rtb_Gain4 + rtb_Gain5;
 
-  /* Sum: '<S231>/Difference Inputs1'
+  /* Sum: '<S229>/Difference Inputs1'
    *
-   * Block description for '<S231>/Difference Inputs1':
+   * Block description for '<S229>/Difference Inputs1':
    *
    *  Add in CPU
    */
   rtb_deltafalllimit_i4 -= rtb_UkYk1;
 
-  /* RelationalOperator: '<S237>/LowerRelop1' */
+  /* RelationalOperator: '<S235>/LowerRelop1' */
   rtb_LowerRelop1_b = (rtb_deltafalllimit_i4 > rtb_Switch2_on);
 
-  /* Switch: '<S237>/Switch2' */
+  /* Switch: '<S235>/Switch2' */
   if (!rtb_LowerRelop1_b) {
-    /* Product: '<S231>/delta fall limit' incorporates:
-     *  Constant: '<S229>/Constant4'
+    /* Product: '<S229>/delta fall limit' incorporates:
+     *  Constant: '<S227>/Constant4'
      */
-    rtb_Switch2_on = -5000.0 * elapseTime;
+    elapseTime *= -5000.0;
 
-    /* RelationalOperator: '<S237>/UpperRelop' */
-    rtb_ignition = (rtb_deltafalllimit_i4 < rtb_Switch2_on);
+    /* RelationalOperator: '<S235>/UpperRelop' */
+    rtb_ignition = (rtb_deltafalllimit_i4 < elapseTime);
 
-    /* Switch: '<S237>/Switch' */
+    /* Switch: '<S235>/Switch' */
     if (rtb_ignition) {
-      rtb_deltafalllimit_i4 = rtb_Switch2_on;
+      rtb_deltafalllimit_i4 = elapseTime;
     }
 
-    /* End of Switch: '<S237>/Switch' */
+    /* End of Switch: '<S235>/Switch' */
     rtb_Switch2_on = rtb_deltafalllimit_i4;
   }
 
-  /* End of Switch: '<S237>/Switch2' */
+  /* End of Switch: '<S235>/Switch2' */
 
-  /* Sum: '<S231>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S231>/Delay Input2'
+  /* Sum: '<S229>/Difference Inputs2' incorporates:
+   *  UnitDelay: '<S229>/Delay Input2'
    *
-   * Block description for '<S231>/Difference Inputs2':
+   * Block description for '<S229>/Difference Inputs2':
    *
    *  Add in CPU
    *
-   * Block description for '<S231>/Delay Input2':
+   * Block description for '<S229>/Delay Input2':
    *
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_m = rtb_Switch2_on +
     rtb_UkYk1;
 
-  /* RelationalOperator: '<S234>/LowerRelop1' incorporates:
-   *  Constant: '<S229>/Constant8'
-   *  UnitDelay: '<S231>/Delay Input2'
+  /* RelationalOperator: '<S232>/LowerRelop1' incorporates:
+   *  Constant: '<S227>/Constant8'
+   *  UnitDelay: '<S229>/Delay Input2'
    *
-   * Block description for '<S231>/Delay Input2':
+   * Block description for '<S229>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_LowerRelop1_b = (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_m >
                        1.5);
 
-  /* Switch: '<S234>/Switch2' incorporates:
-   *  Constant: '<S229>/Constant8'
+  /* Switch: '<S232>/Switch2' incorporates:
+   *  Constant: '<S227>/Constant8'
    */
   if (rtb_LowerRelop1_b) {
     rtb_UkYk1 = 1.5;
   } else {
-    /* RelationalOperator: '<S234>/UpperRelop' incorporates:
-     *  Constant: '<S229>/Constant9'
-     *  UnitDelay: '<S231>/Delay Input2'
+    /* RelationalOperator: '<S232>/UpperRelop' incorporates:
+     *  Constant: '<S227>/Constant9'
+     *  UnitDelay: '<S229>/Delay Input2'
      *
-     * Block description for '<S231>/Delay Input2':
+     * Block description for '<S229>/Delay Input2':
      *
      *  Store in Global RAM
      */
     rtb_ignition = (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_m < -1.5);
 
-    /* Switch: '<S234>/Switch' incorporates:
-     *  Constant: '<S229>/Constant9'
-     *  UnitDelay: '<S231>/Delay Input2'
+    /* Switch: '<S232>/Switch' incorporates:
+     *  Constant: '<S227>/Constant9'
+     *  UnitDelay: '<S229>/Delay Input2'
      *
-     * Block description for '<S231>/Delay Input2':
+     * Block description for '<S229>/Delay Input2':
      *
      *  Store in Global RAM
      */
@@ -6023,174 +6064,149 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_m;
     }
 
-    /* End of Switch: '<S234>/Switch' */
+    /* End of Switch: '<S232>/Switch' */
   }
 
-  /* End of Switch: '<S234>/Switch2' */
+  /* End of Switch: '<S232>/Switch2' */
 
-  /* SignalConversion generated from: '<S203>/Out1' */
+  /* SignalConversion generated from: '<S200>/Out1' */
   rtb_deltafalllimit_i4 = rtb_UkYk1;
 
-  /* SampleTimeMath: '<S241>/sample time'
+  /* SampleTimeMath: '<S239>/sample time'
    *
-   * About '<S241>/sample time':
+   * About '<S239>/sample time':
    *  y = K where K = ( w * Ts )
    */
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
-  /* Product: '<S241>/delta rise limit' */
+  /* Product: '<S239>/delta rise limit' */
   rtb_UkYk1 = 1200.0 * elapseTime;
 
-  /* UnitDelay: '<S241>/Delay Input2'
+  /* UnitDelay: '<S239>/Delay Input2'
    *
-   * Block description for '<S241>/Delay Input2':
+   * Block description for '<S239>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_Switch2_on = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_j;
 
-  /* Sum: '<S241>/Difference Inputs1'
+  /* Sum: '<S239>/Difference Inputs1'
    *
-   * Block description for '<S241>/Difference Inputs1':
+   * Block description for '<S239>/Difference Inputs1':
    *
    *  Add in CPU
    */
-  rtb_UkYk1_ix = StrWhlAngV - rtb_Switch2_on;
+  rtb_Gain5 = StrWhlAngV - rtb_Switch2_on;
 
-  /* RelationalOperator: '<S244>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_UkYk1_ix > rtb_UkYk1);
+  /* RelationalOperator: '<S242>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_Gain5 > rtb_UkYk1);
 
-  /* Switch: '<S244>/Switch2' */
+  /* Switch: '<S242>/Switch2' */
   if (!rtb_LowerRelop1_b) {
-    /* Product: '<S241>/delta fall limit' */
+    /* Product: '<S239>/delta fall limit' */
     rtb_UkYk1 = -1200.0 * elapseTime;
 
-    /* RelationalOperator: '<S244>/UpperRelop' */
-    rtb_ignition = (rtb_UkYk1_ix < rtb_UkYk1);
+    /* RelationalOperator: '<S242>/UpperRelop' */
+    rtb_ignition = (rtb_Gain5 < rtb_UkYk1);
 
-    /* Switch: '<S244>/Switch' */
+    /* Switch: '<S242>/Switch' */
     if (rtb_ignition) {
-      rtb_UkYk1_ix = rtb_UkYk1;
+      rtb_Gain5 = rtb_UkYk1;
     }
 
-    /* End of Switch: '<S244>/Switch' */
-    rtb_UkYk1 = rtb_UkYk1_ix;
+    /* End of Switch: '<S242>/Switch' */
+    rtb_UkYk1 = rtb_Gain5;
   }
 
-  /* End of Switch: '<S244>/Switch2' */
+  /* End of Switch: '<S242>/Switch2' */
 
-  /* Saturate: '<S207>/Saturation1' incorporates:
-   *  Sum: '<S241>/Difference Inputs2'
-   *  UnitDelay: '<S241>/Delay Input2'
+  /* Sum: '<S239>/Difference Inputs2' incorporates:
+   *  UnitDelay: '<S239>/Delay Input2'
    *
-   * Block description for '<S241>/Difference Inputs2':
+   * Block description for '<S239>/Difference Inputs2':
    *
    *  Add in CPU
    *
-   * Block description for '<S241>/Delay Input2':
+   * Block description for '<S239>/Delay Input2':
    *
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_j = rtb_UkYk1 +
     rtb_Switch2_on;
-  if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_j > 1200.0) {
-    rtb_StrWhlAngV = 1200.0;
-  } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_j < 0.0) {
-    rtb_StrWhlAngV = 0.0;
-  } else {
-    rtb_StrWhlAngV = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_j;
-  }
 
-  /* End of Saturate: '<S207>/Saturation1' */
-
-  /* Gain: '<S207>/Gain2' */
-  rtb_UkYk1 = 0.7 * rtb_StrWhlAngV;
-
-  /* UnitDelay: '<S207>/Unit Delay1' */
-  rtb_Switch2_on = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_a;
-
-  /* Gain: '<S207>/Gain3' */
-  rtb_Switch2_on *= 0.3;
-
-  /* Sum: '<S207>/Add1' */
-  rtb_UkYk1 += rtb_Switch2_on;
-
-  /* SignalConversion generated from: '<S203>/Out1' */
-  rtb_UkYk1_ix = rtb_UkYk1;
-
-  /* UnitDelay: '<S232>/Delay Input2'
+  /* UnitDelay: '<S230>/Delay Input2'
    *
-   * Block description for '<S232>/Delay Input2':
+   * Block description for '<S230>/Delay Input2':
    *
    *  Store in Global RAM
    */
   rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_k;
 
-  /* SampleTimeMath: '<S232>/sample time'
+  /* SampleTimeMath: '<S230>/sample time'
    *
-   * About '<S232>/sample time':
+   * About '<S230>/sample time':
    *  y = K where K = ( w * Ts )
    */
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
-  /* Product: '<S232>/delta rise limit' incorporates:
-   *  Constant: '<S229>/Constant3'
+  /* Product: '<S230>/delta rise limit' incorporates:
+   *  Constant: '<S227>/Constant3'
    */
   rtb_Switch2_on = 5000.0 * elapseTime;
 
-  /* Gain: '<S229>/Gain4' */
+  /* Gain: '<S227>/Gain4' */
   rtb_Gain4 = 0.7 * IMU_Yaw_Value;
 
-  /* UnitDelay: '<S229>/Unit Delay2' */
+  /* UnitDelay: '<S227>/Unit Delay2' */
   rtb_Gain5 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE;
 
-  /* Gain: '<S229>/Gain5' */
+  /* Gain: '<S227>/Gain5' */
   rtb_Gain5 *= 0.3;
 
-  /* Sum: '<S229>/Add3' */
+  /* Sum: '<S227>/Add3' */
   rtb_Gain5 += rtb_Gain4;
 
-  /* Sum: '<S232>/Difference Inputs1'
+  /* Sum: '<S230>/Difference Inputs1'
    *
-   * Block description for '<S232>/Difference Inputs1':
+   * Block description for '<S230>/Difference Inputs1':
    *
    *  Add in CPU
    */
   rtb_Gain5 -= rtb_UkYk1;
 
-  /* RelationalOperator: '<S238>/LowerRelop1' */
+  /* RelationalOperator: '<S236>/LowerRelop1' */
   rtb_LowerRelop1_b = (rtb_Gain5 > rtb_Switch2_on);
 
-  /* Switch: '<S238>/Switch2' */
+  /* Switch: '<S236>/Switch2' */
   if (!rtb_LowerRelop1_b) {
-    /* Product: '<S232>/delta fall limit' incorporates:
-     *  Constant: '<S229>/Constant5'
+    /* Product: '<S230>/delta fall limit' incorporates:
+     *  Constant: '<S227>/Constant5'
      */
-    rtb_Switch2_on = -5000.0 * elapseTime;
+    elapseTime *= -5000.0;
 
-    /* RelationalOperator: '<S238>/UpperRelop' */
-    rtb_ignition = (rtb_Gain5 < rtb_Switch2_on);
+    /* RelationalOperator: '<S236>/UpperRelop' */
+    rtb_ignition = (rtb_Gain5 < elapseTime);
 
-    /* Switch: '<S238>/Switch' */
+    /* Switch: '<S236>/Switch' */
     if (rtb_ignition) {
-      rtb_Gain5 = rtb_Switch2_on;
+      rtb_Gain5 = elapseTime;
     }
 
-    /* End of Switch: '<S238>/Switch' */
+    /* End of Switch: '<S236>/Switch' */
     rtb_Switch2_on = rtb_Gain5;
   }
 
-  /* End of Switch: '<S238>/Switch2' */
+  /* End of Switch: '<S236>/Switch2' */
 
-  /* Saturate: '<S229>/Saturation2' incorporates:
-   *  Sum: '<S232>/Difference Inputs2'
-   *  UnitDelay: '<S232>/Delay Input2'
+  /* Saturate: '<S227>/Saturation2' incorporates:
+   *  Sum: '<S230>/Difference Inputs2'
+   *  UnitDelay: '<S230>/Delay Input2'
    *
-   * Block description for '<S232>/Difference Inputs2':
+   * Block description for '<S230>/Difference Inputs2':
    *
    *  Add in CPU
    *
-   * Block description for '<S232>/Delay Input2':
+   * Block description for '<S230>/Delay Input2':
    *
    *  Store in Global RAM
    */
@@ -6204,31 +6220,78 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_k;
   }
 
-  /* End of Saturate: '<S229>/Saturation2' */
+  /* End of Saturate: '<S227>/Saturation2' */
 
-  /* Update for UnitDelay: '<S205>/Unit Delay1' */
+  /* Switch: '<S205>/Switch' incorporates:
+   *  Constant: '<S205>/Constant4'
+   */
+  if (MCFL_DCVoltage != 0.0) {
+    /* MinMax: '<S205>/Max' incorporates:
+     *  Constant: '<S205>/Constant2'
+     */
+    elapseTime = fmax(MCFL_DCVoltage, 2.0);
+
+    /* Product: '<S205>/Product' */
+    rtb_Switch2_on = MCFL_ActualTorque * MCFL_ActualVelocity;
+
+    /* Product: '<S205>/Divide' incorporates:
+     *  Constant: '<S205>/Constant'
+     */
+    rtb_Switch2_on /= 9550.0;
+
+    /* Product: '<S205>/Divide1' */
+    AMKFL_Current = rtb_Switch2_on / elapseTime;
+  } else {
+    AMKFL_Current = 0.0;
+  }
+
+  /* End of Switch: '<S205>/Switch' */
+
+  /* Switch: '<S205>/Switch1' incorporates:
+   *  Constant: '<S205>/Constant5'
+   */
+  if (MCFR_DCVoltage != 0.0) {
+    /* MinMax: '<S205>/Max1' incorporates:
+     *  Constant: '<S205>/Constant3'
+     */
+    elapseTime = fmax(MCFR_DCVoltage, 2.0);
+
+    /* Product: '<S205>/Product1' */
+    rtb_Switch2_on = MCFR_ActualTorque * MCFR_ActualVelocity;
+
+    /* Product: '<S205>/Divide2' incorporates:
+     *  Constant: '<S205>/Constant1'
+     */
+    rtb_Switch2_on /= 9550.0;
+
+    /* Product: '<S205>/Divide3' */
+    AMKFR_Current = rtb_Switch2_on / elapseTime;
+  } else {
+    AMKFR_Current = 0.0;
+  }
+
+  /* End of Switch: '<S205>/Switch1' */
+
+  /* Update for UnitDelay: '<S202>/Unit Delay1' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_fm = Acc2;
 
-  /* Update for UnitDelay: '<S205>/Unit Delay' */
+  /* Update for UnitDelay: '<S202>/Unit Delay' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_k = Acc1;
 
-  /* Update for UnitDelay: '<S207>/Unit Delay' incorporates:
-   *  UnitDelay: '<S240>/Delay Input2'
+  /* Update for UnitDelay: '<S204>/Unit Delay' incorporates:
+   *  UnitDelay: '<S238>/Delay Input2'
    *
-   * Block description for '<S240>/Delay Input2':
+   * Block description for '<S238>/Delay Input2':
    *
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE =
     VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE;
 
-  /* Update for UnitDelay: '<S229>/Unit Delay1' */
+  /* Update for UnitDelay: '<S227>/Unit Delay1' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE = rtb_g_mpss1;
 
-  /* Update for UnitDelay: '<S207>/Unit Delay1' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_a = rtb_StrWhlAngV;
-
-  /* Update for UnitDelay: '<S229>/Unit Delay2' */
+  /* Update for UnitDelay: '<S227>/Unit Delay2' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE = IMU_Yaw_Value;
 
   /* End of Outputs for S-Function (fcncallgen): '<S4>/10ms' */
@@ -6248,17 +6311,17 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b_amks_M->Timing.clockTick3;
   VehCtrlMdel240926_2018b_amks_DW.Subsystem_RESET_ELAPS_T = false;
 
-  /* Gain: '<S204>/Gain5' */
-  rtb_Switch2_on = 10.0 * VehCtrlMdel240926_2018b_amksp_B.CANUnpack_o1;
+  /* Gain: '<S201>/Gain5' */
+  elapseTime = 10.0 * VehCtrlMdel240926_2018b_amksp_B.CANUnpack_o1;
 
-  /* DataTypeConversion: '<S204>/Cast To Double' */
-  rtb_CastToDouble = (real32_T)rtb_Switch2_on;
+  /* DataTypeConversion: '<S201>/Cast To Double' */
+  rtb_CastToDouble = (real32_T)elapseTime;
 
   /* MinMax: '<S329>/Min3' incorporates:
    *  Gain: '<S283>/Gain'
    *  UnitDelay: '<S283>/Unit Delay'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj *= 0.3F;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p *= 0.3F;
 
   /* UnitDelay: '<S287>/Delay Input2'
    *
@@ -6278,10 +6341,10 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Product: '<S287>/delta rise limit' */
   rtb_Add4_j = (real32_T)(100.0 * elapseTime);
 
-  /* DataTypeConversion: '<S204>/Cast To Double1' */
+  /* DataTypeConversion: '<S201>/Cast To Double1' */
   rtb_Add7 = (real32_T)WhlSpdFL;
 
-  /* DataTypeConversion: '<S204>/Cast To Double6' */
+  /* DataTypeConversion: '<S201>/Cast To Double6' */
   rtb_Add6_p = (real32_T)FLWhlStrAng;
 
   /* Gain: '<S269>/Gain2' */
@@ -6293,7 +6356,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Product: '<S269>/Product1' */
   rtb_Add7 *= rtb_Add6_p;
 
-  /* DataTypeConversion: '<S204>/Cast To Double5' */
+  /* DataTypeConversion: '<S201>/Cast To Double5' */
   rtb_Add6_p = (real32_T)rtb_UkYk1;
 
   /* Gain: '<S269>/Gain4' */
@@ -6314,29 +6377,29 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Product: '<S276>/Divide' incorporates:
    *  Constant: '<S276>/steptime'
    */
-  rtb_Divide = rtb_Add7 / 0.01F;
+  rtb_Divide_g = rtb_Add7 / 0.01F;
 
   /* RelationalOperator: '<S288>/LowerRelop1' incorporates:
    *  Constant: '<S283>/Constant1'
    */
-  rtb_LogicalOperator2 = (rtb_Divide > 100.0F);
+  rtb_LogicalOperator2 = (rtb_Divide_g > 100.0F);
 
   /* Switch: '<S288>/Switch2' incorporates:
    *  Constant: '<S283>/Constant1'
    */
   if (rtb_LogicalOperator2) {
-    rtb_Divide = 100.0F;
+    rtb_Divide_g = 100.0F;
   } else {
     /* RelationalOperator: '<S288>/UpperRelop' incorporates:
      *  Constant: '<S283>/Constant'
      */
-    rtb_ignition = (rtb_Divide < -100.0F);
+    rtb_ignition = (rtb_Divide_g < -100.0F);
 
     /* Switch: '<S288>/Switch' incorporates:
      *  Constant: '<S283>/Constant'
      */
     if (rtb_ignition) {
-      rtb_Divide = -100.0F;
+      rtb_Divide_g = -100.0F;
     }
 
     /* End of Switch: '<S288>/Switch' */
@@ -6350,10 +6413,10 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Add in CPU
    */
-  rtb_Divide -= rtb_Switch2_b0;
+  rtb_Divide_g -= rtb_Switch2_b0;
 
   /* RelationalOperator: '<S289>/LowerRelop1' */
-  rtb_LogicalOperator2 = (rtb_Divide > rtb_Add4_j);
+  rtb_LogicalOperator2 = (rtb_Divide_g > rtb_Add4_j);
 
   /* Switch: '<S289>/Switch2' */
   if (!rtb_LogicalOperator2) {
@@ -6361,15 +6424,15 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     rtb_deltafalllimit_n = (real32_T)(-100.0 * elapseTime);
 
     /* RelationalOperator: '<S289>/UpperRelop' */
-    rtb_ignition = (rtb_Divide < rtb_deltafalllimit_n);
+    rtb_ignition = (rtb_Divide_g < rtb_deltafalllimit_n);
 
     /* Switch: '<S289>/Switch' */
     if (rtb_ignition) {
-      rtb_Divide = rtb_deltafalllimit_n;
+      rtb_Divide_g = rtb_deltafalllimit_n;
     }
 
     /* End of Switch: '<S289>/Switch' */
-    rtb_Add4_j = rtb_Divide;
+    rtb_Add4_j = rtb_Divide_g;
   }
 
   /* End of Switch: '<S289>/Switch2' */
@@ -6403,20 +6466,20 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *  Sum: '<S283>/Add'
    *  UnitDelay: '<S283>/Unit Delay'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj += rtb_Add7;
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj -= rtb_CastToDouble;
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj = fabsf
-    (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj);
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p += rtb_Add7;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p -= rtb_CastToDouble;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p = fabsf
+    (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p);
 
   /* RelationalOperator: '<S279>/Compare' incorporates:
    *  Constant: '<S279>/Constant'
    *  UnitDelay: '<S283>/Unit Delay'
    */
-  rtb_LogicalOperator2 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj <=
+  rtb_LogicalOperator2 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p <=
     0.5F);
 
   /* UnitDelay: '<S284>/Unit Delay' */
-  rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pjk;
+  rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj;
 
   /* Gain: '<S284>/Gain' */
   rtb_Add7 *= 0.3F;
@@ -6440,13 +6503,13 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_Switch2_b0 = (real32_T)(100.0 * elapseTime);
 
   /* MinMax: '<S329>/Min3' incorporates:
-   *  DataTypeConversion: '<S204>/Cast To Double2'
+   *  DataTypeConversion: '<S201>/Cast To Double2'
    *  UnitDelay: '<S283>/Unit Delay'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj = (real32_T)WhlSpdFR;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p = (real32_T)WhlSpdFR;
 
-  /* DataTypeConversion: '<S204>/Cast To Double7' */
-  rtb_Add10 = (real32_T)rtb_Yk1_l;
+  /* DataTypeConversion: '<S201>/Cast To Double7' */
+  rtb_Add10 = (real32_T)FRWhlStrAng;
 
   /* Gain: '<S269>/Gain3' */
   rtb_Add10 *= 0.0174532924F;
@@ -6457,16 +6520,16 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Product: '<S269>/Product2' incorporates:
    *  UnitDelay: '<S283>/Unit Delay'
    */
-  rtb_Add10 *= VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj;
+  rtb_Add10 *= VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p;
 
   /* Sum: '<S269>/Add3' */
-  rtb_Divide = rtb_Switch2_mn + rtb_Add10;
+  rtb_Divide_g = rtb_Switch2_mn + rtb_Add10;
 
   /* UnitDelay: '<S276>/Unit Delay1' */
   rtb_Add10 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n;
 
   /* Sum: '<S276>/Add5' */
-  rtb_Add10 = rtb_Divide - rtb_Add10;
+  rtb_Add10 = rtb_Divide_g - rtb_Add10;
 
   /* Product: '<S276>/Divide1' incorporates:
    *  Constant: '<S276>/steptime1'
@@ -6580,7 +6643,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Switch2_mn = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk3;
+  rtb_Switch2_mn = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk;
 
   /* SampleTimeMath: '<S293>/sample time'
    *
@@ -6592,7 +6655,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Product: '<S293>/delta rise limit' */
   rtb_Add7 = (real32_T)(100.0 * elapseTime);
 
-  /* DataTypeConversion: '<S204>/Cast To Double3' */
+  /* DataTypeConversion: '<S201>/Cast To Double3' */
   rtb_Add4_j = (real32_T)WhlSpdRL_mps;
 
   /* Product: '<S269>/Product' */
@@ -6681,7 +6744,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk3 = rtb_Add7 +
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk = rtb_Add7 +
     rtb_Switch2_mn;
 
   /* Gain: '<S285>/Gain1' incorporates:
@@ -6691,7 +6754,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Switch2_mn = 0.7F * VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk3;
+  rtb_Switch2_mn = 0.7F * VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk;
 
   /* Sum: '<S285>/Add' */
   rtb_Add10 += rtb_Switch2_mn;
@@ -6731,14 +6794,14 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Product: '<S296>/delta rise limit' */
   rtb_Add7 = (real32_T)(100.0 * elapseTime);
 
-  /* DataTypeConversion: '<S204>/Cast To Double4' */
+  /* DataTypeConversion: '<S201>/Cast To Double4' */
   rtb_Add4_j = (real32_T)WhlSpdRR_mps;
 
   /* Sum: '<S269>/Add1' */
   rtb_deltafalllimit_om = rtb_Add6_p + rtb_Add4_j;
 
   /* UnitDelay: '<S276>/Unit Delay3' */
-  rtb_Add6_p = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_h;
+  rtb_Add6_p = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE;
 
   /* Sum: '<S276>/Add7' */
   rtb_Add6_p = rtb_deltafalllimit_om - rtb_Add6_p;
@@ -6868,7 +6931,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_Add6_p = (real32_T)(20.0 * elapseTime);
 
   /* UnitDelay: '<S277>/Unit Delay4' */
-  rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_ik;
+  rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i;
 
   /* UnitDelay: '<S277>/Unit Delay' */
   rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_a0;
@@ -6882,11 +6945,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_Add4_j /= 0.01F;
 
   /* Sum: '<S277>/Add' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_ik = rtb_Add4_j -
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i = rtb_Add4_j -
     rtb_CastToDouble;
 
   /* Sum: '<S277>/Add8' */
-  rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_ik - rtb_Add7;
+  rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i - rtb_Add7;
 
   /* Product: '<S277>/Divide4' incorporates:
    *  Constant: '<S277>/steptime4'
@@ -7016,7 +7079,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_am;
 
   /* Sum: '<S277>/Add5' */
-  rtb_Add4_j = rtb_Divide - rtb_Add4_j;
+  rtb_Add4_j = rtb_Divide_g - rtb_Add4_j;
 
   /* Product: '<S277>/Divide1' incorporates:
    *  Constant: '<S277>/steptime1'
@@ -7429,7 +7492,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_b);
   rtb_LogicalOperator2 = (rtb_ignition || rtb_UpperRelop_ir);
 
-  /* UnitDelay: '<S204>/Unit Delay' */
+  /* UnitDelay: '<S201>/Unit Delay' */
   rtb_Add10 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_lh;
 
   /* Sum: '<S278>/Add' */
@@ -7448,7 +7511,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     != 0.0));
 
   /* Sum: '<S278>/Add1' */
-  rtb_Switch2_mn = rtb_Divide - rtb_Add10;
+  rtb_Switch2_mn = rtb_Divide_g - rtb_Add10;
 
   /* Abs: '<S278>/Abs1' */
   rtb_Switch2_mn = fabsf(rtb_Switch2_mn);
@@ -7683,7 +7746,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_o;
 
   /* MinMax: '<S267>/Min1' */
-  rtb_MaxWhlSpd_mps_n = fmaxf(rtb_Add, rtb_Divide);
+  rtb_MaxWhlSpd_mps_n = fmaxf(rtb_Add, rtb_Divide_g);
   rtb_MaxWhlSpd_mps_n = fmaxf(rtb_MaxWhlSpd_mps_n, rtb_deltafalllimit_n);
   rtb_Add10 = fmaxf(rtb_MaxWhlSpd_mps_n, rtb_deltafalllimit_om);
 
@@ -7751,25 +7814,25 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_Switch2_mn = (real32_T)(10.0 * elapseTime);
 
   /* Sum: '<S329>/Add3' */
-  rtb_Add4_j = ((rtb_deltafalllimit_om + rtb_deltafalllimit_n) + rtb_Divide) +
+  rtb_Add4_j = ((rtb_deltafalllimit_om + rtb_deltafalllimit_n) + rtb_Divide_g) +
     rtb_Add;
 
   /* MinMax: '<S329>/Min4' */
-  rtb_Switch2_b0 = fminf(rtb_Add, rtb_Divide);
+  rtb_Switch2_b0 = fminf(rtb_Add, rtb_Divide_g);
   rtb_Switch2_b0 = fminf(rtb_Switch2_b0, rtb_deltafalllimit_n);
   rtb_Switch2_b0 = fminf(rtb_Switch2_b0, rtb_deltafalllimit_om);
 
   /* MinMax: '<S329>/Min3' */
-  rtb_MaxWhlSpd_mps_n = fmaxf(rtb_Add, rtb_Divide);
+  rtb_MaxWhlSpd_mps_n = fmaxf(rtb_Add, rtb_Divide_g);
   rtb_MaxWhlSpd_mps_n = fmaxf(rtb_MaxWhlSpd_mps_n, rtb_deltafalllimit_n);
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj = fmaxf
-    (rtb_MaxWhlSpd_mps_n, rtb_deltafalllimit_om);
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p = fmaxf(rtb_MaxWhlSpd_mps_n,
+    rtb_deltafalllimit_om);
 
   /* Sum: '<S329>/Add4' incorporates:
    *  UnitDelay: '<S283>/Unit Delay'
    */
   rtb_Add4_j = (rtb_Add4_j - rtb_Switch2_b0) -
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj;
+    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p;
 
   /* Gain: '<S329>/Gain1' */
   rtb_Add4_j *= 0.5F;
@@ -7871,7 +7934,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
        *  Constant: '<S268>/Constant5'
        */
       if (VehCtrlMdel240926_2018b_amksp_B.Exit_lh4 != 0.0) {
-        rtb_Add4_j = rtb_Divide;
+        rtb_Add4_j = rtb_Divide_g;
       } else {
         rtb_Add4_j = 0.0F;
       }
@@ -7924,7 +7987,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
      *  Constant: '<S268>/Constant1'
      */
     if (VehCtrlMdel240926_2018b_amksp_B.Exit_lh4 != 0.0) {
-      rtb_Add4_j = rtb_Divide;
+      rtb_Add4_j = rtb_Divide_g;
     } else {
       rtb_Add4_j = 9999.0F;
     }
@@ -8268,7 +8331,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj =
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p =
     VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n2;
 
   /* Update for UnitDelay: '<S276>/Unit Delay' */
@@ -8281,11 +8344,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pjk =
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_pj =
     VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_e;
 
   /* Update for UnitDelay: '<S276>/Unit Delay1' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n = rtb_Divide;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n = rtb_Divide_g;
 
   /* Update for UnitDelay: '<S285>/Unit Delay' incorporates:
    *  UnitDelay: '<S293>/Delay Input2'
@@ -8295,7 +8358,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_a =
-    VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk3;
+    VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk;
 
   /* Update for UnitDelay: '<S276>/Unit Delay2' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_l = rtb_deltafalllimit_n;
@@ -8311,7 +8374,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_c;
 
   /* Update for UnitDelay: '<S276>/Unit Delay3' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_h = rtb_deltafalllimit_om;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE = rtb_deltafalllimit_om;
 
   /* Update for UnitDelay: '<S303>/Unit Delay' incorporates:
    *  UnitDelay: '<S307>/Delay Input2'
@@ -8337,7 +8400,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_el;
 
   /* Update for UnitDelay: '<S277>/Unit Delay1' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_am = rtb_Divide;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_am = rtb_Divide_g;
 
   /* Update for UnitDelay: '<S305>/Unit Delay' incorporates:
    *  UnitDelay: '<S313>/Delay Input2'
@@ -8365,13 +8428,13 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Update for UnitDelay: '<S277>/Unit Delay3' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_d = rtb_deltafalllimit_om;
 
-  /* Update for UnitDelay: '<S204>/Unit Delay' */
+  /* Update for UnitDelay: '<S201>/Unit Delay' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_lh = VehVxEst_mps;
 
   /* Update for UnitDelay: '<S265>/Unit Delay4' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_m = rtb_Acc_POS;
 
-  /* Update for UnitDelay: '<S204>/Unit Delay1' */
+  /* Update for UnitDelay: '<S201>/Unit Delay1' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_k = VehVxEst_mps;
 
   /* Update for UnitDelay: '<S265>/Unit Delay3' */
@@ -8411,40 +8474,40 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* S-Function (fcncallgen): '<S2>/10ms' incorporates:
    *  SubSystem: '<S2>/Subsystem'
    */
-  /* DataTypeConversion: '<S106>/Cast To Boolean' */
+  /* DataTypeConversion: '<S101>/Cast To Boolean' */
   KeyPressed = (ignition != 0.0);
 
-  /* RelationalOperator: '<S108>/Compare' incorporates:
-   *  Constant: '<S108>/Constant'
+  /* RelationalOperator: '<S103>/Compare' incorporates:
+   *  Constant: '<S103>/Constant'
    */
   Brk = (Brk_F >= 600);
 
-  /* RelationalOperator: '<S109>/Compare' incorporates:
-   *  Constant: '<S109>/Constant'
+  /* RelationalOperator: '<S104>/Compare' incorporates:
+   *  Constant: '<S104>/Constant'
    */
   ACC_Release = (rtb_Acc_POS <= 50.0F);
 
-  /* Switch: '<S106>/Switch' incorporates:
-   *  Constant: '<S106>/Constant1'
-   *  Switch: '<S106>/Switch10'
-   *  Switch: '<S106>/Switch11'
-   *  Switch: '<S106>/Switch3'
+  /* Switch: '<S101>/Switch' incorporates:
+   *  Constant: '<S101>/Constant1'
+   *  Switch: '<S101>/Switch10'
+   *  Switch: '<S101>/Switch11'
+   *  Switch: '<S101>/Switch3'
    */
   if (AMKSWITCH != 0.0) {
-    rtb_Switch2_on = MCFL_bSystemReady;
+    elapseTime = MCFL_bSystemReady;
     WhlSpdFL = MCFR_bSystemReady;
-    elapseTime = MCFL_bQuitInverterOn;
-    WhlSpdFR = MCFR_bQuitInverterOn;
+    WhlSpdFR = MCFL_bQuitInverterOn;
+    WhlSpdRR_mps = MCFR_bQuitInverterOn;
   } else {
-    rtb_Switch2_on = 1.0;
-    WhlSpdFL = 1.0;
     elapseTime = 1.0;
+    WhlSpdFL = 1.0;
     WhlSpdFR = 1.0;
+    WhlSpdRR_mps = 1.0;
   }
 
-  /* End of Switch: '<S106>/Switch' */
+  /* End of Switch: '<S101>/Switch' */
 
-  /* Chart: '<S106>/Chart2' */
+  /* Chart: '<S101>/Chart2' */
   FunctionCallSubsystem_ELAPS_T =
     VehCtrlMdel240926_2018b_amks_M->Timing.clockTick3 -
     VehCtrlMdel240926_2018b_amks_DW.previousTicks;
@@ -8486,17 +8549,19 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MC_TorqueCUT = 1U;
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_TorqueCUT = 1U;
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_AMKDCready = 1U;
-    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 9U;
+    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKDCready = 10U;
     VehCtrlMdel240926_2018b_amks_DW.temporalCounter_i2 = 0U;
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_Output = 1U;
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_AMKCANenable = 1U;
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_AMKCANenable = 1U;
-    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MC_InverterOn = 1U;
-    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn = 1U;
+    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFL_InverterOn = 1U;
+    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn = 1U;
+    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFR_InverterOn = 1U;
+    VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn = 1U;
   } else {
     if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_VehStat != 0U) {
-      VehCtrlMdel240926_2018b_VehStat(&controller_ready, &rtb_Switch2_on,
-        &WhlSpdFL, &elapseTime, &WhlSpdFR);
+      VehCtrlMdel240926_2018b_VehStat(&controller_ready, &elapseTime, &WhlSpdFL,
+        &WhlSpdFR, &WhlSpdRR_mps);
     }
 
     if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_BeeperStat != 0U)
@@ -8576,8 +8641,8 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
     if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_AMKDCready != 0U)
     {
-      VehCtrlMdel240926_20_AMKDCready(&MCFL_bDCOn, &MCFR_bDCOn, &rtb_Switch2_on,
-        &WhlSpdFL, &elapseTime, &WhlSpdFR);
+      VehCtrlMdel240926_20_AMKDCready(&MCFL_bDCOn, &MCFR_bDCOn, &elapseTime,
+        &WhlSpdFL, &WhlSpdFR, &WhlSpdRR_mps);
     }
 
     if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_Output != 0U) {
@@ -8594,11 +8659,11 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
          VehCtrlMdel240926_2018b_a_IN_ON);
       MCFR_DCEnable = (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCDCEnable
                        == VehCtrlMdel240926_2018b_a_IN_ON);
-      VehCtrlMdel240926_2018b_amksp_B.MCFL_InverterOn =
-        (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn ==
+      VehCtrlMdel240926_2018b_amksp_B.AMKMCFL_InverterOn =
+        (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn ==
          VehCtrlMdel240926_2018b_a_IN_ON);
       MCFR_InverterOn =
-        (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn ==
+        (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn ==
          VehCtrlMdel240926_2018b_a_IN_ON);
       VehCtrlMdel240926_2018b_amksp_B.MCFL_TorqueOn =
         (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_TorqueCUT ==
@@ -8627,29 +8692,48 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       }
     }
 
-    if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MC_InverterOn !=
+    if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFL_InverterOn !=
         0U) {
-      switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn) {
+      switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn) {
        case VehCtrlMdel240926_2018b__IN_OFF:
         if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-            VehCtrlMdel240_event_InverterON) {
-          VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn = 2U;
+            VehCtrlMdel2_event_InverterFLON) {
+          VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn = 2U;
         }
         break;
 
        case VehCtrlMdel240926_2018b_a_IN_ON:
         if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
-            VehCtrlMdel24_event_InverterOFF) {
-          VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MC_InverterOn = 1U;
+            VehCtrlMdel_event_InverterFLOFF) {
+          VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFL_InverterOn = 1U;
+        }
+        break;
+      }
+    }
+
+    if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_MCFR_InverterOn !=
+        0U) {
+      switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn) {
+       case VehCtrlMdel240926_2018b__IN_OFF:
+        if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+            VehCtrlMdel2_event_InverterFRON) {
+          VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn = 2U;
+        }
+        break;
+
+       case VehCtrlMdel240926_2018b_a_IN_ON:
+        if (VehCtrlMdel240926_2018b_amks_DW.sfEvent ==
+            VehCtrlMdel_event_InverterFROFF) {
+          VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_MCFR_InverterOn = 1U;
         }
         break;
       }
     }
   }
 
-  /* End of Chart: '<S106>/Chart2' */
+  /* End of Chart: '<S101>/Chart2' */
 
-  /* Switch: '<S106>/Switch4' */
+  /* Switch: '<S101>/Switch4' */
   VehCtrlMdel240926_2018b_amksp_B.MCFL_DCOn_setpoints_o = ((AMKSWITCH != 0.0) &&
     MCFL_DCOn_setpoints);
 
@@ -8658,10 +8742,23 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* S-Function (fcncallgen): '<S5>/10ms1' incorporates:
    *  SubSystem: '<S5>/Beeper'
    */
+  /* RelationalOperator: '<S343>/Compare' incorporates:
+   *  Constant: '<S343>/Constant'
+   */
+  rtb_ignition = (voltage > 60.0);
+
+  /* Logic: '<S338>/NOT' */
+  VehCtrlMdel240926_2018b_amksp_B.NOT = !rtb_ignition;
+
   /* S-Function (ec5744_pdsslbu3): '<S338>/PowerDriverSwitch(HS)' */
 
   /* Set level beeper_state for the specified power driver switch */
   ec_gpio_write(83,beeper_state);
+
+  /* S-Function (ec5744_pdsslbu3): '<S338>/PowerDriverSwitch(HS)1' */
+
+  /* Set level VehCtrlMdel240926_2018b_amksp_B.NOT for the specified power driver switch */
+  ec_gpio_write(57,VehCtrlMdel240926_2018b_amksp_B.NOT);
 
   /* End of Outputs for S-Function (fcncallgen): '<S5>/10ms1' */
 
@@ -8669,17 +8766,17 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *  SubSystem: '<S1>/PwrTrainTempPrtct'
    */
   /* MinMax: '<S8>/Max' */
-  rtb_Switch2_on = fmax(MCFL_TempInverter, MCFR_TempInverter);
+  elapseTime = fmax(MCFL_TempInverter, MCFR_TempInverter);
 
-  /* RelationalOperator: '<S99>/Compare' incorporates:
-   *  Constant: '<S99>/Constant'
+  /* RelationalOperator: '<S94>/Compare' incorporates:
+   *  Constant: '<S94>/Constant'
    */
-  rtb_ignition = (rtb_Switch2_on > 40.0);
+  rtb_ignition = (elapseTime > 40.0);
 
-  /* RelationalOperator: '<S100>/Compare' incorporates:
-   *  Constant: '<S100>/Constant'
+  /* RelationalOperator: '<S95>/Compare' incorporates:
+   *  Constant: '<S95>/Constant'
    */
-  rtb_LogicalOperator2 = (rtb_Switch2_on > 45.0);
+  rtb_LogicalOperator2 = (elapseTime > 45.0);
 
   /* Logic: '<S8>/NOT' */
   rtb_Compare = !rtb_LogicalOperator2;
@@ -8692,17 +8789,17 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    */
   if (rtb_ignition) {
     /* Lookup_n-D: '<S8>/2-D Lookup Table1' */
-    elapseTime = look1_binlx(rtb_Switch2_on,
-      VehCtrlMdel240926_2018b__ConstP.pooled20,
-      VehCtrlMdel240926_2018b__ConstP.pooled19, 7U);
+    WhlSpdRL_mps = look1_binlx(elapseTime,
+      VehCtrlMdel240926_2018b__ConstP.pooled10,
+      VehCtrlMdel240926_2018b__ConstP.pooled9, 7U);
   } else {
-    elapseTime = 0.0;
+    WhlSpdRL_mps = 0.0;
   }
 
   /* End of Switch: '<S8>/Switch' */
 
   /* SignalConversion generated from: '<S8>/Out1' */
-  WhlSpdFR = elapseTime;
+  WhlSpdFL = WhlSpdRL_mps;
 
   /* Chart: '<S8>/Timer1' incorporates:
    *  Constant: '<S8>/Constant2'
@@ -8711,8 +8808,8 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     &VehCtrlMdel240926_2018b_amksp_B.Exit_g,
     &VehCtrlMdel240926_2018b_amks_DW.sf_Timer1);
 
-  /* RelationalOperator: '<S102>/Compare' incorporates:
-   *  Constant: '<S102>/Constant'
+  /* RelationalOperator: '<S97>/Compare' incorporates:
+   *  Constant: '<S97>/Constant'
    */
   rtb_ignition = (MCU_Temp > 50.0);
 
@@ -8729,8 +8826,8 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Logic: '<S8>/NOT1' */
   rtb_Compare = !rtb_ignition;
 
-  /* RelationalOperator: '<S101>/Compare' incorporates:
-   *  Constant: '<S101>/Constant'
+  /* RelationalOperator: '<S96>/Compare' incorporates:
+   *  Constant: '<S96>/Constant'
    */
   rtb_ignition = (MCU_Temp > 45.0);
 
@@ -8738,31 +8835,32 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   rtb_ignition = (rtb_ignition && rtb_Compare);
 
   /* MinMax: '<S8>/Max1' */
-  WhlSpdFL = fmax(MCU_Temp, motor_Temp);
+  WhlSpdRR_mps = fmax(MCU_Temp, motor_Temp);
 
   /* Switch: '<S8>/Switch1' incorporates:
    *  Constant: '<S8>/Constant1'
    */
   if (rtb_ignition) {
     /* Lookup_n-D: '<S8>/2-D Lookup Table3' */
-    elapseTime = look1_binlx(WhlSpdFL, VehCtrlMdel240926_2018b__ConstP.pooled20,
-      VehCtrlMdel240926_2018b__ConstP.pooled19, 7U);
+    WhlSpdRL_mps = look1_binlx(WhlSpdRR_mps,
+      VehCtrlMdel240926_2018b__ConstP.pooled10,
+      VehCtrlMdel240926_2018b__ConstP.pooled9, 7U);
   } else {
-    elapseTime = 0.0;
+    WhlSpdRL_mps = 0.0;
   }
 
   /* End of Switch: '<S8>/Switch1' */
 
   /* SignalConversion generated from: '<S8>/Out1' */
-  WhlSpdRL_mps = elapseTime;
+  WhlSpdFR = WhlSpdRL_mps;
 
   /* Lookup_n-D: '<S8>/2-D Lookup Table2' */
-  elapseTime = look1_binlx(WhlSpdFL,
+  WhlSpdRL_mps = look1_binlx(WhlSpdRR_mps,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable2_bp01Data,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable2_tableData, 6U);
 
   /* DataTypeConversion: '<S8>/Cast To Single' */
-  rtb_CastToDouble = (real32_T)elapseTime;
+  rtb_CastToDouble = (real32_T)WhlSpdRL_mps;
 
   /* Gain: '<S8>/Gain' */
   rtb_CastToDouble *= 10.0F;
@@ -8770,10 +8868,10 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* SignalConversion generated from: '<S8>/Out1' */
   AMK_Trq_CUT = VehCtrlMdel240926_2018b_amksp_B.Exit_g;
 
-  /* RelationalOperator: '<S103>/Compare' incorporates:
-   *  Constant: '<S103>/Constant'
+  /* RelationalOperator: '<S98>/Compare' incorporates:
+   *  Constant: '<S98>/Constant'
    */
-  rtb_Compare = (rtb_Switch2_on > 35.0);
+  rtb_Compare = (elapseTime > 35.0);
 
   /* SignalConversion generated from: '<S8>/Out1' */
   VehCtrlMdel240926_2018b_amksp_B.aWaterPumpON = rtb_Compare;
@@ -8802,44 +8900,310 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable1_tableData_g,
     VehCtrlMdel240926_2018b__ConstP.uDLookupTable1_maxIndex, 11U);
 
-  /* Gain: '<S10>/Gain4' */
-  rtb_Acc_POS = 0.1F * rtb_Add6_p;
+  /* UnitDelay: '<S77>/Unit Delay1' */
+  rtb_ignition = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl;
 
-  /* Gain: '<S10>/Gain24' */
-  rtb_Acc_POS *= 0.5F;
+  /* Saturate: '<S30>/Saturation' */
+  if (VehVxEst_mps > 40.0F) {
+    rtb_Switch2_b0 = 40.0F;
+  } else if (VehVxEst_mps < 0.0F) {
+    rtb_Switch2_b0 = 0.0F;
+  } else {
+    rtb_Switch2_b0 = VehVxEst_mps;
+  }
 
-  /* SampleTimeMath: '<S42>/sample time'
+  /* Lookup_n-D: '<S30>/VehSpd_SlipTarget_mps' */
+  rtb_Ax = look1_iflf_binlc(rtb_Switch2_b0,
+    VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled34, 3U);
+
+  /* Sum: '<S30>/Add9' */
+  rtb_Ax += rtb_Switch2_b0;
+
+  /* Saturate: '<S30>/Saturation1' */
+  if (rtb_Divide_g > 50.0F) {
+    rtb_Divide_g = 50.0F;
+  } else {
+    if (rtb_Divide_g < 0.0F) {
+      rtb_Divide_g = 0.0F;
+    }
+  }
+
+  /* End of Saturate: '<S30>/Saturation1' */
+
+  /* Sum: '<S30>/Add1' */
+  rtb_Acc_POS = rtb_Ax - rtb_Divide_g;
+
+  /* RelationalOperator: '<S30>/Relational Operator7' incorporates:
+   *  Constant: '<S30>/Cal_DeltaV_mps'
+   */
+  rtb_LogicalOperator2 = (rtb_Acc_POS < 0.0F);
+
+  /* Logic: '<S77>/Logical Operator4' */
+  rtb_ignition = ((!rtb_ignition) && (!rtb_LogicalOperator2));
+
+  /* Logic: '<S30>/Logical Operator2' */
+  rtb_LogicalOperator2 = !rtb_LogicalOperator2;
+
+  /* UnitDelay: '<S30>/Unit Delay4' */
+  elapseTime = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE;
+
+  /* RelationalOperator: '<S30>/Relational Operator8' incorporates:
+   *  Constant: '<S30>/Cal_DeltaV_mps1'
+   */
+  rtb_Compare_am = (elapseTime > 235.0);
+
+  /* Logic: '<S30>/Logical Operator1' */
+  rtb_LogicalOperator2 = (rtb_LogicalOperator2 && rtb_Compare_am);
+
+  /* Switch: '<S78>/Switch6' incorporates:
+   *  Constant: '<S78>/Reset'
+   */
+  if (rtb_LogicalOperator2) {
+    /* Sum: '<S78>/Add10' incorporates:
+     *  Constant: '<S78>/Steptime'
+     */
+    rtb_Ax = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n5 + 0.01F;
+  } else {
+    rtb_Ax = 0.0F;
+  }
+
+  /* End of Switch: '<S78>/Switch6' */
+
+  /* MinMax: '<S78>/Min' incorporates:
+   *  Constant: '<S30>/ResetDelay'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n5 = fminf(rtb_Ax, 0.1F);
+
+  /* RelationalOperator: '<S78>/Relational Operator9' incorporates:
+   *  Constant: '<S30>/ResetDelay'
+   *  UnitDelay: '<S78>/Unit Delay1'
+   */
+  rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n5 >= 0.1F);
+
+  /* UnitDelay: '<S30>/Unit Delay3' */
+  rtb_LogicalOperator2 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_e;
+
+  /* Logic: '<S30>/Logical Operator3' */
+  rtb_Compare_am = (rtb_Compare_am || rtb_LogicalOperator2);
+
+  /* Logic: '<S77>/Logical Operator5' incorporates:
+   *  UnitDelay: '<S77>/Unit Delay1'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl = ((!rtb_ignition) &&
+    (!rtb_Compare_am));
+
+  /* UnitDelay: '<S88>/Unit Delay1' */
+  rtb_Compare_am = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e;
+
+  /* Saturate: '<S31>/Saturation' */
+  if (VehVxEst_mps > 40.0F) {
+    rtb_Ax = 40.0F;
+  } else if (VehVxEst_mps < 0.0F) {
+    rtb_Ax = 0.0F;
+  } else {
+    rtb_Ax = VehVxEst_mps;
+  }
+
+  /* End of Saturate: '<S31>/Saturation' */
+
+  /* Lookup_n-D: '<S31>/VehSpd_SlipTarget_mps' */
+  rtb_Add4_j = look1_iflf_binlc(rtb_Ax, VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled34, 3U);
+
+  /* Sum: '<S31>/Add9' */
+  rtb_Add4_j += rtb_Ax;
+
+  /* Sum: '<S7>/Add1' */
+  rtb_Add7 = rtb_deltafalllimit_n + rtb_deltafalllimit_om;
+
+  /* Gain: '<S7>/Gain2' */
+  rtb_Add7 *= 0.5F;
+
+  /* Saturate: '<S31>/Saturation1' */
+  if (rtb_Add7 < 0.0F) {
+    rtb_VxIMU_est = 0.0F;
+  } else {
+    rtb_VxIMU_est = rtb_Add7;
+  }
+
+  /* End of Saturate: '<S31>/Saturation1' */
+
+  /* Sum: '<S31>/Add1' */
+  rtb_deltafalllimit_n = rtb_Add4_j - rtb_VxIMU_est;
+
+  /* RelationalOperator: '<S31>/Relational Operator7' incorporates:
+   *  Constant: '<S31>/Cal_DeltaV_mps'
+   */
+  rtb_LogicalOperator2 = (rtb_deltafalllimit_n < 0.0F);
+
+  /* Logic: '<S88>/Logical Operator4' */
+  rtb_Compare_am = ((!rtb_Compare_am) && (!rtb_LogicalOperator2));
+
+  /* Logic: '<S31>/Logical Operator2' */
+  rtb_LogicalOperator2 = !rtb_LogicalOperator2;
+
+  /* UnitDelay: '<S31>/Unit Delay4' */
+  elapseTime = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_b;
+
+  /* RelationalOperator: '<S31>/Relational Operator8' incorporates:
+   *  Constant: '<S31>/Cal_DeltaV_mps1'
+   */
+  rtb_ignition = (elapseTime > 235.0);
+
+  /* Logic: '<S31>/Logical Operator1' */
+  rtb_LogicalOperator2 = (rtb_LogicalOperator2 && rtb_ignition);
+
+  /* Switch: '<S89>/Switch6' incorporates:
+   *  Constant: '<S89>/Reset'
+   */
+  if (rtb_LogicalOperator2) {
+    /* Sum: '<S89>/Add10' incorporates:
+     *  Constant: '<S89>/Steptime'
+     */
+    rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_i + 0.01F;
+  } else {
+    rtb_Add7 = 0.0F;
+  }
+
+  /* End of Switch: '<S89>/Switch6' */
+
+  /* MinMax: '<S89>/Min' incorporates:
+   *  Constant: '<S31>/ResetDelay'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_i = fminf(rtb_Add7, 0.1F);
+
+  /* RelationalOperator: '<S89>/Relational Operator9' incorporates:
+   *  Constant: '<S31>/ResetDelay'
+   *  UnitDelay: '<S89>/Unit Delay1'
+   */
+  rtb_LogicalOperator2 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_i >=
+    0.1F);
+
+  /* UnitDelay: '<S31>/Unit Delay3' */
+  rtb_ignition = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_a;
+
+  /* Logic: '<S31>/Logical Operator3' */
+  rtb_LogicalOperator2 = (rtb_LogicalOperator2 || rtb_ignition);
+
+  /* Logic: '<S88>/Logical Operator5' incorporates:
+   *  UnitDelay: '<S88>/Unit Delay1'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e = ((!rtb_Compare_am) &&
+    (!rtb_LogicalOperator2));
+
+  /* UnitDelay: '<S68>/Unit Delay1' */
+  rtb_Compare_am = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp;
+
+  /* Saturate: '<S29>/Saturation' */
+  if (VehVxEst_mps > 40.0F) {
+    rtb_Add7 = 40.0F;
+  } else if (VehVxEst_mps < 0.0F) {
+    rtb_Add7 = 0.0F;
+  } else {
+    rtb_Add7 = VehVxEst_mps;
+  }
+
+  /* End of Saturate: '<S29>/Saturation' */
+
+  /* Lookup_n-D: '<S29>/VehSpd_SlipTarget_mps' */
+  rtb_Add4_j = look1_iflf_binlc(rtb_Add7,
+    VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled34, 3U);
+
+  /* Sum: '<S29>/Add9' */
+  rtb_Add4_j += rtb_Add7;
+
+  /* Saturate: '<S29>/Saturation1' */
+  if (rtb_Add < 0.0F) {
+    rtb_Add = 0.0F;
+  }
+
+  /* End of Saturate: '<S29>/Saturation1' */
+
+  /* Sum: '<S29>/Add1' */
+  rtb_deltafalllimit_om = rtb_Add4_j - rtb_Add;
+
+  /* RelationalOperator: '<S29>/Relational Operator7' incorporates:
+   *  Constant: '<S29>/Cal_DeltaV_mps'
+   */
+  rtb_LogicalOperator2 = (rtb_deltafalllimit_om < 0.0F);
+
+  /* Logic: '<S68>/Logical Operator4' */
+  rtb_Compare_am = ((!rtb_Compare_am) && (!rtb_LogicalOperator2));
+
+  /* Logic: '<S29>/Logical Operator2' */
+  rtb_LogicalOperator2 = !rtb_LogicalOperator2;
+
+  /* UnitDelay: '<S29>/Unit Delay4' */
+  elapseTime = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l;
+
+  /* RelationalOperator: '<S29>/Relational Operator8' incorporates:
+   *  Constant: '<S29>/Cal_DeltaV_mps1'
+   */
+  rtb_ignition = (elapseTime > 235.0);
+
+  /* Logic: '<S29>/Logical Operator1' */
+  rtb_LogicalOperator2 = (rtb_LogicalOperator2 && rtb_ignition);
+
+  /* Switch: '<S69>/Switch6' incorporates:
+   *  Constant: '<S69>/Reset'
+   */
+  if (rtb_LogicalOperator2) {
+    /* Sum: '<S69>/Add10' incorporates:
+     *  Constant: '<S69>/Steptime'
+     */
+    rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_h + 0.01F;
+  } else {
+    rtb_Add4_j = 0.0F;
+  }
+
+  /* End of Switch: '<S69>/Switch6' */
+
+  /* MinMax: '<S69>/Min' incorporates:
+   *  Constant: '<S29>/ResetDelay'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_h = fminf(rtb_Add4_j, 0.1F);
+
+  /* RelationalOperator: '<S69>/Relational Operator9' incorporates:
+   *  Constant: '<S29>/ResetDelay'
+   *  UnitDelay: '<S69>/Unit Delay1'
+   */
+  rtb_LogicalOperator2 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_h >=
+    0.1F);
+
+  /* UnitDelay: '<S29>/Unit Delay3' */
+  rtb_ignition = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_i;
+
+  /* Logic: '<S29>/Logical Operator3' */
+  rtb_LogicalOperator2 = (rtb_LogicalOperator2 || rtb_ignition);
+
+  /* Logic: '<S68>/Logical Operator5' incorporates:
+   *  UnitDelay: '<S68>/Unit Delay1'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp = ((!rtb_Compare_am) && (
+    !rtb_LogicalOperator2));
+
+  /* UnitDelay: '<S10>/Unit Delay3' */
+  rtb_Compare_am = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l;
+
+  /* UnitDelay: '<S46>/Delay Input2'
    *
-   * About '<S42>/sample time':
+   * Block description for '<S46>/Delay Input2':
+   *
+   *  Store in Global RAM
+   */
+  rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_d;
+
+  /* SampleTimeMath: '<S46>/sample time'
+   *
+   * About '<S46>/sample time':
    *  y = K where K = ( w * Ts )
    */
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
-  /* Product: '<S42>/delta rise limit' incorporates:
-   *  Constant: '<S10>/Constant42'
-   */
-  rtb_g_mpss1 = 2000.0 * elapseTime;
-
-  /* UnitDelay: '<S45>/Delay Input2'
-   *
-   * Block description for '<S45>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  rtb_Add7 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_d;
-
-  /* SampleTimeMath: '<S45>/sample time'
-   *
-   * About '<S45>/sample time':
-   *  y = K where K = ( w * Ts )
-   */
-  rtb_Gain4 = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
-
-  /* Product: '<S45>/delta rise limit' */
-  rtb_Ax = (real32_T)(1000.0 * rtb_Gain4);
-
-  /* Gain: '<S10>/Gain21' */
-  rtb_Switch2_on = 0.1020408163265306 * rtb_Add2;
+  /* Product: '<S46>/delta rise limit' */
+  rtb_Add10 = (real32_T)(1000.0 * elapseTime);
 
   /* MATLAB Function: '<S10>/Wtarget' incorporates:
    *  Constant: '<S10>/Constant14'
@@ -8849,125 +9213,112 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *  Constant: '<S10>/Constant18'
    *  Constant: '<S10>/Constant19'
    */
-  rtb_Switch2_mn = VehVxEst_mps * (real32_T)rtb_deltafalllimit_iz / (340.0F *
-    VehVxEst_mps * VehVxEst_mps * 15.5799866F / 460.0F / 440.0F / 1.592F / 2.0F
-    + 1.592F);
+  rtb_Switch2_mn = VehVxEst_mps * (real32_T)rtb_Yk1 / (340.0F * VehVxEst_mps *
+    VehVxEst_mps * 15.5799866F / 460.0F / 440.0F / 1.592F / 2.0F + 1.592F);
   if (rtb_Switch2_mn < 0.0F) {
-    rtb_Add10 = -1.0F;
+    rtb_MaxWhlSpd_mps_n = -1.0F;
   } else if (rtb_Switch2_mn > 0.0F) {
-    rtb_Add10 = 1.0F;
+    rtb_MaxWhlSpd_mps_n = 1.0F;
   } else if (rtb_Switch2_mn == 0.0F) {
-    rtb_Add10 = 0.0F;
+    rtb_MaxWhlSpd_mps_n = 0.0F;
   } else {
-    rtb_Add10 = (rtNaNF);
+    rtb_MaxWhlSpd_mps_n = (rtNaNF);
   }
 
-  rtb_Switch2_mn = fminf(fabsf(6.24750042F / (real32_T)rtb_Switch2_on), fabsf
-    (rtb_Switch2_mn)) * rtb_Add10;
+  rtb_Switch2_mn = fminf((rtInfF), fabsf(rtb_Switch2_mn)) * rtb_MaxWhlSpd_mps_n;
 
   /* End of MATLAB Function: '<S10>/Wtarget' */
 
-  /* Sum: '<S45>/Difference Inputs1'
+  /* Sum: '<S46>/Difference Inputs1'
    *
-   * Block description for '<S45>/Difference Inputs1':
+   * Block description for '<S46>/Difference Inputs1':
    *
    *  Add in CPU
    */
-  rtb_Switch2_mn -= rtb_Add7;
+  rtb_Switch2_mn -= rtb_Add4_j;
 
-  /* RelationalOperator: '<S60>/LowerRelop1' */
-  rtb_ignition = (rtb_Switch2_mn > rtb_Ax);
+  /* RelationalOperator: '<S61>/LowerRelop1' */
+  rtb_LogicalOperator2 = (rtb_Switch2_mn > rtb_Add10);
 
-  /* Switch: '<S60>/Switch2' */
-  if (!rtb_ignition) {
-    /* Product: '<S45>/delta fall limit' */
-    rtb_Add10 = (real32_T)(-1000.0 * rtb_Gain4);
+  /* Switch: '<S61>/Switch2' */
+  if (!rtb_LogicalOperator2) {
+    /* Product: '<S46>/delta fall limit' */
+    rtb_Add10 = (real32_T)(-1000.0 * elapseTime);
 
-    /* RelationalOperator: '<S60>/UpperRelop' */
+    /* RelationalOperator: '<S61>/UpperRelop' */
     rtb_ignition = (rtb_Switch2_mn < rtb_Add10);
 
-    /* Switch: '<S60>/Switch' */
+    /* Switch: '<S61>/Switch' */
     if (rtb_ignition) {
       rtb_Switch2_mn = rtb_Add10;
     }
 
-    /* End of Switch: '<S60>/Switch' */
-    rtb_Ax = rtb_Switch2_mn;
+    /* End of Switch: '<S61>/Switch' */
+    rtb_Add10 = rtb_Switch2_mn;
   }
 
-  /* End of Switch: '<S60>/Switch2' */
+  /* End of Switch: '<S61>/Switch2' */
 
-  /* Sum: '<S45>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S45>/Delay Input2'
+  /* Sum: '<S46>/Difference Inputs2' incorporates:
+   *  UnitDelay: '<S46>/Delay Input2'
    *
-   * Block description for '<S45>/Difference Inputs2':
+   * Block description for '<S46>/Difference Inputs2':
    *
    *  Add in CPU
    *
-   * Block description for '<S45>/Delay Input2':
+   * Block description for '<S46>/Delay Input2':
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_d = rtb_Ax + rtb_Add7;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_d = rtb_Add10 + rtb_Add4_j;
 
   /* Sum: '<S10>/Add' incorporates:
-   *  UnitDelay: '<S45>/Delay Input2'
+   *  UnitDelay: '<S46>/Delay Input2'
    *
-   * Block description for '<S45>/Delay Input2':
+   * Block description for '<S46>/Delay Input2':
    *
    *  Store in Global RAM
    */
-  WhlSpdFL = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_d - rtb_UkYk1;
-
-  /* UnitDelay: '<S10>/Unit Delay3' */
-  rtb_ignition = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l;
+  elapseTime = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_d - rtb_UkYk1;
 
   /* Abs: '<S10>/Abs' */
-  rtb_Gain4 = fabs(WhlSpdFL);
-
-  /* RelationalOperator: '<S32>/Compare' incorporates:
-   *  Constant: '<S32>/Constant'
-   */
-  rtb_LogicalOperator2 = (rtb_Gain4 > 5.0);
-
-  /* Abs: '<S10>/Abs1' */
-  rtb_Gain4 = fabs(rtb_UkYk1);
+  WhlSpdRR_mps = fabs(elapseTime);
 
   /* RelationalOperator: '<S33>/Compare' incorporates:
    *  Constant: '<S33>/Constant'
    */
-  rtb_Compare_am = (rtb_Gain4 > 5.0);
+  rtb_LogicalOperator2 = (WhlSpdRR_mps > 5.0);
+
+  /* Abs: '<S10>/Abs1' */
+  WhlSpdRR_mps = fabs(rtb_UkYk1);
 
   /* RelationalOperator: '<S34>/Compare' incorporates:
    *  Constant: '<S34>/Constant'
    */
-  rtb_LogicalOperator7 = (VehVxEst_mps > 3.0F);
-
-  /* UnitDelay: '<S7>/Unit Delay' */
-  rtb_Gain4 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_n;
-
-  /* Logic: '<S10>/AND' */
-  rtb_LowerRelop1_b = (rtb_LogicalOperator2 && rtb_Compare_am &&
-                       rtb_LogicalOperator7 && (rtb_Gain4 != 0.0));
-
-  /* Logic: '<S10>/Logical Operator4' */
-  rtb_ignition = ((!rtb_ignition) && (!rtb_LowerRelop1_b));
-
-  /* Abs: '<S10>/Abs2' */
-  rtb_Gain4 = fabs(WhlSpdFL);
+  rtb_ignition = (WhlSpdRR_mps > 5.0);
 
   /* RelationalOperator: '<S35>/Compare' incorporates:
    *  Constant: '<S35>/Constant'
    */
-  rtb_LowerRelop1_b = (rtb_Gain4 < 10.0);
+  rtb_Compare = (VehVxEst_mps > 3.0F);
+
+  /* UnitDelay: '<S7>/Unit Delay' */
+  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_n;
+
+  /* Logic: '<S10>/AND' */
+  rtb_LowerRelop1_b = (rtb_LogicalOperator2 && rtb_ignition && rtb_Compare &&
+                       (WhlSpdRR_mps != 0.0));
+
+  /* Logic: '<S10>/Logical Operator4' */
+  rtb_Compare_am = ((!rtb_Compare_am) && (!rtb_LowerRelop1_b));
+
+  /* Abs: '<S10>/Abs2' */
+  elapseTime = fabs(elapseTime);
 
   /* RelationalOperator: '<S36>/Compare' incorporates:
    *  Constant: '<S36>/Constant'
    */
-  rtb_LogicalOperator7 = (rtb_Add2 < -5.0);
-
-  /* Logic: '<S10>/OR' */
-  rtb_LowerRelop1_b = (rtb_LowerRelop1_b || rtb_LogicalOperator7);
+  rtb_LowerRelop1_b = (elapseTime < 10.0);
 
   /* Switch: '<S10>/Switch6' incorporates:
    *  Constant: '<S10>/Reset'
@@ -8976,9 +9327,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     /* Sum: '<S10>/Add10' incorporates:
      *  Constant: '<S10>/Steptime'
      */
-    rtb_Ax = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_n + 0.01F;
+    rtb_Add10 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_n + 0.01F;
   } else {
-    rtb_Ax = 0.0F;
+    rtb_Add10 = 0.0F;
   }
 
   /* End of Switch: '<S10>/Switch6' */
@@ -8986,7 +9337,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* MinMax: '<S10>/Min' incorporates:
    *  Constant: '<S10>/ResetDelay'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_n = fminf(rtb_Ax, 0.5F);
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_n = fminf(rtb_Add10, 0.5F);
 
   /* RelationalOperator: '<S10>/Relational Operator9' incorporates:
    *  Constant: '<S10>/ResetDelay'
@@ -8998,1175 +9349,8 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* Logic: '<S10>/Logical Operator5' incorporates:
    *  UnitDelay: '<S10>/Unit Delay3'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l = ((!rtb_ignition) &&
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l = ((!rtb_Compare_am) &&
     (!rtb_LowerRelop1_b));
-
-  /* Switch: '<S10>/Switch1' incorporates:
-   *  Constant: '<S10>/Constant1'
-   *  UnitDelay: '<S10>/Unit Delay3'
-   */
-  if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l) {
-    rtb_Gain4 = WhlSpdFL;
-  } else {
-    rtb_Gain4 = 0.0;
-  }
-
-  /* End of Switch: '<S10>/Switch1' */
-
-  /* Product: '<S10>/Product3' */
-  rtb_Gain5 = 2.0 * rtb_Gain4;
-
-  /* Product: '<S10>/Product' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d *= WhlSpdFL;
-
-  /* RelationalOperator: '<S31>/Compare' incorporates:
-   *  Constant: '<S31>/Constant'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_LowerRelop1_b = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d <=
-                       0.0);
-
-  /* UnitDelay: '<S10>/Unit Delay' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d =
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_m;
-
-  /* Switch: '<S10>/Switch' incorporates:
-   *  Constant: '<S10>/Constant'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  if (rtb_LowerRelop1_b) {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 0.0;
-  }
-
-  /* End of Switch: '<S10>/Switch' */
-
-  /* Product: '<S10>/Product4' */
-  WhlSpdRR_mps = rtb_Gain4;
-
-  /* UnitDelay: '<S10>/Unit Delay1' */
-  rtb_Gain4 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_p;
-
-  /* Product: '<S10>/Product5' */
-  rtb_Switch2_on = rtb_Gain4;
-
-  /* Sum: '<S10>/Add2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_m =
-    (VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d + WhlSpdRR_mps) -
-    rtb_Switch2_on;
-
-  /* MATLAB Function: '<S10>/MATLAB Function1' incorporates:
-   *  Constant: '<S10>/Constant20'
-   *  Constant: '<S10>/Constant21'
-   *  Constant: '<S10>/Constant22'
-   *  Constant: '<S10>/Constant23'
-   *  Constant: '<S10>/Constant24'
-   *  Constant: '<S10>/Constant25'
-   */
-  rtb_Add7 = ((5.43088F / VehVxEst_mps * (-1.35294116F / VehVxEst_mps) -
-               (-0.0458234884F / VehVxEst_mps / VehVxEst_mps - 1.0F) *
-               -3.33390474F) * 105.0F * (real32_T)rtb_deltafalllimit_iz -
-              -1.35294116F / VehVxEst_mps * 105.0F * (real32_T)rtb_UkYk1_ix) / (
-    -0.0458234884F / VehVxEst_mps / VehVxEst_mps - 1.0F) / 100.0F;
-
-  /* UnitDelay: '<S10>/Unit Delay6' */
-  rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.UnitDelay6_DSTATE_i;
-
-  /* Logic: '<S10>/Logical Operator3' */
-  rtb_LowerRelop1_b = !rtb_LowerRelop1_b;
-
-  /* Switch: '<S10>/Switch3' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay5'
-   */
-  if (rtb_LowerRelop1_b) {
-    /* Switch: '<S10>/Switch4' incorporates:
-     *  Constant: '<S10>/InitZORE'
-     *  UnitDelay: '<S10>/Unit Delay3'
-     */
-    if (!VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l) {
-      rtb_Add7 = 0.0F;
-    }
-
-    /* End of Switch: '<S10>/Switch4' */
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_b = rtb_Add7;
-  }
-
-  /* End of Switch: '<S10>/Switch3' */
-
-  /* Gain: '<S10>/Gain18' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay5'
-   */
-  rtb_Ax = 0.01F * VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_b;
-
-  /* Sum: '<S10>/Add1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay'
-   */
-  rtb_Switch2_on = (rtb_Gain5 +
-                    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_m) + rtb_Ax;
-
-  /* Saturate: '<S10>/Saturation' */
-  if (rtb_Switch2_on > 1000.0) {
-    rtb_UkYk1_ix = 1000.0;
-  } else if (rtb_Switch2_on < -1000.0) {
-    rtb_UkYk1_ix = -1000.0;
-  } else {
-    rtb_UkYk1_ix = rtb_Switch2_on;
-  }
-
-  /* End of Saturate: '<S10>/Saturation' */
-
-  /* Sum: '<S42>/Difference Inputs1' incorporates:
-   *  UnitDelay: '<S42>/Delay Input2'
-   *
-   * Block description for '<S42>/Difference Inputs1':
-   *
-   *  Add in CPU
-   *
-   * Block description for '<S42>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  WhlSpdRR_mps = rtb_UkYk1_ix -
-    VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_jk;
-
-  /* RelationalOperator: '<S57>/LowerRelop1' */
-  rtb_LowerRelop1_b = (WhlSpdRR_mps > rtb_g_mpss1);
-
-  /* Switch: '<S57>/Switch2' */
-  if (!rtb_LowerRelop1_b) {
-    /* Product: '<S42>/delta fall limit' */
-    elapseTime *= -2000.0;
-
-    /* RelationalOperator: '<S57>/UpperRelop' */
-    rtb_ignition = (WhlSpdRR_mps < elapseTime);
-
-    /* Switch: '<S57>/Switch' */
-    if (rtb_ignition) {
-      WhlSpdRR_mps = elapseTime;
-    }
-
-    /* End of Switch: '<S57>/Switch' */
-    rtb_g_mpss1 = WhlSpdRR_mps;
-  }
-
-  /* End of Switch: '<S57>/Switch2' */
-
-  /* Sum: '<S42>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S42>/Delay Input2'
-   *
-   * Block description for '<S42>/Difference Inputs2':
-   *
-   *  Add in CPU
-   *
-   * Block description for '<S42>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_jk += rtb_g_mpss1;
-
-  /* Gain: '<S10>/Gain8' */
-  WhlSpdRR_mps = 0.017453292519943295 * FLWhlStrAng;
-
-  /* Trigonometry: '<S10>/Cos' */
-  WhlSpdRR_mps = cos(WhlSpdRR_mps);
-
-  /* Gain: '<S10>/Gain11' */
-  WhlSpdRR_mps *= 1.2;
-
-  /* Sum: '<S10>/Add6' incorporates:
-   *  Constant: '<S10>/Constant27'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 90.0 - FLWhlStrAng;
-
-  /* Gain: '<S10>/Gain9' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d *= 0.017453292519943295;
-
-  /* Trigonometry: '<S10>/Cos1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = cos
-    (VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d);
-
-  /* Gain: '<S10>/Gain10' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d *= 1.522;
-
-  /* Sum: '<S10>/Add7' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  WhlSpdRR_mps += VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d;
-
-  /* Product: '<S10>/Divide1' incorporates:
-   *  UnitDelay: '<S42>/Delay Input2'
-   *
-   * Block description for '<S42>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_jk /
-    WhlSpdRR_mps;
-
-  /* Gain: '<S10>/Gain25' */
-  WhlSpdRR_mps *= 0.2;
-
-  /* Saturate: '<S10>/Saturation3' */
-  if (WhlSpdRR_mps > 20.0) {
-    WhlSpdRR_mps = 20.0;
-  } else {
-    if (WhlSpdRR_mps < -20.0) {
-      WhlSpdRR_mps = -20.0;
-    }
-  }
-
-  /* End of Saturate: '<S10>/Saturation3' */
-
-  /* Sum: '<S10>/Add4' */
-  FLWhlStrAng = rtb_Acc_POS + WhlSpdRR_mps;
-
-  /* Lookup_n-D: '<S10>/228' */
-  elapseTime = look1_binlx(RPM, VehCtrlMdel240926_2018b__ConstP.u28_bp01Data,
-    VehCtrlMdel240926_2018b__ConstP.u28_tableData, 26U);
-
-  /* Lookup_n-D: '<S10>/AMK' */
-  WhlSpdRR_mps = look1_binlx(MCFL_ActualVelocity,
-    VehCtrlMdel240926_2018b__ConstP.pooled16,
-    VehCtrlMdel240926_2018b__ConstP.pooled15, 19U);
-
-  /* Lookup_n-D: '<S10>/AMK1' */
-  rtb_Gain5 = look1_binlx(MCFR_ActualVelocity,
-    VehCtrlMdel240926_2018b__ConstP.pooled16,
-    VehCtrlMdel240926_2018b__ConstP.pooled15, 19U);
-
-  /* MATLAB Function: '<S10>/ÔØºÉ×ªÒÆ' incorporates:
-   *  Constant: '<S10>/Constant10'
-   *  Constant: '<S10>/Constant2'
-   *  Constant: '<S10>/Constant3'
-   *  Constant: '<S10>/Constant4'
-   *  Constant: '<S10>/Constant5'
-   *  Constant: '<S10>/Constant9'
-   */
-  rtb_Switch2_mn = (1666.0F - 340.0F * (real32_T)rtb_deltafalllimit_i4 * 0.29F /
-                    1.2F) * 0.521984875F - 170.0F * (real32_T)rtb_Add2 * 0.29F /
-    1.592F;
-  rtb_Add10 = (340.0F * (real32_T)rtb_deltafalllimit_i4 * 0.29F / 1.2F + 1666.0F)
-    * 0.521984875F - 170.0F * (real32_T)rtb_Add2 * 0.29F / 1.592F;
-  rtb_Ax = (1666.0F - 340.0F * (real32_T)rtb_deltafalllimit_i4 * 0.29F / 1.2F) *
-    0.521984875F + 170.0F * (real32_T)rtb_Add2 * 0.29F / 1.592F;
-  rtb_Add4_j = (340.0F * (real32_T)rtb_deltafalllimit_i4 * 0.29F / 1.2F +
-                1666.0F) * 0.521984875F + 170.0F * (real32_T)rtb_Add2 * 0.29F /
-    1.592F;
-
-  /* Gain: '<S10>/Gain3' */
-  rtb_g_mpss1 = 0.1020408163265306 * rtb_deltafalllimit_i4;
-
-  /* MATLAB Function: '<S10>/MATLAB Function' incorporates:
-   *  Constant: '<S10>/Constant11'
-   *  Constant: '<S10>/Constant12'
-   *  Constant: '<S10>/Constant13'
-   *  Constant: '<S10>/Constant26'
-   */
-  rtb_Add7 = rtb_Switch2_mn * 0.75F;
-  rtb_Switch2_mn = rtb_Switch2_mn * (real32_T)rtb_g_mpss1 / 9.8F;
-  rtb_Switch2_b0 = rtb_Add10 * 0.75F;
-  rtb_MaxWhlSpd_mps_n = rtb_Add10 * (real32_T)rtb_g_mpss1 / 9.8F;
-  rtb_Add10 = rtb_Ax * 0.75F;
-  rtb_Ax = rtb_Ax * (real32_T)rtb_g_mpss1 / 9.8F;
-  rtb_VxIMU_est = rtb_Add4_j * 0.75F;
-  rtb_Add4_j = rtb_Add4_j * (real32_T)rtb_g_mpss1 / 9.8F;
-  rtb_Switch2_b0 = fminf(sqrtf(rtb_Switch2_b0 * rtb_Switch2_b0 -
-    rtb_MaxWhlSpd_mps_n * rtb_MaxWhlSpd_mps_n) * 0.2F / 11.4F, (real32_T)
-    rtb_Gain5);
-  rtb_Add7 = fminf(sqrtf(rtb_Add7 * rtb_Add7 - rtb_Switch2_mn * rtb_Switch2_mn) *
-                   0.2F / 11.4F, (real32_T)WhlSpdRR_mps);
-  rtb_Switch2_mn = fminf((sqrtf(rtb_VxIMU_est * rtb_VxIMU_est - rtb_Add4_j *
-    rtb_Add4_j) + sqrtf(rtb_Add10 * rtb_Add10 - rtb_Ax * rtb_Ax)) / 2.0F * 0.2F /
-    3.4F, (real32_T)elapseTime);
-
-  /* Gain: '<S10>/Gain' */
-  rtb_Ax = 0.95F * rtb_Switch2_b0;
-
-  /* Gain: '<S10>/Gain1' */
-  rtb_Add7 *= 0.95F;
-
-  /* MinMax: '<S10>/Min1' */
-  rtb_Add4_j = fminf(rtb_Ax, rtb_Add7);
-
-  /* Sum: '<S10>/Add14' */
-  WhlSpdRR_mps = rtb_Add4_j - FLWhlStrAng;
-
-  /* RelationalOperator: '<S10>/Relational Operator' incorporates:
-   *  Constant: '<S10>/Constant37'
-   */
-  rtb_LogicalOperator2 = (WhlSpdRR_mps < 0.0);
-
-  /* Gain: '<S10>/Gain2' */
-  rtb_Add4_j = 0.95F * rtb_Switch2_mn;
-
-  /* Gain: '<S10>/Gain5' */
-  rtb_Add6_p *= 0.8F;
-
-  /* Sum: '<S10>/Add15' */
-  rtb_Switch2_b0 = rtb_Add4_j - rtb_Add6_p;
-
-  /* RelationalOperator: '<S10>/Relational Operator1' incorporates:
-   *  Constant: '<S10>/Constant38'
-   */
-  rtb_Compare = (rtb_Switch2_b0 < 0.0F);
-
-  /* Logic: '<S10>/AND1' */
-  rtb_LowerRelop1_b = (rtb_LogicalOperator2 && rtb_Compare);
-
-  /* Logic: '<S10>/OR1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay3'
-   */
-  rtb_LowerRelop1_b = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l ||
-                       rtb_LowerRelop1_b);
-
-  /* Switch: '<S10>/Switch2' incorporates:
-   *  Constant: '<S10>/Constant32'
-   */
-  if (rtb_LowerRelop1_b) {
-    WhlSpdRR_mps = 0.0;
-  } else {
-    /* Logic: '<S10>/NOT' */
-    rtb_ignition = !rtb_Compare;
-
-    /* Switch: '<S10>/Switch5' incorporates:
-     *  Constant: '<S10>/Constant33'
-     */
-    if (!rtb_ignition) {
-      WhlSpdRR_mps = 0.0;
-    }
-
-    /* End of Switch: '<S10>/Switch5' */
-  }
-
-  /* End of Switch: '<S10>/Switch2' */
-
-  /* Saturate: '<S10>/Saturation1' */
-  if (WhlSpdRR_mps > 100.0) {
-    elapseTime = 100.0;
-  } else if (WhlSpdRR_mps < 0.0) {
-    elapseTime = 0.0;
-  } else {
-    elapseTime = WhlSpdRR_mps;
-  }
-
-  /* End of Saturate: '<S10>/Saturation1' */
-
-  /* UnitDelay: '<S44>/Delay Input2'
-   *
-   * Block description for '<S44>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n0;
-
-  /* Sum: '<S44>/Difference Inputs1'
-   *
-   * Block description for '<S44>/Difference Inputs1':
-   *
-   *  Add in CPU
-   */
-  rtb_Gain5 = elapseTime - WhlSpdRR_mps;
-
-  /* SampleTimeMath: '<S44>/sample time'
-   *
-   * About '<S44>/sample time':
-   *  y = K where K = ( w * Ts )
-   */
-  elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
-
-  /* Product: '<S44>/delta rise limit' incorporates:
-   *  Constant: '<S10>/Constant45'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 1000.0 * elapseTime;
-
-  /* RelationalOperator: '<S59>/LowerRelop1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_LowerRelop1_b = (rtb_Gain5 >
-                       VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d);
-
-  /* Switch: '<S59>/Switch2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  if (!rtb_LowerRelop1_b) {
-    /* Product: '<S44>/delta fall limit' */
-    elapseTime *= -1000.0;
-
-    /* RelationalOperator: '<S59>/UpperRelop' */
-    rtb_ignition = (rtb_Gain5 < elapseTime);
-
-    /* Switch: '<S59>/Switch' */
-    if (rtb_ignition) {
-      rtb_Gain5 = elapseTime;
-    }
-
-    /* End of Switch: '<S59>/Switch' */
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = rtb_Gain5;
-  }
-
-  /* End of Switch: '<S59>/Switch2' */
-
-  /* Sum: '<S44>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S44>/Delay Input2'
-   *
-   * Block description for '<S44>/Difference Inputs2':
-   *
-   *  Add in CPU
-   *
-   * Block description for '<S44>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n0 =
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d + WhlSpdRR_mps;
-
-  /* Gain: '<S10>/Gain19' incorporates:
-   *  UnitDelay: '<S44>/Delay Input2'
-   *
-   * Block description for '<S44>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  WhlSpdRR_mps = -VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_n0;
-
-  /* RelationalOperator: '<S48>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Add6_p > rtb_Add4_j);
-
-  /* Switch: '<S48>/Switch2' */
-  if (rtb_LowerRelop1_b) {
-    rtb_Add6_p = rtb_Add4_j;
-  } else {
-    /* RelationalOperator: '<S48>/UpperRelop' incorporates:
-     *  Constant: '<S10>/Constant8'
-     */
-    rtb_ignition = (rtb_Add6_p < 0.0F);
-
-    /* Switch: '<S48>/Switch' incorporates:
-     *  Constant: '<S10>/Constant8'
-     */
-    if (rtb_ignition) {
-      rtb_Add6_p = 0.0F;
-    }
-
-    /* End of Switch: '<S48>/Switch' */
-  }
-
-  /* End of Switch: '<S48>/Switch2' */
-
-  /* Sum: '<S10>/Add13' */
-  elapseTime = rtb_Add6_p + WhlSpdRR_mps;
-
-  /* RelationalOperator: '<S51>/LowerRelop1' */
-  rtb_LowerRelop1_b = (elapseTime > rtb_Add4_j);
-
-  /* Switch: '<S51>/Switch2' */
-  if (rtb_LowerRelop1_b) {
-    elapseTime = rtb_Add4_j;
-  } else {
-    /* RelationalOperator: '<S51>/UpperRelop' incorporates:
-     *  Constant: '<S10>/Constant31'
-     */
-    rtb_ignition = (elapseTime < 0.0);
-
-    /* Switch: '<S51>/Switch' incorporates:
-     *  Constant: '<S10>/Constant31'
-     */
-    if (rtb_ignition) {
-      elapseTime = 0.0;
-    }
-
-    /* End of Switch: '<S51>/Switch' */
-  }
-
-  /* End of Switch: '<S51>/Switch2' */
-
-  /* UnitDelay: '<S41>/Delay Input2'
-   *
-   * Block description for '<S41>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk;
-
-  /* Sum: '<S41>/Difference Inputs1'
-   *
-   * Block description for '<S41>/Difference Inputs1':
-   *
-   *  Add in CPU
-   */
-  rtb_Gain5 = elapseTime - WhlSpdRR_mps;
-
-  /* SampleTimeMath: '<S41>/sample time'
-   *
-   * About '<S41>/sample time':
-   *  y = K where K = ( w * Ts )
-   */
-  elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
-
-  /* Product: '<S41>/delta rise limit' incorporates:
-   *  Constant: '<S10>/Constant41'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 2000.0 * elapseTime;
-
-  /* RelationalOperator: '<S56>/LowerRelop1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_LowerRelop1_b = (rtb_Gain5 >
-                       VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d);
-
-  /* Switch: '<S56>/Switch2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  if (!rtb_LowerRelop1_b) {
-    /* Product: '<S41>/delta fall limit' */
-    elapseTime *= -2000.0;
-
-    /* RelationalOperator: '<S56>/UpperRelop' */
-    rtb_ignition = (rtb_Gain5 < elapseTime);
-
-    /* Switch: '<S56>/Switch' */
-    if (rtb_ignition) {
-      rtb_Gain5 = elapseTime;
-    }
-
-    /* End of Switch: '<S56>/Switch' */
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = rtb_Gain5;
-  }
-
-  /* End of Switch: '<S56>/Switch2' */
-
-  /* Sum: '<S41>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S41>/Delay Input2'
-   *
-   * Block description for '<S41>/Difference Inputs2':
-   *
-   *  Add in CPU
-   *
-   * Block description for '<S41>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk =
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d + WhlSpdRR_mps;
-
-  /* Sum: '<S25>/Add' incorporates:
-   *  Constant: '<S25>/Constant3'
-   */
-  WhlSpdRR_mps = 1.0 - WhlSpdRL_mps;
-
-  /* Product: '<S25>/Product5' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 63.0 * WhlSpdRR_mps;
-
-  /* Product: '<S25>/Product' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d * 9550.0;
-
-  /* Sum: '<S25>/Add1' incorporates:
-   *  Constant: '<S25>/RPM_min'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = RPM + 10.0;
-
-  /* MinMax: '<S25>/Max' incorporates:
-   *  Constant: '<S25>/RPM_min1'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_Gain5 = fmax(VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d, 1.0);
-
-  /* Product: '<S25>/Divide' */
-  WhlSpdRR_mps /= rtb_Gain5;
-
-  /* MinMax: '<S7>/MinMax2' incorporates:
-   *  UnitDelay: '<S41>/Delay Input2'
-   *
-   * Block description for '<S41>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  elapseTime = fmin(WhlSpdRR_mps,
-                    VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hk);
-
-  /* Saturate: '<S30>/Saturation' */
-  if (VehVxEst_mps > 40.0F) {
-    rtb_Add4_j = 40.0F;
-  } else if (VehVxEst_mps < 0.0F) {
-    rtb_Add4_j = 0.0F;
-  } else {
-    rtb_Add4_j = VehVxEst_mps;
-  }
-
-  /* Lookup_n-D: '<S30>/VehSpd_SlipTarget_mps' */
-  rtb_Add6_p = look1_iflf_binlc(rtb_Add4_j,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled56, 3U);
-
-  /* Sum: '<S30>/Add9' */
-  rtb_Add6_p += rtb_Add4_j;
-
-  /* Sum: '<S7>/Add1' */
-  rtb_MaxWhlSpd_mps_n = rtb_deltafalllimit_n + rtb_deltafalllimit_om;
-
-  /* Gain: '<S7>/Gain2' */
-  rtb_MaxWhlSpd_mps_n *= 0.5F;
-
-  /* Saturate: '<S30>/Saturation1' */
-  if (rtb_MaxWhlSpd_mps_n < 0.0F) {
-    rtb_Saturation1_i = 0.0F;
-  } else {
-    rtb_Saturation1_i = rtb_MaxWhlSpd_mps_n;
-  }
-
-  /* End of Saturate: '<S30>/Saturation1' */
-
-  /* Sum: '<S30>/Add1' */
-  rtb_deltafalllimit_n = rtb_Add6_p - rtb_Saturation1_i;
-
-  /* UnitDelay: '<S93>/Unit Delay1' */
-  rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e;
-
-  /* RelationalOperator: '<S30>/Relational Operator7' incorporates:
-   *  Constant: '<S30>/Cal_DeltaV_mps'
-   */
-  rtb_LogicalOperator7 = (rtb_deltafalllimit_n < 0.0F);
-
-  /* Logic: '<S93>/Logical Operator4' */
-  rtb_LowerRelop1_b = ((!rtb_LowerRelop1_b) && (!rtb_LogicalOperator7));
-
-  /* Logic: '<S30>/Logical Operator2' */
-  rtb_LogicalOperator7 = !rtb_LogicalOperator7;
-
-  /* UnitDelay: '<S30>/Unit Delay4' */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE;
-
-  /* RelationalOperator: '<S30>/Relational Operator8' incorporates:
-   *  Constant: '<S30>/Cal_DeltaV_mps1'
-   */
-  rtb_Compare_am = (WhlSpdRR_mps > 235.0);
-
-  /* Logic: '<S30>/Logical Operator1' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 && rtb_Compare_am);
-
-  /* Switch: '<S94>/Switch6' incorporates:
-   *  Constant: '<S94>/Reset'
-   */
-  if (rtb_LogicalOperator7) {
-    /* Sum: '<S94>/Add10' incorporates:
-     *  Constant: '<S94>/Steptime'
-     */
-    rtb_MaxWhlSpd_mps_n = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_i +
-      0.01F;
-  } else {
-    rtb_MaxWhlSpd_mps_n = 0.0F;
-  }
-
-  /* End of Switch: '<S94>/Switch6' */
-
-  /* MinMax: '<S94>/Min' incorporates:
-   *  Constant: '<S30>/ResetDelay'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_i = fminf
-    (rtb_MaxWhlSpd_mps_n, 0.1F);
-
-  /* RelationalOperator: '<S94>/Relational Operator9' incorporates:
-   *  Constant: '<S30>/ResetDelay'
-   *  UnitDelay: '<S94>/Unit Delay1'
-   */
-  rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_i >=
-    0.1F);
-
-  /* UnitDelay: '<S30>/Unit Delay3' */
-  rtb_Compare_am = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_a;
-
-  /* Logic: '<S30>/Logical Operator3' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
-
-  /* Logic: '<S93>/Logical Operator5' incorporates:
-   *  UnitDelay: '<S93>/Unit Delay1'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e = ((!rtb_LowerRelop1_b) &&
-    (!rtb_LogicalOperator7));
-
-  /* Switch: '<S30>/Switch6' incorporates:
-   *  Constant: '<S30>/Verror_Reset'
-   *  UnitDelay: '<S93>/Unit Delay1'
-   */
-  if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e) {
-    rtb_MaxWhlSpd_mps_n = rtb_deltafalllimit_n;
-  } else {
-    rtb_MaxWhlSpd_mps_n = 0.0F;
-  }
-
-  /* End of Switch: '<S30>/Switch6' */
-
-  /* Product: '<S30>/Product' incorporates:
-   *  Constant: '<S30>/P_Gain'
-   */
-  rtb_deltafalllimit_om = rtb_MaxWhlSpd_mps_n * 40.0F;
-
-  /* Sum: '<S30>/Add11' */
-  WhlSpdRR_mps = elapseTime - rtb_deltafalllimit_om;
-
-  /* UnitDelay: '<S30>/Unit Delay5' */
-  rtb_Add6_p = VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_l;
-
-  /* Product: '<S30>/Product2' */
-  rtb_Add6_p *= rtb_deltafalllimit_n;
-
-  /* RelationalOperator: '<S88>/Compare' incorporates:
-   *  Constant: '<S88>/Constant'
-   */
-  rtb_LowerRelop1_b = (rtb_Add6_p <= 0.0F);
-
-  /* UnitDelay: '<S30>/Unit Delay' */
-  rtb_Add6_p = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b;
-
-  /* Switch: '<S30>/Switch3' incorporates:
-   *  Constant: '<S30>/Verror_Reset1'
-   */
-  if (rtb_LowerRelop1_b) {
-    rtb_Add6_p = 0.0F;
-  }
-
-  /* End of Switch: '<S30>/Switch3' */
-
-  /* Sum: '<S30>/Add2' */
-  rtb_Add6_p += rtb_MaxWhlSpd_mps_n;
-
-  /* Saturate: '<S30>/Saturation2' */
-  if (rtb_Add6_p > 400.0F) {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b = 400.0F;
-  } else if (rtb_Add6_p < -100.0F) {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b = -100.0F;
-  } else {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b = rtb_Add6_p;
-  }
-
-  /* End of Saturate: '<S30>/Saturation2' */
-
-  /* RelationalOperator: '<S98>/Compare' incorporates:
-   *  UnitDelay: '<S93>/Unit Delay1'
-   */
-  rtb_ignition = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e;
-
-  /* UnitDelay: '<S92>/Delay Input1'
-   *
-   * Block description for '<S92>/Delay Input1':
-   *
-   *  Store in Global RAM
-   */
-  rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE;
-
-  /* RelationalOperator: '<S92>/FixPt Relational Operator' */
-  rtb_LowerRelop1_b = ((int32_T)rtb_ignition > (int32_T)rtb_LowerRelop1_b);
-
-  /* Switch: '<S30>/Switch' incorporates:
-   *  Constant: '<S30>/Integr_StartPoint'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  if (rtb_LowerRelop1_b) {
-    /* Sum: '<S30>/Add4' */
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = elapseTime -
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g;
-  } else {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 0.0;
-  }
-
-  /* End of Switch: '<S30>/Switch' */
-
-  /* Lookup_n-D: '<S30>/VehicleStableTarget_mps' */
-  rtb_MaxWhlSpd_mps_n = look1_iflf_binlc(rtb_Add4_j,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled63, 3U);
-
-  /* Sum: '<S30>/Add5' */
-  rtb_MaxWhlSpd_mps_n += rtb_Add4_j;
-
-  /* Sum: '<S30>/Add10' */
-  rtb_MaxWhlSpd_mps_n = rtb_Saturation1_i - rtb_MaxWhlSpd_mps_n;
-
-  /* RelationalOperator: '<S30>/Relational Operator' incorporates:
-   *  Constant: '<S30>/Verror'
-   */
-  rtb_LowerRelop1_b = (rtb_MaxWhlSpd_mps_n < 0.0F);
-
-  /* Logic: '<S30>/Logical Operator4' incorporates:
-   *  UnitDelay: '<S93>/Unit Delay1'
-   */
-  rtb_LowerRelop1_b = (rtb_LowerRelop1_b &&
-                       VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e);
-
-  /* Switch: '<S30>/Switch1' incorporates:
-   *  Constant: '<S30>/Trq_IReset'
-   *  Constant: '<S30>/Trq_I_FF'
-   */
-  if (rtb_LowerRelop1_b) {
-    rtb_MaxWhlSpd_mps_n = 20.0F;
-  } else {
-    rtb_MaxWhlSpd_mps_n = 0.0F;
-  }
-
-  /* End of Switch: '<S30>/Switch1' */
-
-  /* Sum: '<S30>/Add6' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S30>/Unit Delay'
-   */
-  rtb_Gain5 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b +
-               VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d) +
-    rtb_MaxWhlSpd_mps_n;
-
-  /* Product: '<S30>/Product1' */
-  WhlSpdRL_mps = rtb_Gain5 * 10.0;
-
-  /* RelationalOperator: '<S95>/LowerRelop1' */
-  rtb_LowerRelop1_b = (WhlSpdRL_mps > WhlSpdRR_mps);
-
-  /* Switch: '<S95>/Switch2' */
-  if (!rtb_LowerRelop1_b) {
-    /* Gain: '<S30>/Gain3' */
-    rtb_Add6_p = -rtb_deltafalllimit_om;
-
-    /* RelationalOperator: '<S95>/UpperRelop' */
-    rtb_LogicalOperator7 = (WhlSpdRL_mps < rtb_Add6_p);
-
-    /* Switch: '<S95>/Switch' */
-    if (rtb_LogicalOperator7) {
-      WhlSpdRL_mps = rtb_Add6_p;
-    }
-
-    /* End of Switch: '<S95>/Switch' */
-    WhlSpdRR_mps = WhlSpdRL_mps;
-  }
-
-  /* End of Switch: '<S95>/Switch2' */
-
-  /* Sum: '<S30>/Add7' incorporates:
-   *  UnitDelay: '<S30>/Unit Delay4'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE = rtb_deltafalllimit_om +
-    WhlSpdRR_mps;
-
-  /* Lookup_n-D: '<S30>/VehicleStableTarget_mps1' */
-  rtb_MaxWhlSpd_mps_n = look1_iflf_binlc(rtb_Add4_j,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled63, 3U);
-
-  /* Sum: '<S30>/Add13' */
-  rtb_Add4_j += rtb_MaxWhlSpd_mps_n;
-
-  /* Sum: '<S30>/Add12' */
-  rtb_Add4_j = rtb_Saturation1_i - rtb_Add4_j;
-
-  /* RelationalOperator: '<S30>/Relational Operator1' incorporates:
-   *  Constant: '<S30>/Verror1'
-   */
-  rtb_LowerRelop1_b = (rtb_Add4_j < 0.0F);
-
-  /* RelationalOperator: '<S30>/Relational Operator2' incorporates:
-   *  UnitDelay: '<S30>/Unit Delay4'
-   */
-  rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE >=
-    elapseTime);
-
-  /* RelationalOperator: '<S90>/Compare' incorporates:
-   *  Constant: '<S90>/Constant'
-   *  UnitDelay: '<S30>/Unit Delay4'
-   */
-  rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE <= 0.01);
-
-  /* Logic: '<S30>/OR' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
-
-  /* Logic: '<S30>/Logical Operator5' incorporates:
-   *  UnitDelay: '<S30>/Unit Delay3'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_a = (rtb_LowerRelop1_b &&
-    rtb_LogicalOperator7);
-
-  /* Switch: '<S30>/Switch2' incorporates:
-   *  Switch: '<S30>/Switch7'
-   *  UnitDelay: '<S30>/Unit Delay3'
-   *  UnitDelay: '<S93>/Unit Delay1'
-   */
-  if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e) {
-    /* RelationalOperator: '<S96>/LowerRelop1' incorporates:
-     *  Constant: '<S30>/TCS_TrqRequest_Max2'
-     *  UnitDelay: '<S30>/Unit Delay4'
-     */
-    rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE >
-      235.0);
-
-    /* Switch: '<S96>/Switch2' incorporates:
-     *  Constant: '<S30>/TCS_TrqRequest_Max2'
-     */
-    if (rtb_LogicalOperator7) {
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = 235.0;
-    } else {
-      /* RelationalOperator: '<S96>/UpperRelop' incorporates:
-       *  Constant: '<S30>/TCS_TrqRequest_Min2'
-       *  UnitDelay: '<S30>/Unit Delay4'
-       */
-      rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE <
-        0.0);
-
-      /* Switch: '<S96>/Switch' incorporates:
-       *  Constant: '<S30>/TCS_TrqRequest_Min2'
-       *  UnitDelay: '<S30>/Unit Delay4'
-       */
-      if (rtb_LogicalOperator7) {
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = 0.0;
-      } else {
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g =
-          VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE;
-      }
-
-      /* End of Switch: '<S96>/Switch' */
-    }
-
-    /* End of Switch: '<S96>/Switch2' */
-
-    /* RelationalOperator: '<S97>/LowerRelop1' */
-    rtb_LogicalOperator7 = (elapseTime >
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g);
-
-    /* Switch: '<S97>/Switch2' */
-    if (!rtb_LogicalOperator7) {
-      /* RelationalOperator: '<S97>/UpperRelop' incorporates:
-       *  Constant: '<S30>/TCS_TrqRequest_Min1'
-       */
-      rtb_LogicalOperator7 = (elapseTime < 0.0);
-
-      /* Switch: '<S97>/Switch' incorporates:
-       *  Constant: '<S30>/TCS_TrqRequest_Min1'
-       */
-      if (rtb_LogicalOperator7) {
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = 0.0;
-      } else {
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = elapseTime;
-      }
-
-      /* End of Switch: '<S97>/Switch' */
-    }
-
-    /* End of Switch: '<S97>/Switch2' */
-  } else {
-    if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_a) {
-      /* Switch: '<S30>/Switch7' */
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = elapseTime;
-    }
-  }
-
-  /* End of Switch: '<S30>/Switch2' */
-
-  /* UnitDelay: '<S82>/Unit Delay1' */
-  rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl;
-
-  /* Saturate: '<S29>/Saturation' */
-  if (VehVxEst_mps > 40.0F) {
-    rtb_MaxWhlSpd_mps_n = 40.0F;
-  } else if (VehVxEst_mps < 0.0F) {
-    rtb_MaxWhlSpd_mps_n = 0.0F;
-  } else {
-    rtb_MaxWhlSpd_mps_n = VehVxEst_mps;
-  }
-
-  /* End of Saturate: '<S29>/Saturation' */
-
-  /* Lookup_n-D: '<S29>/VehSpd_SlipTarget_mps' */
-  rtb_Add4_j = look1_iflf_binlc(rtb_MaxWhlSpd_mps_n,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled56, 3U);
-
-  /* Sum: '<S29>/Add9' */
-  rtb_Add4_j += rtb_MaxWhlSpd_mps_n;
-
-  /* Saturate: '<S29>/Saturation1' */
-  if (rtb_Divide > 50.0F) {
-    rtb_Add6_p = 50.0F;
-  } else if (rtb_Divide < 0.0F) {
-    rtb_Add6_p = 0.0F;
-  } else {
-    rtb_Add6_p = rtb_Divide;
-  }
-
-  /* End of Saturate: '<S29>/Saturation1' */
-
-  /* Sum: '<S29>/Add1' */
-  rtb_Switch2_mn = rtb_Add4_j - rtb_Add6_p;
-
-  /* RelationalOperator: '<S29>/Relational Operator7' incorporates:
-   *  Constant: '<S29>/Cal_DeltaV_mps'
-   */
-  rtb_LogicalOperator7 = (rtb_Switch2_mn < 0.0F);
-
-  /* Logic: '<S82>/Logical Operator4' */
-  rtb_LowerRelop1_b = ((!rtb_LowerRelop1_b) && (!rtb_LogicalOperator7));
-
-  /* Logic: '<S29>/Logical Operator2' */
-  rtb_LogicalOperator7 = !rtb_LogicalOperator7;
-
-  /* UnitDelay: '<S29>/Unit Delay4' */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i;
-
-  /* RelationalOperator: '<S29>/Relational Operator8' incorporates:
-   *  Constant: '<S29>/Cal_DeltaV_mps1'
-   */
-  rtb_Compare_am = (WhlSpdRR_mps > 235.0);
-
-  /* Logic: '<S29>/Logical Operator1' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 && rtb_Compare_am);
-
-  /* Switch: '<S83>/Switch6' incorporates:
-   *  Constant: '<S83>/Reset'
-   */
-  if (rtb_LogicalOperator7) {
-    /* Sum: '<S83>/Add10' incorporates:
-     *  Constant: '<S83>/Steptime'
-     */
-    rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n5 + 0.01F;
-  } else {
-    rtb_Add4_j = 0.0F;
-  }
-
-  /* End of Switch: '<S83>/Switch6' */
-
-  /* MinMax: '<S83>/Min' incorporates:
-   *  Constant: '<S29>/ResetDelay'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n5 = fminf(rtb_Add4_j, 0.1F);
-
-  /* RelationalOperator: '<S83>/Relational Operator9' incorporates:
-   *  Constant: '<S29>/ResetDelay'
-   *  UnitDelay: '<S83>/Unit Delay1'
-   */
-  rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_n5 >=
-    0.1F);
-
-  /* UnitDelay: '<S29>/Unit Delay3' */
-  rtb_Compare_am = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_e;
-
-  /* Logic: '<S29>/Logical Operator3' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
-
-  /* Logic: '<S82>/Logical Operator5' incorporates:
-   *  UnitDelay: '<S82>/Unit Delay1'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl = ((!rtb_LowerRelop1_b) &&
-    (!rtb_LogicalOperator7));
-
-  /* UnitDelay: '<S73>/Unit Delay1' */
-  rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp;
-
-  /* Saturate: '<S28>/Saturation' */
-  if (VehVxEst_mps > 40.0F) {
-    rtb_Add4_j = 40.0F;
-  } else if (VehVxEst_mps < 0.0F) {
-    rtb_Add4_j = 0.0F;
-  } else {
-    rtb_Add4_j = VehVxEst_mps;
-  }
-
-  /* End of Saturate: '<S28>/Saturation' */
-
-  /* Lookup_n-D: '<S28>/VehSpd_SlipTarget_mps' */
-  rtb_Add10_ey = look1_iflf_binlc(rtb_Add4_j,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled56, 3U);
-
-  /* Sum: '<S28>/Add9' */
-  rtb_Add10_ey += rtb_Add4_j;
-
-  /* Saturate: '<S28>/Saturation1' */
-  if (rtb_Add < 0.0F) {
-    rtb_VxIMU_est = 0.0F;
-  } else {
-    rtb_VxIMU_est = rtb_Add;
-  }
-
-  /* End of Saturate: '<S28>/Saturation1' */
-
-  /* Sum: '<S28>/Add1' */
-  rtb_Add10 = rtb_Add10_ey - rtb_VxIMU_est;
-
-  /* RelationalOperator: '<S28>/Relational Operator7' incorporates:
-   *  Constant: '<S28>/Cal_DeltaV_mps'
-   */
-  rtb_LogicalOperator7 = (rtb_Add10 < 0.0F);
-
-  /* Logic: '<S73>/Logical Operator4' */
-  rtb_LowerRelop1_b = ((!rtb_LowerRelop1_b) && (!rtb_LogicalOperator7));
-
-  /* Logic: '<S28>/Logical Operator2' */
-  rtb_LogicalOperator7 = !rtb_LogicalOperator7;
-
-  /* UnitDelay: '<S28>/Unit Delay4' */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l;
-
-  /* RelationalOperator: '<S28>/Relational Operator8' incorporates:
-   *  Constant: '<S28>/Cal_DeltaV_mps1'
-   */
-  rtb_Compare_am = (WhlSpdRR_mps > 235.0);
-
-  /* Logic: '<S28>/Logical Operator1' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 && rtb_Compare_am);
-
-  /* Switch: '<S74>/Switch6' incorporates:
-   *  Constant: '<S74>/Reset'
-   */
-  if (rtb_LogicalOperator7) {
-    /* Sum: '<S74>/Add10' incorporates:
-     *  Constant: '<S74>/Steptime'
-     */
-    rtb_Add10_ey = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_h + 0.01F;
-  } else {
-    rtb_Add10_ey = 0.0F;
-  }
-
-  /* End of Switch: '<S74>/Switch6' */
-
-  /* MinMax: '<S74>/Min' incorporates:
-   *  Constant: '<S28>/ResetDelay'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_h = fminf(rtb_Add10_ey, 0.1F);
-
-  /* RelationalOperator: '<S74>/Relational Operator9' incorporates:
-   *  Constant: '<S28>/ResetDelay'
-   *  UnitDelay: '<S74>/Unit Delay1'
-   */
-  rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_h >=
-    0.1F);
-
-  /* UnitDelay: '<S28>/Unit Delay3' */
-  rtb_Compare_am = VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_i;
-
-  /* Logic: '<S28>/Logical Operator3' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
-
-  /* Logic: '<S73>/Logical Operator5' incorporates:
-   *  UnitDelay: '<S73>/Unit Delay1'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp = ((!rtb_LowerRelop1_b) &&
-    (!rtb_LogicalOperator7));
 
   /* Chart: '<S7>/Chart' */
   if (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_c7_VehCtrlMdel240926_
@@ -10174,8 +9358,8 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_active_c7_VehCtrlMdel240926_ =
       1U;
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_B = 3U;
-    VehCtrlMdel240926_2018b_amks_DW.b = rtb_Add2 * rtb_Add2 +
-      rtb_deltafalllimit_i4 * rtb_deltafalllimit_i4;
+    VehCtrlMdel240926_2018b_amks_DW.b = rtb_deltafalllimit_iz *
+      rtb_deltafalllimit_iz + rtb_deltafalllimit_i4 * rtb_deltafalllimit_i4;
     VehCtrlMdel240926_2018b_amks_DW.b = sqrt(VehCtrlMdel240926_2018b_amks_DW.b);
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_C = 3U;
     VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_D = 1U;
@@ -10188,9 +9372,9 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
      case VehCtrlMdel240926_IN_DYC_Enable:
       VehCtrlMdel240926_2018b_amksp_B.DYC_Enable_OUT = 1.0;
-      rtb_LogicalOperator7 = ((rtb_UkYk1 >= 50.0) || (rtb_deltafalllimit_i4 >=
-        5.0) || (VehCtrlMdel240926_2018b_amks_DW.b >= 5.0));
-      if (rtb_LogicalOperator7) {
+      rtb_ignition = ((rtb_UkYk1 >= 50.0) || (rtb_deltafalllimit_i4 >= 5.0) ||
+                      (VehCtrlMdel240926_2018b_amks_DW.b >= 5.0));
+      if (rtb_ignition) {
         VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_B = 3U;
       }
       break;
@@ -10204,21 +9388,21 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
     }
 
     if (fabs(rtb_deltafalllimit_i4) > 0.5) {
-      WhlSpdRR_mps = atan(rtb_Add2 / rtb_deltafalllimit_i4) * 180.0 /
+      elapseTime = atan(rtb_deltafalllimit_iz / rtb_deltafalllimit_i4) * 180.0 /
         3.1415926535897931;
     } else {
-      WhlSpdRR_mps = 0.0;
+      elapseTime = 0.0;
     }
 
-    VehCtrlMdel240926_2018b_amks_DW.b = rtb_Add2 * rtb_Add2 +
-      rtb_deltafalllimit_i4 * rtb_deltafalllimit_i4;
+    VehCtrlMdel240926_2018b_amks_DW.b = rtb_deltafalllimit_iz *
+      rtb_deltafalllimit_iz + rtb_deltafalllimit_i4 * rtb_deltafalllimit_i4;
     VehCtrlMdel240926_2018b_amks_DW.b = sqrt(VehCtrlMdel240926_2018b_amks_DW.b);
     switch (VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_C) {
      case VehCtrlMdel240926_2018b_am_IN_B:
-      rtb_LogicalOperator7 = ((!(VehCtrlMdel240926_2018b_amks_DW.DYC_flag != 0.0))
-        || (rtb_UkYk1 > 30.0) || (WhlSpdRR_mps > 30.0) || (WhlSpdRR_mps > -30.0)
-        || (VehCtrlMdel240926_2018b_amks_DW.b > 3.0));
-      if (rtb_LogicalOperator7) {
+      rtb_ignition = ((!(VehCtrlMdel240926_2018b_amks_DW.DYC_flag != 0.0)) ||
+                      (rtb_UkYk1 > 30.0) || (elapseTime > 30.0) || (elapseTime >
+        -30.0) || (VehCtrlMdel240926_2018b_amks_DW.b > 3.0));
+      if (rtb_ignition) {
         VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_C = 3U;
       }
       break;
@@ -10228,10 +9412,10 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
      default:
       /* case IN_F_TVD_TCS_STATE: */
-      rtb_LogicalOperator7 = ((!(VehCtrlMdel240926_2018b_amks_DW.DYC_flag != 0.0))
-        || (rtb_UkYk1 > 30.0) || (WhlSpdRR_mps > 30.0) || (WhlSpdRR_mps > -30.0)
-        || (VehCtrlMdel240926_2018b_amks_DW.b > 3.0));
-      if (rtb_LogicalOperator7) {
+      rtb_ignition = ((!(VehCtrlMdel240926_2018b_amks_DW.DYC_flag != 0.0)) ||
+                      (rtb_UkYk1 > 30.0) || (elapseTime > 30.0) || (elapseTime >
+        -30.0) || (VehCtrlMdel240926_2018b_amks_DW.b > 3.0));
+      if (rtb_ignition) {
         VehCtrlMdel240926_2018b_amks_DW.bitsForTID3.is_C = 2U;
         VehCtrlMdel240926_2018b_amksp_B.TCSR_Enable_OUT = 0.0;
       }
@@ -10276,81 +9460,417 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
   /* End of Chart: '<S7>/Chart' */
 
+  /* Switch: '<S31>/Switch6' incorporates:
+   *  Constant: '<S31>/Verror_Reset'
+   *  UnitDelay: '<S88>/Unit Delay1'
+   */
+  if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e) {
+    rtb_Add10 = rtb_deltafalllimit_n;
+  } else {
+    rtb_Add10 = 0.0F;
+  }
+
+  /* End of Switch: '<S31>/Switch6' */
+
+  /* Product: '<S31>/Product' incorporates:
+   *  Constant: '<S31>/P_Gain'
+   */
+  rtb_Switch2_mn = rtb_Add10 * 40.0F;
+
+  /* Sum: '<S31>/Add11' */
+  WhlSpdRR_mps = trq - rtb_Switch2_mn;
+
+  /* UnitDelay: '<S31>/Unit Delay5' */
+  rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_l;
+
+  /* Product: '<S31>/Product2' */
+  rtb_Add4_j *= rtb_deltafalllimit_n;
+
+  /* RelationalOperator: '<S83>/Compare' incorporates:
+   *  Constant: '<S83>/Constant'
+   */
+  rtb_LowerRelop1_b = (rtb_Add4_j <= 0.0F);
+
+  /* UnitDelay: '<S31>/Unit Delay' */
+  rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b;
+
+  /* Switch: '<S31>/Switch3' incorporates:
+   *  Constant: '<S31>/Verror_Reset1'
+   */
+  if (rtb_LowerRelop1_b) {
+    rtb_Add4_j = 0.0F;
+  }
+
+  /* End of Switch: '<S31>/Switch3' */
+
+  /* Sum: '<S31>/Add2' */
+  rtb_Add4_j += rtb_Add10;
+
+  /* Saturate: '<S31>/Saturation2' */
+  if (rtb_Add4_j > 400.0F) {
+    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b = 400.0F;
+  } else if (rtb_Add4_j < -100.0F) {
+    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b = -100.0F;
+  } else {
+    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b = rtb_Add4_j;
+  }
+
+  /* End of Saturate: '<S31>/Saturation2' */
+
+  /* RelationalOperator: '<S93>/Compare' incorporates:
+   *  UnitDelay: '<S88>/Unit Delay1'
+   */
+  rtb_ignition = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e;
+
+  /* UnitDelay: '<S87>/Delay Input1'
+   *
+   * Block description for '<S87>/Delay Input1':
+   *
+   *  Store in Global RAM
+   */
+  rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE;
+
+  /* RelationalOperator: '<S87>/FixPt Relational Operator' */
+  rtb_LowerRelop1_b = ((int32_T)rtb_ignition > (int32_T)rtb_LowerRelop1_b);
+
+  /* Switch: '<S31>/Switch' incorporates:
+   *  Constant: '<S31>/Integr_StartPoint'
+   */
+  if (rtb_LowerRelop1_b) {
+    /* Sum: '<S31>/Add4' */
+    elapseTime = trq - VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g;
+  } else {
+    elapseTime = 0.0;
+  }
+
+  /* End of Switch: '<S31>/Switch' */
+
+  /* Lookup_n-D: '<S31>/VehicleStableTarget_mps' */
+  rtb_Add10 = look1_iflf_binlc(rtb_Ax, VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled51, 3U);
+
+  /* Sum: '<S31>/Add5' */
+  rtb_Add10 += rtb_Ax;
+
+  /* Sum: '<S31>/Add10' */
+  rtb_Add10 = rtb_VxIMU_est - rtb_Add10;
+
+  /* RelationalOperator: '<S31>/Relational Operator' incorporates:
+   *  Constant: '<S31>/Verror'
+   */
+  rtb_LowerRelop1_b = (rtb_Add10 < 0.0F);
+
+  /* Logic: '<S31>/Logical Operator4' incorporates:
+   *  UnitDelay: '<S88>/Unit Delay1'
+   */
+  rtb_LowerRelop1_b = (rtb_LowerRelop1_b &&
+                       VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e);
+
+  /* Switch: '<S31>/Switch1' incorporates:
+   *  Constant: '<S31>/Trq_IReset'
+   *  Constant: '<S31>/Trq_I_FF'
+   */
+  if (rtb_LowerRelop1_b) {
+    rtb_Add10 = 20.0F;
+  } else {
+    rtb_Add10 = 0.0F;
+  }
+
+  /* End of Switch: '<S31>/Switch1' */
+
+  /* Sum: '<S31>/Add6' incorporates:
+   *  UnitDelay: '<S31>/Unit Delay'
+   */
+  rtb_UkYk1 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_b + elapseTime)
+    + rtb_Add10;
+
+  /* Product: '<S31>/Product1' */
+  rtb_UkYk1 *= 10.0;
+
+  /* RelationalOperator: '<S90>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_UkYk1 > WhlSpdRR_mps);
+
+  /* Switch: '<S90>/Switch2' */
+  if (!rtb_LowerRelop1_b) {
+    /* Gain: '<S31>/Gain3' */
+    rtb_Add10 = -rtb_Switch2_mn;
+
+    /* RelationalOperator: '<S90>/UpperRelop' */
+    rtb_LogicalOperator2 = (rtb_UkYk1 < rtb_Add10);
+
+    /* Switch: '<S90>/Switch' */
+    if (rtb_LogicalOperator2) {
+      rtb_UkYk1 = rtb_Add10;
+    }
+
+    /* End of Switch: '<S90>/Switch' */
+    WhlSpdRR_mps = rtb_UkYk1;
+  }
+
+  /* End of Switch: '<S90>/Switch2' */
+
+  /* Sum: '<S31>/Add7' incorporates:
+   *  UnitDelay: '<S31>/Unit Delay4'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_b = rtb_Switch2_mn +
+    WhlSpdRR_mps;
+
+  /* Lookup_n-D: '<S31>/VehicleStableTarget_mps1' */
+  rtb_Add10 = look1_iflf_binlc(rtb_Ax, VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled51, 3U);
+
+  /* Sum: '<S31>/Add13' */
+  rtb_Ax += rtb_Add10;
+
+  /* Sum: '<S31>/Add12' */
+  rtb_Ax = rtb_VxIMU_est - rtb_Ax;
+
+  /* RelationalOperator: '<S31>/Relational Operator1' incorporates:
+   *  Constant: '<S31>/Verror1'
+   */
+  rtb_LowerRelop1_b = (rtb_Ax < 0.0F);
+
+  /* RelationalOperator: '<S31>/Relational Operator2' incorporates:
+   *  UnitDelay: '<S31>/Unit Delay4'
+   */
+  rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_b >= trq);
+
+  /* RelationalOperator: '<S85>/Compare' incorporates:
+   *  Constant: '<S85>/Constant'
+   *  UnitDelay: '<S31>/Unit Delay4'
+   */
+  rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_b <= 0.01);
+
+  /* Logic: '<S31>/OR' */
+  rtb_Compare = (rtb_Compare || rtb_Compare_am);
+
+  /* Logic: '<S31>/Logical Operator5' incorporates:
+   *  UnitDelay: '<S31>/Unit Delay3'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_a = (rtb_LowerRelop1_b &&
+    rtb_Compare);
+
+  /* Switch: '<S31>/Switch2' incorporates:
+   *  Switch: '<S31>/Switch7'
+   *  UnitDelay: '<S31>/Unit Delay3'
+   *  UnitDelay: '<S88>/Unit Delay1'
+   */
+  if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_e) {
+    /* RelationalOperator: '<S91>/LowerRelop1' incorporates:
+     *  Constant: '<S31>/TCS_TrqRequest_Max2'
+     *  UnitDelay: '<S31>/Unit Delay4'
+     */
+    rtb_LogicalOperator2 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_b >
+      235.0);
+
+    /* Switch: '<S91>/Switch2' incorporates:
+     *  Constant: '<S31>/TCS_TrqRequest_Max2'
+     */
+    if (rtb_LogicalOperator2) {
+      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = 235.0;
+    } else {
+      /* RelationalOperator: '<S91>/UpperRelop' incorporates:
+       *  Constant: '<S31>/TCS_TrqRequest_Min2'
+       *  UnitDelay: '<S31>/Unit Delay4'
+       */
+      rtb_LogicalOperator2 =
+        (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_b < 0.0);
+
+      /* Switch: '<S91>/Switch' incorporates:
+       *  Constant: '<S31>/TCS_TrqRequest_Min2'
+       *  UnitDelay: '<S31>/Unit Delay4'
+       */
+      if (rtb_LogicalOperator2) {
+        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = 0.0;
+      } else {
+        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g =
+          VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_b;
+      }
+
+      /* End of Switch: '<S91>/Switch' */
+    }
+
+    /* End of Switch: '<S91>/Switch2' */
+
+    /* RelationalOperator: '<S92>/LowerRelop1' */
+    rtb_LogicalOperator2 = (trq >
+      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g);
+
+    /* Switch: '<S92>/Switch2' */
+    if (!rtb_LogicalOperator2) {
+      /* RelationalOperator: '<S92>/UpperRelop' incorporates:
+       *  Constant: '<S31>/TCS_TrqRequest_Min1'
+       */
+      rtb_LogicalOperator2 = (trq < 0.0);
+
+      /* Switch: '<S92>/Switch' incorporates:
+       *  Constant: '<S31>/TCS_TrqRequest_Min1'
+       */
+      if (rtb_LogicalOperator2) {
+        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = 0.0;
+      } else {
+        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = trq;
+      }
+
+      /* End of Switch: '<S92>/Switch' */
+    }
+
+    /* End of Switch: '<S92>/Switch2' */
+  } else {
+    if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_a) {
+      /* Switch: '<S31>/Switch7' */
+      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g = trq;
+    }
+  }
+
+  /* End of Switch: '<S31>/Switch2' */
+
   /* Logic: '<S7>/Logical Operator2' */
   rtb_LowerRelop1_b = !VehCtrlMdel240926_2018b_amksp_B.VehReady;
 
   /* Logic: '<S7>/Logical Operator3' */
-  rtb_LogicalOperator7 = (rtb_LowerRelop1_b || (Trq_CUT != 0.0));
+  rtb_Compare = (rtb_LowerRelop1_b || (Trq_CUT != 0.0));
 
   /* Logic: '<S7>/Logical Operator1' */
-  TrqR_cmd_raw = ((EMRAX_Trq_CUT != 0.0) || rtb_LogicalOperator7);
+  TrqR_cmd_raw = ((EMRAX_Trq_CUT != 0.0) || rtb_Compare);
 
   /* Switch: '<S7>/Switch2' incorporates:
    *  Constant: '<S7>/Constant4'
    *  Switch: '<S7>/Switch5'
    */
   if (TrqR_cmd_raw) {
-    rtb_Saturation1_i = 0.0F;
+    rtb_Add4_j = 0.0F;
   } else {
     if (VehCtrlMdel240926_2018b_amksp_B.TCSR_Enable_OUT != 0.0) {
-      /* Abs: '<S30>/Abs' incorporates:
+      /* Abs: '<S31>/Abs' incorporates:
        *  Switch: '<S7>/Switch5'
        */
-      rtb_UkYk1 = fabs(rtb_deltafalllimit_iz);
+      rtb_Yk1 = fabs(rtb_Yk1);
 
-      /* RelationalOperator: '<S89>/Compare' incorporates:
-       *  Constant: '<S89>/Constant'
+      /* RelationalOperator: '<S84>/Compare' incorporates:
+       *  Constant: '<S84>/Constant'
        *  Switch: '<S7>/Switch5'
        */
-      rtb_Compare_am = (rtb_UkYk1 <= 20.0);
+      rtb_LogicalOperator2 = (rtb_Yk1 <= 20.0);
 
-      /* RelationalOperator: '<S91>/Compare' incorporates:
-       *  Constant: '<S91>/Constant'
+      /* RelationalOperator: '<S86>/Compare' incorporates:
+       *  Constant: '<S86>/Constant'
        *  Switch: '<S7>/Switch5'
        */
-      rtb_LowerRelop1_b = (rtb_Saturation1_i > 0.0F);
+      rtb_LogicalOperator7 = (rtb_VxIMU_est > 0.0F);
 
-      /* Logic: '<S30>/Logical Operator6' incorporates:
+      /* Logic: '<S31>/Logical Operator6' incorporates:
        *  Switch: '<S7>/Switch5'
        */
-      rtb_LowerRelop1_b = (rtb_LowerRelop1_b && rtb_Compare_am);
+      rtb_LogicalOperator7 = (rtb_LogicalOperator7 && rtb_LogicalOperator2);
 
-      /* Switch: '<S30>/Switch5' incorporates:
+      /* Switch: '<S31>/Switch5' incorporates:
        *  Switch: '<S7>/Switch5'
-       *  UnitDelay: '<S30>/Unit Delay2'
+       *  UnitDelay: '<S31>/Unit Delay2'
        */
-      if (rtb_LowerRelop1_b) {
-        elapseTime = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g;
+      if (rtb_LogicalOperator7) {
+        rtb_Yk1 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_g;
+      } else {
+        rtb_Yk1 = trq;
       }
 
-      /* End of Switch: '<S30>/Switch5' */
+      /* End of Switch: '<S31>/Switch5' */
+    } else {
+      /* Gain: '<S7>/Gain' incorporates:
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_Add10 = 0.8F * rtb_Add6_p;
+
+      /* Sum: '<S28>/Add1' incorporates:
+       *  Constant: '<S28>/RPM_min'
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_UkYk1 = RPM + 10.0;
+
+      /* MinMax: '<S28>/Max' incorporates:
+       *  Constant: '<S28>/RPM_min1'
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_Yk1 = fmax(rtb_UkYk1, 1.0);
+
+      /* Sum: '<S28>/Add' incorporates:
+       *  Constant: '<S28>/Constant3'
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_UkYk1 = 1.0 - WhlSpdFR;
+
+      /* Product: '<S28>/Product5' incorporates:
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_UkYk1 *= 63.0;
+
+      /* Product: '<S28>/Product' incorporates:
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_UkYk1 *= 9550.0;
+
+      /* Product: '<S28>/Divide' incorporates:
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_UkYk1 /= rtb_Yk1;
+
+      /* RelationalOperator: '<S25>/LowerRelop1' incorporates:
+       *  Switch: '<S7>/Switch5'
+       */
+      rtb_LogicalOperator2 = (rtb_Add10 > rtb_UkYk1);
+
+      /* Switch: '<S25>/Switch2' incorporates:
+       *  Switch: '<S7>/Switch5'
+       */
+      if (rtb_LogicalOperator2) {
+        rtb_Add10 = (real32_T)rtb_UkYk1;
+      } else {
+        /* RelationalOperator: '<S25>/UpperRelop' incorporates:
+         *  Constant: '<S7>/Constant15'
+         */
+        rtb_LogicalOperator2 = (rtb_Add10 < 0.0F);
+
+        /* Switch: '<S25>/Switch' incorporates:
+         *  Constant: '<S7>/Constant15'
+         */
+        if (rtb_LogicalOperator2) {
+          rtb_Add10 = 0.0F;
+        }
+
+        /* End of Switch: '<S25>/Switch' */
+      }
+
+      /* End of Switch: '<S25>/Switch2' */
+
+      /* Switch: '<S7>/Switch5' */
+      rtb_Yk1 = rtb_Add10;
     }
 
     /* Gain: '<S7>/Gain6' */
-    rtb_UkYk1 = 12.5 * elapseTime;
+    rtb_Yk1 *= 12.5;
 
     /* Lookup_n-D: '<S7>/BrakeCompensateCoefRear' */
-    rtb_Saturation1_i = look1_iflf_binlc((real32_T)Brk_F,
+    rtb_Add4_j = look1_iflf_binlc((real32_T)Brk_F,
       VehCtrlMdel240926_2018b__ConstP.BrakeCompensateCoefRear_bp01Dat,
       VehCtrlMdel240926_2018b__ConstP.BrakeCompensateCoefRear_tableDa, 1U);
 
     /* RelationalOperator: '<S22>/LowerRelop1' */
-    rtb_Compare_am = (rtb_UkYk1 > rtb_Saturation1_i);
+    rtb_LogicalOperator2 = (rtb_Yk1 > rtb_Add4_j);
 
     /* Switch: '<S22>/Switch2' */
-    if (!rtb_Compare_am) {
+    if (!rtb_LogicalOperator2) {
       /* RelationalOperator: '<S22>/UpperRelop' incorporates:
        *  Constant: '<S7>/Constant5'
        */
-      rtb_Compare_am = (rtb_UkYk1 < 0.0);
+      rtb_LogicalOperator2 = (rtb_Yk1 < 0.0);
 
       /* Switch: '<S22>/Switch' incorporates:
        *  Constant: '<S7>/Constant5'
        */
-      if (rtb_Compare_am) {
-        rtb_Saturation1_i = 0.0F;
+      if (rtb_LogicalOperator2) {
+        rtb_Add4_j = 0.0F;
       } else {
-        rtb_Saturation1_i = (real32_T)rtb_UkYk1;
+        rtb_Add4_j = (real32_T)rtb_Yk1;
       }
 
       /* End of Switch: '<S22>/Switch' */
@@ -10367,7 +9887,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Add10_ey = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd;
+  rtb_Add10 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd;
 
   /* Sum: '<S19>/Difference Inputs1'
    *
@@ -10375,7 +9895,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Add in CPU
    */
-  rtb_UkYk1_ea = rtb_Saturation1_i - rtb_Add10_ey;
+  rtb_Ax = rtb_Add4_j - rtb_Add10;
 
   /* SampleTimeMath: '<S19>/sample time'
    *
@@ -10385,29 +9905,29 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
   /* Product: '<S19>/delta rise limit' */
-  rtb_Saturation1_i = (real32_T)(25000.0 * elapseTime);
+  rtb_Add4_j = (real32_T)(25000.0 * elapseTime);
 
-  /* RelationalOperator: '<S61>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_UkYk1_ea > rtb_Saturation1_i);
+  /* RelationalOperator: '<S62>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_Ax > rtb_Add4_j);
 
-  /* Switch: '<S61>/Switch2' */
+  /* Switch: '<S62>/Switch2' */
   if (!rtb_LowerRelop1_b) {
     /* Product: '<S19>/delta fall limit' */
-    rtb_Saturation1_i = (real32_T)(-25000.0 * elapseTime);
+    rtb_Add4_j = (real32_T)(-25000.0 * elapseTime);
 
-    /* RelationalOperator: '<S61>/UpperRelop' */
-    rtb_Compare_am = (rtb_UkYk1_ea < rtb_Saturation1_i);
+    /* RelationalOperator: '<S62>/UpperRelop' */
+    rtb_LogicalOperator2 = (rtb_Ax < rtb_Add4_j);
 
-    /* Switch: '<S61>/Switch' */
-    if (rtb_Compare_am) {
-      rtb_UkYk1_ea = rtb_Saturation1_i;
+    /* Switch: '<S62>/Switch' */
+    if (rtb_LogicalOperator2) {
+      rtb_Ax = rtb_Add4_j;
     }
 
-    /* End of Switch: '<S61>/Switch' */
-    rtb_Saturation1_i = rtb_UkYk1_ea;
+    /* End of Switch: '<S62>/Switch' */
+    rtb_Add4_j = rtb_Ax;
   }
 
-  /* End of Switch: '<S61>/Switch2' */
+  /* End of Switch: '<S62>/Switch2' */
 
   /* Saturate: '<S7>/Saturation1' incorporates:
    *  Sum: '<S19>/Difference Inputs2'
@@ -10421,14 +9941,13 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd = rtb_Saturation1_i +
-    rtb_Add10_ey;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd = rtb_Add4_j + rtb_Add10;
   if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd > 1000.0F) {
-    TrqR_cmd = 1000.0F;
+    EmraxTrqR_cmd = 1000.0F;
   } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd < 0.0F) {
-    TrqR_cmd = 0.0F;
+    EmraxTrqR_cmd = 0.0F;
   } else {
-    TrqR_cmd = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd;
+    EmraxTrqR_cmd = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_cd;
   }
 
   /* End of Saturate: '<S7>/Saturation1' */
@@ -10441,733 +9960,370 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   TroqueOn = !rtb_LowerRelop1_b;
 
   /* Logic: '<S7>/Logical Operator4' */
-  Trq_CUT_final = (TroqueOn || (AMK_Trq_CUT != 0.0) || rtb_LogicalOperator7 ||
+  Trq_CUT_final = (TroqueOn || (AMK_Trq_CUT != 0.0) || rtb_Compare ||
                    TrqR_cmd_raw);
 
-  /* UnitDelay: '<S39>/Delay Input2'
-   *
-   * Block description for '<S39>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_mb;
-
-  /* SampleTimeMath: '<S39>/sample time'
-   *
-   * About '<S39>/sample time':
-   *  y = K where K = ( w * Ts )
-   */
-  elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
-
-  /* Product: '<S39>/delta rise limit' incorporates:
-   *  Constant: '<S10>/Constant41'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 2000.0 * elapseTime;
-
-  /* RelationalOperator: '<S46>/LowerRelop1' */
-  rtb_LowerRelop1_b = (FLWhlStrAng > rtb_Ax);
-
-  /* Switch: '<S46>/Switch2' */
-  if (rtb_LowerRelop1_b) {
-    rtb_Gain5 = rtb_Ax;
-  } else {
-    /* RelationalOperator: '<S46>/UpperRelop' incorporates:
-     *  Constant: '<S10>/Constant6'
-     */
-    rtb_LogicalOperator7 = (FLWhlStrAng < 0.0);
-
-    /* Switch: '<S46>/Switch' incorporates:
-     *  Constant: '<S10>/Constant6'
-     */
-    if (rtb_LogicalOperator7) {
-      FLWhlStrAng = 0.0;
-    }
-
-    /* End of Switch: '<S46>/Switch' */
-    rtb_Gain5 = FLWhlStrAng;
-  }
-
-  /* End of Switch: '<S46>/Switch2' */
-
-  /* UnitDelay: '<S43>/Delay Input2'
-   *
-   * Block description for '<S43>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  rtb_Saturation1_i = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_fo;
-
-  /* SampleTimeMath: '<S43>/sample time'
-   *
-   * About '<S43>/sample time':
-   *  y = K where K = ( w * Ts )
-   */
-  rtb_Gain4 = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
-
-  /* Product: '<S43>/delta rise limit' incorporates:
-   *  Constant: '<S10>/Constant34'
-   */
-  rtb_Add10_ey = (real32_T)(1000.0 * rtb_Gain4);
-
-  /* Logic: '<S10>/AND2' */
-  rtb_LowerRelop1_b = (rtb_LogicalOperator2 && rtb_Compare);
-
-  /* Logic: '<S10>/OR2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay3'
-   */
-  rtb_LowerRelop1_b = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l ||
-                       rtb_LowerRelop1_b);
-
-  /* Switch: '<S10>/Switch7' incorporates:
-   *  Constant: '<S10>/Constant39'
-   */
-  if (rtb_LowerRelop1_b) {
-    rtb_Switch2_b0 = 0.0F;
-  } else {
-    /* Logic: '<S10>/NOT1' */
-    rtb_LogicalOperator2 = !rtb_LogicalOperator2;
-
-    /* Switch: '<S10>/Switch8' incorporates:
-     *  Constant: '<S10>/Constant40'
-     */
-    if (!rtb_LogicalOperator2) {
-      rtb_Switch2_b0 = 0.0F;
-    }
-
-    /* End of Switch: '<S10>/Switch8' */
-  }
-
-  /* End of Switch: '<S10>/Switch7' */
-
-  /* Saturate: '<S10>/Saturation2' */
-  if (rtb_Switch2_b0 > 100.0F) {
-    rtb_Switch2_b0 = 100.0F;
-  } else {
-    if (rtb_Switch2_b0 < 0.0F) {
-      rtb_Switch2_b0 = 0.0F;
-    }
-  }
-
-  /* End of Saturate: '<S10>/Saturation2' */
-
-  /* Sum: '<S43>/Difference Inputs1'
-   *
-   * Block description for '<S43>/Difference Inputs1':
-   *
-   *  Add in CPU
-   */
-  rtb_Switch2_b0 -= rtb_Saturation1_i;
-
-  /* RelationalOperator: '<S58>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Switch2_b0 > rtb_Add10_ey);
-
-  /* Switch: '<S58>/Switch2' */
-  if (!rtb_LowerRelop1_b) {
-    /* Product: '<S43>/delta fall limit' */
-    rtb_Add10_ey = (real32_T)(-1000.0 * rtb_Gain4);
-
-    /* RelationalOperator: '<S58>/UpperRelop' */
-    rtb_LogicalOperator2 = (rtb_Switch2_b0 < rtb_Add10_ey);
-
-    /* Switch: '<S58>/Switch' */
-    if (rtb_LogicalOperator2) {
-      rtb_Switch2_b0 = rtb_Add10_ey;
-    }
-
-    /* End of Switch: '<S58>/Switch' */
-    rtb_Add10_ey = rtb_Switch2_b0;
-  }
-
-  /* End of Switch: '<S58>/Switch2' */
-
-  /* Sum: '<S43>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S43>/Delay Input2'
-   *
-   * Block description for '<S43>/Difference Inputs2':
-   *
-   *  Add in CPU
-   *
-   * Block description for '<S43>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_fo = rtb_Add10_ey +
-    rtb_Saturation1_i;
-
-  /* Gain: '<S10>/Gain20' incorporates:
-   *  UnitDelay: '<S43>/Delay Input2'
-   *
-   * Block description for '<S43>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  rtb_Switch2_b0 = -VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_fo;
-
-  /* Sum: '<S10>/Add11' */
-  rtb_UkYk1 = rtb_Gain5 + rtb_Switch2_b0;
-
-  /* RelationalOperator: '<S49>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_UkYk1 > rtb_Ax);
-
-  /* Switch: '<S49>/Switch2' */
-  if (rtb_LowerRelop1_b) {
-    rtb_UkYk1 = rtb_Ax;
-  } else {
-    /* RelationalOperator: '<S49>/UpperRelop' incorporates:
-     *  Constant: '<S10>/Constant29'
-     */
-    rtb_LogicalOperator2 = (rtb_UkYk1 < 0.0);
-
-    /* Switch: '<S49>/Switch' incorporates:
-     *  Constant: '<S10>/Constant29'
-     */
-    if (rtb_LogicalOperator2) {
-      rtb_UkYk1 = 0.0;
-    }
-
-    /* End of Switch: '<S49>/Switch' */
-  }
-
-  /* End of Switch: '<S49>/Switch2' */
-
-  /* Sum: '<S39>/Difference Inputs1'
-   *
-   * Block description for '<S39>/Difference Inputs1':
-   *
-   *  Add in CPU
-   */
-  rtb_UkYk1 -= WhlSpdRR_mps;
-
-  /* RelationalOperator: '<S54>/LowerRelop1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_LowerRelop1_b = (rtb_UkYk1 >
-                       VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d);
-
-  /* Switch: '<S54>/Switch2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  if (!rtb_LowerRelop1_b) {
-    /* Product: '<S39>/delta fall limit' */
-    rtb_deltafalllimit_iz = -2000.0 * elapseTime;
-
-    /* RelationalOperator: '<S54>/UpperRelop' */
-    rtb_LogicalOperator2 = (rtb_UkYk1 < rtb_deltafalllimit_iz);
-
-    /* Switch: '<S54>/Switch' */
-    if (rtb_LogicalOperator2) {
-      rtb_UkYk1 = rtb_deltafalllimit_iz;
-    }
-
-    /* End of Switch: '<S54>/Switch' */
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = rtb_UkYk1;
-  }
-
-  /* End of Switch: '<S54>/Switch2' */
-
-  /* Sum: '<S39>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S39>/Delay Input2'
-   *
-   * Block description for '<S39>/Difference Inputs2':
-   *
-   *  Add in CPU
-   *
-   * Block description for '<S39>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_mb =
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d + WhlSpdRR_mps;
-
-  /* Sum: '<S25>/Add4' incorporates:
-   *  Constant: '<S25>/Constant'
-   */
-  WhlSpdRR_mps = 1.0 - WhlSpdFR;
-
-  /* Product: '<S25>/Product4' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 7.0 * WhlSpdRR_mps;
-
-  /* Product: '<S25>/Product1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_Gain5 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d * 9550.0;
-
-  /* Sum: '<S25>/Add2' incorporates:
-   *  Constant: '<S25>/RPM_min2'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = MCFR_ActualVelocity +
-    10.0;
-
-  /* MinMax: '<S25>/Max1' incorporates:
-   *  Constant: '<S25>/RPM_min3'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_Gain4 = fmax(VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d, 1.0);
-
-  /* Product: '<S25>/Divide1' */
-  rtb_Gain5 /= rtb_Gain4;
-
-  /* MinMax: '<S7>/MinMax' incorporates:
-   *  UnitDelay: '<S39>/Delay Input2'
-   *
-   * Block description for '<S39>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  rtb_deltafalllimit_iz = fmin(rtb_Gain5,
-    VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_mb);
-
-  /* Switch: '<S29>/Switch6' incorporates:
-   *  Constant: '<S29>/Verror_Reset'
-   *  UnitDelay: '<S82>/Unit Delay1'
+  /* Switch: '<S30>/Switch6' incorporates:
+   *  Constant: '<S30>/Verror_Reset'
+   *  UnitDelay: '<S77>/Unit Delay1'
    */
   if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl) {
-    rtb_Saturation1_i = rtb_Switch2_mn;
+    rtb_Add10 = rtb_Acc_POS;
   } else {
-    rtb_Saturation1_i = 0.0F;
+    rtb_Add10 = 0.0F;
   }
 
-  /* End of Switch: '<S29>/Switch6' */
+  /* End of Switch: '<S30>/Switch6' */
 
-  /* Product: '<S29>/Product' incorporates:
-   *  Constant: '<S29>/P_Gain'
+  /* Product: '<S30>/Product' incorporates:
+   *  Constant: '<S30>/P_Gain'
    */
-  rtb_Ax = rtb_Saturation1_i * 40.0F;
+  rtb_Ax = rtb_Add10 * 40.0F;
 
-  /* Sum: '<S29>/Add11' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
+  /* Sum: '<S30>/Add11' */
+  rtb_UkYk1 = MCFR_ActualTorque - rtb_Ax;
+
+  /* UnitDelay: '<S30>/Unit Delay5' */
+  rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_i;
+
+  /* Product: '<S30>/Product2' */
+  rtb_Add4_j *= rtb_Acc_POS;
+
+  /* RelationalOperator: '<S74>/Compare' incorporates:
+   *  Constant: '<S74>/Constant'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = rtb_deltafalllimit_iz -
-    rtb_Ax;
+  rtb_LowerRelop1_b = (rtb_Add4_j <= 0.0F);
 
-  /* UnitDelay: '<S29>/Unit Delay5' */
-  rtb_Add10_ey = VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_i;
+  /* UnitDelay: '<S30>/Unit Delay' */
+  rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f;
 
-  /* Product: '<S29>/Product2' */
-  rtb_Add10_ey *= rtb_Switch2_mn;
-
-  /* RelationalOperator: '<S79>/Compare' incorporates:
-   *  Constant: '<S79>/Constant'
-   */
-  rtb_LowerRelop1_b = (rtb_Add10_ey <= 0.0F);
-
-  /* UnitDelay: '<S29>/Unit Delay' */
-  rtb_Add10_ey = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f;
-
-  /* Switch: '<S29>/Switch3' incorporates:
-   *  Constant: '<S29>/Verror_Reset1'
+  /* Switch: '<S30>/Switch3' incorporates:
+   *  Constant: '<S30>/Verror_Reset1'
    */
   if (rtb_LowerRelop1_b) {
-    rtb_Add10_ey = 0.0F;
+    rtb_Add4_j = 0.0F;
   }
 
-  /* End of Switch: '<S29>/Switch3' */
+  /* End of Switch: '<S30>/Switch3' */
 
-  /* Sum: '<S29>/Add2' */
-  rtb_Add10_ey += rtb_Saturation1_i;
+  /* Sum: '<S30>/Add2' */
+  rtb_Add4_j += rtb_Add10;
 
-  /* Saturate: '<S29>/Saturation2' */
-  if (rtb_Add10_ey > 400.0F) {
+  /* Saturate: '<S30>/Saturation2' */
+  if (rtb_Add4_j > 400.0F) {
     VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f = 400.0F;
-  } else if (rtb_Add10_ey < -100.0F) {
+  } else if (rtb_Add4_j < -100.0F) {
     VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f = -100.0F;
   } else {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f = rtb_Add10_ey;
+    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f = rtb_Add4_j;
   }
 
-  /* End of Saturate: '<S29>/Saturation2' */
+  /* End of Saturate: '<S30>/Saturation2' */
 
-  /* RelationalOperator: '<S87>/Compare' incorporates:
-   *  UnitDelay: '<S82>/Unit Delay1'
+  /* RelationalOperator: '<S82>/Compare' incorporates:
+   *  UnitDelay: '<S77>/Unit Delay1'
    */
   rtb_LogicalOperator2 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl;
 
-  /* UnitDelay: '<S81>/Delay Input1'
+  /* UnitDelay: '<S76>/Delay Input1'
    *
-   * Block description for '<S81>/Delay Input1':
+   * Block description for '<S76>/Delay Input1':
    *
    *  Store in Global RAM
    */
   rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE_j;
 
-  /* RelationalOperator: '<S81>/FixPt Relational Operator' */
+  /* RelationalOperator: '<S76>/FixPt Relational Operator' */
   rtb_LowerRelop1_b = ((int32_T)rtb_LogicalOperator2 > (int32_T)
                        rtb_LowerRelop1_b);
 
-  /* Switch: '<S29>/Switch' incorporates:
-   *  Constant: '<S29>/Integr_StartPoint'
+  /* Switch: '<S30>/Switch' incorporates:
+   *  Constant: '<S30>/Integr_StartPoint'
    */
   if (rtb_LowerRelop1_b) {
-    /* Sum: '<S29>/Add4' */
-    rtb_Gain5 = rtb_deltafalllimit_iz -
+    /* Sum: '<S30>/Add4' */
+    WhlSpdRR_mps = MCFR_ActualTorque -
       VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_f;
   } else {
-    rtb_Gain5 = 0.0;
+    WhlSpdRR_mps = 0.0;
   }
 
-  /* End of Switch: '<S29>/Switch' */
+  /* End of Switch: '<S30>/Switch' */
 
-  /* Lookup_n-D: '<S29>/VehicleStableTarget_mps' */
-  rtb_Saturation1_i = look1_iflf_binlc(rtb_MaxWhlSpd_mps_n,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled63, 3U);
+  /* Lookup_n-D: '<S30>/VehicleStableTarget_mps' */
+  rtb_Add10 = look1_iflf_binlc(rtb_Switch2_b0,
+    VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled51, 3U);
 
-  /* Sum: '<S29>/Add5' */
-  rtb_Saturation1_i += rtb_MaxWhlSpd_mps_n;
+  /* Sum: '<S30>/Add5' */
+  rtb_Add10 += rtb_Switch2_b0;
 
-  /* Sum: '<S29>/Add10' */
-  rtb_Saturation1_i = rtb_Add6_p - rtb_Saturation1_i;
+  /* Sum: '<S30>/Add10' */
+  rtb_Add10 = rtb_Divide_g - rtb_Add10;
 
-  /* RelationalOperator: '<S29>/Relational Operator' incorporates:
-   *  Constant: '<S29>/Verror'
+  /* RelationalOperator: '<S30>/Relational Operator' incorporates:
+   *  Constant: '<S30>/Verror'
    */
-  rtb_LowerRelop1_b = (rtb_Saturation1_i < 0.0F);
+  rtb_LowerRelop1_b = (rtb_Add10 < 0.0F);
 
-  /* Logic: '<S29>/Logical Operator4' incorporates:
-   *  UnitDelay: '<S82>/Unit Delay1'
+  /* Logic: '<S30>/Logical Operator4' incorporates:
+   *  UnitDelay: '<S77>/Unit Delay1'
    */
   rtb_LowerRelop1_b = (rtb_LowerRelop1_b &&
                        VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl);
 
-  /* Switch: '<S29>/Switch1' incorporates:
-   *  Constant: '<S29>/Trq_IReset'
-   *  Constant: '<S29>/Trq_I_FF'
+  /* Switch: '<S30>/Switch1' incorporates:
+   *  Constant: '<S30>/Trq_IReset'
+   *  Constant: '<S30>/Trq_I_FF'
    */
   if (rtb_LowerRelop1_b) {
-    rtb_Saturation1_i = 20.0F;
+    rtb_Add10 = 20.0F;
   } else {
-    rtb_Saturation1_i = 0.0F;
+    rtb_Add10 = 0.0F;
   }
 
-  /* End of Switch: '<S29>/Switch1' */
+  /* End of Switch: '<S30>/Switch1' */
 
-  /* Sum: '<S29>/Add6' incorporates:
-   *  UnitDelay: '<S29>/Unit Delay'
+  /* Sum: '<S30>/Add6' incorporates:
+   *  UnitDelay: '<S30>/Unit Delay'
    */
-  rtb_Gain4 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f + rtb_Gain5) +
-    rtb_Saturation1_i;
+  elapseTime = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_f +
+                WhlSpdRR_mps) + rtb_Add10;
 
-  /* Product: '<S29>/Product1' */
-  rtb_UkYk1 = rtb_Gain4 * 10.0;
+  /* Product: '<S30>/Product1' */
+  rtb_Yk1 = elapseTime * 10.0;
 
-  /* RelationalOperator: '<S84>/LowerRelop1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_LowerRelop1_b = (rtb_UkYk1 >
-                       VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d);
+  /* RelationalOperator: '<S79>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_Yk1 > rtb_UkYk1);
 
-  /* Switch: '<S84>/Switch2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
+  /* Switch: '<S79>/Switch2' */
   if (!rtb_LowerRelop1_b) {
-    /* Gain: '<S29>/Gain3' */
-    rtb_Saturation1_i = -rtb_Ax;
+    /* Gain: '<S30>/Gain3' */
+    rtb_Add10 = -rtb_Ax;
 
-    /* RelationalOperator: '<S84>/UpperRelop' */
-    rtb_Compare = (rtb_UkYk1 < rtb_Saturation1_i);
+    /* RelationalOperator: '<S79>/UpperRelop' */
+    rtb_Compare = (rtb_Yk1 < rtb_Add10);
 
-    /* Switch: '<S84>/Switch' */
+    /* Switch: '<S79>/Switch' */
     if (rtb_Compare) {
-      rtb_UkYk1 = rtb_Saturation1_i;
+      rtb_Yk1 = rtb_Add10;
     }
 
-    /* End of Switch: '<S84>/Switch' */
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = rtb_UkYk1;
+    /* End of Switch: '<S79>/Switch' */
+    rtb_UkYk1 = rtb_Yk1;
   }
 
-  /* End of Switch: '<S84>/Switch2' */
+  /* End of Switch: '<S79>/Switch2' */
 
-  /* Sum: '<S29>/Add7' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S29>/Unit Delay4'
+  /* Sum: '<S30>/Add7' incorporates:
+   *  UnitDelay: '<S30>/Unit Delay4'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i = rtb_Ax +
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE = rtb_Ax + rtb_UkYk1;
 
-  /* Lookup_n-D: '<S29>/VehicleStableTarget_mps1' */
-  rtb_Saturation1_i = look1_iflf_binlc(rtb_MaxWhlSpd_mps_n,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled63, 3U);
+  /* Lookup_n-D: '<S30>/VehicleStableTarget_mps1' */
+  rtb_Add10 = look1_iflf_binlc(rtb_Switch2_b0,
+    VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled51, 3U);
 
-  /* Sum: '<S29>/Add13' */
-  rtb_MaxWhlSpd_mps_n += rtb_Saturation1_i;
+  /* Sum: '<S30>/Add13' */
+  rtb_Switch2_b0 += rtb_Add10;
 
-  /* Sum: '<S29>/Add12' */
-  rtb_Add6_p -= rtb_MaxWhlSpd_mps_n;
+  /* Sum: '<S30>/Add12' */
+  rtb_Divide_g -= rtb_Switch2_b0;
 
-  /* RelationalOperator: '<S29>/Relational Operator1' incorporates:
-   *  Constant: '<S29>/Verror1'
+  /* RelationalOperator: '<S30>/Relational Operator1' incorporates:
+   *  Constant: '<S30>/Verror1'
    */
-  rtb_LowerRelop1_b = (rtb_Add6_p < 0.0F);
+  rtb_LowerRelop1_b = (rtb_Divide_g < 0.0F);
 
-  /* RelationalOperator: '<S29>/Relational Operator2' incorporates:
-   *  UnitDelay: '<S29>/Unit Delay4'
+  /* RelationalOperator: '<S30>/Relational Operator2' incorporates:
+   *  UnitDelay: '<S30>/Unit Delay4'
    */
-  rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i >=
-    rtb_deltafalllimit_iz);
+  rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE >=
+                 MCFR_ActualTorque);
 
-  /* RelationalOperator: '<S80>/Compare' incorporates:
-   *  Constant: '<S80>/Constant'
-   *  UnitDelay: '<S29>/Unit Delay4'
+  /* RelationalOperator: '<S75>/Compare' incorporates:
+   *  Constant: '<S75>/Constant'
+   *  UnitDelay: '<S30>/Unit Delay4'
    */
-  rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i <= 0.01);
+  rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE <= 0.01);
 
-  /* Logic: '<S29>/OR' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
+  /* Logic: '<S30>/OR' */
+  rtb_Compare = (rtb_Compare || rtb_Compare_am);
 
-  /* Logic: '<S29>/Logical Operator5' incorporates:
-   *  UnitDelay: '<S29>/Unit Delay3'
+  /* Logic: '<S30>/Logical Operator5' incorporates:
+   *  UnitDelay: '<S30>/Unit Delay3'
    */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_e = (rtb_LowerRelop1_b &&
-    rtb_LogicalOperator7);
+    rtb_Compare);
 
-  /* Switch: '<S29>/Switch2' incorporates:
-   *  Switch: '<S29>/Switch7'
-   *  UnitDelay: '<S29>/Unit Delay3'
-   *  UnitDelay: '<S82>/Unit Delay1'
+  /* Switch: '<S30>/Switch2' incorporates:
+   *  Switch: '<S30>/Switch7'
+   *  UnitDelay: '<S30>/Unit Delay3'
+   *  UnitDelay: '<S77>/Unit Delay1'
    */
   if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_gl) {
-    /* RelationalOperator: '<S85>/LowerRelop1' incorporates:
-     *  Constant: '<S29>/TCS_TrqRequest_Max2'
-     *  UnitDelay: '<S29>/Unit Delay4'
+    /* RelationalOperator: '<S80>/LowerRelop1' incorporates:
+     *  Constant: '<S30>/TCS_TrqRequest_Max2'
+     *  UnitDelay: '<S30>/Unit Delay4'
      */
-    rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i > 235.0);
+    rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE > 235.0);
 
-    /* Switch: '<S85>/Switch2' incorporates:
-     *  Constant: '<S29>/TCS_TrqRequest_Max2'
+    /* Switch: '<S80>/Switch2' incorporates:
+     *  Constant: '<S30>/TCS_TrqRequest_Max2'
      */
     if (rtb_Compare) {
       VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j = 235.0;
     } else {
-      /* RelationalOperator: '<S85>/UpperRelop' incorporates:
-       *  Constant: '<S29>/TCS_TrqRequest_Min2'
-       *  UnitDelay: '<S29>/Unit Delay4'
+      /* RelationalOperator: '<S80>/UpperRelop' incorporates:
+       *  Constant: '<S30>/TCS_TrqRequest_Min2'
+       *  UnitDelay: '<S30>/Unit Delay4'
        */
-      rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i < 0.0);
+      rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE < 0.0);
 
-      /* Switch: '<S85>/Switch' incorporates:
-       *  Constant: '<S29>/TCS_TrqRequest_Min2'
-       *  UnitDelay: '<S29>/Unit Delay4'
+      /* Switch: '<S80>/Switch' incorporates:
+       *  Constant: '<S30>/TCS_TrqRequest_Min2'
+       *  UnitDelay: '<S30>/Unit Delay4'
        */
       if (rtb_Compare) {
         VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j = 0.0;
       } else {
         VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j =
-          VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_i;
+          VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE;
       }
 
-      /* End of Switch: '<S85>/Switch' */
+      /* End of Switch: '<S80>/Switch' */
     }
 
-    /* End of Switch: '<S85>/Switch2' */
+    /* End of Switch: '<S80>/Switch2' */
 
-    /* RelationalOperator: '<S86>/LowerRelop1' */
-    rtb_Compare = (rtb_deltafalllimit_iz >
+    /* RelationalOperator: '<S81>/LowerRelop1' */
+    rtb_Compare = (MCFR_ActualTorque >
                    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j);
 
-    /* Switch: '<S86>/Switch2' */
+    /* Switch: '<S81>/Switch2' */
     if (!rtb_Compare) {
-      /* RelationalOperator: '<S86>/UpperRelop' incorporates:
-       *  Constant: '<S29>/TCS_TrqRequest_Min1'
+      /* RelationalOperator: '<S81>/UpperRelop' incorporates:
+       *  Constant: '<S30>/TCS_TrqRequest_Min1'
        */
-      rtb_Compare = (rtb_deltafalllimit_iz < 0.0);
+      rtb_Compare = (MCFR_ActualTorque < 0.0);
 
-      /* Switch: '<S86>/Switch' incorporates:
-       *  Constant: '<S29>/TCS_TrqRequest_Min1'
+      /* Switch: '<S81>/Switch' incorporates:
+       *  Constant: '<S30>/TCS_TrqRequest_Min1'
        */
       if (rtb_Compare) {
         VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j = 0.0;
       } else {
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j =
-          rtb_deltafalllimit_iz;
+        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j = MCFR_ActualTorque;
       }
 
-      /* End of Switch: '<S86>/Switch' */
+      /* End of Switch: '<S81>/Switch' */
     }
 
-    /* End of Switch: '<S86>/Switch2' */
+    /* End of Switch: '<S81>/Switch2' */
   } else {
     if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_e) {
-      /* Switch: '<S29>/Switch7' */
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j =
-        rtb_deltafalllimit_iz;
+      /* Switch: '<S30>/Switch7' */
+      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j = MCFR_ActualTorque;
     }
   }
 
-  /* End of Switch: '<S29>/Switch2' */
+  /* End of Switch: '<S30>/Switch2' */
 
-  /* Sum: '<S7>/Add' incorporates:
-   *  Constant: '<S7>/Constant1'
+  /* Sum: '<S28>/Add4' incorporates:
+   *  Constant: '<S28>/Constant'
    */
-  rtb_Saturation1_i = VehVxEst_mps + 5.0F;
+  rtb_Yk1 = 1.0 - WhlSpdFL;
 
-  /* Sum: '<S26>/Add' */
-  rtb_Saturation1_i -= rtb_Divide;
-
-  /* RelationalOperator: '<S64>/Compare' incorporates:
-   *  Constant: '<S64>/Constant'
+  /* Switch: '<S7>/Switch6' incorporates:
+   *  UnitDelay: '<S30>/Unit Delay2'
    */
-  rtb_LowerRelop1_b = (rtb_Saturation1_i < 0.0F);
-
-  /* Switch: '<S26>/Switch' incorporates:
-   *  Constant: '<S26>/Constant1'
-   */
-  if (rtb_LowerRelop1_b) {
-    rtb_UkYk1 = rtb_Saturation1_i;
+  if (VehCtrlMdel240926_2018b_amksp_B.TCSF_Enable_OUT != 0.0) {
+    rtb_UkYk1 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j;
   } else {
-    rtb_UkYk1 = 0.0;
-  }
+    /* Gain: '<S7>/Gain7' */
+    rtb_Divide_g = 0.1F * rtb_Add6_p;
 
-  /* End of Switch: '<S26>/Switch' */
+    /* Sum: '<S28>/Add2' incorporates:
+     *  Constant: '<S28>/RPM_min2'
+     */
+    rtb_deltafalllimit_iz = MCFR_ActualVelocity + 10.0;
 
-  /* Gain: '<S26>/Gain1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 5.0 * rtb_UkYk1;
+    /* MinMax: '<S28>/Max1' incorporates:
+     *  Constant: '<S28>/RPM_min3'
+     */
+    rtb_UkYk1 = fmax(rtb_deltafalllimit_iz, 1.0);
 
-  /* Logic: '<S26>/NOT' */
-  rtb_LowerRelop1_b = !rtb_LowerRelop1_b;
+    /* Product: '<S28>/Product4' */
+    rtb_deltafalllimit_iz = 7.0 * rtb_Yk1;
 
-  /* UnitDelay: '<S26>/Unit Delay' */
-  rtb_Gain5 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p;
+    /* Product: '<S28>/Product1' */
+    rtb_deltafalllimit_iz *= 9550.0;
 
-  /* Switch: '<S26>/Switch1' incorporates:
-   *  Constant: '<S26>/Constant2'
-   */
-  if (rtb_LowerRelop1_b) {
-    rtb_Gain5 = 0.0;
-  }
+    /* Product: '<S28>/Divide1' */
+    rtb_deltafalllimit_iz /= rtb_UkYk1;
 
-  /* End of Switch: '<S26>/Switch1' */
+    /* RelationalOperator: '<S26>/LowerRelop1' */
+    rtb_Compare = (rtb_Divide_g > rtb_deltafalllimit_iz);
 
-  /* Sum: '<S26>/Add2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S26>/Unit Delay'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p =
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d + rtb_Gain5;
-
-  /* Switch: '<S7>/Switch3' incorporates:
-   *  Constant: '<S7>/Constant6'
-   *  Switch: '<S7>/Switch6'
-   */
-  if (Trq_CUT_final) {
-    rtb_Divide = 0.0F;
-  } else {
-    if (VehCtrlMdel240926_2018b_amksp_B.TCSF_Enable_OUT != 0.0) {
-      /* Switch: '<S7>/Switch6' incorporates:
-       *  UnitDelay: '<S29>/Unit Delay2'
+    /* Switch: '<S26>/Switch2' */
+    if (rtb_Compare) {
+      rtb_Divide_g = (real32_T)rtb_deltafalllimit_iz;
+    } else {
+      /* RelationalOperator: '<S26>/UpperRelop' incorporates:
+       *  Constant: '<S7>/Constant15'
        */
-      rtb_deltafalllimit_iz =
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_j;
-    }
+      rtb_Compare = (rtb_Divide_g < 0.0F);
 
-    /* Lookup_n-D: '<S7>/BrakeCompensateCoefFront1' */
-    rtb_Divide = look1_iflf_binlc((real32_T)Brk_F,
-      VehCtrlMdel240926_2018b__ConstP.pooled35,
-      VehCtrlMdel240926_2018b__ConstP.pooled34, 1U);
-
-    /* RelationalOperator: '<S23>/LowerRelop1' */
-    rtb_Compare = (rtb_deltafalllimit_iz > rtb_Divide);
-
-    /* Switch: '<S23>/Switch2' */
-    if (!rtb_Compare) {
-      /* RelationalOperator: '<S23>/UpperRelop' incorporates:
-       *  Constant: '<S7>/Constant7'
-       */
-      rtb_Compare = (rtb_deltafalllimit_iz < 0.0);
-
-      /* Switch: '<S23>/Switch' incorporates:
-       *  Constant: '<S7>/Constant7'
+      /* Switch: '<S26>/Switch' incorporates:
+       *  Constant: '<S7>/Constant15'
        */
       if (rtb_Compare) {
-        rtb_Divide = 0.0F;
-      } else {
-        rtb_Divide = (real32_T)rtb_deltafalllimit_iz;
+        rtb_Divide_g = 0.0F;
       }
 
-      /* End of Switch: '<S23>/Switch' */
+      /* End of Switch: '<S26>/Switch' */
     }
 
-    /* End of Switch: '<S23>/Switch2' */
+    /* End of Switch: '<S26>/Switch2' */
+    rtb_UkYk1 = rtb_Divide_g;
+  }
 
-    /* Sum: '<S26>/Add6' */
-    rtb_deltafalllimit_iz = rtb_UkYk1 -
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE;
+  /* End of Switch: '<S7>/Switch6' */
 
-    /* Gain: '<S26>/Gain3' */
-    rtb_deltafalllimit_iz *= 0.0;
+  /* Lookup_n-D: '<S7>/BrakeCompensateCoefFront1' */
+  rtb_Add10 = look1_iflf_binlc((real32_T)Brk_F,
+    VehCtrlMdel240926_2018b__ConstP.BrakeCompensateCoefFront1_bp01D,
+    VehCtrlMdel240926_2018b__ConstP.BrakeCompensateCoefFront1_table, 1U);
 
-    /* Gain: '<S26>/Gain' */
-    rtb_Add2 = 20.0 * rtb_UkYk1;
+  /* RelationalOperator: '<S23>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_UkYk1 > rtb_Add10);
 
-    /* Sum: '<S26>/Add1' incorporates:
-     *  UnitDelay: '<S26>/Unit Delay'
+  /* Switch: '<S23>/Switch2' */
+  if (rtb_LowerRelop1_b) {
+    rtb_Add4_j = rtb_Add10;
+  } else {
+    /* RelationalOperator: '<S23>/UpperRelop' incorporates:
+     *  Constant: '<S7>/Constant7'
      */
-    rtb_Add2 = (rtb_Add2 + rtb_deltafalllimit_iz) +
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_p;
+    rtb_Compare = (rtb_UkYk1 < 0.0);
 
-    /* RelationalOperator: '<S66>/LowerRelop1' incorporates:
-     *  Constant: '<S26>/Constant5'
-     */
-    rtb_Compare = (rtb_Add2 > 0.0);
-
-    /* Switch: '<S66>/Switch2' incorporates:
-     *  Constant: '<S26>/Constant5'
+    /* Switch: '<S23>/Switch' incorporates:
+     *  Constant: '<S7>/Constant7'
      */
     if (rtb_Compare) {
-      rtb_Add2 = 0.0;
+      rtb_Add4_j = 0.0F;
     } else {
-      /* Gain: '<S26>/Gain4' */
-      rtb_Add6_p = -rtb_Divide;
-
-      /* RelationalOperator: '<S66>/UpperRelop' */
-      rtb_Compare = (rtb_Add2 < rtb_Add6_p);
-
-      /* Switch: '<S66>/Switch' */
-      if (rtb_Compare) {
-        rtb_Add2 = rtb_Add6_p;
-      }
-
-      /* End of Switch: '<S66>/Switch' */
+      rtb_Add4_j = (real32_T)rtb_UkYk1;
     }
 
-    /* End of Switch: '<S66>/Switch2' */
-
-    /* Sum: '<S26>/Add4' */
-    rtb_deltafalllimit_iz = rtb_Divide + rtb_Add2;
-
-    /* RelationalOperator: '<S65>/LowerRelop1' */
-    rtb_Compare = (rtb_Divide > rtb_deltafalllimit_iz);
-
-    /* Switch: '<S65>/Switch2' */
-    if (rtb_Compare) {
-      rtb_Divide = (real32_T)rtb_deltafalllimit_iz;
-    } else {
-      /* RelationalOperator: '<S65>/UpperRelop' incorporates:
-       *  Constant: '<S26>/Constant3'
-       */
-      rtb_Compare = (rtb_Divide < 0.0F);
-
-      /* Switch: '<S65>/Switch' incorporates:
-       *  Constant: '<S26>/Constant3'
-       */
-      if (rtb_Compare) {
-        rtb_Divide = 0.0F;
-      }
-
-      /* End of Switch: '<S65>/Switch' */
-    }
-
-    /* End of Switch: '<S65>/Switch2' */
+    /* End of Switch: '<S23>/Switch' */
   }
 
-  /* End of Switch: '<S7>/Switch3' */
+  /* End of Switch: '<S23>/Switch2' */
+
+  /* Switch: '<S7>/Switch3' */
+  rtb_Divide_g = rtb_Add4_j;
 
   /* UnitDelay: '<S20>/Delay Input2'
    *
@@ -11175,7 +10331,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Saturation1_i = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn;
+  rtb_Add4_j = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn;
 
   /* Sum: '<S20>/Difference Inputs1'
    *
@@ -11183,7 +10339,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Add in CPU
    */
-  rtb_Divide -= rtb_Saturation1_i;
+  rtb_Switch2_b0 = rtb_Divide_g - rtb_Add4_j;
 
   /* SampleTimeMath: '<S20>/sample time'
    *
@@ -11193,29 +10349,29 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
   /* Product: '<S20>/delta rise limit' */
-  rtb_Add10_ey = (real32_T)(1000.0 * elapseTime);
+  rtb_Divide_g = (real32_T)(1000.0 * elapseTime);
 
-  /* RelationalOperator: '<S62>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Divide > rtb_Add10_ey);
+  /* RelationalOperator: '<S63>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_Switch2_b0 > rtb_Divide_g);
 
-  /* Switch: '<S62>/Switch2' */
+  /* Switch: '<S63>/Switch2' */
   if (!rtb_LowerRelop1_b) {
     /* Product: '<S20>/delta fall limit' */
-    rtb_Add6_p = (real32_T)(-1000.0 * elapseTime);
+    rtb_Divide_g = (real32_T)(-1000.0 * elapseTime);
 
-    /* RelationalOperator: '<S62>/UpperRelop' */
-    rtb_Compare = (rtb_Divide < rtb_Add6_p);
+    /* RelationalOperator: '<S63>/UpperRelop' */
+    rtb_Compare = (rtb_Switch2_b0 < rtb_Divide_g);
 
-    /* Switch: '<S62>/Switch' */
+    /* Switch: '<S63>/Switch' */
     if (rtb_Compare) {
-      rtb_Divide = rtb_Add6_p;
+      rtb_Switch2_b0 = rtb_Divide_g;
     }
 
-    /* End of Switch: '<S62>/Switch' */
-    rtb_Add10_ey = rtb_Divide;
+    /* End of Switch: '<S63>/Switch' */
+    rtb_Divide_g = rtb_Switch2_b0;
   }
 
-  /* End of Switch: '<S62>/Switch2' */
+  /* End of Switch: '<S63>/Switch2' */
 
   /* Saturate: '<S7>/Saturation2' incorporates:
    *  Sum: '<S20>/Difference Inputs2'
@@ -11229,664 +10385,371 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn = rtb_Add10_ey +
-    rtb_Saturation1_i;
-  if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn > 20.0F) {
-    TrqFR_cmd = 20.0F;
-  } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn < 0.0F) {
-    TrqFR_cmd = 0.0F;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn = rtb_Divide_g +
+    rtb_Add4_j;
+  if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn > 2.0F) {
+    AMKTrqFR_cmd = 2.0F;
+  } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn < -2.0F) {
+    AMKTrqFR_cmd = -2.0F;
   } else {
-    TrqFR_cmd = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn;
+    AMKTrqFR_cmd = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_hn;
   }
 
   /* End of Saturate: '<S7>/Saturation2' */
 
-  /* Product: '<S25>/Product3' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 7.0 * WhlSpdRR_mps;
+  /* Gain: '<S7>/Gain1' */
+  VehCtrlMdel240926_2018b_amksp_B.TrqFR_cmd = -AMKTrqFR_cmd;
 
-  /* Product: '<S25>/Product2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  WhlSpdRR_mps = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d * 9550.0;
-
-  /* Sum: '<S25>/Add3' incorporates:
-   *  Constant: '<S25>/RPM_min4'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = MCFL_ActualVelocity +
-    10.0;
-
-  /* MinMax: '<S25>/Max2' incorporates:
-   *  Constant: '<S25>/RPM_min5'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  rtb_Gain5 = fmax(VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d, 1.0);
-
-  /* Product: '<S25>/Divide2' */
-  WhlSpdRR_mps /= rtb_Gain5;
-
-  /* UnitDelay: '<S40>/Delay Input2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *
-   * Block description for '<S40>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d =
-    VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_o;
-
-  /* SampleTimeMath: '<S40>/sample time'
-   *
-   * About '<S40>/sample time':
-   *  y = K where K = ( w * Ts )
-   */
-  elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
-
-  /* Product: '<S40>/delta rise limit' incorporates:
-   *  Constant: '<S10>/Constant41'
-   */
-  rtb_Gain5 = 2000.0 * elapseTime;
-
-  /* Gain: '<S10>/Gain14' */
-  rtb_Gain4 = 0.017453292519943295 * rtb_Yk1_l;
-
-  /* Trigonometry: '<S10>/Cos2' */
-  rtb_Gain4 = cos(rtb_Gain4);
-
-  /* Gain: '<S10>/Gain13' */
-  rtb_Gain4 *= 1.2;
-
-  /* Sum: '<S10>/Add8' incorporates:
-   *  Constant: '<S10>/Constant28'
-   */
-  rtb_g_mpss1 = 90.0 - rtb_Yk1_l;
-
-  /* Gain: '<S10>/Gain15' */
-  rtb_g_mpss1 *= 0.017453292519943295;
-
-  /* Trigonometry: '<S10>/Cos3' */
-  rtb_g_mpss1 = cos(rtb_g_mpss1);
-
-  /* Gain: '<S10>/Gain12' */
-  rtb_g_mpss1 *= 1.522;
-
-  /* Sum: '<S10>/Add9' */
-  rtb_Gain4 += rtb_g_mpss1;
-
-  /* Product: '<S10>/Divide' incorporates:
-   *  UnitDelay: '<S42>/Delay Input2'
-   *
-   * Block description for '<S42>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  rtb_Gain4 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_jk / rtb_Gain4;
-
-  /* Gain: '<S10>/Gain26' */
-  rtb_Gain4 *= 0.2;
-
-  /* Saturate: '<S10>/Saturation4' */
-  if (rtb_Gain4 > 20.0) {
-    rtb_Gain4 = 20.0;
-  } else {
-    if (rtb_Gain4 < -20.0) {
-      rtb_Gain4 = -20.0;
-    }
-  }
-
-  /* End of Saturate: '<S10>/Saturation4' */
-
-  /* Sum: '<S10>/Add5' */
-  rtb_Gain4 = rtb_Acc_POS - rtb_Gain4;
-
-  /* RelationalOperator: '<S47>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Gain4 > rtb_Add7);
-
-  /* Switch: '<S47>/Switch2' */
-  if (rtb_LowerRelop1_b) {
-    rtb_Gain4 = rtb_Add7;
-  } else {
-    /* RelationalOperator: '<S47>/UpperRelop' incorporates:
-     *  Constant: '<S10>/Constant7'
-     */
-    rtb_Compare = (rtb_Gain4 < 0.0);
-
-    /* Switch: '<S47>/Switch' incorporates:
-     *  Constant: '<S10>/Constant7'
-     */
-    if (rtb_Compare) {
-      rtb_Gain4 = 0.0;
-    }
-
-    /* End of Switch: '<S47>/Switch' */
-  }
-
-  /* End of Switch: '<S47>/Switch2' */
-
-  /* Sum: '<S10>/Add12' */
-  rtb_Yk1_l = rtb_Gain4 + rtb_Switch2_b0;
-
-  /* RelationalOperator: '<S50>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Yk1_l > 0.0);
-
-  /* Switch: '<S50>/Switch2' */
-  if (rtb_LowerRelop1_b) {
-    rtb_Yk1_l = 0.0;
-  } else {
-    /* RelationalOperator: '<S50>/UpperRelop' incorporates:
-     *  Constant: '<S10>/Constant30'
-     */
-    rtb_Compare = (rtb_Yk1_l < 0.0);
-
-    /* Switch: '<S50>/Switch' incorporates:
-     *  Constant: '<S10>/Constant30'
-     */
-    if (rtb_Compare) {
-      rtb_Yk1_l = 0.0;
-    }
-
-    /* End of Switch: '<S50>/Switch' */
-  }
-
-  /* End of Switch: '<S50>/Switch2' */
-
-  /* Sum: '<S40>/Difference Inputs1' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *
-   * Block description for '<S40>/Difference Inputs1':
-   *
-   *  Add in CPU
-   */
-  rtb_Yk1_l -= VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d;
-
-  /* RelationalOperator: '<S55>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Yk1_l > rtb_Gain5);
-
-  /* Switch: '<S55>/Switch2' */
-  if (!rtb_LowerRelop1_b) {
-    /* Product: '<S40>/delta fall limit' */
-    rtb_deltafalllimit_iz = -2000.0 * elapseTime;
-
-    /* RelationalOperator: '<S55>/UpperRelop' */
-    rtb_Compare = (rtb_Yk1_l < rtb_deltafalllimit_iz);
-
-    /* Switch: '<S55>/Switch' */
-    if (rtb_Compare) {
-      rtb_Yk1_l = rtb_deltafalllimit_iz;
-    }
-
-    /* End of Switch: '<S55>/Switch' */
-    rtb_Gain5 = rtb_Yk1_l;
-  }
-
-  /* End of Switch: '<S55>/Switch2' */
-
-  /* Sum: '<S40>/Difference Inputs2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S40>/Delay Input2'
-   *
-   * Block description for '<S40>/Difference Inputs2':
-   *
-   *  Add in CPU
-   *
-   * Block description for '<S40>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_o = rtb_Gain5 +
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d;
-
-  /* MinMax: '<S7>/MinMax1' incorporates:
-   *  UnitDelay: '<S40>/Delay Input2'
-   *
-   * Block description for '<S40>/Delay Input2':
-   *
-   *  Store in Global RAM
-   */
-  rtb_deltafalllimit_iz = fmin(WhlSpdRR_mps,
-    VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_o);
-
-  /* Switch: '<S28>/Switch6' incorporates:
-   *  Constant: '<S28>/Verror_Reset'
-   *  UnitDelay: '<S73>/Unit Delay1'
+  /* Switch: '<S29>/Switch6' incorporates:
+   *  Constant: '<S29>/Verror_Reset'
+   *  UnitDelay: '<S68>/Unit Delay1'
    */
   if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp) {
-    rtb_Switch2_b0 = rtb_Add10;
+    rtb_Add4_j = rtb_deltafalllimit_om;
   } else {
-    rtb_Switch2_b0 = 0.0F;
+    rtb_Add4_j = 0.0F;
   }
 
-  /* End of Switch: '<S28>/Switch6' */
+  /* End of Switch: '<S29>/Switch6' */
 
-  /* Product: '<S28>/Product' incorporates:
-   *  Constant: '<S28>/P_Gain'
+  /* Product: '<S29>/Product' incorporates:
+   *  Constant: '<S29>/P_Gain'
    */
-  rtb_Divide = rtb_Switch2_b0 * 40.0F;
+  rtb_Switch2_b0 = rtb_Add4_j * 40.0F;
 
-  /* Sum: '<S28>/Add11' */
-  WhlSpdRR_mps = rtb_deltafalllimit_iz - rtb_Divide;
+  /* Sum: '<S29>/Add11' */
+  rtb_UkYk1 = MCFL_ActualTorque - rtb_Switch2_b0;
 
-  /* UnitDelay: '<S28>/Unit Delay5' */
-  rtb_Saturation1_i = VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_ip;
+  /* UnitDelay: '<S29>/Unit Delay5' */
+  rtb_Divide_g = VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_ip;
 
-  /* Product: '<S28>/Product2' */
-  rtb_Saturation1_i *= rtb_Add10;
+  /* Product: '<S29>/Product2' */
+  rtb_Divide_g *= rtb_deltafalllimit_om;
 
-  /* RelationalOperator: '<S70>/Compare' incorporates:
-   *  Constant: '<S70>/Constant'
+  /* RelationalOperator: '<S65>/Compare' incorporates:
+   *  Constant: '<S65>/Constant'
    */
-  rtb_LowerRelop1_b = (rtb_Saturation1_i <= 0.0F);
+  rtb_LowerRelop1_b = (rtb_Divide_g <= 0.0F);
 
-  /* UnitDelay: '<S28>/Unit Delay' */
-  rtb_Saturation1_i = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr;
+  /* UnitDelay: '<S29>/Unit Delay' */
+  rtb_Divide_g = VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr;
 
-  /* Switch: '<S28>/Switch3' incorporates:
-   *  Constant: '<S28>/Verror_Reset1'
+  /* Switch: '<S29>/Switch3' incorporates:
+   *  Constant: '<S29>/Verror_Reset1'
    */
   if (rtb_LowerRelop1_b) {
-    rtb_Saturation1_i = 0.0F;
+    rtb_Divide_g = 0.0F;
   }
 
-  /* End of Switch: '<S28>/Switch3' */
+  /* End of Switch: '<S29>/Switch3' */
 
-  /* Sum: '<S28>/Add2' */
-  rtb_Saturation1_i += rtb_Switch2_b0;
+  /* Sum: '<S29>/Add2' */
+  rtb_Divide_g += rtb_Add4_j;
 
-  /* Saturate: '<S28>/Saturation2' */
-  if (rtb_Saturation1_i > 400.0F) {
+  /* Saturate: '<S29>/Saturation2' */
+  if (rtb_Divide_g > 400.0F) {
     VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr = 400.0F;
-  } else if (rtb_Saturation1_i < -100.0F) {
+  } else if (rtb_Divide_g < -100.0F) {
     VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr = -100.0F;
   } else {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr = rtb_Saturation1_i;
+    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr = rtb_Divide_g;
   }
 
-  /* End of Saturate: '<S28>/Saturation2' */
+  /* End of Saturate: '<S29>/Saturation2' */
 
-  /* RelationalOperator: '<S78>/Compare' incorporates:
-   *  UnitDelay: '<S73>/Unit Delay1'
+  /* RelationalOperator: '<S73>/Compare' incorporates:
+   *  UnitDelay: '<S68>/Unit Delay1'
    */
-  rtb_Compare = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp;
+  rtb_LogicalOperator7 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp;
 
-  /* UnitDelay: '<S72>/Delay Input1'
+  /* UnitDelay: '<S67>/Delay Input1'
    *
-   * Block description for '<S72>/Delay Input1':
+   * Block description for '<S67>/Delay Input1':
    *
    *  Store in Global RAM
    */
   rtb_LowerRelop1_b = VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE_b;
 
-  /* RelationalOperator: '<S72>/FixPt Relational Operator' */
-  rtb_LowerRelop1_b = ((int32_T)rtb_Compare > (int32_T)rtb_LowerRelop1_b);
+  /* RelationalOperator: '<S67>/FixPt Relational Operator' */
+  rtb_LowerRelop1_b = ((int32_T)rtb_LogicalOperator7 > (int32_T)
+                       rtb_LowerRelop1_b);
 
-  /* Switch: '<S28>/Switch' incorporates:
-   *  Constant: '<S28>/Integr_StartPoint'
-   *  UnitDelay: '<S10>/Unit Delay2'
+  /* Switch: '<S29>/Switch' incorporates:
+   *  Constant: '<S29>/Integr_StartPoint'
    */
   if (rtb_LowerRelop1_b) {
-    /* Sum: '<S28>/Add4' */
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = rtb_deltafalllimit_iz
-      - VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g4;
+    /* Sum: '<S29>/Add4' */
+    WhlSpdRR_mps = MCFL_ActualTorque -
+      VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g4;
   } else {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 0.0;
+    WhlSpdRR_mps = 0.0;
   }
 
-  /* End of Switch: '<S28>/Switch' */
+  /* End of Switch: '<S29>/Switch' */
 
-  /* Lookup_n-D: '<S28>/VehicleStableTarget_mps' */
-  rtb_Switch2_b0 = look1_iflf_binlc(rtb_Add4_j,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled63, 3U);
+  /* Lookup_n-D: '<S29>/VehicleStableTarget_mps' */
+  rtb_Add4_j = look1_iflf_binlc(rtb_Add7,
+    VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled51, 3U);
 
-  /* Sum: '<S28>/Add5' */
-  rtb_Switch2_b0 += rtb_Add4_j;
+  /* Sum: '<S29>/Add5' */
+  rtb_Add4_j += rtb_Add7;
 
-  /* Sum: '<S28>/Add10' */
-  rtb_Switch2_b0 = rtb_VxIMU_est - rtb_Switch2_b0;
+  /* Sum: '<S29>/Add10' */
+  rtb_Add4_j = rtb_Add - rtb_Add4_j;
 
-  /* RelationalOperator: '<S28>/Relational Operator' incorporates:
-   *  Constant: '<S28>/Verror'
+  /* RelationalOperator: '<S29>/Relational Operator' incorporates:
+   *  Constant: '<S29>/Verror'
    */
-  rtb_LowerRelop1_b = (rtb_Switch2_b0 < 0.0F);
+  rtb_LowerRelop1_b = (rtb_Add4_j < 0.0F);
 
-  /* Logic: '<S28>/Logical Operator4' incorporates:
-   *  UnitDelay: '<S73>/Unit Delay1'
+  /* Logic: '<S29>/Logical Operator4' incorporates:
+   *  UnitDelay: '<S68>/Unit Delay1'
    */
   rtb_LowerRelop1_b = (rtb_LowerRelop1_b &&
                        VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp);
 
-  /* Switch: '<S28>/Switch1' incorporates:
-   *  Constant: '<S28>/Trq_IReset'
-   *  Constant: '<S28>/Trq_I_FF'
+  /* Switch: '<S29>/Switch1' incorporates:
+   *  Constant: '<S29>/Trq_IReset'
+   *  Constant: '<S29>/Trq_I_FF'
    */
   if (rtb_LowerRelop1_b) {
-    rtb_Switch2_b0 = 20.0F;
+    rtb_Add4_j = 20.0F;
   } else {
-    rtb_Switch2_b0 = 0.0F;
+    rtb_Add4_j = 0.0F;
   }
 
-  /* End of Switch: '<S28>/Switch1' */
+  /* End of Switch: '<S29>/Switch1' */
 
-  /* Sum: '<S28>/Add6' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S28>/Unit Delay'
+  /* Sum: '<S29>/Add6' incorporates:
+   *  UnitDelay: '<S29>/Unit Delay'
    */
-  rtb_Gain5 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr +
-               VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d) +
-    rtb_Switch2_b0;
+  elapseTime = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_nr +
+                WhlSpdRR_mps) + rtb_Add4_j;
 
-  /* Product: '<S28>/Product1' */
-  rtb_Yk1_l = rtb_Gain5 * 10.0;
+  /* Product: '<S29>/Product1' */
+  rtb_deltafalllimit_iz = elapseTime * 10.0;
 
-  /* RelationalOperator: '<S75>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Yk1_l > WhlSpdRR_mps);
+  /* RelationalOperator: '<S70>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_deltafalllimit_iz > rtb_UkYk1);
 
-  /* Switch: '<S75>/Switch2' */
+  /* Switch: '<S70>/Switch2' */
   if (!rtb_LowerRelop1_b) {
-    /* Gain: '<S28>/Gain3' */
-    rtb_Acc_POS = -rtb_Divide;
+    /* Gain: '<S29>/Gain3' */
+    rtb_Divide_g = -rtb_Switch2_b0;
 
-    /* RelationalOperator: '<S75>/UpperRelop' */
-    rtb_LogicalOperator7 = (rtb_Yk1_l < rtb_Acc_POS);
+    /* RelationalOperator: '<S70>/UpperRelop' */
+    rtb_Compare = (rtb_deltafalllimit_iz < rtb_Divide_g);
 
-    /* Switch: '<S75>/Switch' */
-    if (rtb_LogicalOperator7) {
-      rtb_Yk1_l = rtb_Acc_POS;
+    /* Switch: '<S70>/Switch' */
+    if (rtb_Compare) {
+      rtb_deltafalllimit_iz = rtb_Divide_g;
     }
 
-    /* End of Switch: '<S75>/Switch' */
-    WhlSpdRR_mps = rtb_Yk1_l;
+    /* End of Switch: '<S70>/Switch' */
+    rtb_UkYk1 = rtb_deltafalllimit_iz;
   }
 
-  /* End of Switch: '<S75>/Switch2' */
+  /* End of Switch: '<S70>/Switch2' */
 
-  /* Sum: '<S28>/Add7' incorporates:
-   *  UnitDelay: '<S28>/Unit Delay4'
+  /* Sum: '<S29>/Add7' incorporates:
+   *  UnitDelay: '<S29>/Unit Delay4'
    */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l = rtb_Divide +
-    WhlSpdRR_mps;
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l = rtb_Switch2_b0 +
+    rtb_UkYk1;
 
-  /* Lookup_n-D: '<S28>/VehicleStableTarget_mps1' */
-  rtb_Switch2_b0 = look1_iflf_binlc(rtb_Add4_j,
-    VehCtrlMdel240926_2018b__ConstP.pooled57,
-    VehCtrlMdel240926_2018b__ConstP.pooled63, 3U);
+  /* Lookup_n-D: '<S29>/VehicleStableTarget_mps1' */
+  rtb_Add4_j = look1_iflf_binlc(rtb_Add7,
+    VehCtrlMdel240926_2018b__ConstP.pooled35,
+    VehCtrlMdel240926_2018b__ConstP.pooled51, 3U);
 
-  /* Sum: '<S28>/Add13' */
-  rtb_Add4_j += rtb_Switch2_b0;
+  /* Sum: '<S29>/Add13' */
+  rtb_Add7 += rtb_Add4_j;
 
-  /* Sum: '<S28>/Add12' */
-  rtb_VxIMU_est -= rtb_Add4_j;
+  /* Sum: '<S29>/Add12' */
+  rtb_Add -= rtb_Add7;
 
-  /* RelationalOperator: '<S28>/Relational Operator1' incorporates:
-   *  Constant: '<S28>/Verror1'
+  /* RelationalOperator: '<S29>/Relational Operator1' incorporates:
+   *  Constant: '<S29>/Verror1'
    */
-  rtb_LowerRelop1_b = (rtb_VxIMU_est < 0.0F);
+  rtb_LowerRelop1_b = (rtb_Add < 0.0F);
 
-  /* RelationalOperator: '<S28>/Relational Operator2' incorporates:
-   *  UnitDelay: '<S28>/Unit Delay4'
+  /* RelationalOperator: '<S29>/Relational Operator2' incorporates:
+   *  UnitDelay: '<S29>/Unit Delay4'
    */
-  rtb_LogicalOperator7 = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l >=
-    rtb_deltafalllimit_iz);
+  rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l >=
+                 MCFL_ActualTorque);
 
-  /* RelationalOperator: '<S71>/Compare' incorporates:
-   *  Constant: '<S71>/Constant'
-   *  UnitDelay: '<S28>/Unit Delay4'
+  /* RelationalOperator: '<S66>/Compare' incorporates:
+   *  Constant: '<S66>/Constant'
+   *  UnitDelay: '<S29>/Unit Delay4'
    */
   rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l <= 0.01);
 
-  /* Logic: '<S28>/OR' */
-  rtb_LogicalOperator7 = (rtb_LogicalOperator7 || rtb_Compare_am);
+  /* Logic: '<S29>/OR' */
+  rtb_Compare = (rtb_Compare || rtb_Compare_am);
 
-  /* Logic: '<S28>/Logical Operator5' */
-  rtb_LogicalOperator7 = (rtb_LowerRelop1_b && rtb_LogicalOperator7);
+  /* Logic: '<S29>/Logical Operator5' incorporates:
+   *  UnitDelay: '<S29>/Unit Delay3'
+   */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_i = (rtb_LowerRelop1_b &&
+    rtb_Compare);
 
-  /* Switch: '<S28>/Switch2' incorporates:
-   *  Switch: '<S28>/Switch7'
-   *  UnitDelay: '<S73>/Unit Delay1'
+  /* Switch: '<S29>/Switch2' incorporates:
+   *  Switch: '<S29>/Switch7'
+   *  UnitDelay: '<S29>/Unit Delay3'
+   *  UnitDelay: '<S68>/Unit Delay1'
    */
   if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_dp) {
-    /* RelationalOperator: '<S76>/LowerRelop1' incorporates:
-     *  Constant: '<S28>/TCS_TrqRequest_Max2'
-     *  UnitDelay: '<S28>/Unit Delay4'
+    /* RelationalOperator: '<S71>/LowerRelop1' incorporates:
+     *  Constant: '<S29>/TCS_TrqRequest_Max2'
+     *  UnitDelay: '<S29>/Unit Delay4'
      */
-    rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l >
-                      235.0);
+    rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l > 235.0);
 
-    /* Switch: '<S76>/Switch2' incorporates:
-     *  Constant: '<S28>/TCS_TrqRequest_Max2'
+    /* Switch: '<S71>/Switch2' incorporates:
+     *  Constant: '<S29>/TCS_TrqRequest_Max2'
      */
-    if (rtb_Compare_am) {
+    if (rtb_Compare) {
       VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b = 235.0;
     } else {
-      /* RelationalOperator: '<S76>/UpperRelop' incorporates:
-       *  Constant: '<S28>/TCS_TrqRequest_Min2'
-       *  UnitDelay: '<S28>/Unit Delay4'
+      /* RelationalOperator: '<S71>/UpperRelop' incorporates:
+       *  Constant: '<S29>/TCS_TrqRequest_Min2'
+       *  UnitDelay: '<S29>/Unit Delay4'
        */
-      rtb_Compare_am = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l <
-                        0.0);
+      rtb_Compare = (VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l < 0.0);
 
-      /* Switch: '<S76>/Switch' incorporates:
-       *  Constant: '<S28>/TCS_TrqRequest_Min2'
-       *  UnitDelay: '<S28>/Unit Delay4'
+      /* Switch: '<S71>/Switch' incorporates:
+       *  Constant: '<S29>/TCS_TrqRequest_Min2'
+       *  UnitDelay: '<S29>/Unit Delay4'
        */
-      if (rtb_Compare_am) {
+      if (rtb_Compare) {
         VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b = 0.0;
       } else {
         VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b =
           VehCtrlMdel240926_2018b_amks_DW.UnitDelay4_DSTATE_l;
       }
 
-      /* End of Switch: '<S76>/Switch' */
+      /* End of Switch: '<S71>/Switch' */
     }
 
-    /* End of Switch: '<S76>/Switch2' */
+    /* End of Switch: '<S71>/Switch2' */
 
-    /* RelationalOperator: '<S77>/LowerRelop1' */
-    rtb_Compare_am = (rtb_deltafalllimit_iz >
-                      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b);
+    /* RelationalOperator: '<S72>/LowerRelop1' */
+    rtb_Compare = (MCFL_ActualTorque >
+                   VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b);
 
-    /* Switch: '<S77>/Switch2' */
-    if (!rtb_Compare_am) {
-      /* RelationalOperator: '<S77>/UpperRelop' incorporates:
-       *  Constant: '<S28>/TCS_TrqRequest_Min1'
+    /* Switch: '<S72>/Switch2' */
+    if (!rtb_Compare) {
+      /* RelationalOperator: '<S72>/UpperRelop' incorporates:
+       *  Constant: '<S29>/TCS_TrqRequest_Min1'
        */
-      rtb_Compare_am = (rtb_deltafalllimit_iz < 0.0);
+      rtb_Compare = (MCFL_ActualTorque < 0.0);
 
-      /* Switch: '<S77>/Switch' incorporates:
-       *  Constant: '<S28>/TCS_TrqRequest_Min1'
+      /* Switch: '<S72>/Switch' incorporates:
+       *  Constant: '<S29>/TCS_TrqRequest_Min1'
        */
-      if (rtb_Compare_am) {
+      if (rtb_Compare) {
         VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b = 0.0;
       } else {
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b =
-          rtb_deltafalllimit_iz;
+        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b = MCFL_ActualTorque;
       }
 
-      /* End of Switch: '<S77>/Switch' */
+      /* End of Switch: '<S72>/Switch' */
     }
 
-    /* End of Switch: '<S77>/Switch2' */
+    /* End of Switch: '<S72>/Switch2' */
   } else {
-    if (rtb_LogicalOperator7) {
-      /* Switch: '<S28>/Switch7' */
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b =
-        rtb_deltafalllimit_iz;
+    if (VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_i) {
+      /* Switch: '<S29>/Switch7' */
+      VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b = MCFL_ActualTorque;
     }
   }
 
-  /* End of Switch: '<S28>/Switch2' */
+  /* End of Switch: '<S29>/Switch2' */
 
-  /* Sum: '<S7>/Add3' incorporates:
-   *  Constant: '<S7>/Constant2'
+  /* Switch: '<S7>/Switch7' incorporates:
+   *  UnitDelay: '<S29>/Unit Delay2'
    */
-  rtb_Switch2_b0 = VehVxEst_mps + 5.0F;
-
-  /* Sum: '<S27>/Add' */
-  rtb_Switch2_b0 -= rtb_Add;
-
-  /* RelationalOperator: '<S67>/Compare' incorporates:
-   *  Constant: '<S67>/Constant'
-   */
-  rtb_LowerRelop1_b = (rtb_Switch2_b0 < 0.0F);
-
-  /* Switch: '<S27>/Switch' incorporates:
-   *  Constant: '<S27>/Constant1'
-   */
-  if (rtb_LowerRelop1_b) {
-    rtb_Yk1_l = rtb_Switch2_b0;
+  if (VehCtrlMdel240926_2018b_amksp_B.TCSF_Enable_OUT != 0.0) {
+    rtb_Yk1 = VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b;
   } else {
-    rtb_Yk1_l = 0.0;
-  }
+    /* Gain: '<S7>/Gain8' */
+    rtb_Add = 0.1F * rtb_Add6_p;
 
-  /* End of Switch: '<S27>/Switch' */
-
-  /* Gain: '<S27>/Gain1' */
-  WhlSpdRR_mps = 5.0 * rtb_Yk1_l;
-
-  /* Logic: '<S27>/NOT' */
-  rtb_LowerRelop1_b = !rtb_LowerRelop1_b;
-
-  /* UnitDelay: '<S27>/Unit Delay' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d =
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_gb;
-
-  /* Switch: '<S27>/Switch1' incorporates:
-   *  Constant: '<S27>/Constant2'
-   *  UnitDelay: '<S10>/Unit Delay2'
-   */
-  if (rtb_LowerRelop1_b) {
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = 0.0;
-  }
-
-  /* End of Switch: '<S27>/Switch1' */
-
-  /* Sum: '<S27>/Add2' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay2'
-   *  UnitDelay: '<S27>/Unit Delay'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_gb = WhlSpdRR_mps +
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d;
-
-  /* Switch: '<S7>/Switch4' incorporates:
-   *  Constant: '<S7>/Constant8'
-   *  Switch: '<S7>/Switch7'
-   */
-  if (Trq_CUT_final) {
-    rtb_Add = 0.0F;
-  } else {
-    if (VehCtrlMdel240926_2018b_amksp_B.TCSF_Enable_OUT != 0.0) {
-      /* Switch: '<S7>/Switch7' incorporates:
-       *  UnitDelay: '<S28>/Unit Delay2'
-       */
-      rtb_deltafalllimit_iz =
-        VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_b;
-    }
-
-    /* Lookup_n-D: '<S7>/BrakeCompensateCoefFront2' */
-    rtb_Add = look1_iflf_binlc((real32_T)Brk_F,
-      VehCtrlMdel240926_2018b__ConstP.pooled35,
-      VehCtrlMdel240926_2018b__ConstP.pooled34, 1U);
-
-    /* RelationalOperator: '<S24>/LowerRelop1' */
-    rtb_Compare_am = (rtb_deltafalllimit_iz > rtb_Add);
-
-    /* Switch: '<S24>/Switch2' */
-    if (!rtb_Compare_am) {
-      /* RelationalOperator: '<S24>/UpperRelop' incorporates:
-       *  Constant: '<S7>/Constant9'
-       */
-      rtb_Compare_am = (rtb_deltafalllimit_iz < 0.0);
-
-      /* Switch: '<S24>/Switch' incorporates:
-       *  Constant: '<S7>/Constant9'
-       */
-      if (rtb_Compare_am) {
-        rtb_Add = 0.0F;
-      } else {
-        rtb_Add = (real32_T)rtb_deltafalllimit_iz;
-      }
-
-      /* End of Switch: '<S24>/Switch' */
-    }
-
-    /* End of Switch: '<S24>/Switch2' */
-
-    /* Sum: '<S27>/Add6' */
-    rtb_deltafalllimit_iz = rtb_Yk1_l -
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_k;
-
-    /* Gain: '<S27>/Gain3' */
-    rtb_deltafalllimit_iz *= 0.0;
-
-    /* Gain: '<S27>/Gain' */
-    rtb_Add2 = 20.0 * rtb_Yk1_l;
-
-    /* Sum: '<S27>/Add1' incorporates:
-     *  UnitDelay: '<S27>/Unit Delay'
+    /* Sum: '<S28>/Add3' incorporates:
+     *  Constant: '<S28>/RPM_min4'
      */
-    rtb_Add2 = (rtb_Add2 + rtb_deltafalllimit_iz) +
-      VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_gb;
+    rtb_deltafalllimit_iz = MCFL_ActualVelocity + 10.0;
 
-    /* RelationalOperator: '<S69>/LowerRelop1' incorporates:
-     *  Constant: '<S27>/Constant5'
+    /* MinMax: '<S28>/Max2' incorporates:
+     *  Constant: '<S28>/RPM_min5'
      */
-    rtb_Compare_am = (rtb_Add2 > 0.0);
+    rtb_UkYk1 = fmax(rtb_deltafalllimit_iz, 1.0);
 
-    /* Switch: '<S69>/Switch2' incorporates:
-     *  Constant: '<S27>/Constant5'
-     */
-    if (rtb_Compare_am) {
-      rtb_Add2 = 0.0;
+    /* Product: '<S28>/Product3' */
+    rtb_deltafalllimit_iz = 7.0 * rtb_Yk1;
+
+    /* Product: '<S28>/Product2' */
+    rtb_Yk1 = rtb_deltafalllimit_iz * 9550.0;
+
+    /* Product: '<S28>/Divide2' */
+    rtb_Yk1 /= rtb_UkYk1;
+
+    /* RelationalOperator: '<S27>/LowerRelop1' */
+    rtb_Compare = (rtb_Add > rtb_Yk1);
+
+    /* Switch: '<S27>/Switch2' */
+    if (rtb_Compare) {
+      rtb_Add = (real32_T)rtb_Yk1;
     } else {
-      /* Gain: '<S27>/Gain4' */
-      rtb_Acc_POS = -rtb_Add;
-
-      /* RelationalOperator: '<S69>/UpperRelop' */
-      rtb_Compare_am = (rtb_Add2 < rtb_Acc_POS);
-
-      /* Switch: '<S69>/Switch' */
-      if (rtb_Compare_am) {
-        rtb_Add2 = rtb_Acc_POS;
-      }
-
-      /* End of Switch: '<S69>/Switch' */
-    }
-
-    /* End of Switch: '<S69>/Switch2' */
-
-    /* Sum: '<S27>/Add4' */
-    rtb_deltafalllimit_iz = rtb_Add + rtb_Add2;
-
-    /* RelationalOperator: '<S68>/LowerRelop1' */
-    rtb_Compare_am = (rtb_Add > rtb_deltafalllimit_iz);
-
-    /* Switch: '<S68>/Switch2' */
-    if (rtb_Compare_am) {
-      rtb_Add = (real32_T)rtb_deltafalllimit_iz;
-    } else {
-      /* RelationalOperator: '<S68>/UpperRelop' incorporates:
-       *  Constant: '<S27>/Constant3'
+      /* RelationalOperator: '<S27>/UpperRelop' incorporates:
+       *  Constant: '<S7>/Constant15'
        */
-      rtb_Compare_am = (rtb_Add < 0.0F);
+      rtb_Compare = (rtb_Add < 0.0F);
 
-      /* Switch: '<S68>/Switch' incorporates:
-       *  Constant: '<S27>/Constant3'
+      /* Switch: '<S27>/Switch' incorporates:
+       *  Constant: '<S7>/Constant15'
        */
-      if (rtb_Compare_am) {
+      if (rtb_Compare) {
         rtb_Add = 0.0F;
       }
 
-      /* End of Switch: '<S68>/Switch' */
+      /* End of Switch: '<S27>/Switch' */
     }
 
-    /* End of Switch: '<S68>/Switch2' */
+    /* End of Switch: '<S27>/Switch2' */
+    rtb_Yk1 = rtb_Add;
   }
 
-  /* End of Switch: '<S7>/Switch4' */
+  /* End of Switch: '<S7>/Switch7' */
+
+  /* RelationalOperator: '<S24>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_Yk1 > rtb_Add10);
+
+  /* Switch: '<S24>/Switch2' */
+  if (!rtb_LowerRelop1_b) {
+    /* RelationalOperator: '<S24>/UpperRelop' incorporates:
+     *  Constant: '<S7>/Constant9'
+     */
+    rtb_Compare = (rtb_Yk1 < 0.0);
+
+    /* Switch: '<S24>/Switch' incorporates:
+     *  Constant: '<S7>/Constant9'
+     */
+    if (rtb_Compare) {
+      rtb_Add10 = 0.0F;
+    } else {
+      rtb_Add10 = (real32_T)rtb_Yk1;
+    }
+
+    /* End of Switch: '<S24>/Switch' */
+  }
+
+  /* End of Switch: '<S24>/Switch2' */
+
+  /* Switch: '<S7>/Switch4' */
+  rtb_Add = rtb_Add10;
 
   /* UnitDelay: '<S21>/Delay Input2'
    *
@@ -11894,7 +10757,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  rtb_Switch2_b0 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib;
+  rtb_Add10 = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib;
 
   /* Sum: '<S21>/Difference Inputs1'
    *
@@ -11902,7 +10765,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Add in CPU
    */
-  rtb_Add -= rtb_Switch2_b0;
+  rtb_Divide_g = rtb_Add - rtb_Add10;
 
   /* SampleTimeMath: '<S21>/sample time'
    *
@@ -11912,29 +10775,29 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
 
   /* Product: '<S21>/delta rise limit' */
-  rtb_Saturation1_i = (real32_T)(1000.0 * elapseTime);
+  rtb_Add = (real32_T)(1000.0 * elapseTime);
 
-  /* RelationalOperator: '<S63>/LowerRelop1' */
-  rtb_LowerRelop1_b = (rtb_Add > rtb_Saturation1_i);
+  /* RelationalOperator: '<S64>/LowerRelop1' */
+  rtb_LowerRelop1_b = (rtb_Divide_g > rtb_Add);
 
-  /* Switch: '<S63>/Switch2' */
+  /* Switch: '<S64>/Switch2' */
   if (!rtb_LowerRelop1_b) {
     /* Product: '<S21>/delta fall limit' */
-    rtb_Acc_POS = (real32_T)(-1000.0 * elapseTime);
+    rtb_Add = (real32_T)(-1000.0 * elapseTime);
 
-    /* RelationalOperator: '<S63>/UpperRelop' */
-    rtb_Compare_am = (rtb_Add < rtb_Acc_POS);
+    /* RelationalOperator: '<S64>/UpperRelop' */
+    rtb_Compare = (rtb_Divide_g < rtb_Add);
 
-    /* Switch: '<S63>/Switch' */
-    if (rtb_Compare_am) {
-      rtb_Add = rtb_Acc_POS;
+    /* Switch: '<S64>/Switch' */
+    if (rtb_Compare) {
+      rtb_Divide_g = rtb_Add;
     }
 
-    /* End of Switch: '<S63>/Switch' */
-    rtb_Saturation1_i = rtb_Add;
+    /* End of Switch: '<S64>/Switch' */
+    rtb_Add = rtb_Divide_g;
   }
 
-  /* End of Switch: '<S63>/Switch2' */
+  /* End of Switch: '<S64>/Switch2' */
 
   /* Saturate: '<S7>/Saturation3' incorporates:
    *  Sum: '<S21>/Difference Inputs2'
@@ -11948,21 +10811,16 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib = rtb_Saturation1_i +
-    rtb_Switch2_b0;
-  if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib > 20.0F) {
-    TrqFL_cmd = 20.0F;
-  } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib < 0.0F) {
-    TrqFL_cmd = 0.0F;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib = rtb_Add + rtb_Add10;
+  if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib > 2.0F) {
+    AMKTrqFL_cmd = 2.0F;
+  } else if (VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib < -2.0F) {
+    AMKTrqFL_cmd = -2.0F;
   } else {
-    TrqFL_cmd = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib;
+    AMKTrqFL_cmd = VehCtrlMdel240926_2018b_amks_DW.DelayInput2_DSTATE_ib;
   }
 
   /* End of Saturate: '<S7>/Saturation3' */
-
-  /* Sum: '<S10>/Add3' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_p = rtb_Switch2_on -
-    rtb_UkYk1_ix;
 
   /* SampleTimeMath: '<S7>/Weighted Sample Time1'
    *
@@ -11970,17 +10828,17 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
    *  y = u * K where K = ( w * Ts )
    */
   elapseTime = (real_T)FunctionCallSubsystem_ELAPS_T * 0.01;
-  rtb_Switch2_on = 420000.0 * elapseTime;
+  rtb_UkYk1 = 420000.0 * elapseTime;
 
   /* Sum: '<S7>/Add2' */
-  rtb_Switch2_on += RPM;
+  rtb_UkYk1 += RPM;
 
   /* Saturate: '<S7>/RPM_Saturation1' */
-  if (rtb_Switch2_on > 5000.0) {
-    rtb_Switch2_on = 5000.0;
+  if (rtb_UkYk1 > 5000.0) {
+    rtb_UkYk1 = 5000.0;
   } else {
-    if (rtb_Switch2_on < -50.0) {
-      rtb_Switch2_on = -50.0;
+    if (rtb_UkYk1 < -50.0) {
+      rtb_UkYk1 = -50.0;
     }
   }
 
@@ -11990,86 +10848,69 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay_DSTATE_n =
     VehCtrlMdel240926_2018b_amksp_B.DYC_Enable_OUT;
 
-  /* Update for UnitDelay: '<S10>/Unit Delay2' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay2_DSTATE_d = WhlSpdFL;
-
-  /* Update for UnitDelay: '<S10>/Unit Delay6' incorporates:
-   *  UnitDelay: '<S10>/Unit Delay3'
-   */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay6_DSTATE_i =
-    VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_l;
-
-  /* Update for UnitDelay: '<S30>/Unit Delay5' */
+  /* Update for UnitDelay: '<S31>/Unit Delay5' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_l = rtb_deltafalllimit_n;
 
-  /* Update for UnitDelay: '<S30>/Unit Delay1' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g = rtb_deltafalllimit_om;
+  /* Update for UnitDelay: '<S31>/Unit Delay1' */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g = rtb_Switch2_mn;
 
-  /* Update for UnitDelay: '<S92>/Delay Input1'
+  /* Update for UnitDelay: '<S87>/Delay Input1'
    *
-   * Block description for '<S92>/Delay Input1':
+   * Block description for '<S87>/Delay Input1':
    *
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE = rtb_ignition;
 
-  /* Update for UnitDelay: '<S28>/Unit Delay3' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_i = rtb_LogicalOperator7;
+  /* Update for UnitDelay: '<S30>/Unit Delay5' */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_i = rtb_Acc_POS;
 
-  /* Update for UnitDelay: '<S29>/Unit Delay5' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_i = rtb_Switch2_mn;
-
-  /* Update for UnitDelay: '<S29>/Unit Delay1' */
+  /* Update for UnitDelay: '<S30>/Unit Delay1' */
   VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_f = rtb_Ax;
 
-  /* Update for UnitDelay: '<S81>/Delay Input1'
+  /* Update for UnitDelay: '<S76>/Delay Input1'
    *
-   * Block description for '<S81>/Delay Input1':
+   * Block description for '<S76>/Delay Input1':
    *
    *  Store in Global RAM
    */
   VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE_j = rtb_LogicalOperator2;
 
-  /* Update for UnitDelay: '<S26>/Unit Delay3' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE = rtb_UkYk1;
+  /* Update for UnitDelay: '<S29>/Unit Delay5' */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_ip = rtb_deltafalllimit_om;
 
-  /* Update for UnitDelay: '<S28>/Unit Delay5' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay5_DSTATE_ip = rtb_Add10;
+  /* Update for UnitDelay: '<S29>/Unit Delay1' */
+  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g4 = rtb_Switch2_b0;
 
-  /* Update for UnitDelay: '<S28>/Unit Delay1' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay1_DSTATE_g4 = rtb_Divide;
-
-  /* Update for UnitDelay: '<S72>/Delay Input1'
+  /* Update for UnitDelay: '<S67>/Delay Input1'
    *
-   * Block description for '<S72>/Delay Input1':
+   * Block description for '<S67>/Delay Input1':
    *
    *  Store in Global RAM
    */
-  VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE_b = rtb_Compare;
-
-  /* Update for UnitDelay: '<S27>/Unit Delay3' */
-  VehCtrlMdel240926_2018b_amks_DW.UnitDelay3_DSTATE_k = rtb_Yk1_l;
+  VehCtrlMdel240926_2018b_amks_DW.DelayInput1_DSTATE_b = rtb_LogicalOperator7;
 
   /* End of Outputs for S-Function (fcncallgen): '<S1>/10ms1' */
 
   /* S-Function (fcncallgen): '<S5>/10ms2' incorporates:
    *  SubSystem: '<S5>/VCU2AMKMCUFL'
    */
-  /* Switch: '<S339>/Switch' incorporates:
+  /* Switch: '<S339>/Switch1' incorporates:
    *  Constant: '<S339>/Constant1'
    *  Constant: '<S339>/Constant2'
+   *  Switch: '<S339>/Switch'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.MCFL_TorqueOn) {
-    VehCtrlMdel240926_2018b_amksp_B.MCFL_TorqueLimitP = 10.0;
+    VehCtrlMdel240926_2018b_amksp_B.Switch1_l = -21.0;
+    VehCtrlMdel240926_2018b_amksp_B.MCFL_TorqueLimitP = 21.0;
   } else {
+    VehCtrlMdel240926_2018b_amksp_B.Switch1_l = 0.0;
     VehCtrlMdel240926_2018b_amksp_B.MCFL_TorqueLimitP = 0.0;
   }
 
-  /* End of Switch: '<S339>/Switch' */
+  /* End of Switch: '<S339>/Switch1' */
 
-  /* S-Function (scanpack): '<S339>/CAN Pack1' incorporates:
-   *  Constant: '<S339>/Constant1'
-   */
+  /* S-Function (scanpack): '<S339>/CAN Pack1' */
   /* S-Function (scanpack): '<S339>/CAN Pack1' */
   VehCtrlMdel240926_2018b_amksp_B.CANPack1_d.ID = 386U;
   VehCtrlMdel240926_2018b_amksp_B.CANPack1_d.Length = 8U;
@@ -12099,7 +10940,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       real32_T outValue = 0;
 
       {
-        real32_T result = TrqFL_cmd;
+        real32_T result = AMKTrqFL_cmd;
 
         /* no offset to apply */
         result = result * (1 / 0.0098F);
@@ -12160,7 +11001,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       real64_T outValue = 0;
 
       {
-        real64_T result = 0.0;
+        real64_T result = VehCtrlMdel240926_2018b_amksp_B.Switch1_l;
 
         /* no offset to apply */
         result = result * (1 / 0.0098);
@@ -12409,7 +11250,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
       {
         uint32_T result = (uint32_T)
-          (VehCtrlMdel240926_2018b_amksp_B.MCFL_InverterOn);
+          (VehCtrlMdel240926_2018b_amksp_B.AMKMCFL_InverterOn);
 
         /* no scaling required */
         packingValue = result;
@@ -12528,21 +11369,22 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   /* S-Function (fcncallgen): '<S5>/10ms4' incorporates:
    *  SubSystem: '<S5>/VCU2AMKMCUFR'
    */
-  /* Switch: '<S340>/Switch' incorporates:
+  /* Switch: '<S340>/Switch1' incorporates:
    *  Constant: '<S340>/Constant'
    *  Constant: '<S340>/Constant1'
+   *  Switch: '<S340>/Switch'
    */
   if (VehCtrlMdel240926_2018b_amksp_B.MCFR_TorqueOn) {
-    VehCtrlMdel240926_2018b_amksp_B.MCFR_TorqueLimitP = 10.0;
+    VehCtrlMdel240926_2018b_amksp_B.Switch1 = -21.0;
+    VehCtrlMdel240926_2018b_amksp_B.Switch = 21.0;
   } else {
-    VehCtrlMdel240926_2018b_amksp_B.MCFR_TorqueLimitP = 0.0;
+    VehCtrlMdel240926_2018b_amksp_B.Switch1 = 0.0;
+    VehCtrlMdel240926_2018b_amksp_B.Switch = 0.0;
   }
 
-  /* End of Switch: '<S340>/Switch' */
+  /* End of Switch: '<S340>/Switch1' */
 
-  /* S-Function (scanpack): '<S340>/CAN Pack1' incorporates:
-   *  Constant: '<S340>/Constant'
-   */
+  /* S-Function (scanpack): '<S340>/CAN Pack1' */
   /* S-Function (scanpack): '<S340>/CAN Pack1' */
   VehCtrlMdel240926_2018b_amksp_B.CANPack1.ID = 387U;
   VehCtrlMdel240926_2018b_amksp_B.CANPack1.Length = 8U;
@@ -12572,7 +11414,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       real32_T outValue = 0;
 
       {
-        real32_T result = TrqFR_cmd;
+        real32_T result = VehCtrlMdel240926_2018b_amksp_B.TrqFR_cmd;
 
         /* no offset to apply */
         result = result * (1 / 0.0098F);
@@ -12633,7 +11475,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       real64_T outValue = 0;
 
       {
-        real64_T result = 0.0;
+        real64_T result = VehCtrlMdel240926_2018b_amksp_B.Switch1;
 
         /* no offset to apply */
         result = result * (1 / 0.0098);
@@ -12694,7 +11536,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       real64_T outValue = 0;
 
       {
-        real64_T result = VehCtrlMdel240926_2018b_amksp_B.MCFR_TorqueLimitP;
+        real64_T result = VehCtrlMdel240926_2018b_amksp_B.Switch;
 
         /* no offset to apply */
         result = result * (1 / 0.0098);
@@ -12882,7 +11724,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
       {
         uint32_T result = (uint32_T)
-          (VehCtrlMdel240926_2018b_amksp_B.MCFL_InverterOn);
+          (VehCtrlMdel240926_2018b_amksp_B.AMKMCFL_InverterOn);
 
         /* no scaling required */
         packingValue = result;
@@ -13017,8 +11859,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
   VehCtrlMdel240926_2018b_amksp_B.CastToBoolean6 = (uint16_T)Mode_Trs;
 
   /* DataTypeConversion: '<S341>/Data Type Conversion2' */
-  VehCtrlMdel240926_2018b_amksp_B.DataTypeConversion2 = (int32_T)floor
-    (rtb_Switch2_on);
+  VehCtrlMdel240926_2018b_amksp_B.DataTypeConversion2 = (int32_T)floor(rtb_UkYk1);
 
   /* S-Function (scanpack): '<S341>/CAN Pack1' */
   /* S-Function (scanpack): '<S341>/CAN Pack1' */
@@ -13128,7 +11969,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
       real32_T outValue = 0;
 
       {
-        real32_T result = TrqR_cmd;
+        real32_T result = EmraxTrqR_cmd;
 
         /* full scaling operation */
         result = (result - -10000.0F) * (1 / 0.5F);
@@ -13301,13 +12142,13 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 
   /* End of Outputs for S-Function (fcncallgen): '<S5>/10ms6' */
 
-  /* S-Function (fcncallgen): '<S347>/10ms' incorporates:
-   *  SubSystem: '<S347>/daq10ms'
+  /* S-Function (fcncallgen): '<S348>/10ms' incorporates:
+   *  SubSystem: '<S348>/daq10ms'
    */
-  /* S-Function (ec5744_ccpslb1): '<S359>/CCPDAQ' */
+  /* S-Function (ec5744_ccpslb1): '<S360>/CCPDAQ' */
   ccpDaq(1);
 
-  /* End of Outputs for S-Function (fcncallgen): '<S347>/10ms' */
+  /* End of Outputs for S-Function (fcncallgen): '<S348>/10ms' */
 
   /* Update absolute time */
   /* The "clockTick3" counts the number of times the code of this task has
@@ -13321,23 +12162,23 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step3(void) /* Sample time: [0.01s, 0.0
 /* Model step function for TID4 */
 void VehCtrlMdel240926_2018b_amkspdlimit_step4(void) /* Sample time: [0.05s, 0.0s] */
 {
-  /* S-Function (fcncallgen): '<S347>/50ms' incorporates:
-   *  SubSystem: '<S347>/daq50ms'
+  /* S-Function (fcncallgen): '<S348>/50ms' incorporates:
+   *  SubSystem: '<S348>/daq50ms'
    */
 
-  /* S-Function (ec5744_ccpslb1): '<S361>/CCPDAQ' */
+  /* S-Function (ec5744_ccpslb1): '<S362>/CCPDAQ' */
   ccpDaq(2);
 
-  /* End of Outputs for S-Function (fcncallgen): '<S347>/50ms' */
+  /* End of Outputs for S-Function (fcncallgen): '<S348>/50ms' */
 }
 
 /* Model step function for TID5 */
 void VehCtrlMdel240926_2018b_amkspdlimit_step5(void) /* Sample time: [0.1s, 0.0s] */
 {
-  /* S-Function (fcncallgen): '<S346>/100MS' incorporates:
-   *  SubSystem: '<S346>/Function-Call Subsystem'
+  /* S-Function (fcncallgen): '<S347>/100MS' incorporates:
+   *  SubSystem: '<S347>/Function-Call Subsystem'
    */
-  /* S-Function (ec5744_canreceiveslb): '<S350>/CANReceive' */
+  /* S-Function (ec5744_canreceiveslb): '<S351>/CANReceive' */
 
   /* Receive CAN message */
   {
@@ -13374,43 +12215,43 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step5(void) /* Sample time: [0.1s, 0.0s
     can2buf1looprx++;
   }
 
-  /* Call the system: <S350>/Function-Call Subsystem */
+  /* Call the system: <S351>/Function-Call Subsystem */
 
-  /* Output and update for function-call system: '<S350>/Function-Call Subsystem' */
+  /* Output and update for function-call system: '<S351>/Function-Call Subsystem' */
   {
     uint8_T rtb_Add;
     uint8_T rtb_Compare;
 
-    /* Outputs for Enabled SubSystem: '<S351>/Enabled Subsystem' incorporates:
-     *  EnablePort: '<S352>/Enable'
+    /* Outputs for Enabled SubSystem: '<S352>/Enabled Subsystem' incorporates:
+     *  EnablePort: '<S353>/Enable'
      */
     if (VehCtrlMdel240926_2018b_amksp_B.CANReceive_o2_p > 0) {
-      /* RelationalOperator: '<S353>/Compare' incorporates:
-       *  Constant: '<S353>/Constant'
+      /* RelationalOperator: '<S354>/Compare' incorporates:
+       *  Constant: '<S354>/Constant'
        */
       rtb_Add = (uint8_T)(VehCtrlMdel240926_2018b_amksp_B.CANReceive_o4_i[0] ==
                           83);
 
-      /* RelationalOperator: '<S354>/Compare' incorporates:
-       *  Constant: '<S354>/Constant'
+      /* RelationalOperator: '<S355>/Compare' incorporates:
+       *  Constant: '<S355>/Constant'
        */
       rtb_Compare = (uint8_T)(VehCtrlMdel240926_2018b_amksp_B.CANReceive_o4_i[5]
         == 84);
 
-      /* Sum: '<S352>/Add' */
+      /* Sum: '<S353>/Add' */
       rtb_Add = (uint8_T)((uint32_T)rtb_Add + rtb_Compare);
 
-      /* RelationalOperator: '<S355>/Compare' incorporates:
-       *  Constant: '<S355>/Constant'
+      /* RelationalOperator: '<S356>/Compare' incorporates:
+       *  Constant: '<S356>/Constant'
        */
       rtb_Compare = (uint8_T)(rtb_Add == 2);
 
-      /* If: '<S352>/If' */
+      /* If: '<S353>/If' */
       if (rtb_Compare > 0) {
-        /* Outputs for IfAction SubSystem: '<S352>/If Action Subsystem' incorporates:
-         *  ActionPort: '<S356>/Action Port'
+        /* Outputs for IfAction SubSystem: '<S353>/If Action Subsystem' incorporates:
+         *  ActionPort: '<S357>/Action Port'
          */
-        /* S-Function (ec5744_bootloaderslb): '<S356>/BootLoader' */
+        /* S-Function (ec5744_bootloaderslb): '<S357>/BootLoader' */
         {
           uint16 i= 0;
           N256K_BLOCK_SEL n256KBlockSelect;
@@ -13441,19 +12282,19 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step5(void) /* Sample time: [0.1s, 0.0s
           }
         }
 
-        /* S-Function (ec5744_cpuresetslb): '<S356>/CPUReset' */
+        /* S-Function (ec5744_cpuresetslb): '<S357>/CPUReset' */
 
         /* Perform a microcontroller reset */
         MC_ME.MCTL.R = 0X00005AF0;
         MC_ME.MCTL.R = 0X0000A50F;
 
-        /* End of Outputs for SubSystem: '<S352>/If Action Subsystem' */
+        /* End of Outputs for SubSystem: '<S353>/If Action Subsystem' */
       } else {
-        /* Outputs for IfAction SubSystem: '<S352>/If Action Subsystem1' incorporates:
-         *  ActionPort: '<S357>/Action Port'
+        /* Outputs for IfAction SubSystem: '<S353>/If Action Subsystem1' incorporates:
+         *  ActionPort: '<S358>/Action Port'
          */
-        /* S-Function (ec5744_cantransmitslb): '<S357>/CANTransmit' incorporates:
-         *  Constant: '<S357>/Constant'
+        /* S-Function (ec5744_cantransmitslb): '<S358>/CANTransmit' incorporates:
+         *  Constant: '<S358>/Constant'
          */
 
         /*Transmit CAN message*/
@@ -13466,44 +12307,44 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step5(void) /* Sample time: [0.1s, 0.0s
             593U, 1, CAN2BUF9TX);
         }
 
-        /* End of Outputs for SubSystem: '<S352>/If Action Subsystem1' */
+        /* End of Outputs for SubSystem: '<S353>/If Action Subsystem1' */
       }
 
-      /* End of If: '<S352>/If' */
+      /* End of If: '<S353>/If' */
     }
 
-    /* End of Outputs for SubSystem: '<S351>/Enabled Subsystem' */
+    /* End of Outputs for SubSystem: '<S352>/Enabled Subsystem' */
   }
 
-  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S350>/CANReceive' */
-  /* End of Outputs for S-Function (fcncallgen): '<S346>/100MS' */
+  /* End of Outputs for S-Function (ec5744_canreceiveslb): '<S351>/CANReceive' */
+  /* End of Outputs for S-Function (fcncallgen): '<S347>/100MS' */
 
-  /* S-Function (fcncallgen): '<S347>/100ms' incorporates:
-   *  SubSystem: '<S347>/daq100ms'
+  /* S-Function (fcncallgen): '<S348>/100ms' incorporates:
+   *  SubSystem: '<S348>/daq100ms'
    */
-  /* S-Function (ec5744_ccpslb1): '<S358>/CCPDAQ' */
+  /* S-Function (ec5744_ccpslb1): '<S359>/CCPDAQ' */
   ccpDaq(3);
 
-  /* End of Outputs for S-Function (fcncallgen): '<S347>/100ms' */
+  /* End of Outputs for S-Function (fcncallgen): '<S348>/100ms' */
 }
 
 /* Model step function for TID6 */
 void VehCtrlMdel240926_2018b_amkspdlimit_step6(void) /* Sample time: [0.5s, 0.0s] */
 {
-  /* S-Function (fcncallgen): '<S347>/500ms' incorporates:
-   *  SubSystem: '<S347>/daq500ms'
+  /* S-Function (fcncallgen): '<S348>/500ms' incorporates:
+   *  SubSystem: '<S348>/daq500ms'
    */
 
-  /* S-Function (ec5744_ccpslb1): '<S360>/CCPDAQ' */
+  /* S-Function (ec5744_ccpslb1): '<S361>/CCPDAQ' */
   ccpDaq(4);
 
-  /* End of Outputs for S-Function (fcncallgen): '<S347>/500ms' */
+  /* End of Outputs for S-Function (fcncallgen): '<S348>/500ms' */
 
-  /* S-Function (fcncallgen): '<S348>/500ms' incorporates:
-   *  SubSystem: '<S348>/EEPROMOperation'
+  /* S-Function (fcncallgen): '<S349>/500ms' incorporates:
+   *  SubSystem: '<S349>/EEPROMOperation'
    */
 
-  /* S-Function (ec5744_eepromoslb): '<S363>/EEPROMOperatin' */
+  /* S-Function (ec5744_eepromoslb): '<S364>/EEPROMOperatin' */
 #if defined EC_EEPROM_ENABLE
 
   /* Operate the EEPROM module on the MPC5744 */
@@ -13511,7 +12352,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_step6(void) /* Sample time: [0.5s, 0.0s
 
 #endif
 
-  /* End of Outputs for S-Function (fcncallgen): '<S348>/500ms' */
+  /* End of Outputs for S-Function (fcncallgen): '<S349>/500ms' */
 }
 
 /* Model step wrapper function for compatibility with a static main program */
@@ -13562,206 +12403,206 @@ void VehCtrlMdel240926_2018b_amkspdlimit_initialize(void)
   /* Start for S-Function (fcncallgen): '<S3>/10ms6' incorporates:
    *  SubSystem: '<S3>/EMRAXMCU_RECIEVE'
    */
-  /* Start for S-Function (ec5744_canreceiveslb): '<S120>/CANReceive1' incorporates:
-   *  SubSystem: '<S120>/MCU_pwr'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S115>/CANReceive1' incorporates:
+   *  SubSystem: '<S115>/MCU_pwr'
    */
-  /* Start for function-call system: '<S120>/MCU_pwr' */
+  /* Start for function-call system: '<S115>/MCU_pwr' */
 
-  /* Start for Enabled SubSystem: '<S173>/MCU_VCUMeter1' */
+  /* Start for Enabled SubSystem: '<S170>/MCU_VCUMeter1' */
 
-  /* Start for S-Function (scanunpack): '<S175>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S172>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S175>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S172>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S173>/MCU_VCUMeter1' */
+  /* End of Start for SubSystem: '<S170>/MCU_VCUMeter1' */
   ec_buffer_init(0,1,1,218089455);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S120>/CANReceive1' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S115>/CANReceive1' */
 
-  /* Start for S-Function (ec5744_canreceiveslb): '<S120>/CANReceive3' incorporates:
-   *  SubSystem: '<S120>/MCU_state'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S115>/CANReceive3' incorporates:
+   *  SubSystem: '<S115>/MCU_state'
    */
-  /* Start for function-call system: '<S120>/MCU_state' */
+  /* Start for function-call system: '<S115>/MCU_state' */
 
-  /* Start for Enabled SubSystem: '<S174>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S171>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S181>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S178>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S181>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S178>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S174>/MCU_state' */
+  /* End of Start for SubSystem: '<S171>/MCU_state' */
   ec_buffer_init(0,0,1,218089199);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S120>/CANReceive3' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S115>/CANReceive3' */
   /* End of Start for S-Function (fcncallgen): '<S3>/10ms6' */
 
   /* Start for S-Function (fcncallgen): '<S3>/10ms3' incorporates:
    *  SubSystem: '<S3>/ABS_Receive'
    */
-  /* Start for S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' incorporates:
-   *  SubSystem: '<S116>/ABS_BUS_state'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S111>/CANReceive3' incorporates:
+   *  SubSystem: '<S111>/ABS_BUS_state'
    */
-  /* Start for function-call system: '<S116>/ABS_BUS_state' */
+  /* Start for function-call system: '<S111>/ABS_BUS_state' */
 
-  /* Start for Enabled SubSystem: '<S124>/IMU_state' */
+  /* Start for Enabled SubSystem: '<S119>/IMU_state' */
 
-  /* Start for S-Function (scanunpack): '<S125>/CAN Unpack1' */
+  /* Start for S-Function (scanunpack): '<S120>/CAN Unpack1' */
 
-  /*-----------S-Function Block: <S125>/CAN Unpack1 -----------------*/
+  /*-----------S-Function Block: <S120>/CAN Unpack1 -----------------*/
 
-  /* End of Start for SubSystem: '<S124>/IMU_state' */
+  /* End of Start for SubSystem: '<S119>/IMU_state' */
   ec_buffer_init(1,16,0,1698);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S111>/CANReceive3' */
   /* End of Start for S-Function (fcncallgen): '<S3>/10ms3' */
 
   /* Start for S-Function (fcncallgen): '<S3>/10ms4' incorporates:
    *  SubSystem: '<S3>/StrSnis_Receive'
    */
-  /* Start for S-Function (ec5744_canreceiveslb): '<S122>/CANReceive3' incorporates:
-   *  SubSystem: '<S122>/StrWhSnis_state'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S117>/CANReceive3' incorporates:
+   *  SubSystem: '<S117>/StrWhSnis_state'
    */
-  /* Start for function-call system: '<S122>/StrWhSnis_state' */
+  /* Start for function-call system: '<S117>/StrWhSnis_state' */
 
-  /* Start for Enabled SubSystem: '<S193>/IMU_state' */
+  /* Start for Enabled SubSystem: '<S190>/IMU_state' */
 
-  /* Start for S-Function (scanunpack): '<S194>/CAN Unpack1' */
+  /* Start for S-Function (scanunpack): '<S191>/CAN Unpack1' */
 
-  /*-----------S-Function Block: <S194>/CAN Unpack1 -----------------*/
+  /*-----------S-Function Block: <S191>/CAN Unpack1 -----------------*/
 
-  /* End of Start for SubSystem: '<S193>/IMU_state' */
+  /* End of Start for SubSystem: '<S190>/IMU_state' */
   ec_buffer_init(1,7,0,330);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S122>/CANReceive3' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S117>/CANReceive3' */
   /* End of Start for S-Function (fcncallgen): '<S3>/10ms4' */
 
   /* Start for S-Function (fcncallgen): '<S3>/10ms5' incorporates:
    *  SubSystem: '<S3>/AMKMCU_Receive'
    */
-  /* Start for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive3' incorporates:
-   *  SubSystem: '<S130>/AMKMCU_state'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive3' incorporates:
+   *  SubSystem: '<S125>/AMKMCU_state'
    */
-  /* Start for function-call system: '<S130>/AMKMCU_state' */
+  /* Start for function-call system: '<S125>/AMKMCU_state' */
 
-  /* Start for Enabled SubSystem: '<S132>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S127>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S135>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S130>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S135>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S130>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S132>/MCU_state' */
+  /* End of Start for SubSystem: '<S127>/MCU_state' */
   ec_buffer_init(1,1,0,640);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive3' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive3' */
 
-  /* Start for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive1' incorporates:
-   *  SubSystem: '<S130>/AMKMCU_state1'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive1' incorporates:
+   *  SubSystem: '<S125>/AMKMCU_state1'
    */
-  /* Start for function-call system: '<S130>/AMKMCU_state1' */
+  /* Start for function-call system: '<S125>/AMKMCU_state1' */
 
-  /* Start for Enabled SubSystem: '<S133>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S128>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S144>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S140>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S144>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S140>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S133>/MCU_state' */
+  /* End of Start for SubSystem: '<S128>/MCU_state' */
   ec_buffer_init(1,2,0,642);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive1' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive1' */
 
-  /* Start for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive2' incorporates:
-   *  SubSystem: '<S130>/AMKMCU_state2'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive2' incorporates:
+   *  SubSystem: '<S125>/AMKMCU_state2'
    */
-  /* Start for function-call system: '<S130>/AMKMCU_state2' */
+  /* Start for function-call system: '<S125>/AMKMCU_state2' */
 
-  /* Start for Enabled SubSystem: '<S134>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S129>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S146>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S142>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S146>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S142>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S134>/MCU_state' */
+  /* End of Start for SubSystem: '<S129>/MCU_state' */
   ec_buffer_init(1,3,0,644);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S130>/CANReceive2' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S125>/CANReceive2' */
 
-  /* Start for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive3' incorporates:
-   *  SubSystem: '<S131>/AMKMCU_state'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive3' incorporates:
+   *  SubSystem: '<S126>/AMKMCU_state'
    */
-  /* Start for function-call system: '<S131>/AMKMCU_state' */
+  /* Start for function-call system: '<S126>/AMKMCU_state' */
 
-  /* Start for Enabled SubSystem: '<S150>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S146>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S153>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S149>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S153>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S149>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S150>/MCU_state' */
+  /* End of Start for SubSystem: '<S146>/MCU_state' */
   ec_buffer_init(1,4,0,641);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive3' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive3' */
 
-  /* Start for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive1' incorporates:
-   *  SubSystem: '<S131>/AMKMCU_state1'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive1' incorporates:
+   *  SubSystem: '<S126>/AMKMCU_state1'
    */
-  /* Start for function-call system: '<S131>/AMKMCU_state1' */
+  /* Start for function-call system: '<S126>/AMKMCU_state1' */
 
-  /* Start for Enabled SubSystem: '<S151>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S147>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S161>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S158>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S161>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S158>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S151>/MCU_state' */
+  /* End of Start for SubSystem: '<S147>/MCU_state' */
   ec_buffer_init(1,5,0,643);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive1' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive1' */
 
-  /* Start for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive2' incorporates:
-   *  SubSystem: '<S131>/AMKMCU_state2'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive2' incorporates:
+   *  SubSystem: '<S126>/AMKMCU_state2'
    */
-  /* Start for function-call system: '<S131>/AMKMCU_state2' */
+  /* Start for function-call system: '<S126>/AMKMCU_state2' */
 
-  /* Start for Enabled SubSystem: '<S152>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S148>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S163>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S160>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S163>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S160>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S152>/MCU_state' */
+  /* End of Start for SubSystem: '<S148>/MCU_state' */
   ec_buffer_init(1,0,0,645);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S131>/CANReceive2' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S126>/CANReceive2' */
   /* End of Start for S-Function (fcncallgen): '<S3>/10ms5' */
 
   /* Start for S-Function (fcncallgen): '<S3>/10ms2' incorporates:
    *  SubSystem: '<S3>/IMU_Recieve'
    */
-  /* Start for S-Function (ec5744_canreceiveslb): '<S121>/CANReceive3' incorporates:
-   *  SubSystem: '<S121>/IMU_state'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' incorporates:
+   *  SubSystem: '<S116>/IMU_state'
    */
-  /* Start for function-call system: '<S121>/IMU_state' */
+  /* Start for function-call system: '<S116>/IMU_state' */
 
-  /* Start for Enabled SubSystem: '<S188>/MCU_state' */
+  /* Start for Enabled SubSystem: '<S185>/MCU_state' */
 
-  /* Start for S-Function (scanunpack): '<S189>/CAN Unpack' */
+  /* Start for S-Function (scanunpack): '<S186>/CAN Unpack' */
 
-  /*-----------S-Function Block: <S189>/CAN Unpack -----------------*/
+  /*-----------S-Function Block: <S186>/CAN Unpack -----------------*/
 
-  /* End of Start for SubSystem: '<S188>/MCU_state' */
+  /* End of Start for SubSystem: '<S185>/MCU_state' */
   ec_buffer_init(1,17,0,513);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S121>/CANReceive3' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S116>/CANReceive3' */
   /* End of Start for S-Function (fcncallgen): '<S3>/10ms2' */
 
   /* Start for S-Function (fcncallgen): '<S3>/10ms1' incorporates:
    *  SubSystem: '<S3>/BMS_Recive'
    */
-  /* Start for S-Function (ec5744_canreceiveslb): '<S119>/CANReceive3' */
+  /* Start for S-Function (ec5744_canreceiveslb): '<S114>/CANReceive3' */
   ec_buffer_init(0,3,1,408961267);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S119>/CANReceive3' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S114>/CANReceive3' */
   /* End of Start for S-Function (fcncallgen): '<S3>/10ms1' */
   /* Start for S-Function (ec5744_cantransmitslb): '<S339>/CANTransmit' */
   ec_buffer_init(1,8,0,386U);
@@ -13788,50 +12629,50 @@ void VehCtrlMdel240926_2018b_amkspdlimit_initialize(void)
 
   /* End of Start for S-Function (fcncallgen): '<S5>/10ms6' */
 
-  /* Start for S-Function (fcncallgen): '<S346>/100MS' incorporates:
-   *  SubSystem: '<S346>/Function-Call Subsystem'
+  /* Start for S-Function (fcncallgen): '<S347>/100MS' incorporates:
+   *  SubSystem: '<S347>/Function-Call Subsystem'
    */
-  /* Start for S-Function (ec5744_canreceiveslb): '<S350>/CANReceive' incorporates:
-   *  SubSystem: '<S350>/Function-Call Subsystem'
+  /* Start for S-Function (ec5744_canreceiveslb): '<S351>/CANReceive' incorporates:
+   *  SubSystem: '<S351>/Function-Call Subsystem'
    */
-  /* Start for function-call system: '<S350>/Function-Call Subsystem' */
+  /* Start for function-call system: '<S351>/Function-Call Subsystem' */
 
-  /* Start for Enabled SubSystem: '<S351>/Enabled Subsystem' */
-  /* Start for IfAction SubSystem: '<S352>/If Action Subsystem1' */
-  /* Start for S-Function (ec5744_cantransmitslb): '<S357>/CANTransmit' incorporates:
-   *  Constant: '<S357>/Constant'
+  /* Start for Enabled SubSystem: '<S352>/Enabled Subsystem' */
+  /* Start for IfAction SubSystem: '<S353>/If Action Subsystem1' */
+  /* Start for S-Function (ec5744_cantransmitslb): '<S358>/CANTransmit' incorporates:
+   *  Constant: '<S358>/Constant'
    */
   ec_buffer_init(2,9,0,593U);
 
-  /* End of Start for SubSystem: '<S352>/If Action Subsystem1' */
-  /* End of Start for SubSystem: '<S351>/Enabled Subsystem' */
+  /* End of Start for SubSystem: '<S353>/If Action Subsystem1' */
+  /* End of Start for SubSystem: '<S352>/Enabled Subsystem' */
   ec_buffer_init(2,1,0,278);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S350>/CANReceive' */
-  /* End of Start for S-Function (fcncallgen): '<S346>/100MS' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S351>/CANReceive' */
+  /* End of Start for S-Function (fcncallgen): '<S347>/100MS' */
 
-  /* Start for S-Function (fcncallgen): '<S349>/Function-Call Generator' incorporates:
-   *  SubSystem: '<S349>/CCPBackground'
+  /* Start for S-Function (fcncallgen): '<S350>/Function-Call Generator' incorporates:
+   *  SubSystem: '<S350>/CCPBackground'
    */
-  /* Start for S-Function (ec5744_ccpslb): '<S364>/CCPBackground' */
+  /* Start for S-Function (ec5744_ccpslb): '<S365>/CCPBackground' */
   ccpInit();
 
-  /* End of Start for S-Function (fcncallgen): '<S349>/Function-Call Generator' */
+  /* End of Start for S-Function (fcncallgen): '<S350>/Function-Call Generator' */
 
-  /* Start for S-Function (ec5744_caninterruptslb1): '<S349>/ReceiveandTransmitInterrupt' incorporates:
-   *  SubSystem: '<S349>/CCPReceive'
+  /* Start for S-Function (ec5744_caninterruptslb1): '<S350>/ReceiveandTransmitInterrupt' incorporates:
+   *  SubSystem: '<S350>/CCPReceive'
    */
-  /* Start for function-call system: '<S349>/CCPReceive' */
+  /* Start for function-call system: '<S350>/CCPReceive' */
 
-  /* Start for S-Function (ec5744_canreceiveslb): '<S365>/CANReceive' */
+  /* Start for S-Function (ec5744_canreceiveslb): '<S366>/CANReceive' */
   ec_buffer_init(2,0,0,CCP_CRO_ID);
 
-  /* End of Start for S-Function (ec5744_canreceiveslb): '<S365>/CANReceive' */
+  /* End of Start for S-Function (ec5744_canreceiveslb): '<S366>/CANReceive' */
   ec_bufint_init(2,0);
   INTC_0.PSR[548].B.PRIN = 12;
   IntcIsrVectorTable[548] = (uint32_t)&ISR_FlexCAN_2_MB0;
 
-  /* End of Start for S-Function (ec5744_caninterruptslb1): '<S349>/ReceiveandTransmitInterrupt' */
+  /* End of Start for S-Function (ec5744_caninterruptslb1): '<S350>/ReceiveandTransmitInterrupt' */
 
   /* Start for S-Function (ec5744_eeprombsbu3): '<Root>/EEPROMEnable' */
   Fls_Read(0xFA0010,ecflashdataold,4096);
@@ -13840,7 +12681,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_initialize(void)
   /* SystemInitialize for S-Function (fcncallgen): '<S3>/10ms7' incorporates:
    *  SubSystem: '<S3>/key'
    */
-  /* SystemInitialize for SignalConversion generated from: '<S123>/Constant' */
+  /* SystemInitialize for SignalConversion generated from: '<S118>/Constant' */
   HVCUTOFF = true;
 
   /* End of SystemInitialize for S-Function (fcncallgen): '<S3>/10ms7' */
@@ -13856,7 +12697,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_initialize(void)
   /* SystemInitialize for S-Function (fcncallgen): '<S2>/10ms' incorporates:
    *  SubSystem: '<S2>/Subsystem'
    */
-  /* SystemInitialize for Chart: '<S106>/Chart2' */
+  /* SystemInitialize for Chart: '<S101>/Chart2' */
   VehCtrlMdel240926_2018b_amks_DW.sfEvent = -1;
 
   /* End of SystemInitialize for S-Function (fcncallgen): '<S2>/10ms' */
@@ -13878,7 +12719,7 @@ void VehCtrlMdel240926_2018b_amkspdlimit_initialize(void)
   /* Enable for S-Function (fcncallgen): '<S2>/10ms' incorporates:
    *  SubSystem: '<S2>/Subsystem'
    */
-  /* Enable for Chart: '<S106>/Chart2' */
+  /* Enable for Chart: '<S101>/Chart2' */
   VehCtrlMdel240926_2018b_amks_DW.previousTicks =
     VehCtrlMdel240926_2018b_amks_M->Timing.clockTick3;
 
