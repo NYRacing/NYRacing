@@ -1,12 +1,12 @@
 clear; clc
 %% Simulation parameters
 T_simulation = 20;
-simulation_step_time = 0.001; % For fixed-step solvers [s]
-output_samping_time = 0.001; % Sampling time for saving the outputs of the simulation [s]
+simulation_step_time = 0.002; % For fixed-step solvers [s]
+output_samping_time = 0.002; % Sampling time for saving the outputs of the simulation [s]
 %% Vehicle Parameters
 i1 = 11.42;%front gear ratio
 i2 = 3.727;%rear gear ratio
-RearRatio = 1;
+RearRatio = 0.8;
 
 
 g = 9.806; % gravity acceleration [m/s^2]
