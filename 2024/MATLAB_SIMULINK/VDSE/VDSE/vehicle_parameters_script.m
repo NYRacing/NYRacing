@@ -1,17 +1,17 @@
 clear; clc
 %% Simulation parameters
 T_simulation = 20;
-simulation_step_time = 0.002; % For fixed-step solvers [s]
-output_samping_time = 0.002; % Sampling time for saving the outputs of the simulation [s]
+simulation_step_time = 0.001; % For fixed-step solvers [s]
+output_samping_time = 0.001; % Sampling time for saving the outputs of the simulation [s]
 %% Vehicle Parameters
 i1 = 11.42;%front gear ratio
 i2 = 3.727;%rear gear ratio
-RearRatio = 0.8;
+RearRatio = 0.7;
 
 
 g = 9.806; % gravity acceleration [m/s^2]
 
-m = 340; % sprung mass [kg]
+m = 300; % sprung mass [kg]
 mF = 45; % half front unsprung mass [kg]
 mR = 50; % half rear unsprung mass [kg]
 
@@ -160,7 +160,7 @@ bump_time = 0; % bump time [s]
 %% Initial conditions
 
 x0 = 0; % initial sprung mass position x [m]
-Vx0 = 0.01/3.6; % initial sprung mass velocity x [m/s]
+Vx0 = 5/3.6; % initial sprung mass velocity x [m/s]
 
 y0 = 0; % initial sprung mass position y [m]
 Vy0 = 0; % initial sprung mass velocity y [m/s]
