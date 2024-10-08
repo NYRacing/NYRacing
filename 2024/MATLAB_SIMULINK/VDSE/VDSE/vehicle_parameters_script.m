@@ -4,19 +4,24 @@ T_simulation = 20;
 simulation_step_time = 0.001; % For fixed-step solvers [s]
 output_samping_time = 0.001; % Sampling time for saving the outputs of the simulation [s]
 %% Vehicle Parameters
+i1 = 11.42;%front gear ratio
+i2 = 3.727;%rear gear ratio
+RearRatio = 1;
+
+
 g = 9.806; % gravity acceleration [m/s^2]
 
-m = 1310; % sprung mass [kg]
+m = 340; % sprung mass [kg]
 mF = 45; % half front unsprung mass [kg]
 mR = 50; % half rear unsprung mass [kg]
 
-hcog = 0.5; % height of center of gravity of sprung mass [m]
+hcog = 0.441; % height of center of gravity of sprung mass [m]
 huFcog = 0.32; % height of center of gravity of front unsprung mass [m]
 huRcog = 0.32; % height of center of gravity of rear unsprung mass [m]
 
-Jx = 430; % roll inertia [kg.m^2]
-Jy = 1309; % pitch inertia [kg.m^2]
-Jz = 1461; % yaw inertia [kg.m^2]
+Jx = 4.12; % roll inertia [kg.m^2]
+Jy = 109.16; % pitch inertia [kg.m^2]
+Jz = 105.13; % yaw inertia [kg.m^2]
 JwF = 2.45; % front wheels inertia [kg.m^2]
 JwR = 2.45; % rear wheels inertia [kg.m^2]
 
@@ -52,7 +57,7 @@ steer_ratio = 13.25; % Ratio between steering wheel and wheel toe angle
 %% Driver and Powertrain
 %1 -> enabled; 0-> disabled
 enableLongDynamics = 1; %If disabled, the vehicle will cruise at a constant speed defined by the user in the Vx0 variable and no forces will slow the vehicle
-enablePowertrain = 1;   % If disabled no torque will be sent to the wheels from the powertrain or brakes but external torques can be introduced by the user in the ìEnable powertrain blockî in the Simulink model. 
+enablePowertrain = 1;   % If disabled no torque will be sent to the wheels from the powertrain or brakes but external torques can be introduced by the user in the Êèànable powertrain blockÔøΩ in the Simulink model. 
 
 % Gear Ratios Map (1st to Last gear)
 GR = [2.9 1.8 1.3 1 0.85 0.75];
@@ -60,27 +65,27 @@ Gear_numbers = [1 2 3 4 5 6];
 max_gears = length(Gear_numbers);
 
 %Engine/Motors Maps
-Engine = xlsread('EngineMap.xlsx','A2:C17');
-throttle = [0:1/21:1]; %Throttle steps for interpolation
-RPMME = Engine(:,1);
-TorqueME = [];
-for i = 1:16 %number of lines to generate Engine curve
-    T = [0 1];
-    E = [Engine(i,2) Engine(i,3)];
-%     xx = (Engine(i,3) - Engine(i,2))/21; 
-%     x = [E(1):xx:E(2)];
-    TorqueME(i,:) = spline(T, E, throttle);
-end
-
-% Plot Engine Map (Torque and Engine)
-figure(1);
-h = surf(throttle*100,RPMME,TorqueME);xlabel('Throttle [%]');ylabel('Engine speed [RPM] '); zlabel('Engine Torque [Nm]'); title('Torque Engine Map');
-set(h,'LineStyle','none')
-colormap(jet);
-figure(2);
-h = surf(throttle*100,RPMME,TorqueME.*RPMME*30/pi);xlabel('Throttle [%]');ylabel('Engine speed [RPM] '); zlabel('Engine Power [W]'); title('Power Engine Map');
-set(h,'LineStyle','none')
-colormap(jet);
+% Engine = xlsread('EngineMap.xlsx','A2:C17');
+% throttle = [0:1/21:1]; %Throttle steps for interpolation
+% RPMME = Engine(:,1);
+% TorqueME = [];
+% for i = 1:16 %number of lines to generate Engine curve
+%     T = [0 1];
+%     E = [Engine(i,2) Engine(i,3)];
+% %     xx = (Engine(i,3) - Engine(i,2))/21; 
+% %     x = [E(1):xx:E(2)];
+%     TorqueME(i,:) = spline(T, E, throttle);
+% end
+% 
+% % Plot Engine Map (Torque and Engine)
+% figure(1);
+% h = surf(throttle*100,RPMME,TorqueME);xlabel('Throttle [%]');ylabel('Engine speed [RPM] '); zlabel('Engine Torque [Nm]'); title('Torque Engine Map');
+% set(h,'LineStyle','none')
+% colormap(jet);
+% figure(2);
+% h = surf(throttle*100,RPMME,TorqueME.*RPMME*30/pi);xlabel('Throttle [%]');ylabel('Engine speed [RPM] '); zlabel('Engine Power [W]'); title('Power Engine Map');
+% set(h,'LineStyle','none')
+% colormap(jet);
 
 
 %Braking 
@@ -89,8 +94,8 @@ colormap(jet);
  max_pressure = 1000; % maximum pressure applied from the driver [bar]
  
 %Front/Rear final drive ratio:
-front_dr = 3.8; % [-]
-rear_dr = 3.8;  % [-]
+front_dr = 1; % [-]
+rear_dr = 1;  % [-]
 
 %AWD front-to-rear ratio (central_diff = 0 means RWD vehicle, 1 means FWD):
 central_diff =1;
@@ -101,20 +106,20 @@ TFR = 0; % constant torque at front right wheel [Nm]
 TRL = 0; % constant torque at rear left wheel [Nm]
 TRR = 0; % constant torque at rear right wheel [Nm]
 
-enableDriverControl = 0; %% If disabled the ìdriverî will not track the requested speed but the user can introduce external throttle and brake inputs in the "driver block"
+enableDriverControl = 1; %% If disabled the ÊèπriverÔøΩ will not track the requested speed but the user can introduce external throttle and brake inputs in the "driver block"
 
 %/!\ If driver is enabled and powertrain disabled the driver comand will do nothing
 
 % Driver parameters 
-requested_speed = 100/3.6; %Speed that the driver is aiming for [m/s]
+requested_speed = 120/3.6; %Speed that the driver is aiming for [m/s]
 initial_gear = 1; %Initial selected gear by the driver
 minrpm = 1500; %Engine rpm at which the driver will switch down gear [rpm]
 maxrpm = 4000; %Engine rpm at which the driver will switch up gear [rpm]
 %% Tire Parameters
 % If you have a .tir file select it otherwise leave it empty (''):
 % Select a .tir file for MFEval library and Paceijka 5.2
-tir_file_rear = 'car235_50R24.tir';
-tir_file_front = 'car235_50R24.tir';
+tir_file_rear = '12psi.tir';
+tir_file_front = '12psi.tir';
 
 % For the BCD tire formulation change the parameters in the following file:
 BCD_Parameters
@@ -123,7 +128,7 @@ BCD_Parameters
 Paceijka52_Parameters
 
 % Other tyre parameters:
-if (isempty(tir_file_front) | isempty(tir_file_rear) )
+if (isempty(tir_file_front) || isempty(tir_file_rear) )
     rF = 0.32; % front tyre radius [m]
     rR = 0.32; % rear tyre radius [m]
     ktF = 300000; % Vertical stiffness of the front tires [N/m]
@@ -149,13 +154,13 @@ WHEEL_ASSEMBLY_PACEIJKA = Simulink.Variant('Mode == 3');
 Mode = 1; 
 %% Road parameters
 bump_height = 0; % bump height [m]
-bump_length = 1; % bump length [m]
-bump_time = 1; % bump time [s]
+bump_length = 0; % bump length [m]
+bump_time = 0; % bump time [s]
 
 %% Initial conditions
 
 x0 = 0; % initial sprung mass position x [m]
-Vx0 = 100/3.6; % initial sprung mass velocity x [m/s]
+Vx0 = 0.01/3.6; % initial sprung mass velocity x [m/s]
 
 y0 = 0; % initial sprung mass position y [m]
 Vy0 = 0; % initial sprung mass velocity y [m/s]
@@ -184,7 +189,7 @@ zRL_dot0 = 0; % initial rear left unsprung mass velocity [m/s]
 zRR0 = 0; % initial rear right unsprung mass position [m]
 zRR_dot0 = 0; % initial rear right unsprung mass velocity [m/s]
 
-%% Parameters needed for the equations: these shouldnít be changed
+%% Parameters needed for the equations: these shouldnÊä∞ be changed
 
 xR = l; % position of the rear axle (long. direction) [m]
 xF = 0; % position of the front axle (long. direction) [m]
