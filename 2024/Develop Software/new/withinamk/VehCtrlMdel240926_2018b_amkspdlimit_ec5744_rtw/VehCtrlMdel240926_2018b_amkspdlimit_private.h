@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_private.h
  *
- * VERSION : 1.212
+ * VERSION : 1.224
  *
- * DATE    : Wed Oct  2 16:46:03 2024
+ * DATE    : Wed Oct  9 20:01:02 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -67,6 +67,8 @@ extern uint16_T look1_iu16bflftfIu16_binlc(uint16_T u0, const real32_T bp0[],
   const real32_T table[], uint32_T maxIndex);
 extern uint32_T look1_iu32n16bflftfIu32_binlc(uint32_T u0, const real32_T bp0[],
   const real32_T table[], uint32_T maxIndex);
+extern real32_T look1_iflf_binlx(real32_T u0, const real32_T bp0[], const
+  real32_T table[], uint32_T maxIndex);
 extern real_T look1_binlx(real_T u0, const real_T bp0[], const real_T table[],
   uint32_T maxIndex);
 extern real32_T look2_iflf_binlx(real32_T u0, real32_T u1, const real32_T bp0[],

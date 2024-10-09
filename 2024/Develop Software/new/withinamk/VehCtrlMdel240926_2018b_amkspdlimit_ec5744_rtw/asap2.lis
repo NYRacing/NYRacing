@@ -1,3 +1,4 @@
+VehCtrlMdel240926_2018b_amksp_B.VCUEnable
 Gear_Trs
 Mode_Trs
 AMKFL_Current
@@ -58,15 +59,15 @@ Acc_vol
 Acc_POS2
 VehVxEst_mps
 Acc_POS
-EmraxTrqR_cmd
 AMKTrqFR_cmd
 AMKTrqFL_cmd
+EmraxTrqR_cmd
 F_BrkPrs
 Acc1
 Acc2
 Brk1
 Brk2
-HVCUTOFF
+VCU2BMS
 KeyPressed
 Brk
 ACC_Release
@@ -74,6 +75,6 @@ beeper_state
 MCFL_DCOn_setpoints
 MCFR_DCEnable
 MCFR_InverterOn
-TrqR_cmd_raw
 TroqueOn
+TrqR_cmd_raw
 Trq_CUT_final

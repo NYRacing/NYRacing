@@ -4,9 +4,9 @@
  *
  * Code generation for model "VehCtrlMdel240926_2018b_amkspdlimit".
  *
- * Model version              : 1.212
+ * Model version              : 1.224
  * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019
- * C source code generated on : Wed Oct  2 16:46:05 2024
+ * C source code generated on : Wed Oct  9 20:01:05 2024
  * 
  * Target selection: ec5744.tlc
  * Embedded hardware selection: Freescale MPC5500
@@ -220,6 +220,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
+      /* Name                   */      VehCtrlMdel240926_2018b_amksp_B.VCUEnable
+      /* Long identifier        */      ""
+      /* Data type              */      UBYTE
+      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      1
+      ECU_ADDRESS                       @MemoryAddress@VehCtrlMdel240926_2018b_amksp_B.VCUEnable@
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
       /* Name                   */      Gear_Trs
       /* Long identifier        */      ""
       /* Data type              */      FLOAT64_IEEE
@@ -228,7 +241,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001308
+      ECU_ADDRESS                       0x40001310
     /end MEASUREMENT
     
     
@@ -241,7 +254,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012d0
+      ECU_ADDRESS                       0x400012d8
     /end MEASUREMENT
     
     
@@ -254,7 +267,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001220
+      ECU_ADDRESS                       0x40001228
     /end MEASUREMENT
     
     
@@ -267,7 +280,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012a0
+      ECU_ADDRESS                       0x400012a8
     /end MEASUREMENT
     
     
@@ -280,7 +293,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001350
+      ECU_ADDRESS                       0x40001358
     /end MEASUREMENT
     
     
@@ -293,7 +306,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001338
+      ECU_ADDRESS                       0x40001340
     /end MEASUREMENT
     
     
@@ -306,7 +319,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001218
+      ECU_ADDRESS                       0x40001220
     /end MEASUREMENT
     
     
@@ -319,7 +332,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012a8
+      ECU_ADDRESS                       0x400012b0
     /end MEASUREMENT
     
     
@@ -345,7 +358,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012d8
+      ECU_ADDRESS                       0x400012e0
     /end MEASUREMENT
     
     
@@ -384,7 +397,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012f8
+      ECU_ADDRESS                       0x40001300
     /end MEASUREMENT
     
     
@@ -397,7 +410,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001328
+      ECU_ADDRESS                       0x40001330
     /end MEASUREMENT
     
     
@@ -410,7 +423,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001348
+      ECU_ADDRESS                       0x40001350
     /end MEASUREMENT
     
     
@@ -423,7 +436,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001200
+      ECU_ADDRESS                       0x40001208
     /end MEASUREMENT
     
     
@@ -436,7 +449,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012c8
+      ECU_ADDRESS                       0x400012d0
     /end MEASUREMENT
     
     
@@ -462,7 +475,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001318
+      ECU_ADDRESS                       0x40001320
     /end MEASUREMENT
     
     
@@ -475,7 +488,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012c0
+      ECU_ADDRESS                       0x400012c8
     /end MEASUREMENT
     
     
@@ -488,7 +501,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001280
+      ECU_ADDRESS                       0x40001288
     /end MEASUREMENT
     
     
@@ -501,7 +514,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001330
+      ECU_ADDRESS                       0x40001338
     /end MEASUREMENT
     
     
@@ -514,7 +527,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001210
+      ECU_ADDRESS                       0x40001218
     /end MEASUREMENT
     
     
@@ -553,7 +566,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001248
+      ECU_ADDRESS                       0x40001250
     /end MEASUREMENT
     
     
@@ -566,7 +579,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001290
+      ECU_ADDRESS                       0x40001298
     /end MEASUREMENT
     
     
@@ -579,7 +592,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001240
+      ECU_ADDRESS                       0x40001248
     /end MEASUREMENT
     
     
@@ -605,7 +618,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001258
+      ECU_ADDRESS                       0x40001260
     /end MEASUREMENT
     
     
@@ -657,7 +670,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012e8
+      ECU_ADDRESS                       0x400012f0
     /end MEASUREMENT
     
     
@@ -696,7 +709,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001268
+      ECU_ADDRESS                       0x40001270
     /end MEASUREMENT
     
     
@@ -709,7 +722,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001320
+      ECU_ADDRESS                       0x40001328
     /end MEASUREMENT
     
     
@@ -735,7 +748,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012b0
+      ECU_ADDRESS                       0x400012b8
     /end MEASUREMENT
     
     
@@ -761,7 +774,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001230
+      ECU_ADDRESS                       0x40001238
     /end MEASUREMENT
     
     
@@ -787,7 +800,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001368
+      ECU_ADDRESS                       0x40001370
     /end MEASUREMENT
     
     
@@ -800,7 +813,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001358
+      ECU_ADDRESS                       0x40001360
     /end MEASUREMENT
     
     
@@ -813,7 +826,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001270
+      ECU_ADDRESS                       0x40001278
     /end MEASUREMENT
     
     
@@ -826,7 +839,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001278
+      ECU_ADDRESS                       0x40001280
     /end MEASUREMENT
     
     
@@ -891,7 +904,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001288
+      ECU_ADDRESS                       0x40001290
     /end MEASUREMENT
     
     
@@ -904,7 +917,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x40001250
+      ECU_ADDRESS                       0x40001258
     /end MEASUREMENT
     
     
@@ -917,7 +930,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012f0
+      ECU_ADDRESS                       0x400012f8
     /end MEASUREMENT
     
     
@@ -930,7 +943,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -1.7E+308
       /* Upper limit            */      1.7E+308
-      ECU_ADDRESS                       0x400012b8
+      ECU_ADDRESS                       0x400012c0
     /end MEASUREMENT
     
     
@@ -943,7 +956,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      65535.999984741211
-      ECU_ADDRESS                       0x40001260
+      ECU_ADDRESS                       0x40001268
     /end MEASUREMENT
     
     
@@ -956,7 +969,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      65535.999984741211
-      ECU_ADDRESS                       0x40001298
+      ECU_ADDRESS                       0x400012a0
     /end MEASUREMENT
     
     
@@ -995,20 +1008,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -3.4E+38
       /* Upper limit            */      3.4E+38
-      ECU_ADDRESS                       0x40001300
-    /end MEASUREMENT
-    
-    
-    /begin MEASUREMENT
-      /* Name                   */      EmraxTrqR_cmd
-      /* Long identifier        */      ""
-      /* Data type              */      FLOAT32_IEEE
-      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single
-      /* Resolution (Not used)  */      0
-      /* Accuracy (Not used)    */      0
-      /* Lower limit            */      -3.4E+38
-      /* Upper limit            */      3.4E+38
-      ECU_ADDRESS                       0x400012e0
+      ECU_ADDRESS                       0x40001308
     /end MEASUREMENT
     
     
@@ -1021,7 +1021,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -3.4E+38
       /* Upper limit            */      3.4E+38
-      ECU_ADDRESS                       0x4000122c
+      ECU_ADDRESS                       0x40001234
     /end MEASUREMENT
     
     
@@ -1034,7 +1034,20 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      -3.4E+38
       /* Upper limit            */      3.4E+38
-      ECU_ADDRESS                       0x40001370
+      ECU_ADDRESS                       0x40001378
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
+      /* Name                   */      EmraxTrqR_cmd
+      /* Long identifier        */      ""
+      /* Data type              */      FLOAT32_IEEE
+      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      -3.4E+38
+      /* Upper limit            */      3.4E+38
+      ECU_ADDRESS                       0x400012e8
     /end MEASUREMENT
     
     
@@ -1047,7 +1060,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      65535
-      ECU_ADDRESS                       0x40001340
+      ECU_ADDRESS                       0x40001348
     /end MEASUREMENT
     
     
@@ -1073,7 +1086,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      65535
-      ECU_ADDRESS                       0x4000129c
+      ECU_ADDRESS                       0x400012a4
     /end MEASUREMENT
     
     
@@ -1086,7 +1099,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      65535
-      ECU_ADDRESS                       0x40001208
+      ECU_ADDRESS                       0x40001210
     /end MEASUREMENT
     
     
@@ -1104,7 +1117,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
-      /* Name                   */      HVCUTOFF
+      /* Name                   */      VCU2BMS
       /* Long identifier        */      ""
       /* Data type              */      UBYTE
       /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
@@ -1112,7 +1125,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      1
-      ECU_ADDRESS                       0x40001342
+      ECU_ADDRESS                       0x40001200
     /end MEASUREMENT
     
     
@@ -1125,7 +1138,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      1
-      ECU_ADDRESS                       0x40001228
+      ECU_ADDRESS                       0x40001230
     /end MEASUREMENT
     
     
@@ -1177,7 +1190,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      1
-      ECU_ADDRESS                       0x40001360
+      ECU_ADDRESS                       0x40001368
     /end MEASUREMENT
     
     
@@ -1208,19 +1221,6 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
-      /* Name                   */      TrqR_cmd_raw
-      /* Long identifier        */      ""
-      /* Data type              */      UBYTE
-      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
-      /* Resolution (Not used)  */      0
-      /* Accuracy (Not used)    */      0
-      /* Lower limit            */      0
-      /* Upper limit            */      1
-      ECU_ADDRESS                       0x4000129e
-    /end MEASUREMENT
-    
-    
-    /begin MEASUREMENT
       /* Name                   */      TroqueOn
       /* Long identifier        */      ""
       /* Data type              */      UBYTE
@@ -1229,7 +1229,20 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      1
-      ECU_ADDRESS                       0x40001238
+      ECU_ADDRESS                       0x40001240
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
+      /* Name                   */      TrqR_cmd_raw
+      /* Long identifier        */      ""
+      /* Data type              */      UBYTE
+      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      1
+      ECU_ADDRESS                       0x400012a6
     /end MEASUREMENT
     
     
@@ -1242,8 +1255,17 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Accuracy (Not used)    */      0
       /* Lower limit            */      0
       /* Upper limit            */      1
-      ECU_ADDRESS                       0x40001310
+      ECU_ADDRESS                       0x40001318
     /end MEASUREMENT
+    
+    /begin COMPU_METHOD
+      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
+      /* Long identifier        */      "Q = V"
+      /* Conversion Type        */      RAT_FUNC
+      /* Format                 */      "%1.0"
+      /* Units                  */      ""
+      /* Coefficients           */      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
     
     /begin COMPU_METHOD
       /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_double
@@ -1277,15 +1299,6 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Long identifier        */      "Q = V"
       /* Conversion Type        */      RAT_FUNC
       /* Format                 */      "%5.0"
-      /* Units                  */      ""
-      /* Coefficients           */      COEFFS 0 1 0 0 0 1
-    /end COMPU_METHOD
-    
-    /begin COMPU_METHOD
-      /* Name of CompuMethod    */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
-      /* Long identifier        */      "Q = V"
-      /* Conversion Type        */      RAT_FUNC
-      /* Format                 */      "%1.0"
       /* Units                  */      ""
       /* Coefficients           */      COEFFS 0 1 0 0 0 1
     /end COMPU_METHOD
@@ -1385,7 +1398,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_ABS_Receive
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive"
       /begin SUB_GROUP
-        S111_ABS_BUS_state
+        S116_ABS_BUS_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1393,8 +1406,8 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_AMKMCU_Receive
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive"
       /begin SUB_GROUP
-        S112_FLAMKMCU
-        S112_FRAMKMCU
+        S117_FLAMKMCU
+        S117_FRAMKMCU
       /end SUB_GROUP
     /end GROUP
     
@@ -1413,8 +1426,8 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_EMRAXMCU_RECIEVE
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE"
       /begin SUB_GROUP
-        S115_MCU_pwr
-        S115_MCU_state
+        S120_MCU_pwr
+        S120_MCU_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1422,7 +1435,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_IMU_Recieve
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve"
       /begin SUB_GROUP
-        S116_IMU_state
+        S121_IMU_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1430,7 +1443,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S3_StrSnis_Receive
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive"
       /begin SUB_GROUP
-        S117_StrWhSnis_state
+        S122_StrWhSnis_state
       /end SUB_GROUP
     /end GROUP
     
@@ -1439,7 +1452,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/key"
       /begin REF_MEASUREMENT
         AMKSWITCH
-        HVCUTOFF
+        VehCtrlMdel240926_2018b_amksp_B.VCUEnable
         ignition
       /end REF_MEASUREMENT
     /end GROUP
@@ -1448,16 +1461,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S4_Function_Call_Subsystem
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem"
       /begin SUB_GROUP
-        S200_AccBrkPedal
-        S200_Subsystem
+        S208_AccBrkPedal
+        S208_Subsystem
       /end SUB_GROUP
+      /begin REF_MEASUREMENT
+        VCU2BMS
+      /end REF_MEASUREMENT
     /end GROUP
     
     /begin GROUP 
       /* Name                   */       S4_Subsystem
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem"
       /begin SUB_GROUP
-        S201_WhlSpdSelect
+        S209_WhlSpdSelect
       /end SUB_GROUP
     /end GROUP
     
@@ -1471,67 +1487,67 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S111_ABS_BUS_state
+      /* Name                   */       S116_ABS_BUS_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive/ABS_BUS_state"
       /begin SUB_GROUP
-        S119_IMU_state
+        S124_IMU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S112_FLAMKMCU
+      /* Name                   */       S117_FLAMKMCU
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU"
       /begin SUB_GROUP
-        S125_AMKMCU_state
-        S125_AMKMCU_state1
-        S125_AMKMCU_state2
+        S130_AMKMCU_state
+        S130_AMKMCU_state1
+        S130_AMKMCU_state2
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S112_FRAMKMCU
+      /* Name                   */       S117_FRAMKMCU
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU"
       /begin SUB_GROUP
-        S126_AMKMCU_state
-        S126_AMKMCU_state1
-        S126_AMKMCU_state2
+        S131_AMKMCU_state
+        S131_AMKMCU_state1
+        S131_AMKMCU_state2
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S115_MCU_pwr
+      /* Name                   */       S120_MCU_pwr
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_pwr"
       /begin SUB_GROUP
-        S170_MCU_VCUMeter1
+        S175_MCU_VCUMeter1
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S115_MCU_state
+      /* Name                   */       S120_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_state"
       /begin SUB_GROUP
-        S171_MCU_state
+        S176_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S116_IMU_state
+      /* Name                   */       S121_IMU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve/IMU_state"
       /begin SUB_GROUP
-        S185_MCU_state
+        S190_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S117_StrWhSnis_state
+      /* Name                   */       S122_StrWhSnis_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive/StrWhSnis_state"
       /begin SUB_GROUP
-        S190_IMU_state
+        S195_IMU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S200_AccBrkPedal
+      /* Name                   */       S208_AccBrkPedal
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem/AccBrkPedal"
       /begin REF_MEASUREMENT
         Acc_POS
@@ -1544,7 +1560,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S200_Subsystem
+      /* Name                   */       S208_Subsystem
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Function-Call Subsystem/Subsystem"
       /begin REF_MEASUREMENT
         AMKFL_Current
@@ -1553,15 +1569,15 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S201_WhlSpdSelect
+      /* Name                   */       S209_WhlSpdSelect
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect"
       /begin SUB_GROUP
-        S268_Filter
+        S276_Filter
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S119_IMU_state
+      /* Name                   */       S124_IMU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/ABS_Receive/ABS_BUS_state/IMU_state"
       /begin REF_MEASUREMENT
         ABS_WS_FL
@@ -1572,55 +1588,55 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S125_AMKMCU_state
+      /* Name                   */       S130_AMKMCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state"
       /begin SUB_GROUP
-        S127_MCU_state
+        S132_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S125_AMKMCU_state1
+      /* Name                   */       S130_AMKMCU_state1
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1"
       /begin SUB_GROUP
-        S128_MCU_state
+        S133_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S125_AMKMCU_state2
+      /* Name                   */       S130_AMKMCU_state2
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2"
       /begin SUB_GROUP
-        S129_MCU_state
+        S134_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S126_AMKMCU_state
+      /* Name                   */       S131_AMKMCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state"
       /begin SUB_GROUP
-        S146_MCU_state
+        S151_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S126_AMKMCU_state1
+      /* Name                   */       S131_AMKMCU_state1
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1"
       /begin SUB_GROUP
-        S147_MCU_state
+        S152_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S126_AMKMCU_state2
+      /* Name                   */       S131_AMKMCU_state2
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2"
       /begin SUB_GROUP
-        S148_MCU_state
+        S153_MCU_state
       /end SUB_GROUP
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S170_MCU_VCUMeter1
+      /* Name                   */       S175_MCU_VCUMeter1
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_pwr/MCU_VCUMeter1"
       /begin REF_MEASUREMENT
         AC_current
@@ -1632,7 +1648,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S171_MCU_state
+      /* Name                   */       S176_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/EMRAXMCU_RECIEVE/MCU_state/MCU_state"
       /begin REF_MEASUREMENT
         L12V_error
@@ -1645,7 +1661,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S185_MCU_state
+      /* Name                   */       S190_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/IMU_Recieve/IMU_state/MCU_state"
       /begin REF_MEASUREMENT
         IMU_Ax_Value
@@ -1655,7 +1671,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S190_IMU_state
+      /* Name                   */       S195_IMU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/StrSnis_Receive/StrWhSnis_state/IMU_state"
       /begin REF_MEASUREMENT
         StrWhlAng
@@ -1665,7 +1681,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S268_Filter
+      /* Name                   */       S276_Filter
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter"
       /begin REF_MEASUREMENT
         VehVxEst_mps
@@ -1673,7 +1689,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S127_MCU_state
+      /* Name                   */       S132_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state/MCU_state"
       /begin REF_MEASUREMENT
         MCFL_ActualTorque
@@ -1689,7 +1705,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S128_MCU_state
+      /* Name                   */       S133_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state1/MCU_state"
       /begin REF_MEASUREMENT
         MCFL_ErrorInfo
@@ -1697,7 +1713,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S129_MCU_state
+      /* Name                   */       S134_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FLAMKMCU/AMKMCU_state2/MCU_state"
       /begin REF_MEASUREMENT
         MCFL_TempIGBT
@@ -1707,7 +1723,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S146_MCU_state
+      /* Name                   */       S151_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state/MCU_state"
       /begin REF_MEASUREMENT
         MCFR_ActualTorque
@@ -1722,7 +1738,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S147_MCU_state
+      /* Name                   */       S152_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state1/MCU_state"
       /begin REF_MEASUREMENT
         MCFR_ErrorInfo
@@ -1730,7 +1746,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S148_MCU_state
+      /* Name                   */       S153_MCU_state
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input/AMKMCU_Receive/FRAMKMCU/AMKMCU_state2/MCU_state"
       /begin REF_MEASUREMENT
         MCFR_TempIGBT

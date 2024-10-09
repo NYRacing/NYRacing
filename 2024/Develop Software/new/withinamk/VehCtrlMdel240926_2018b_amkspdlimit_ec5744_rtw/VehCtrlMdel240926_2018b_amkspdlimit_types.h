@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_types.h
  *
- * VERSION : 1.212
+ * VERSION : 1.224
  *
- * DATE    : Wed Oct  2 16:46:03 2024
+ * DATE    : Wed Oct  9 20:01:02 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -29,17 +29,18 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_3E6LLCfT82MmCSHo4jX6XC_
-#define DEFINED_TYPEDEF_FOR_struct_3E6LLCfT82MmCSHo4jX6XC_
+#ifndef DEFINED_TYPEDEF_FOR_struct_x0NdDYyyx9QGAp231ZZ3YD_
+#define DEFINED_TYPEDEF_FOR_struct_x0NdDYyyx9QGAp231ZZ3YD_
 
 typedef struct {
   real_T SingleAMKPowerLimit_KW;
   real_T allAMKMotorTrq_CUT;
   boolean_T aWaterPumpON;
+  boolean_T bWaterPumpON;
   real_T SingleEmraxPowerLimit_KW;
   real_T EmraxMotorTrq_CUT;
   real32_T LoadOfbWaterPump;
-} struct_3E6LLCfT82MmCSHo4jX6XC;
+} struct_x0NdDYyyx9QGAp231ZZ3YD;
 
 #endif
 
@@ -101,16 +102,16 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_gHi1xswnyKifC1oLKCDbeD_
-#define DEFINED_TYPEDEF_FOR_struct_gHi1xswnyKifC1oLKCDbeD_
+#ifndef DEFINED_TYPEDEF_FOR_struct_vEipMMqPBw35USs2kxooHF_
+#define DEFINED_TYPEDEF_FOR_struct_vEipMMqPBw35USs2kxooHF_
 
 typedef struct {
   boolean_T WhlStrAng_Valid;
-  real_T FLWhlStrAng;
-  real_T FRWhlStrAng;
-  real_T StrWhlAng;
-  real_T StrWhlAngV;
-} struct_gHi1xswnyKifC1oLKCDbeD;
+  real32_T FLWhlStrAng;
+  real32_T FRWhlStrAng;
+  real32_T StrWhlAng;
+  real32_T StrWhlAngV;
+} struct_vEipMMqPBw35USs2kxooHF;
 
 #endif
 
@@ -292,19 +293,19 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_LFRmNwDxkXchQ2Iw1kQhoD_
-#define DEFINED_TYPEDEF_FOR_struct_LFRmNwDxkXchQ2Iw1kQhoD_
+#ifndef DEFINED_TYPEDEF_FOR_struct_zHe2tMljVrX4QA50e8w5eH_
+#define DEFINED_TYPEDEF_FOR_struct_zHe2tMljVrX4QA50e8w5eH_
 
 typedef struct {
   real_T ignition;
-  boolean_T HVCUTOFF;
   real_T AMKSWITCH;
-} struct_LFRmNwDxkXchQ2Iw1kQhoD;
+  boolean_T out2;
+} struct_zHe2tMljVrX4QA50e8w5eH;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_SAo6bU6GM4RZlYJN28Ez7C_
-#define DEFINED_TYPEDEF_FOR_struct_SAo6bU6GM4RZlYJN28Ez7C_
+#ifndef DEFINED_TYPEDEF_FOR_struct_STtLlsBt7Hv2iw9aFp36PH_
+#define DEFINED_TYPEDEF_FOR_struct_STtLlsBt7Hv2iw9aFp36PH_
 
 typedef struct {
   struct_K5cKe8WzTvKtCDgoaM96DE IMU;
@@ -314,21 +315,21 @@ typedef struct {
   struct_4YQUTqbEsFrktSsAh2zFNF BMS_BUS;
   struct_oSrQ2LBjXc27gABuWl7wTC ABS_BUS;
   struct_PrCRZsfUQUgTMs8pMJ2LJD EMRAXMCU_Receive;
-  struct_LFRmNwDxkXchQ2Iw1kQhoD KEY;
-} struct_SAo6bU6GM4RZlYJN28Ez7C;
+  struct_zHe2tMljVrX4QA50e8w5eH KEY;
+} struct_STtLlsBt7Hv2iw9aFp36PH;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_qbxLh3MeVXgMbTDqzsh8IB_
-#define DEFINED_TYPEDEF_FOR_struct_qbxLh3MeVXgMbTDqzsh8IB_
+#ifndef DEFINED_TYPEDEF_FOR_struct_YoC1NaNpSesc0JfhkfKVDC_
+#define DEFINED_TYPEDEF_FOR_struct_YoC1NaNpSesc0JfhkfKVDC_
 
 typedef struct {
   struct_K5cKe8WzTvKtCDgoaM96DE IMU_Processing;
   struct_EZ1YTIdnW9R1PG0j9eMP1C AccBrkPedal_Processing;
-  struct_gHi1xswnyKifC1oLKCDbeD SWAS_Processing;
+  struct_vEipMMqPBw35USs2kxooHF SWAS_Processing;
   struct_XaCvvqTqdLQ0rV6twwRd8 WhlSpdii_mps;
-  struct_SAo6bU6GM4RZlYJN28Ez7C BUS;
-} struct_qbxLh3MeVXgMbTDqzsh8IB;
+  struct_STtLlsBt7Hv2iw9aFp36PH BUS;
+} struct_YoC1NaNpSesc0JfhkfKVDC;
 
 #endif
 
