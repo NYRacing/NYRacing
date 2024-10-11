@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_types.h
  *
- * VERSION : 1.224
+ * VERSION : 1.230
  *
- * DATE    : Wed Oct  9 20:01:02 2024
+ * DATE    : Sat Oct 12 03:28:34 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */

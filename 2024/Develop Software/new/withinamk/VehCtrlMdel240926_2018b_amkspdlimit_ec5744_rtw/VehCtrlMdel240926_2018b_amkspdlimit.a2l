@@ -4,9 +4,9 @@
  *
  * Code generation for model "VehCtrlMdel240926_2018b_amkspdlimit".
  *
- * Model version              : 1.224
+ * Model version              : 1.230
  * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019
- * C source code generated on : Wed Oct  9 20:01:05 2024
+ * C source code generated on : Sat Oct 12 03:28:37 2024
  * 
  * Target selection: ec5744.tlc
  * Embedded hardware selection: Freescale MPC5500
@@ -974,6 +974,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
+      /* Name                   */      Acc_POS
+      /* Long identifier        */      ""
+      /* Data type              */      ULONG
+      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_ufix32_En16
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      65535.999984741211
+      ECU_ADDRESS                       @MemoryAddress@Acc_POS@
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
       /* Name                   */      Acc_POS2
       /* Long identifier        */      ""
       /* Data type              */      ULONG
@@ -996,19 +1009,6 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Lower limit            */      -3.4E+38
       /* Upper limit            */      3.4E+38
       ECU_ADDRESS                       @MemoryAddress@VehVxEst_mps@
-    /end MEASUREMENT
-    
-    
-    /begin MEASUREMENT
-      /* Name                   */      Acc_POS
-      /* Long identifier        */      ""
-      /* Data type              */      FLOAT32_IEEE
-      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single
-      /* Resolution (Not used)  */      0
-      /* Accuracy (Not used)    */      0
-      /* Lower limit            */      -3.4E+38
-      /* Upper limit            */      3.4E+38
-      ECU_ADDRESS                       @MemoryAddress@Acc_POS@
     /end MEASUREMENT
     
     
@@ -1572,7 +1572,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Name                   */       S209_WhlSpdSelect
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect"
       /begin SUB_GROUP
-        S276_Filter
+        S275_Filter
       /end SUB_GROUP
     /end GROUP
     
@@ -1681,7 +1681,7 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     /end GROUP
     
     /begin GROUP 
-      /* Name                   */       S276_Filter
+      /* Name                   */       S275_Filter
       /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter"
       /begin REF_MEASUREMENT
         VehVxEst_mps

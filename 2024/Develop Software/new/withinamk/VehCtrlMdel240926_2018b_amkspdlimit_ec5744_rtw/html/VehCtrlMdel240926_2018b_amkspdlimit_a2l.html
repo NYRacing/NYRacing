@@ -23,11 +23,11 @@
 <tr name="6" id="6">
 <td><a id="l6" class='ln'>6</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="7" id="7">
-<td><a id="l7" class='ln'>7</a></td><td><span class="ct"> * Model version              : 1.224</span></td></tr>
+<td><a id="l7" class='ln'>7</a></td><td><span class="ct"> * Model version              : 1.230</span></td></tr>
 <tr name="8" id="8">
 <td><a id="l8" class='ln'>8</a></td><td><span class="ct"> * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019</span></td></tr>
 <tr name="9" id="9">
-<td><a id="l9" class='ln'>9</a></td><td><span class="ct"> * C source code generated on : Wed Oct  9 20:01:05 2024</span></td></tr>
+<td><a id="l9" class='ln'>9</a></td><td><span class="ct"> * C source code generated on : Sat Oct 12 03:28:37 2024</span></td></tr>
 <tr name="10" id="10">
 <td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * </span></td></tr>
 <tr name="11" id="11">
@@ -1963,7 +1963,7 @@
 <tr name="976" id="976">
 <td><a id="l976" class='ln'>976</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="977" id="977">
-<td><a id="l977" class='ln'>977</a></td><td>      /* Name                   */      Acc_POS2</td></tr>
+<td><a id="l977" class='ln'>977</a></td><td>      /* Name                   */      Acc_POS</td></tr>
 <tr name="978" id="978">
 <td><a id="l978" class='ln'>978</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="979" id="979">
@@ -1979,7 +1979,7 @@
 <tr name="984" id="984">
 <td><a id="l984" class='ln'>984</a></td><td>      /* Upper limit            */      65535.999984741211</td></tr>
 <tr name="985" id="985">
-<td><a id="l985" class='ln'>985</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc_POS2@</td></tr>
+<td><a id="l985" class='ln'>985</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc_POS@</td></tr>
 <tr name="986" id="986">
 <td><a id="l986" class='ln'>986</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="987" id="987">
@@ -1989,23 +1989,23 @@
 <tr name="989" id="989">
 <td><a id="l989" class='ln'>989</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="990" id="990">
-<td><a id="l990" class='ln'>990</a></td><td>      /* Name                   */      VehVxEst_mps</td></tr>
+<td><a id="l990" class='ln'>990</a></td><td>      /* Name                   */      Acc_POS2</td></tr>
 <tr name="991" id="991">
 <td><a id="l991" class='ln'>991</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="992" id="992">
-<td><a id="l992" class='ln'>992</a></td><td>      /* Data type              */      FLOAT32_IEEE</td></tr>
+<td><a id="l992" class='ln'>992</a></td><td>      /* Data type              */      ULONG</td></tr>
 <tr name="993" id="993">
-<td><a id="l993" class='ln'>993</a></td><td>      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single</td></tr>
+<td><a id="l993" class='ln'>993</a></td><td>      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_ufix32_En16</td></tr>
 <tr name="994" id="994">
 <td><a id="l994" class='ln'>994</a></td><td>      /* Resolution (Not used)  */      0</td></tr>
 <tr name="995" id="995">
 <td><a id="l995" class='ln'>995</a></td><td>      /* Accuracy (Not used)    */      0</td></tr>
 <tr name="996" id="996">
-<td><a id="l996" class='ln'>996</a></td><td>      /* Lower limit            */      -3.4E+38</td></tr>
+<td><a id="l996" class='ln'>996</a></td><td>      /* Lower limit            */      0</td></tr>
 <tr name="997" id="997">
-<td><a id="l997" class='ln'>997</a></td><td>      /* Upper limit            */      3.4E+38</td></tr>
+<td><a id="l997" class='ln'>997</a></td><td>      /* Upper limit            */      65535.999984741211</td></tr>
 <tr name="998" id="998">
-<td><a id="l998" class='ln'>998</a></td><td>      ECU_ADDRESS                       @MemoryAddress@VehVxEst_mps@</td></tr>
+<td><a id="l998" class='ln'>998</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc_POS2@</td></tr>
 <tr name="999" id="999">
 <td><a id="l999" class='ln'>999</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1000" id="1000">
@@ -2015,7 +2015,7 @@
 <tr name="1002" id="1002">
 <td><a id="l1002" class='ln'>1002</a></td><td>    /begin MEASUREMENT</td></tr>
 <tr name="1003" id="1003">
-<td><a id="l1003" class='ln'>1003</a></td><td>      /* Name                   */      Acc_POS</td></tr>
+<td><a id="l1003" class='ln'>1003</a></td><td>      /* Name                   */      VehVxEst_mps</td></tr>
 <tr name="1004" id="1004">
 <td><a id="l1004" class='ln'>1004</a></td><td>      /* Long identifier        */      ""</td></tr>
 <tr name="1005" id="1005">
@@ -2031,7 +2031,7 @@
 <tr name="1010" id="1010">
 <td><a id="l1010" class='ln'>1010</a></td><td>      /* Upper limit            */      3.4E+38</td></tr>
 <tr name="1011" id="1011">
-<td><a id="l1011" class='ln'>1011</a></td><td>      ECU_ADDRESS                       @MemoryAddress@Acc_POS@</td></tr>
+<td><a id="l1011" class='ln'>1011</a></td><td>      ECU_ADDRESS                       @MemoryAddress@VehVxEst_mps@</td></tr>
 <tr name="1012" id="1012">
 <td><a id="l1012" class='ln'>1012</a></td><td>    /end MEASUREMENT</td></tr>
 <tr name="1013" id="1013">
@@ -3159,7 +3159,7 @@
 <tr name="1574" id="1574">
 <td><a id="l1574" class='ln'>1574</a></td><td>      /begin SUB_GROUP</td></tr>
 <tr name="1575" id="1575">
-<td><a id="l1575" class='ln'>1575</a></td><td>        S276_Filter</td></tr>
+<td><a id="l1575" class='ln'>1575</a></td><td>        S275_Filter</td></tr>
 <tr name="1576" id="1576">
 <td><a id="l1576" class='ln'>1576</a></td><td>      /end SUB_GROUP</td></tr>
 <tr name="1577" id="1577">
@@ -3377,7 +3377,7 @@
 <tr name="1683" id="1683">
 <td><a id="l1683" class='ln'>1683</a></td><td>    /begin GROUP </td></tr>
 <tr name="1684" id="1684">
-<td><a id="l1684" class='ln'>1684</a></td><td>      /* Name                   */       S276_Filter</td></tr>
+<td><a id="l1684" class='ln'>1684</a></td><td>      /* Name                   */       S275_Filter</td></tr>
 <tr name="1685" id="1685">
 <td><a id="l1685" class='ln'>1685</a></td><td>      /* Long identifier        */       "VehCtrlMdel240926_2018b_amkspdlimit/Input_Processing/Subsystem/WhlSpdSelect/Filter"</td></tr>
 <tr name="1686" id="1686">

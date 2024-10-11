@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_data.c
  *
- * VERSION : 1.224
+ * VERSION : 1.230
  *
- * DATE    : Wed Oct  9 20:01:02 2024
+ * DATE    : Sat Oct 12 03:28:34 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -186,15 +186,22 @@ const ConstP_VehCtrlMdel240926_2018_T VehCtrlMdel240926_2018b__ConstP = {
    */
   { 500.0F, 4500.0F },
 
-  /* Expression: single([0,100]);
-   * Referenced by: '<S210>/1-D Lookup Table3'
+  /* Pooled Parameter (Expression: single([0,100]);)
+   * Referenced by:
+   *   '<S210>/1-D Lookup Table3'
+   *   '<S210>/1-D Lookup Table4'
    */
   { 0.0F, 100.0F },
 
-  /* Expression: single([3540,3790])
+  /* Expression: single([2555,2734])
+   * Referenced by: '<S210>/1-D Lookup Table4'
+   */
+  { 2555.0F, 2734.0F },
+
+  /* Expression: single([2461,2642])
    * Referenced by: '<S210>/1-D Lookup Table3'
    */
-  { 3540.0F, 3790.0F },
+  { 2461.0F, 2642.0F },
 
   /* Expression: single([-26.072928
      -23.62248
