@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_types.h
  *
- * VERSION : 1.230
+ * VERSION : 1.237
  *
- * DATE    : Sat Oct 12 03:28:34 2024
+ * DATE    : Sun Oct 13 20:51:54 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -13,8 +13,8 @@
 #ifndef RTW_HEADER_VehCtrlMdel240926_2018b_amkspdlimit_types_h_
 #define RTW_HEADER_VehCtrlMdel240926_2018b_amkspdlimit_types_h_
 #include "rtwtypes.h"
-#ifndef DEFINED_TYPEDEF_FOR_struct_yQsOshnkIdTklzMvw9YDE_
-#define DEFINED_TYPEDEF_FOR_struct_yQsOshnkIdTklzMvw9YDE_
+#ifndef DEFINED_TYPEDEF_FOR_struct_O5mn6Lihvi4EtM5kgVE46F_
+#define DEFINED_TYPEDEF_FOR_struct_O5mn6Lihvi4EtM5kgVE46F_
 
 typedef struct {
   boolean_T Trq_CUT;
@@ -24,8 +24,8 @@ typedef struct {
   boolean_T TCSFL_flgActv;
   boolean_T TCSFR_flgActv;
   boolean_T TCSR_flgActv;
-  real_T VCU_SpdCmd_Emrax;
-} struct_yQsOshnkIdTklzMvw9YDE;
+  real32_T VCU_SpdCmd_Emrax;
+} struct_O5mn6Lihvi4EtM5kgVE46F;
 
 #endif
 

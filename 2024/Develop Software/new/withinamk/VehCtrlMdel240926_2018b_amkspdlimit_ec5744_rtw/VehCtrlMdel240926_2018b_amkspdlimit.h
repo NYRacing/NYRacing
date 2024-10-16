@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit.h
  *
- * VERSION : 1.230
+ * VERSION : 1.237
  *
- * DATE    : Sat Oct 12 03:28:34 2024
+ * DATE    : Sun Oct 13 20:51:54 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -73,8 +73,8 @@ typedef struct {
 
 /* Block signals (default storage) */
 typedef struct {
-  CAN_DATATYPE CANPack1;               /* '<S347>/CAN Pack1' */
-  CAN_DATATYPE CANPack1_a;             /* '<S348>/CAN Pack1' */
+  CAN_DATATYPE CANPack1;               /* '<S348>/CAN Pack1' */
+  CAN_DATATYPE CANPack1_b;             /* '<S347>/CAN Pack1' */
   CAN_DATATYPE CANPack1_d;             /* '<S346>/CAN Pack1' */
   CAN_DATATYPE CANUnPackMessage4;      /* '<S183>/CANUnPackMessage4' */
   CAN_DATATYPE CANUnPackMessage4_g;    /* '<S177>/CANUnPackMessage4' */
@@ -148,11 +148,11 @@ typedef struct {
   uint32_T CANReceive3_o3_m;           /* '<S116>/CANReceive3' */
   uint32_T CANReceive3_o3_cz;          /* '<S121>/CANReceive3' */
   uint32_T CANReceive3_o3_l;           /* '<S119>/CANReceive3' */
-  real32_T TrqFR_cmd;                  /* '<S7>/Gain1' */
+  real32_T CastToBoolean4;             /* '<S348>/Cast To Boolean4' */
+  real32_T CastToBoolean6;             /* '<S348>/Cast To Boolean6' */
+  real32_T VCU_SpdCmd_Emrax;           /* '<S7>/Constant13' */
   int32_T DataTypeConversion2;         /* '<S348>/Data Type Conversion2' */
   uint16_T CastToSingle1;              /* '<S349>/Cast To Single1' */
-  uint16_T CastToBoolean4;             /* '<S348>/Cast To Boolean4' */
-  uint16_T CastToBoolean6;             /* '<S348>/Cast To Boolean6' */
   uint8_T CANReceive_o2;               /* '<S374>/CANReceive' */
   uint8_T CANReceive_o4[8];            /* '<S374>/CANReceive' */
   uint8_T CANReceive_o5;               /* '<S374>/CANReceive' */
@@ -160,10 +160,10 @@ typedef struct {
   uint8_T CANReceive_o4_i[8];          /* '<S359>/CANReceive' */
   uint8_T CANReceive_o5_l;             /* '<S359>/CANReceive' */
   uint8_T CANTransmit;                 /* '<S366>/CANTransmit' */
-  uint8_T CANPackMessage[8];           /* '<S347>/CANPackMessage' */
-  uint8_T CANTransmit_l;               /* '<S347>/CANTransmit' */
-  uint8_T CANPackMessage_d[8];         /* '<S348>/CANPackMessage' */
+  uint8_T CANPackMessage[8];           /* '<S348>/CANPackMessage' */
   uint8_T CANTransmit_k;               /* '<S348>/CANTransmit' */
+  uint8_T CANPackMessage_f[8];         /* '<S347>/CANPackMessage' */
+  uint8_T CANTransmit_l;               /* '<S347>/CANTransmit' */
   uint8_T CANPackMessage_h[8];         /* '<S346>/CANPackMessage' */
   uint8_T CANTransmit_c;               /* '<S346>/CANTransmit' */
   uint8_T CANReceive1_o2;              /* '<S120>/CANReceive1' */
@@ -204,6 +204,7 @@ typedef struct {
   uint8_T CANReceive3_o5_de;           /* '<S119>/CANReceive3' */
   boolean_T VCU2BMS_o;                 /* '<S123>/SwitchInput3' */
   boolean_T Drive_ready;               /* '<S123>/SwitchInput' */
+  boolean_T AMKSWITCH_bb;              /* '<S123>/SwitchInput1' */
   boolean_T VCUEnable;                 /* '<S123>/Chart' */
   boolean_T MCFL_DCOn_setpoints_o;     /* '<S106>/Switch4' */
   boolean_T VehReady;                  /* '<S106>/Chart2' */
@@ -228,20 +229,19 @@ typedef struct {
   real_T DelayInput2_DSTATE_k;         /* '<S237>/Delay Input2' */
   real_T UnitDelay2_DSTATE;            /* '<S234>/Unit Delay2' */
   real_T UnitDelay_DSTATE_n;           /* '<S7>/Unit Delay' */
-  real_T DelayInput2_DSTATE_p;         /* '<S41>/Delay Input2' */
-  real_T DelayInput2_DSTATE_lt;        /* '<S46>/Delay Input2' */
+  real_T DelayInput2_DSTATE_p;         /* '<S42>/Delay Input2' */
+  real_T DelayInput2_DSTATE_nk;        /* '<S45>/Delay Input2' */
   real_T UnitDelay_DSTATE_h;           /* '<S10>/Unit Delay' */
   real_T UnitDelay1_DSTATE_c;          /* '<S10>/Unit Delay1' */
   real_T UnitDelay4_DSTATE;            /* '<S30>/Unit Delay4' */
   real_T UnitDelay4_DSTATE_b;          /* '<S31>/Unit Delay4' */
   real_T UnitDelay4_DSTATE_l;          /* '<S29>/Unit Delay4' */
-  real_T UnitDelay2_DSTATE_j;          /* '<S30>/Unit Delay2' */
-  real_T UnitDelay2_DSTATE_b;          /* '<S29>/Unit Delay2' */
-  real_T DelayInput2_DSTATE_hj;        /* '<S40>/Delay Input2' */
   real_T UnitDelay2_DSTATE_g;          /* '<S31>/Unit Delay2' */
-  real_T DelayInput2_DSTATE_pd;        /* '<S42>/Delay Input2' */
-  real_T DelayInput2_DSTATE_nk;        /* '<S45>/Delay Input2' */
-  real_T x;                            /* '<S123>/Timer1' */
+  real_T UnitDelay2_DSTATE_j;          /* '<S30>/Unit Delay2' */
+  real_T DelayInput2_DSTATE_pt;        /* '<S41>/Delay Input2' */
+  real_T DelayInput2_DSTATE_lt;        /* '<S46>/Delay Input2' */
+  real_T DelayInput2_DSTATE_hj;        /* '<S40>/Delay Input2' */
+  real_T UnitDelay2_DSTATE_b;          /* '<S29>/Unit Delay2' */
   real_T b;                            /* '<S7>/Chart' */
   real_T DYC_flag;                     /* '<S7>/Chart' */
   real32_T UnitDelay_DSTATE_p;         /* '<S290>/Unit Delay' */
@@ -265,7 +265,7 @@ typedef struct {
   real32_T UnitDelay5_DSTATE;          /* '<S284>/Unit Delay5' */
   real32_T UnitDelay1_DSTATE_a;        /* '<S284>/Unit Delay1' */
   real32_T UnitDelay_DSTATE_o;         /* '<S312>/Unit Delay' */
-  real32_T DelayInput2_DSTATE_pdc;     /* '<S320>/Delay Input2' */
+  real32_T DelayInput2_DSTATE_pd;      /* '<S320>/Delay Input2' */
   real32_T UnitDelay6_DSTATE;          /* '<S284>/Unit Delay6' */
   real32_T UnitDelay2_DSTATE_c;        /* '<S284>/Unit Delay2' */
   real32_T UnitDelay_DSTATE_ah;        /* '<S313>/Unit Delay' */
@@ -291,34 +291,34 @@ typedef struct {
   real32_T UnitDelay_DSTATE_o2;        /* '<S212>/Unit Delay' */
   real32_T DelayInput2_DSTATE_j;       /* '<S246>/Delay Input2' */
   real32_T UnitDelay1_DSTATE_aq;       /* '<S212>/Unit Delay1' */
+  real32_T DelayInput2_DSTATE_l4;      /* '<S43>/Delay Input2' */
   real32_T DelayInput2_DSTATE_j3;      /* '<S44>/Delay Input2' */
   real32_T UnitDelay4_DSTATE_j;        /* '<S10>/Unit Delay4' */
-  real32_T DelayInput2_DSTATE_l4;      /* '<S43>/Delay Input2' */
   real32_T UnitDelay2_DSTATE_jp;       /* '<S10>/Unit Delay2' */
   real32_T UnitDelay5_DSTATE_k;        /* '<S10>/Unit Delay5' */
   real32_T UnitDelay1_DSTATE_n5;       /* '<S80>/Unit Delay1' */
   real32_T UnitDelay1_DSTATE_i;        /* '<S91>/Unit Delay1' */
   real32_T UnitDelay1_DSTATE_h;        /* '<S71>/Unit Delay1' */
+  real32_T UnitDelay5_DSTATE_l;        /* '<S31>/Unit Delay5' */
+  real32_T UnitDelay_DSTATE_b;         /* '<S31>/Unit Delay' */
+  real32_T UnitDelay1_DSTATE_g;        /* '<S31>/Unit Delay1' */
+  real32_T DelayInput2_DSTATE_cd;      /* '<S19>/Delay Input2' */
   real32_T UnitDelay5_DSTATE_i;        /* '<S30>/Unit Delay5' */
   real32_T UnitDelay_DSTATE_f;         /* '<S30>/Unit Delay' */
   real32_T UnitDelay1_DSTATE_f;        /* '<S30>/Unit Delay1' */
   real32_T DelayInput2_DSTATE_hn;      /* '<S20>/Delay Input2' */
   real32_T UnitDelay5_DSTATE_ip;       /* '<S29>/Unit Delay5' */
   real32_T UnitDelay_DSTATE_nr;        /* '<S29>/Unit Delay' */
-  real32_T UnitDelay1_DSTATE_g;        /* '<S29>/Unit Delay1' */
+  real32_T UnitDelay1_DSTATE_g4;       /* '<S29>/Unit Delay1' */
   real32_T DelayInput2_DSTATE_ib;      /* '<S21>/Delay Input2' */
-  real32_T UnitDelay5_DSTATE_l;        /* '<S31>/Unit Delay5' */
-  real32_T UnitDelay_DSTATE_b;         /* '<S31>/Unit Delay' */
-  real32_T UnitDelay1_DSTATE_gu;       /* '<S31>/Unit Delay1' */
-  real32_T DelayInput2_DSTATE_cd;      /* '<S19>/Delay Input2' */
   int32_T sfEvent;                     /* '<S106>/Chart2' */
   uint32_T Subsystem_PREV_T;           /* '<S4>/Subsystem' */
   uint32_T FunctionCallSubsystem_PREV_T;/* '<S4>/Function-Call Subsystem' */
   uint32_T previousTicks;              /* '<S123>/Chart' */
   uint32_T previousTicks_g;            /* '<S106>/Chart2' */
   uint32_T MoTrqReq_PREV_T;            /* '<S1>/MoTrqReq' */
-  int_T CANPack1_ModeSignalID;         /* '<S347>/CAN Pack1' */
-  int_T CANPack1_ModeSignalID_l;       /* '<S348>/CAN Pack1' */
+  int_T CANPack1_ModeSignalID;         /* '<S348>/CAN Pack1' */
+  int_T CANPack1_ModeSignalID_g;       /* '<S347>/CAN Pack1' */
   int_T CANPack1_ModeSignalID_f;       /* '<S346>/CAN Pack1' */
   int_T CANUnpack_ModeSignalID;        /* '<S183>/CAN Unpack' */
   int_T CANUnpack_StatusPortID;        /* '<S183>/CAN Unpack' */
@@ -345,7 +345,6 @@ typedef struct {
   struct {
     uint_T is_VehStat:4;               /* '<S106>/Chart2' */
     uint_T is_AMKDCready:4;            /* '<S106>/Chart2' */
-    uint_T is_c23_VehCtrlMdel240926_2018b_:2;/* '<S123>/Timer1' */
     uint_T is_c24_VehCtrlMdel240926_2018b_:2;/* '<S123>/Chart' */
     uint_T is_STATEON:2;               /* '<S123>/Chart' */
     uint_T is_STATEOFF:2;              /* '<S123>/Chart' */
@@ -360,7 +359,6 @@ typedef struct {
     uint_T is_C:2;                     /* '<S7>/Chart' */
     uint_T is_D:2;                     /* '<S7>/Chart' */
     uint_T is_E:2;                     /* '<S7>/Chart' */
-    uint_T is_active_c23_VehCtrlMdel240926:1;/* '<S123>/Timer1' */
     uint_T is_active_c24_VehCtrlMdel240926:1;/* '<S123>/Chart' */
     uint_T is_active_c1_VehCtrlMdel240926_:1;/* '<S106>/Chart2' */
     uint_T is_active_VehStat:1;        /* '<S106>/Chart2' */
@@ -389,9 +387,9 @@ typedef struct {
   boolean_T UnitDelay3_DSTATE_a;       /* '<S31>/Unit Delay3' */
   boolean_T UnitDelay1_DSTATE_dp;      /* '<S70>/Unit Delay1' */
   boolean_T UnitDelay3_DSTATE_ip;      /* '<S29>/Unit Delay3' */
+  boolean_T DelayInput1_DSTATE_e;      /* '<S89>/Delay Input1' */
   boolean_T DelayInput1_DSTATE_j;      /* '<S78>/Delay Input1' */
   boolean_T DelayInput1_DSTATE_b;      /* '<S69>/Delay Input1' */
-  boolean_T DelayInput1_DSTATE_e;      /* '<S89>/Delay Input1' */
   uint8_T temporalCounter_i1;          /* '<S123>/Chart' */
   uint8_T temporalCounter_i1_f;        /* '<S106>/Chart2' */
   boolean_T Subsystem_RESET_ELAPS_T;   /* '<S4>/Subsystem' */
@@ -410,6 +408,7 @@ typedef struct {
   DW_Timer1_VehCtrlMdel240926_2_T sf_Timer_k;/* '<S212>/Timer' */
   DW_Timer_VehCtrlMdel240926_20_T sf_Timer_a;/* '<S210>/Timer' */
   DW_Timer1_VehCtrlMdel240926_2_T sf_Timer2_h;/* '<S123>/Timer2' */
+  DW_Timer_VehCtrlMdel240926_20_T sf_Timer1_j;/* '<S123>/Timer1' */
   DW_Timer_VehCtrlMdel240926_20_T sf_Timer;/* '<S123>/Timer' */
   DW_Timer1_VehCtrlMdel240926_2_T sf_Timer2;/* '<S8>/Timer2' */
   DW_Timer1_VehCtrlMdel240926_2_T sf_Timer1;/* '<S8>/Timer1' */
@@ -477,20 +476,20 @@ typedef struct {
    */
   real32_T BrakeCompensateCoefRear_bp01Dat[2];
 
-  /* Expression: single([0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;20 20 20 20 20 20 20 18 18 18 17 17 16 16 15 15 15 14 14 14;35 35 35 35 35 35 30 30 25 25 25 25 20 20 20 20 20 20 20 18;50 50 50 50 50 50 50 50 50 40 40 40 40 40 40 40 40 40 38 35;79 79 79 79 85 85 85 90 95 100 110 110 110 100 90 90 80 72 70 65;100 100 100 105 105 105 110 110 110 110 115 115 125 125 120 110 90 80 76 70;120 120 120 120 125 125 125 135 135 135 135 135 135 130 130 120 100 90 82 74;125 125 125 130 135 140 145 155 155 155 155 155 155 155 155 135 110 100 88 82;130 160 160 160 160 170 160 160 160 160 160 160 160 160 160 142 120 105 94 88;130 160 160 160 160 170 160 160 160 160 160 160 160 160 160 142 120 105 95 91;170 170 180 180 180 210 200 200 200 200 200 200 190 180 180 152 133 118 106 100])
+  /* Expression: single(reshape([0,20,35,50,79,100,120,125,130,130,170,0,20,35,50,79,100,120,125,160,160,170,0,20,35,50,79,100,120,125,160,160,180,0,20,35,50,79,105,120,130,160,160,180,0,20,35,50,85,105,125,135,160,160,180,0,20,35,50,85,105,125,140,170,170,210,0,20,30,50,85,110,125,145,160,160,200,0,18,30,50,90,110,135,155,160,160,200,0,18,25,50,95,110,135,155,160,160,200,0,18,25,40,100,110,135,155,160,160,200,0,17,25,40,110,115,135,155,160,160,200,0,17,25,40,110,115,135,155,160,160,200,0,16,20,40,110,125,135,155,160,160,190,0,16,20,40,100,125,130,155,160,160,180,0,15,20,40,90,120,130,155,160,160,180,0,15,20,40,90,110,120,135,142,142,152,0,15,20,40,80,90,100,110,120,120,133,0,14,20,40,72,80,90,100,105,105,118,0,14,20,38,70,76,82,88,94,95,106,0,14,18,35,65,70,74,82,88,91,100,0,14,18,35,65,70,74,82,88,91,100],11,21));
    * Referenced by: '<S7>/2-D Lookup Table1'
    */
-  real32_T uDLookupTable1_tableData[220];
+  real32_T uDLookupTable1_tableData[231];
 
-  /* Expression: single([0 10 20 30 40 50 60 70 80 90 100])
+  /* Expression: single([0,10,20,30,40,50,60,70,80,90,100]);
    * Referenced by: '<S7>/2-D Lookup Table1'
    */
   real32_T uDLookupTable1_bp01Data[11];
 
-  /* Expression: single([5.40000009536743 10.8000001907349 16.2000007629395 21.6000003814697 27 32.4000015258789 37.7999992370605 43.2000007629395 48.5999984741211 54 59.4000015258789 64.8000030517578 70.1999969482422 75.5999984741211 81 86.4000015258789 91.8000030517578 97.1999969482422 102.599998474121 108])
+  /* Expression: single([5.400000095367432,10.800000190734863,16.200000762939453,21.600000381469727,27,32.400001525878906,37.79999923706055,43.20000076293945,48.599998474121094,54,59.400001525878906,64.80000305175781,70.19999694824219,75.5999984741211,81,86.4000015258789,91.80000305175781,97.19999694824219,102.5999984741211,108,114]);
    * Referenced by: '<S7>/2-D Lookup Table1'
    */
-  real32_T uDLookupTable1_bp02Data[20];
+  real32_T uDLookupTable1_bp02Data[21];
 
   /* Computed Parameter: uDLookupTable1_tableData_i
    * Referenced by: '<S10>/2-D Lookup Table1'
@@ -513,7 +512,7 @@ typedef struct {
    *   '<S30>/VehSpd_SlipTarget_mps'
    *   '<S31>/VehSpd_SlipTarget_mps'
    */
-  real32_T pooled54[4];
+  real32_T pooled53[4];
 
   /* Pooled Parameter (Expression: [0,3,25,30])
    * Referenced by:
@@ -527,7 +526,7 @@ typedef struct {
    *   '<S31>/VehicleStableTarget_mps'
    *   '<S31>/VehicleStableTarget_mps1'
    */
-  real32_T pooled55[4];
+  real32_T pooled54[4];
 
   /* Pooled Parameter (Expression: [0.4,0.4,1.2,1.2])
    * Referenced by:
@@ -538,7 +537,7 @@ typedef struct {
    *   '<S31>/VehicleStableTarget_mps'
    *   '<S31>/VehicleStableTarget_mps1'
    */
-  real32_T pooled61[4];
+  real32_T pooled60[4];
 
   /* Expression: single([20,0]);
    * Referenced by: '<S7>/BrakeCompensateCoefFront1'
@@ -562,12 +561,12 @@ typedef struct {
    */
   real32_T pooled66[2];
 
-  /* Expression: single([2555,2734])
+  /* Expression: single([2589,2754])
    * Referenced by: '<S210>/1-D Lookup Table4'
    */
   real32_T uDLookupTable4_bp01Data[2];
 
-  /* Expression: single([2461,2642])
+  /* Expression: single([2471,2642])
    * Referenced by: '<S210>/1-D Lookup Table3'
    */
   real32_T uDLookupTable3_bp01Data[2];
@@ -791,9 +790,9 @@ extern uint32_T Acc_vol;               /* '<S210>/Add2' */
 extern uint32_T Acc_POS;               /* '<S210>/1-D Lookup Table4' */
 extern uint32_T Acc_POS2;              /* '<S210>/1-D Lookup Table3' */
 extern real32_T VehVxEst_mps;          /* '<S332>/Add' */
+extern real32_T EmraxTrqR_cmd;         /* '<S7>/Saturation1' */
 extern real32_T AMKTrqFR_cmd;          /* '<S7>/Saturation2' */
 extern real32_T AMKTrqFL_cmd;          /* '<S7>/Saturation3' */
-extern real32_T EmraxTrqR_cmd;         /* '<S7>/Saturation1' */
 extern uint16_T F_BrkPrs;              /* '<S210>/1-D Lookup Table1' */
 extern uint16_T Acc1;                  /* '<S118>/Acc3' */
 extern uint16_T Acc2;                  /* '<S118>/Acc4' */
@@ -808,8 +807,8 @@ extern boolean_T beeper_state;         /* '<S106>/Chart2' */
 extern boolean_T MCFL_DCOn_setpoints;  /* '<S106>/Chart2' */
 extern boolean_T MCFR_DCEnable;        /* '<S106>/Chart2' */
 extern boolean_T MCFR_InverterOn;      /* '<S106>/Chart2' */
-extern boolean_T TroqueOn;             /* '<S7>/Logical Operator6' */
 extern boolean_T TrqR_cmd_raw;         /* '<S7>/Logical Operator1' */
+extern boolean_T TroqueOn;             /* '<S7>/Logical Operator6' */
 extern boolean_T Trq_CUT_final;        /* '<S7>/Logical Operator4' */
 
 /* External function called from main */

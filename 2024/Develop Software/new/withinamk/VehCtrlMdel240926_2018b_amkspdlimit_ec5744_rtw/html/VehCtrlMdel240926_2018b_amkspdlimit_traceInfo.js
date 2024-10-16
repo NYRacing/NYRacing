@@ -865,12 +865,12 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2820"] = {rtwname: "<S5>/10ms1"};
 	this.rtwnameHashMap["<S5>/10ms2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2741"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2741"] = {rtwname: "<S5>/10ms2"};
-	this.rtwnameHashMap["<S5>/10ms3"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2684"};
-	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2684"] = {rtwname: "<S5>/10ms3"};
 	this.rtwnameHashMap["<S5>/10ms4"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2777"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2777"] = {rtwname: "<S5>/10ms4"};
 	this.rtwnameHashMap["<S5>/10ms6"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2810"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2810"] = {rtwname: "<S5>/10ms6"};
+	this.rtwnameHashMap["<S5>/50ms3"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2684"};
+	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2684"] = {rtwname: "<S5>/50ms3"};
 	this.rtwnameHashMap["<S5>/Beeper"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2821"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2821"] = {rtwname: "<S5>/Beeper"};
 	this.rtwnameHashMap["<S5>/Bus Selector"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2691"};
@@ -917,8 +917,6 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2416"] = {rtwname: "<S7>/2-D Lookup Table1"};
 	this.rtwnameHashMap["<S7>/Add1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2497"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2497"] = {rtwname: "<S7>/Add1"};
-	this.rtwnameHashMap["<S7>/Add2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2528"};
-	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2528"] = {rtwname: "<S7>/Add2"};
 	this.rtwnameHashMap["<S7>/BrakeCompensateCoefFront1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2548"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2548"] = {rtwname: "<S7>/BrakeCompensateCoefFront1"};
 	this.rtwnameHashMap["<S7>/BrakeCompensateCoefRear"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2483"};
@@ -931,6 +929,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2553"] = {rtwname: "<S7>/Bus Selector1"};
 	this.rtwnameHashMap["<S7>/Chart"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:3024"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:3024"] = {rtwname: "<S7>/Chart"};
+	this.rtwnameHashMap["<S7>/Constant"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:5357"};
+	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:5357"] = {rtwname: "<S7>/Constant"};
 	this.rtwnameHashMap["<S7>/Constant1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4514"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4514"] = {rtwname: "<S7>/Constant1"};
 	this.rtwnameHashMap["<S7>/Constant10"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2506"};
@@ -947,6 +947,10 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4133"] = {rtwname: "<S7>/Constant15"};
 	this.rtwnameHashMap["<S7>/Constant16"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4523"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4523"] = {rtwname: "<S7>/Constant16"};
+	this.rtwnameHashMap["<S7>/Constant17"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:5358"};
+	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:5358"] = {rtwname: "<S7>/Constant17"};
+	this.rtwnameHashMap["<S7>/Constant18"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:5360"};
+	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:5360"] = {rtwname: "<S7>/Constant18"};
 	this.rtwnameHashMap["<S7>/Constant2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4515"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4515"] = {rtwname: "<S7>/Constant2"};
 	this.rtwnameHashMap["<S7>/Constant3"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4054"};
@@ -1063,10 +1067,6 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4134"] = {rtwname: "<S7>/From8"};
 	this.rtwnameHashMap["<S7>/From9"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2489"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2489"] = {rtwname: "<S7>/From9"};
-	this.rtwnameHashMap["<S7>/Gain"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:5351"};
-	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:5351"] = {rtwname: "<S7>/Gain"};
-	this.rtwnameHashMap["<S7>/Gain1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4124"};
-	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4124"] = {rtwname: "<S7>/Gain1"};
 	this.rtwnameHashMap["<S7>/Gain2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2498"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2498"] = {rtwname: "<S7>/Gain2"};
 	this.rtwnameHashMap["<S7>/Gain3"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2510"};
@@ -1165,8 +1165,6 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4521"] = {rtwname: "<S7>/Product1"};
 	this.rtwnameHashMap["<S7>/Product2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4524"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4524"] = {rtwname: "<S7>/Product2"};
-	this.rtwnameHashMap["<S7>/RPM_Saturation1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2530"};
-	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2530"] = {rtwname: "<S7>/RPM_Saturation1"};
 	this.rtwnameHashMap["<S7>/Rate Limiter Dynamic1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2511"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2511"] = {rtwname: "<S7>/Rate Limiter Dynamic1"};
 	this.rtwnameHashMap["<S7>/Rate Limiter Dynamic2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2518"};
@@ -1221,10 +1219,10 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2164"] = {rtwname: "<S7>/TCS_PI+FF_Ctrl_FR"};
 	this.rtwnameHashMap["<S7>/TCS_PI+FF_Ctrl_R"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2286"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2286"] = {rtwname: "<S7>/TCS_PI+FF_Ctrl_R"};
+	this.rtwnameHashMap["<S7>/Terminator"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:5359"};
+	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:5359"] = {rtwname: "<S7>/Terminator"};
 	this.rtwnameHashMap["<S7>/Unit Delay"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:3386"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:3386"] = {rtwname: "<S7>/Unit Delay"};
-	this.rtwnameHashMap["<S7>/Weighted Sample Time1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:2531"};
-	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:2531"] = {rtwname: "<S7>/Weighted Sample Time1"};
 	this.rtwnameHashMap["<S7>/Motor_CtrlBus"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:1723"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:1723"] = {rtwname: "<S7>/Motor_CtrlBus"};
 	this.rtwnameHashMap["<S8>/In1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:894"};
@@ -4365,8 +4363,6 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:806"] = {rtwname: "<S123>/Logical Operator"};
 	this.rtwnameHashMap["<S123>/Logical Operator2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4200"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:4200"] = {rtwname: "<S123>/Logical Operator2"};
-	this.rtwnameHashMap["<S123>/Logical Operator3"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:5346"};
-	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:5346"] = {rtwname: "<S123>/Logical Operator3"};
 	this.rtwnameHashMap["<S123>/MeaModule1"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:3893"};
 	this.sidHashMap["VehCtrlMdel240926_2018b_amkspdlimit:3893"] = {rtwname: "<S123>/MeaModule1"};
 	this.rtwnameHashMap["<S123>/MeaModule2"] = {sid: "VehCtrlMdel240926_2018b_amkspdlimit:4097"};

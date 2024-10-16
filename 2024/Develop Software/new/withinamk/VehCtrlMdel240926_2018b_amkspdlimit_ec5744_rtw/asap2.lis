@@ -59,9 +59,9 @@ Acc_vol
 Acc_POS
 Acc_POS2
 VehVxEst_mps
+EmraxTrqR_cmd
 AMKTrqFR_cmd
 AMKTrqFL_cmd
-EmraxTrqR_cmd
 F_BrkPrs
 Acc1
 Acc2
@@ -75,6 +75,6 @@ beeper_state
 MCFL_DCOn_setpoints
 MCFR_DCEnable
 MCFR_InverterOn
-TroqueOn
 TrqR_cmd_raw
+TroqueOn
 Trq_CUT_final

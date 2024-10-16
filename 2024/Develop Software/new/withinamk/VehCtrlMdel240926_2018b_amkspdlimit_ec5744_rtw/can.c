@@ -3,9 +3,9 @@
  *
  * FILE    : can.c
  *
- * VERSION : 1.230
+ * VERSION : 1.237
  *
- * DATE    : Sat Oct 12 03:28:34 2024
+ * DATE    : Sun Oct 13 20:51:54 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -27,7 +27,7 @@ void ec_can0_init(CAN_Initialization* caninit)
   uint8 i,j;
   CAN_0.MCR.R = 0x5000003F;            /* 64 message buffers in use */
   while (!CAN_0.MCR.B.FRZACK) ;
-  FLEXCAN(0).CTRL1.B.PRESDIV = 4;      /* Prescaler division factor */
+  FLEXCAN(0).CTRL1.B.PRESDIV = 9;      /* Prescaler division factor */
   FLEXCAN(0).CTRL1.B.RJW = 1;          /* Synchronization jump width */
   FLEXCAN(0).CTRL1.B.PSEG1 = 3;        /* Phase segment 1 */
   FLEXCAN(0).CTRL1.B.PSEG2 = 3;        /* Phase segment 2 */

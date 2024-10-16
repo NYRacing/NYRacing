@@ -4,9 +4,9 @@
  *
  * Code generation for model "VehCtrlMdel240926_2018b_amkspdlimit".
  *
- * Model version              : 1.230
+ * Model version              : 1.237
  * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019
- * C source code generated on : Sat Oct 12 03:28:37 2024
+ * C source code generated on : Sun Oct 13 20:51:56 2024
  * 
  * Target selection: ec5744.tlc
  * Embedded hardware selection: Freescale MPC5500
@@ -1013,6 +1013,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
+      /* Name                   */      EmraxTrqR_cmd
+      /* Long identifier        */      ""
+      /* Data type              */      FLOAT32_IEEE
+      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      -3.4E+38
+      /* Upper limit            */      3.4E+38
+      ECU_ADDRESS                       0x400012e8
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
       /* Name                   */      AMKTrqFR_cmd
       /* Long identifier        */      ""
       /* Data type              */      FLOAT32_IEEE
@@ -1035,19 +1048,6 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Lower limit            */      -3.4E+38
       /* Upper limit            */      3.4E+38
       ECU_ADDRESS                       0x40001378
-    /end MEASUREMENT
-    
-    
-    /begin MEASUREMENT
-      /* Name                   */      EmraxTrqR_cmd
-      /* Long identifier        */      ""
-      /* Data type              */      FLOAT32_IEEE
-      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_single
-      /* Resolution (Not used)  */      0
-      /* Accuracy (Not used)    */      0
-      /* Lower limit            */      -3.4E+38
-      /* Upper limit            */      3.4E+38
-      ECU_ADDRESS                       0x400012e8
     /end MEASUREMENT
     
     
@@ -1221,19 +1221,6 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
     
     
     /begin MEASUREMENT
-      /* Name                   */      TroqueOn
-      /* Long identifier        */      ""
-      /* Data type              */      UBYTE
-      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
-      /* Resolution (Not used)  */      0
-      /* Accuracy (Not used)    */      0
-      /* Lower limit            */      0
-      /* Upper limit            */      1
-      ECU_ADDRESS                       0x40001240
-    /end MEASUREMENT
-    
-    
-    /begin MEASUREMENT
       /* Name                   */      TrqR_cmd_raw
       /* Long identifier        */      ""
       /* Data type              */      UBYTE
@@ -1243,6 +1230,19 @@ ASAP2_VERSION  1 31   /* Version 1.31 */
       /* Lower limit            */      0
       /* Upper limit            */      1
       ECU_ADDRESS                       0x400012a6
+    /end MEASUREMENT
+    
+    
+    /begin MEASUREMENT
+      /* Name                   */      TroqueOn
+      /* Long identifier        */      ""
+      /* Data type              */      UBYTE
+      /* Conversion method      */      VehCtrlMdel240926_2018b_amkspdlimit_CM_boolean
+      /* Resolution (Not used)  */      0
+      /* Accuracy (Not used)    */      0
+      /* Lower limit            */      0
+      /* Upper limit            */      1
+      ECU_ADDRESS                       0x40001240
     /end MEASUREMENT
     
     
