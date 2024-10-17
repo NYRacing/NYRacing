@@ -1,8 +1,9 @@
 VehCtrlMdel240926_2018b_amksp_B.AMKSWITCH_bx
-VehCtrlMdel240926_2018b_amksp_B.ignition_dq
+VehCtrlMdel240926_2018b_amksp_B.ignition_d
 VehCtrlMdel240926_2018b_amksp_B.out2_h
 Gear_Trs
 Mode_Trs
+KeyPressed
 AMKFL_Current
 AMKFR_Current
 Trq_CUT
@@ -61,6 +62,7 @@ Acc_vol
 Acc_POS
 Acc_POS2
 VehVxEst_mps
+PwrALL
 EmraxTrqR_cmd
 AMKTrqFR_cmd
 AMKTrqFL_cmd
@@ -71,7 +73,6 @@ Brk1
 Brk2
 STATEDISPLAY
 HVSWITCH
-KeyPressed
 Brk
 ACC_Release
 beeper_state
