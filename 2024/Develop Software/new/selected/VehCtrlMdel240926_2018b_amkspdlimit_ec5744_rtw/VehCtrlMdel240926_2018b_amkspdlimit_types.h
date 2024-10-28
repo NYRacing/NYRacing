@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_types.h
  *
- * VERSION : 1.275
+ * VERSION : 1.301
  *
- * DATE    : Thu Oct 17 13:17:54 2024
+ * DATE    : Thu Oct 24 15:52:09 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -76,14 +76,16 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_zHe2tMljVrX4QA50e8w5eH_
-#define DEFINED_TYPEDEF_FOR_struct_zHe2tMljVrX4QA50e8w5eH_
+#ifndef DEFINED_TYPEDEF_FOR_struct_gnkBbA45VRDLlqJwWxZnnH_
+#define DEFINED_TYPEDEF_FOR_struct_gnkBbA45VRDLlqJwWxZnnH_
 
 typedef struct {
   real_T ignition;
   real_T AMKSWITCH;
   boolean_T out2;
-} struct_zHe2tMljVrX4QA50e8w5eH;
+  boolean_T TSAL_SW_IN;
+  boolean_T HV_voltValid;
+} struct_gnkBbA45VRDLlqJwWxZnnH;
 
 #endif
 
@@ -304,8 +306,8 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_STtLlsBt7Hv2iw9aFp36PH_
-#define DEFINED_TYPEDEF_FOR_struct_STtLlsBt7Hv2iw9aFp36PH_
+#ifndef DEFINED_TYPEDEF_FOR_struct_ZFQZ6CesbqpGJWb8vFnnCC_
+#define DEFINED_TYPEDEF_FOR_struct_ZFQZ6CesbqpGJWb8vFnnCC_
 
 typedef struct {
   struct_K5cKe8WzTvKtCDgoaM96DE IMU;
@@ -315,21 +317,22 @@ typedef struct {
   struct_4YQUTqbEsFrktSsAh2zFNF BMS_BUS;
   struct_oSrQ2LBjXc27gABuWl7wTC ABS_BUS;
   struct_PrCRZsfUQUgTMs8pMJ2LJD EMRAXMCU_Receive;
-  struct_zHe2tMljVrX4QA50e8w5eH KEY;
-} struct_STtLlsBt7Hv2iw9aFp36PH;
+  struct_gnkBbA45VRDLlqJwWxZnnH KEY;
+} struct_ZFQZ6CesbqpGJWb8vFnnCC;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_YoC1NaNpSesc0JfhkfKVDC_
-#define DEFINED_TYPEDEF_FOR_struct_YoC1NaNpSesc0JfhkfKVDC_
+#ifndef DEFINED_TYPEDEF_FOR_struct_XqMSkxYAb6HO8WYCkdYW2C_
+#define DEFINED_TYPEDEF_FOR_struct_XqMSkxYAb6HO8WYCkdYW2C_
 
 typedef struct {
   struct_K5cKe8WzTvKtCDgoaM96DE IMU_Processing;
   struct_EZ1YTIdnW9R1PG0j9eMP1C AccBrkPedal_Processing;
   struct_vEipMMqPBw35USs2kxooHF SWAS_Processing;
   struct_XaCvvqTqdLQ0rV6twwRd8 WhlSpdii_mps;
-  struct_STtLlsBt7Hv2iw9aFp36PH BUS;
-} struct_YoC1NaNpSesc0JfhkfKVDC;
+  struct_ZFQZ6CesbqpGJWb8vFnnCC BUS;
+  boolean_T AMKerrorTrq_CUT;
+} struct_XqMSkxYAb6HO8WYCkdYW2C;
 
 #endif
 

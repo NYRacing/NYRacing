@@ -1,11 +1,14 @@
 VehCtrlMdel240926_2018b_amksp_B.AMKSWITCH_bx
 VehCtrlMdel240926_2018b_amksp_B.ignition_d
+VehCtrlMdel240926_2018b_amksp_B.TSAL_SW_IN_i2
 VehCtrlMdel240926_2018b_amksp_B.out2_h
+VehCtrlMdel240926_2018b_amksp_B.HV_voltValid_kx
 Gear_Trs
 Mode_Trs
 KeyPressed
 AMKFL_Current
 AMKFR_Current
+EmraxPwr
 Trq_CUT
 AMKSWITCH
 ignition
@@ -73,6 +76,8 @@ Brk1
 Brk2
 STATEDISPLAY
 HVSWITCH
+TSAL_SW_IN
+HV_voltValid
 Brk
 ACC_Release
 beeper_state

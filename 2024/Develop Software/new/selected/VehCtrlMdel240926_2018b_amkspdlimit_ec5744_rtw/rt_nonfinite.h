@@ -3,9 +3,9 @@
  *
  * FILE    : rt_nonfinite.h
  *
- * VERSION : 1.275
+ * VERSION : 1.301
  *
- * DATE    : Thu Oct 17 13:17:54 2024
+ * DATE    : Thu Oct 24 15:52:09 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */

@@ -3,9 +3,9 @@
  *
  * FILE    : VehCtrlMdel240926_2018b_amkspdlimit_private.h
  *
- * VERSION : 1.275
+ * VERSION : 1.301
  *
- * DATE    : Thu Oct 17 13:17:54 2024
+ * DATE    : Thu Oct 24 15:52:09 2024
  *
  * Copyright 2011-2017 ECUCoder. All Rights Reserved.
  */
@@ -71,11 +71,11 @@ extern real32_T look1_iflf_binlx(real32_T u0, const real32_T bp0[], const
   real32_T table[], uint32_T maxIndex);
 extern real_T look1_binlx(real_T u0, const real_T bp0[], const real_T table[],
   uint32_T maxIndex);
+extern real32_T look1_iflf_binlc(real32_T u0, const real32_T bp0[], const
+  real32_T table[], uint32_T maxIndex);
 extern real32_T look2_iflf_binlx(real32_T u0, real32_T u1, const real32_T bp0[],
   const real32_T bp1[], const real32_T table[], const uint32_T maxIndex[],
   uint32_T stride);
-extern real32_T look1_iflf_binlc(real32_T u0, const real32_T bp0[], const
-  real32_T table[], uint32_T maxIndex);
 extern void VehCtrlMdel240926_20_Timer1(boolean_T rtu_Trigger, real32_T
   rtu_CountTime, real_T *rty_Exit, DW_Timer1_VehCtrlMdel240926_2_T *localDW);
 extern void VehCtrlMdel240926_201_Timer(boolean_T rtu_Trigger, real32_T
